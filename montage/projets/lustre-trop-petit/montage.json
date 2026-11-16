@@ -12,11 +12,53 @@
     "vitesse": 1.2,
     "style": "Warm, natural French male narrator with a Parisian accent, talking to one person like a friend who knows lighting, never flat, never robotic, one steady pace from the first word to the last with no rushing. The tone follows the moment: the opening line punchy and a little provocative, a playful challenge; the three rules clear and explanatory, like showing someone how to measure with a tape measure; a small spark of surprise on each result (soixante-douze, quatre-vingt-dix, soixante, quarante-cinq, trente-cinq); the very last line rising and suspended, left unfinished, as if the sentence goes on."
   },
-  "assets": {},
+  "assets": {
+    "domia.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-dome-domia-5-blanc-suspendu-au-dessus-d-une-table-de-salle-a-manger-en-bois.webp",
+    "soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-tissu-metal-noir-perfore-salon-soir.webp",
+    "orive.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-6-lumieres-orive-1-vu-de-trois-quarts-six-globes-ambre-clairs-et-fumes-allumes.webp",
+    "musique.mp3": "library/audio/entrain-happy-guitar.mp3",
+    "grain.png": "library/images/grain.png",
+    "fraunces.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-normal.woff2",
+    "fraunces-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-italic.woff2",
+    "newsreader.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-normal.woff2",
+    "newsreader-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-italic.woff2"
+  },
   "attendu": {
     "secondes": [
-      60,
-      60
-    ]
+      65,
+      65
+    ],
+    "fondu_fin_min_s": 0
+  },
+  "signature": {
+    "date": "2026-11-17",
+    "familles": [
+      "A",
+      "F",
+      "B",
+      "G",
+      "B",
+      "E",
+      "C",
+      "D",
+      "C",
+      "E",
+      "C",
+      "G",
+      "E",
+      "G",
+      "E",
+      "B",
+      "H",
+      "A"
+    ],
+    "accroche": "changement",
+    "angle": "dimension"
+  },
+  "musique": {
+    "titre": "Happy Guitar",
+    "auteur": "edtijo",
+    "licence": "CC0 1.0",
+    "url": "https://freesound.org/people/edtijo/sounds/207558"
   }
 }
