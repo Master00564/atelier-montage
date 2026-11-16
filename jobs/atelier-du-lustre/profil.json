@@ -1,0 +1,7 @@
+{
+  "note": "Brand values of the shop for theme videos, copied from the diffusion-reseaux skill profile (profils/atelier-du-lustre.json, charte.video) on 2026-11-09. Theme jobs read it through theme.profil; a job's theme.palette overrides a colour.",
+  "boutique": "L’Atelier du Lustre",
+  "adresse": "latelierdulustre.com",
+  "logo": "jobs/atelier-du-lustre/logo.png",
+  "palette": {"encre": "#14110e", "ivoire": "#faf7f1", "or": "#c9a15a"}
+}
