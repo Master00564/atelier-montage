@@ -1,0 +1,22 @@
+{
+  "genre": "theme",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "voix": {
+    "fichier": "assets/voix.mp3",
+    "texte": "texte.txt",
+    "voix": "Algieba",
+    "vitesse": 1.2,
+    "style": "Warm, natural French male narrator with a Parisian accent, talking to one person like a friend who knows lighting, never flat, never robotic, one steady pace from the first word to the last with no rushing. The tone follows the moment: the opening line punchy and a little provocative, a playful challenge; the three rules clear and explanatory, like showing someone how to measure with a tape measure; a small spark of surprise on each result (soixante-douze, quatre-vingt-dix, soixante, quarante-cinq, trente-cinq); the very last line rising and suspended, left unfinished, as if the sentence goes on."
+  },
+  "assets": {},
+  "attendu": {
+    "secondes": [
+      60,
+      60
+    ]
+  }
+}
