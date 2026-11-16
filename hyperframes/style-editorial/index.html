@@ -1,0 +1,234 @@
+<!doctype html>
+<!-- Style 1, "editorial luxe": cream page, large serif titles revealed through masks with a
+     letter-spacing settle, photos that wipe in under a gold hairline, the product name filled with
+     the material's own photo at the end. Up to 6 plans timed by the job ("coupes", "carte"); the
+     video lasts 20 s (a variable cannot change a root duration). Every word, colour and picture
+     comes from the job. -->
+<html
+  lang="fr"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"nom","type":"string","label":"Product name","default":"Name"},
+    {"id":"type","type":"string","label":"Product type","default":"Type"},
+    {"id":"t1a","type":"string","label":"Plan 1, line 1 (empty = no plan 1)","default":""},
+    {"id":"t1b","type":"string","label":"Plan 1, line 2","default":""},
+    {"id":"t2a","type":"string","label":"Plan 2, line 1 (empty = no plan 2)","default":""},
+    {"id":"t2b","type":"string","label":"Plan 2, line 2","default":""},
+    {"id":"t3a","type":"string","label":"Plan 3, line 1 (empty = no plan 3)","default":""},
+    {"id":"t3b","type":"string","label":"Plan 3, line 2","default":""},
+    {"id":"t4a","type":"string","label":"Plan 4, line 1 (empty = no plan 4)","default":""},
+    {"id":"t4b","type":"string","label":"Plan 4, line 2","default":""},
+    {"id":"t5a","type":"string","label":"Plan 5, line 1 (empty = no plan 5)","default":""},
+    {"id":"t5b","type":"string","label":"Plan 5, line 2","default":""},
+    {"id":"t6a","type":"string","label":"Plan 6, line 1 (empty = no plan 6)","default":""},
+    {"id":"t6b","type":"string","label":"Plan 6, line 2","default":""},
+    {"id":"g1","type":"string","label":"Guarantee 1","default":"Guarantee"},
+    {"id":"g2","type":"string","label":"Guarantee 2","default":"Guarantee"},
+    {"id":"g3","type":"string","label":"Guarantee 3","default":"Guarantee"},
+    {"id":"adresse","type":"string","label":"Web address","default":"example.com"},
+    {"id":"img1","type":"image","label":"Plan 1 photo","default":"assets/job/img1.jpg"},
+    {"id":"img2","type":"image","label":"Plan 2 photo","default":"assets/job/img2.jpg"},
+    {"id":"img3","type":"image","label":"Plan 3 photo","default":"assets/job/img3.jpg"},
+    {"id":"img4","type":"image","label":"Plan 4 photo","default":"assets/job/img4.jpg"},
+    {"id":"img5","type":"image","label":"Plan 5 photo","default":"assets/job/img5.jpg"},
+    {"id":"img6","type":"image","label":"Plan 6 photo","default":"assets/job/img6.jpg"},
+    {"id":"imgm","type":"image","label":"Material close-up (fills the name)","default":"assets/job/imgm.jpg"},
+    {"id":"logo","type":"image","label":"Logo (transparent PNG)","default":"assets/job/logo.png"},
+    {"id":"musique","type":"string","label":"Music (as long as the video)","default":"assets/job/musique.flac"},
+    {"id":"taille","type":"number","label":"Photo size (square, source px)","default":1254},
+    {"id":"p1x","type":"number","label":"Plan 1 focus x (%)","default":50},
+    {"id":"p1y","type":"number","label":"Plan 1 focus y (%)","default":50},
+    {"id":"p2x","type":"number","label":"Plan 2 focus x (%)","default":50},
+    {"id":"p2y","type":"number","label":"Plan 2 focus y (%)","default":50},
+    {"id":"p3x","type":"number","label":"Plan 3 focus x (%)","default":50},
+    {"id":"p3y","type":"number","label":"Plan 3 focus y (%)","default":50},
+    {"id":"p4x","type":"number","label":"Plan 4 focus x (%)","default":50},
+    {"id":"p4y","type":"number","label":"Plan 4 focus y (%)","default":50},
+    {"id":"p5x","type":"number","label":"Plan 5 focus x (%)","default":50},
+    {"id":"p5y","type":"number","label":"Plan 5 focus y (%)","default":50},
+    {"id":"p6x","type":"number","label":"Plan 6 focus x (%)","default":50},
+    {"id":"p6y","type":"number","label":"Plan 6 focus y (%)","default":50},
+    {"id":"mx","type":"number","label":"Close-up focus x (%)","default":50},
+    {"id":"my","type":"number","label":"Close-up focus y (%)","default":50},
+    {"id":"coupes","type":"string","label":"Seconds where plans 2, 3… start (comma-separated, on the music grid)","default":"3,6"},
+    {"id":"carte","type":"number","label":"Second where the end card starts","default":9},
+    {"id":"creme","type":"color","label":"Page","default":"#f7f5f0"},
+    {"id":"encre","type":"color","label":"Ink","default":"#111111"},
+    {"id":"or","type":"color","label":"Hairlines","default":"#b0a080"},
+    {"id":"brun","type":"color","label":"Accent text","default":"#6b5530"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+    <style>
+      @font-face { font-family: "MarqueTitre"; src: url("assets/job/titre.ttf"); }
+      @font-face { font-family: "MarqueTitreItalique"; src: url("assets/job/titre-italique.ttf"); }
+      @font-face { font-family: "MarqueTexte"; src: url("assets/job/texte.ttf"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--creme); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--creme); color: var(--encre); }
+      .couche { position: absolute; inset: 0; }
+      #kicker { position: absolute; left: 90px; top: 206px; font: 26px "MarqueTexte"; letter-spacing: 0.5em; text-transform: uppercase; color: var(--brun); }
+      .titre { position: absolute; left: 90px; top: 252px; width: 920px; }
+      .ligne { width: max-content; white-space: nowrap; line-height: 1.04; font-family: "MarqueTitre"; }
+      .ligne.it { font-family: "MarqueTitreItalique"; color: var(--brun); }
+      .titre .ligne-split-mask { padding: 0 120px; margin: 0 -120px; } /* the glyph spread is never clipped sideways */
+      #filet-titre { position: absolute; left: 92px; top: 578px; width: 180px; height: 1.5px; background: var(--or); transform-origin: left center; }
+      #fenetre { position: absolute; left: 110px; top: 616px; width: 860px; height: 860px; overflow: hidden; background: var(--creme); }
+      #cadre { position: absolute; left: 92px; top: 598px; width: 896px; height: 896px; border: 1.5px solid var(--or); }
+      .photo { position: absolute; inset: 0; overflow: hidden; }
+      .photo img { position: absolute; left: 0; top: 0; }
+      .bord { position: absolute; left: 0; top: 0; width: 860px; height: 2px; background: var(--or); opacity: 0; }
+      .bord.v { width: 2px; height: 860px; }
+      #fin { position: absolute; inset: 0; }
+      #logo { position: absolute; left: 465px; top: 300px; width: 150px; height: 105px; background: var(--encre);
+        -webkit-mask: var(--logo-url) center / contain no-repeat; }
+      #nom-masque { position: absolute; left: 0; top: 470px; width: 1080px; height: 330px; overflow: hidden; }
+      #nom { width: 1080px; text-align: center; font: 300px/1.1 "MarqueTitre"; color: transparent; -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text; background-clip: text; background-repeat: no-repeat; }
+      #type { position: absolute; left: 0; top: 856px; width: 1080px; text-align: center; font: 40px "MarqueTexte"; }
+      #filet-fin { position: absolute; left: 440px; top: 952px; width: 200px; height: 1.5px; background: var(--or); }
+      #garanties { position: absolute; left: 0; top: 1000px; width: 1080px; text-align: center; font: 30px/2 "MarqueTexte"; letter-spacing: 0.2em; text-transform: uppercase; }
+      #adresse { position: absolute; left: 0; top: 1206px; width: 1080px; text-align: center; font: 44px "MarqueTitreItalique"; color: var(--brun); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="style-editorial" data-start="0" data-duration="20" data-fps="30" data-width="1080" data-height="1920">
+      <div id="scene" class="couche clip" data-start="0" data-duration="20" data-track-index="0">
+        <div id="cadre"></div>
+        <div id="fenetre">
+          <div id="ph1" class="photo"><img id="im1" data-var-src="img1" src="assets/job/img1.jpg" alt="" /><div id="bord1" class="bord"></div></div>
+          <div id="ph2" class="photo"><img id="im2" data-var-src="img2" src="assets/job/img2.jpg" alt="" /><div id="bord2" class="bord"></div></div>
+          <div id="ph3" class="photo"><img id="im3" data-var-src="img3" src="assets/job/img3.jpg" alt="" /><div id="bord3" class="bord"></div></div>
+          <div id="ph4" class="photo"><img id="im4" data-var-src="img4" src="assets/job/img4.jpg" alt="" /><div id="bord4" class="bord"></div></div>
+          <div id="ph5" class="photo"><img id="im5" data-var-src="img5" src="assets/job/img5.jpg" alt="" /><div id="bord5" class="bord"></div></div>
+          <div id="ph6" class="photo"><img id="im6" data-var-src="img6" src="assets/job/img6.jpg" alt="" /><div id="bord6" class="bord"></div></div>
+        </div>
+        <div id="kicker"></div>
+        <div id="titre1" class="titre"><div class="ligne"></div><div class="ligne it"></div></div>
+        <div id="titre2" class="titre"><div class="ligne"></div><div class="ligne it"></div></div>
+        <div id="titre3" class="titre"><div class="ligne"></div><div class="ligne it"></div></div>
+        <div id="titre4" class="titre"><div class="ligne"></div><div class="ligne it"></div></div>
+        <div id="titre5" class="titre"><div class="ligne"></div><div class="ligne it"></div></div>
+        <div id="titre6" class="titre"><div class="ligne"></div><div class="ligne it"></div></div>
+        <div id="filet-titre"></div>
+      </div>
+      <div id="fin" class="clip" data-start="0" data-duration="20" data-track-index="1">
+        <div id="logo"></div>
+        <div id="nom-masque"><div id="nom"></div></div>
+        <div id="type"></div>
+        <div id="filet-fin"></div>
+        <div id="garanties"></div>
+        <div id="adresse"></div>
+      </div>
+      <audio id="musique" data-start="0" data-duration="20" data-track-index="2" data-volume="1" data-fade-out="0.5" data-timeline-role="music" data-var-src="musique" src="assets/job/musique.flac"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      (async function () {
+        const V = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+        await Promise.all(["MarqueTitre", "MarqueTitreItalique", "MarqueTexte"].map((f) => document.fonts.load(`100px "${f}"`)));
+        const $ = (s) => document.querySelector(s);
+        const T = Number(V.taille) || 1254;
+        const FEN = 860;
+        const LARGEUR = 880; // title lines stay between x = 90 and 970 px (Instagram's right rail starts near 996)
+        const ECART = 0.06; // glyph spread at the start of a title, in em per glyph from the line's centre
+
+        // Plans: those with a first line, timed by the job; unused slots are removed.
+        const N = [1, 2, 3, 4, 5, 6].filter((k) => String(V[`t${k}a`] || "").trim()).length;
+        for (let k = N + 1; k <= 6; k++) ["#ph", "#titre"].forEach((p) => $(`${p}${k}`).remove());
+        const coupes = String(V.coupes).split(",").map(Number).filter((x) => x > 0).slice(0, N - 1);
+        const CARTE = Number(V.carte);
+        const debuts = [0, ...coupes];
+        const fins = [...coupes, CARTE];
+
+        // Texts. Each line takes the largest size (≤ 150 px) that keeps it, spread included, inside LARGEUR.
+        $("#kicker").textContent = V.nom;
+        for (let k = 1; k <= N; k++) {
+          const el = $(`#titre${k}`).children;
+          [V[`t${k}a`], V[`t${k}b`]].forEach((t, j) => {
+            const l = el[j];
+            l.textContent = t;
+            l.style.fontSize = "100px";
+            l.style.fontSize = `${Math.min(150, LARGEUR / (l.offsetWidth / 100 + ECART * l.textContent.length)).toFixed(1)}px`;
+          });
+        }
+        $("#type").textContent = V.type;
+        $("#garanties").innerHTML = [V.g1, V.g2, V.g3].map((g) => `<div>${g}</div>`).join("");
+        $("#adresse").textContent = V.adresse;
+        // The name is filled with the material close-up, one source pixel per screen pixel.
+        const nom = $("#nom");
+        nom.textContent = V.nom;
+        nom.style.width = "max-content";
+        nom.style.fontSize = `${Math.min(300, (300 * 940) / nom.offsetWidth).toFixed(1)}px`;
+        nom.style.width = "1080px";
+        // A light veil of the accent colour keeps the name readable on the page while showing the weave.
+        nom.style.backgroundImage = `linear-gradient(color-mix(in srgb, var(--brun) 45%, transparent), color-mix(in srgb, var(--brun) 45%, transparent)), url("${V.imgm}")`;
+        nom.style.backgroundSize = `100% 100%, ${T}px ${T}px`;
+        nom.style.backgroundPosition = `0 0, ${540 - (V.mx / 100) * T}px ${165 - (V.my / 100) * T}px`;
+        $("#root").style.setProperty("--logo-url", `url("${V.logo}")`);
+
+        // A photo framed on its focus point at scale s, never past one source pixel per screen pixel.
+        const vue = (s, fx, fy) => {
+          s = Math.min(Math.max(s, FEN / T), 1);
+          const clamp = (v) => Math.min(0, Math.max(FEN - T * s, v));
+          return { x: clamp(FEN / 2 - (fx / 100) * T * s), y: clamp(FEN / 2 - (fy / 100) * T * s), scale: s, transformOrigin: "0 0" };
+        };
+        const tl = gsap.timeline({ paused: true });
+        const splits = debuts.map((_, i) => [...$(`#titre${i + 1}`).children].map((l) => new SplitText(l, { type: "lines,chars", mask: "lines", linesClass: "ligne-split" })));
+        // Tracking settle without reflow: each glyph starts spread out from the line's centre and glides in.
+        const ecart = (sp) => (i) => (i - (sp.chars.length - 1) / 2) * ECART * parseFloat(getComputedStyle(sp.elements[0]).fontSize);
+        const resserrer = (i, t, duree) =>
+          splits[i].forEach((sp) => tl.fromTo(sp.chars, { x: ecart(sp) }, { x: 0, duration: duree, ease: "expo.out", immediateRender: !i }, t));
+        // Slow, constant drift in each photo, from a little before it shows to a little after.
+        debuts.forEach((d, i) => {
+          const [fx, fy] = [Number(V[`p${i + 1}x`]), Number(V[`p${i + 1}y`])];
+          const de = Math.max(0, d - 0.6);
+          tl.fromTo(`#im${i + 1}`, vue(FEN / T + 0.02, fx - 3, fy), { ...vue(FEN / T + 0.08, fx + 3, fy), duration: fins[i] + 0.4 - de, ease: "none" }, de);
+        });
+        // Frame 0: plan 1 already readable; its tracking settles and the hairline draws on the first accent.
+        resserrer(0, 0, 1.8);
+        tl.fromTo("#filet-titre", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.5);
+        splits.slice(1).forEach((sp) => sp.forEach((s) => gsap.set(s.chars, { yPercent: 110 })));
+        const sortie = (i, t) =>
+          splits[i].forEach((sp, k) => tl.to(sp.chars, { yPercent: -110, duration: 0.36, ease: "power3.in", stagger: 0.008 }, t + k * 0.04));
+        for (let i = 1; i < debuts.length; i++) {
+          const c = debuts[i];
+          // Seams alternate: the next photo rises from below, then slides in from the right, under a gold edge.
+          const bas = i % 2 === 1;
+          const cache = bas ? "inset(100% 0% 0% 0%)" : "inset(0% 0% 0% 100%)";
+          const axe = bas ? "y" : "x";
+          gsap.set(`#ph${i + 1}`, { clipPath: cache });
+          if (!bas) $(`#bord${i + 1}`).classList.add("v");
+          sortie(i - 1, c - 0.45);
+          tl.to("#filet-titre", { scaleX: 0, transformOrigin: "right center", duration: 0.4, ease: "power3.in" }, c - 0.45);
+          tl.fromTo(`#ph${i + 1}`, { clipPath: cache }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.0, ease: "power4.inOut", immediateRender: false }, c - 0.55);
+          tl.fromTo(`#bord${i + 1}`, { [axe]: FEN, opacity: 1 }, { [axe]: -2, opacity: 1, duration: 1.0, ease: "power4.inOut", immediateRender: false }, c - 0.55);
+          tl.to(`#bord${i + 1}`, { opacity: 0, duration: 0.2 }, c + 0.45);
+          tl.to(`#ph${i}`, { [axe]: -70, duration: 1.0, ease: "power4.inOut" }, c - 0.55);
+          // In: the letters rise almost together (a short wave), the tracking settles, the hairline draws again.
+          splits[i].forEach((sp, k) =>
+            tl.fromTo(sp.chars, { yPercent: 110 }, { yPercent: 0, duration: 0.8, ease: "expo.out", stagger: 0.01, immediateRender: false }, c + k * 0.1));
+          resserrer(i, c, 1.6);
+          tl.fromTo("#filet-titre", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.8, ease: "power3.inOut", immediateRender: false }, c + 0.35);
+        }
+        // End: the last title leaves, the picture closes to a line, the name rises filled with the material.
+        sortie(debuts.length - 1, CARTE - 0.5);
+        tl.to(["#filet-titre", "#kicker"], { opacity: 0, duration: 0.35 }, CARTE - 0.45);
+        tl.to("#fenetre", { clipPath: "inset(50% 0% 50% 0%)", duration: 0.7, ease: "power4.inOut" }, CARTE - 0.4);
+        tl.to("#cadre", { clipPath: "inset(50% 0% 50% 0%)", opacity: 0, duration: 0.7, ease: "power4.inOut" }, CARTE - 0.4);
+        tl.fromTo("#nom", { yPercent: 100 }, { yPercent: 0, duration: 1.3, ease: "expo.out" }, CARTE);
+        tl.fromTo("#logo", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.9, ease: "expo.out" }, CARTE + 0.1);
+        tl.fromTo("#type", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.0, ease: "expo.out" }, CARTE + 0.45);
+        tl.fromTo("#filet-fin", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.inOut" }, CARTE + 0.55);
+        tl.fromTo("#garanties > div", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out", stagger: 0.1 }, CARTE + 0.75);
+        tl.fromTo("#adresse", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, CARTE + 1.05);
+        window.__timelines["style-editorial"] = tl;
+      })();
+    </script>
+  </body>
+</html>

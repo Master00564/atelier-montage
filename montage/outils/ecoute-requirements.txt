@@ -1,0 +1,6 @@
+# earshot's listening tools (ecoute.yml). Not named requirements-*.txt: montage.yml keys its own venv on that glob.
+# torch from PyTorch's CPU-only index (the +cpu build exists only there): no CUDA libraries, earshot never uses a GPU.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0+cpu
+# earshot 0.4.1 (MIT), 2026-11-06: 0.4.0's results on valid input, plus fixes (a failed scene scan is an error, not a film without cuts).
+earshot @ git+https://github.com/Leonxlnx/earshot@4ac3d2ac2b151e1c23376f9ce7f3047a17050013

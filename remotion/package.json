@@ -1,0 +1,29 @@
+{
+  "name": "atelier-video-remotion",
+  "private": true,
+  "description": "Remotion compositions rendered by the render workflow. Register each composition in src/Root.tsx.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "studio": "remotion studio src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.541",
+    "@remotion/effects": "4.0.541",
+    "@remotion/fonts": "4.0.541",
+    "@remotion/google-fonts": "4.0.541",
+    "@remotion/layout-utils": "4.0.541",
+    "@remotion/media": "4.0.541",
+    "@remotion/motion-blur": "4.0.541",
+    "@remotion/noise": "4.0.541",
+    "@remotion/paths": "4.0.541",
+    "@remotion/shapes": "4.0.541",
+    "@remotion/transitions": "4.0.541",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.541"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "typescript": "7.0.2"
+  }
+}

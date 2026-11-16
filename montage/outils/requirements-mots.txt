@@ -1,0 +1,4 @@
+numpy==2.3.4
+num2words==0.5.14
+faster-whisper==1.2.1
+jiwer==4.0.0

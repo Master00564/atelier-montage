@@ -1,0 +1,568 @@
+<!doctype html>
+<!-- Theme video: a 60 s narrated reel built from one job (jobs/<job>.json with "theme"), the
+     timeline computed by scripts/theme.py (voice cut, shots on the beat, captions on the word).
+     Shots: background, gold ornament, framed picture with parallax and a light sweep, headline,
+     counter; transitions chosen per shot; the last shot flows into the first (seamless loop).
+     Rules: docs/direction-artistique.md. Every word, colour, picture and timing comes from the
+     job: nothing here names a shop or a theme. -->
+<html
+  lang="fr"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"timeline","type":"string","label":"Timeline (JSON from scripts/theme.py)","default":"{\"duree\":60,\"fps\":30,\"battue\":0.46875,\"boucle\":false,\"plans\":[{\"ligne\":0,\"debut\":0,\"fin\":60}],\"sous_titres\":[]}"},
+    {"id":"bande","type":"string","label":"Soundtrack (voice, music, effects, 60 s)","default":"assets/job/bande.wav"},
+    {"id":"logo","type":"image","label":"Shop monogram (transparent PNG)","default":"assets/job/logo.png"},
+    {"id":"fond","type":"color","label":"Background","default":"#0a0a0a"},
+    {"id":"fond2","type":"color","label":"Second background","default":"#112233"},
+    {"id":"or","type":"color","label":"Gold","default":"#b0a080"},
+    {"id":"or_clair","type":"color","label":"Light gold","default":"#e0d0a0"},
+    {"id":"ivoire","type":"color","label":"Ivory (captions)","default":"#f5f5f0"},
+    {"id":"encre","type":"color","label":"Ink","default":"#111111"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Affiche"; src: url("assets/job/affiche.ttf"); font-weight: 100 900; }
+      @font-face { font-family: "Texte"; src: url("assets/job/texte.ttf"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--fond); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--fond); color: var(--ivoire); }
+      #camera { position: absolute; inset: 0; perspective: 1400px; perspective-origin: 50% 48%; }
+      #monde { position: absolute; inset: 0; transform-style: preserve-3d; }
+      .plan { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+      .fond { position: absolute; inset: -60px; }
+      .orne { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+      .fenetre { position: absolute; overflow: hidden; }
+      .fenetre img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+      .fenetre .det { filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55)); }
+      .balayage { position: absolute; inset: -20%; mix-blend-mode: screen; opacity: 0;
+        background: linear-gradient(105deg, transparent 38%, color-mix(in srgb, var(--or_clair) 55%, transparent) 50%, transparent 62%); }
+      .cadre { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; pointer-events: none; }
+      .titre { position: absolute; left: 90px; width: 900px; text-align: center; }
+      .cadrage { position: absolute; inset: 0; }
+      .titre .kicker { font: 600 36px/1 "Affiche"; letter-spacing: 0.42em; text-transform: uppercase; color: var(--or_clair); margin-bottom: 22px; }
+      .titre .ligne { display: block; white-space: nowrap; line-height: 1; font-family: "Affiche"; font-weight: 700; letter-spacing: 0.02em; overflow: hidden; padding: 0.42em 0.12em 0.04em; margin: -0.38em -0.12em 0; }
+      .titre .ligne.or span { background: linear-gradient(180deg, var(--or_clair) 8%, var(--or) 55%, color-mix(in srgb, var(--or) 70%, #5a3f12) 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .titre .ligne span { display: inline-block; text-shadow: none; padding-top: 0.34em; margin-top: -0.34em; } /* the gold fill must reach the accents (É) above the capitals */
+      .titre .ligne.ivoire span { color: var(--ivoire); }
+      .titre .filet { height: 3px; width: 220px; margin: 18px auto 0; background: var(--or); transform-origin: center; }
+      .compteur { position: absolute; left: 0; width: 1080px; text-align: center; font: 700 210px/1 "Affiche"; color: var(--or_clair);
+        font-variant-numeric: tabular-nums; }
+      .compteur small { display: block; font: 600 40px/1.3 "Affiche"; letter-spacing: 0.3em; color: var(--ivoire); margin-top: 16px; text-transform: uppercase; }
+      .profondeur { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; visibility: hidden; }
+      .profondeur svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #st { position: absolute; left: 100px; width: 880px; bottom: 434px; text-align: center; }
+      .page { position: absolute; left: 0; bottom: 0; width: 880px; visibility: hidden; }
+      .page .rang { display: block; font: 600 58px/1.22 "Texte"; color: var(--ivoire); white-space: nowrap;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.55), 0 0 28px rgba(0, 0, 0, 0.65); }
+      .page .mot { display: inline-block; opacity: 0; }
+      .page .mot.a { color: var(--or_clair); }
+      #scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 900px; pointer-events: none;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.55) 34%, rgba(0, 0, 0, 0) 100%); }
+      #logo { position: absolute; left: 72px; top: 286px; width: 70px; height: 70px; background: var(--or);
+        -webkit-mask: var(--logo-url) center / contain no-repeat; mask: var(--logo-url) center / contain no-repeat; opacity: 0.9; }
+      #grain { position: absolute; inset: -128px; opacity: 0.075; pointer-events: none; mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='256' height='256' filter='url(%23n)'/></svg>"); }
+      #vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 80% 62% at 50% 45%, transparent 55%, rgba(0, 0, 0, 0.6) 100%); }
+      #voile { position: absolute; inset: 0; background: var(--or_clair); opacity: 0; pointer-events: none; mix-blend-mode: screen; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="theme-video" data-start="0" data-duration="60" data-fps="30" data-width="1080" data-height="1920"
+      data-motion-blur="on" data-motion-blur-shutter="220" data-motion-blur-samples="10">
+      <div id="scene" class="clip" data-start="0" data-duration="60" data-track-index="0">
+        <div id="camera"><div id="monde"></div></div>
+        <div id="scrim"></div>
+        <div id="titres"></div>
+        <div id="st"></div>
+        <div id="logo" data-motion-blur="off"></div>
+        <div id="vignette" data-motion-blur="off"></div>
+        <div id="grain" data-motion-blur="off"></div>
+        <div id="voile" data-motion-blur="off"></div>
+      </div>
+      <audio id="bande" data-start="0" data-duration="60" data-track-index="1" data-volume="1" data-timeline-role="music" data-var-src="bande" src="assets/job/bande.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      (async function () {
+        const V = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+        const TL = JSON.parse(V.timeline);
+        const D = TL.duree, FPS = TL.fps || 30, BEAT = TL.battue || 0.5;
+        const DA = Object.assign(
+          { capMin: 110, capSecondaire: 62, titreMax: 230, largeur: 900, transition: 0.42, punch: 0.06, derive: 0.07 },
+          TL.da || {},
+        );
+        const $ = (s, r = document) => r.querySelector(s);
+        const NS = "http://www.w3.org/2000/svg";
+        const el = (tag, cls, parent, svg) => {
+          const e = svg ? document.createElementNS(NS, tag) : document.createElement(tag);
+          if (cls) e.setAttribute("class", cls);
+          if (parent) parent.appendChild(e);
+          return e;
+        };
+        // Seeded random: same video on every render.
+        let graine = 1925;
+        const rnd = () => ((graine = (graine * 1664525 + 1013904223) % 4294967296) / 4294967296);
+        $("#root").style.setProperty("--logo-url", `url("${V.logo}")`);
+
+        // Named easings of the art direction (docs/direction-artistique.md).
+        const E = { entree: "expo.out", sortie: "power3.in", glisse: "power4.inOut", rebond: "back.out(2.2)", derive: "none" };
+
+        await Promise.all([document.fonts.load('700 100px "Affiche"'), document.fonts.load('600 100px "Affiche"'), document.fonts.load('100px "Texte"')]);
+        const tl = gsap.timeline({ paused: true });
+        const monde = $("#monde"), titres = $("#titres");
+        // Capital height of the headline font, per px of font size: the art direction sets heights, not sizes.
+        const ctx = document.createElement("canvas").getContext("2d");
+        ctx.font = '700 100px "Affiche"';
+        const CAP = ctx.measureText("H").actualBoundingBoxAscent / 100;
+
+        // ---------------------------------------------------------------- ornaments (gold line art)
+        let teintes = null, nTeinte = 0;
+        function ligneSVG(g, d, w = 3, op = 1) {
+          const p = el("path", "", g, true);
+          p.setAttribute("d", d);
+          p.setAttribute("fill", "none");
+          p.setAttribute("stroke", teintes ? teintes[nTeinte++ % teintes.length] : "var(--or)");
+          p.setAttribute("stroke-width", w);
+          p.setAttribute("opacity", op);
+          p.setAttribute("stroke-linecap", "square");
+          return p;
+        }
+        const ORNES = {
+          soleil(g, o) { // sunburst: rays around a disc
+            const [cx, cy] = [o.cx ?? 540, o.cy ?? 960], n = o.n ?? 36;
+            for (let k = 0; k < n; k++) {
+              const a = (k / n) * Math.PI * 2, r0 = o.r0 ?? 150, r1 = (o.r1 ?? 1250) * (k % 2 ? 0.82 : 1);
+              ligneSVG(g, `M${cx + r0 * Math.cos(a)} ${cy + r0 * Math.sin(a)} L${cx + r1 * Math.cos(a)} ${cy + r1 * Math.sin(a)}`, k % 2 ? 2 : 3.5, k % 2 ? 0.45 : 0.8);
+            }
+            [o.r0 ?? 150, (o.r0 ?? 150) + 26].forEach((r, i) => ligneSVG(g, `M${cx - r} ${cy} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0`, i ? 1.5 : 4));
+            return { cx, cy, tourne: true };
+          },
+          eventail(g, o) { // fan from the bottom centre, with arcs
+            const [cx, cy] = [o.cx ?? 540, o.cy ?? 1700], n = o.n ?? 15;
+            for (let k = 0; k <= n; k++) {
+              const a = Math.PI + (k / n) * Math.PI;
+              ligneSVG(g, `M${cx} ${cy} L${cx + 1400 * Math.cos(a)} ${cy + 1400 * Math.sin(a)}`, 2.5, 0.7);
+            }
+            [260, 420, 640, 900].forEach((r, i) => ligneSVG(g, `M${cx - r} ${cy} A${r} ${r} 0 0 1 ${cx + r} ${cy}`, i % 2 ? 2 : 3.5, 0.85));
+            return { cx, cy };
+          },
+          chevrons(g, o) { // stacked chevrons that keep falling
+            const pas = o.pas ?? 120;
+            for (let y = -4 * pas; y < 1920 + 4 * pas; y += pas) ligneSVG(g, `M60 ${y} L540 ${y + 260} L1020 ${y}`, 3, 0.55);
+            return { defile: pas * 2 };
+          },
+          gradins(g, o) { // ziggurat: stepped outline, nested
+            const cx = o.cx ?? 540, base = o.base ?? 1640;
+            for (let s = 0; s < 4; s++) {
+              const w0 = 920 - s * 140, h = 150, pts = [];
+              let x = cx - w0 / 2, y = base - s * 26;
+              pts.push(`M${x} ${y}`);
+              for (let k = 0; k < 5; k++) { y -= h; pts.push(`L${x} ${y}`); x += 64; pts.push(`L${x} ${y}`); }
+              const xm = 2 * cx - x;
+              pts.push(`L${x} ${y - 120} L${xm} ${y - 120}`);
+              for (let k = 0; k < 5; k++) { pts.push(`L${xm + 64 * k} ${y + h * k}`); pts.push(`L${xm + 64 * k} ${y + h * (k + 1)}`); }
+              pts.push(`L${cx + w0 / 2} ${base - s * 26}`);
+              ligneSVG(g, pts.join(" "), s ? 2 : 3.5, 1 - s * 0.18);
+            }
+            return {};
+          },
+          arcs(g, o) { // nested arches, a doorway
+            const cx = o.cx ?? 540, base = o.base ?? 1700;
+            for (let k = 0; k < 6; k++) {
+              const w = 900 - k * 120, top = 380 + k * 95;
+              ligneSVG(g, `M${cx - w / 2} ${base} L${cx - w / 2} ${top + w / 2} A${w / 2} ${w / 2} 0 0 1 ${cx + w / 2} ${top + w / 2} L${cx + w / 2} ${base}`, k ? 2 : 4, 1 - k * 0.12);
+            }
+            return {};
+          },
+          lignes(g, o) { // vertical speed lines
+            for (let k = 0; k < (o.n ?? 26); k++) {
+              const x = 30 + rnd() * 1020, y = rnd() * 1920, l = 200 + rnd() * 700;
+              ligneSVG(g, `M${x} ${y} L${x} ${y + l}`, 1 + rnd() * 3, 0.3 + rnd() * 0.5);
+            }
+            return { defile: 1920 };
+          },
+          points(g, o) { // light bulbs along a path (o.trace: SVG path in 1080x1920 space)
+            const guide = el("path", "", g, true);
+            guide.setAttribute("d", o.trace);
+            guide.setAttribute("fill", "none");
+            guide.setAttribute("stroke", "var(--or)"); // the outline is drawn first, the bulbs light up on the word
+            guide.setAttribute("stroke-width", "2");
+            guide.setAttribute("opacity", "0.4");
+            const L = guide.getTotalLength(), n = o.n ?? 220, pts = [];
+            for (let k = 0; k < n; k++) {
+              const p = guide.getPointAtLength((k / n) * L), c = el("circle", "ampoule", g, true);
+              c.setAttribute("cx", p.x); c.setAttribute("cy", p.y); c.setAttribute("r", o.r ?? 5);
+              c.setAttribute("fill", "var(--or_clair)");
+              c.setAttribute("style", "filter: drop-shadow(0 0 6px var(--or_clair)) drop-shadow(0 0 16px var(--or))");
+              pts.push([c, p.y]);
+            }
+            pts.sort((a, b) => b[1] - a[1]); // light up from the bottom
+            return { ampoules: pts.map((x) => x[0]) };
+          },
+        };
+
+        // ---------------------------------------------------------------- picture windows
+        // Picture windows leave the headline band (y 290-680) free and run under the captions.
+        const FORMES = {
+          arche: { l: 140, t: 700, w: 800, h: 980, clip: (w, h) => `path("M0 ${h} L0 ${w / 2} A${w / 2} ${w / 2} 0 0 1 ${w} ${w / 2} L${w} ${h} Z")` },
+          gradins: { l: 120, t: 720, w: 840, h: 920, clip: () => "polygon(0 100%, 0 22%, 12% 22%, 12% 11%, 26% 11%, 26% 0, 74% 0, 74% 11%, 88% 11%, 88% 22%, 100% 22%, 100% 100%)" },
+          carre: { l: 140, t: 720, w: 800, h: 800, clip: () => "none" },
+          plein: { l: 0, t: 560, w: 1080, h: 1180, clip: () => "none", fondu: true },
+          haut: { l: 0, t: 0, w: 1080, h: 1560, clip: () => "none", fondu: true },
+        };
+        const imgs = [];
+
+        // ---------------------------------------------------------------- one shot
+        // t0 = time origin of the shot (its cut); motions are linear in (t - t0), valid before t0 too,
+        // so the copy of the first shot placed at the end of a loop matches it frame for frame.
+        // dejaLa: first shot of a loop at t = 0, already drawn (its copy at the end draws it on).
+        function construire(P, t0, fin, entree, dejaLa) {
+          const plan = el("div", "plan", monde);
+          const cadrage = el("div", "cadrage", plan);
+          plan.cadrage = cadrage;
+          const fond = el("div", "fond", cadrage);
+          const c1 = P.fond === "vert" ? "var(--fond2)" : "var(--fond)";
+          fond.style.background = `radial-gradient(ellipse 90% 70% at 50% 42%, color-mix(in srgb, ${c1} 82%, var(--or) 18%) 0%, ${c1} 48%, color-mix(in srgb, ${c1} 60%, #000) 100%)`;
+          const L = fin - t0;
+          const pre = entree ? DA.transition + 0.1 : 0; // motion starts with the transition
+          let anime = [];
+          // Ornament
+          if (P.orne) {
+            const svg = el("svg", "orne", cadrage, true);
+            svg.setAttribute("viewBox", "0 0 1080 1920");
+            const g = el("g", "", svg, true);
+            teintes = (P.orne_opts || {}).couleurs || null;
+            if (!ORNES[P.orne]) throw new Error(`FAILED: unknown ornament "${P.orne}"`);
+            const info = ORNES[P.orne](g, P.orne_opts || {});
+            teintes = null;
+            const traits = [...g.querySelectorAll("path")].filter((p) => p.getAttribute("stroke") !== "none");
+            traits.forEach((p) => { const l = p.getTotalLength(); p.style.strokeDasharray = l; p.style.strokeDashoffset = dejaLa ? 0 : l; });
+            const lent = (P.orne_opts || {}).lent;
+            if (!dejaLa) tl.to(traits, { strokeDashoffset: 0, duration: lent ? Math.max(0.9, L * 0.75) : entree ? pre : 0.9, ease: lent ? "power1.inOut" : E.entree,
+              stagger: { each: (lent ? L * 0.15 : 0.3) / Math.max(1, traits.length), from: lent ? "start" : "center" } }, Math.max(0, lent ? t0 : t0 - pre - 0.3));
+            anime.push([svg, (tt) => ({ scale: 1 + 0.022 * tt, transformOrigin: "50% 50%" })]);
+            if (info.tourne) {
+              gsap.set(g, { transformOrigin: `${info.cx}px ${info.cy}px` });
+              anime.push([g, (tt) => ({ rotation: 4 * tt })]);
+            }
+            if (info.defile) anime.push([g, (tt) => ({ y: ((tt * 60) % info.defile) })]);
+            if (info.ampoules) {
+              const t1 = P.titre ? P.titre.t : P.compteur ? P.compteur.t : t0 + 0.2;
+              gsap.set(info.ampoules, { opacity: 0.22, scale: 0.5, transformOrigin: "50% 50%" });
+              tl.fromTo(info.ampoules, { opacity: 0.22, scale: 0.5, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.25, ease: E.rebond, stagger: { amount: 1.6 }, immediateRender: false }, t1);
+            }
+            gsap.set(svg, { opacity: P.orne_opacite ?? 0.9 });
+            if (!P.image) for (let tp = t0 + 1.6; tp < fin - 0.4; tp += 4 * BEAT) {
+              tl.to(svg, { opacity: 1, duration: 0.18, ease: E.rebond }, tp);
+              tl.to(svg, { opacity: P.orne_opacite ?? 0.9, duration: 0.5, ease: "power2.out" }, tp + 0.18);
+            }
+          }
+          // Picture
+          let fen = null;
+          if (P.image) {
+            const F = Object.assign({}, FORMES[P.cadre || "arche"]);
+            if (P.fenetre) Object.assign(F, P.fenetre);
+            fen = el("div", "fenetre", cadrage);
+            Object.assign(fen.style, { left: `${F.l}px`, top: `${F.t}px`, width: `${F.w}px`, height: `${F.h}px` });
+            const clip = F.clip(F.w, F.h);
+            if (clip !== "none") fen.style.clipPath = clip;
+            if (F.fondu) fen.style.maskImage = fen.style.webkitMaskImage = "linear-gradient(to bottom, transparent 0%, #000 16%, #000 80%, transparent 100%)";
+            const im = el("img", "", fen);
+            im.src = P.image;
+            imgs.push(im.decode());
+            const filtres = [];
+            if (P.gris) filtres.push("grayscale(1) contrast(1.1)");
+            if (P.detoure) filtres.push("blur(9px) brightness(0.55)");
+            if (filtres.length) im.style.filter = filtres.join(" ");
+            const nat = P.taille || [1254, 1254];
+            const fx = (P.foyer || [50, 50])[0] / 100, fy = (P.foyer || [50, 50])[1] / 100;
+            const base = Math.max(F.w / nat[0], F.h / nat[1]) * (P.zoom || 1.04);
+            const mv = P.mouvement || "pousse";
+            const vue = (s, dx, dy) => ({ scale: s, x: F.w / 2 - fx * nat[0] * s + dx, y: F.h / 2 - fy * nat[1] * s + dy });
+            const clampV = (v) => { // never show past the picture's edges
+              v.x = Math.min(0, Math.max(F.w - nat[0] * v.scale, v.x));
+              v.y = Math.min(0, Math.max(F.h - nat[1] * v.scale, v.y));
+              return v;
+            };
+            const vit = DA.derive; // relative scale per second
+            const etat = (tt) => {
+              const k = tt;
+              if (mv === "recul") return clampV(vue(base * (1 + vit * Math.max(0, 4 - k) / 2), 0, 0));
+              if (mv === "glisse-g") return clampV(vue(base * 1.1, 40 - 26 * k, 0));
+              if (mv === "glisse-d") return clampV(vue(base * 1.1, -40 + 26 * k, 0));
+              if (mv === "monte") return clampV(vue(base * 1.1, 0, 50 - 30 * k));
+              return clampV(vue(base * (1 + vit * k), 0, 0)); // pousse
+            };
+            anime.push([im, etat]);
+            if (P.detoure) {
+              const d = el("img", "det", fen);
+              d.src = P.detoure;
+              imgs.push(d.decode());
+              // The cut-out moves more (closer to the camera): parallax.
+              anime.push([d, (tt) => { const v = etat(tt); const s = v.scale * (1.035 + 0.012 * tt); return clampV(vue(s, (P.mouvement === "glisse-d" ? -1 : 1) * (14 * tt - 10), -8 * tt)); }]);
+            }
+            const bal = el("div", "balayage", fen);
+            // Light sweeps: one on the headline, then one every ~2 s so a long shot never sits still.
+            const tb = P.titre ? P.titre.t + 0.15 : t0 + Math.min(0.8, L * 0.3);
+            for (let ts = tb, k = 0; ts < fin - 0.5 && ts >= 0; ts += 2.0, k++) {
+              const sens = k % 2 ? -1 : 1;
+              tl.fromTo(bal, { xPercent: -70 * sens, opacity: 0.9 }, { xPercent: 70 * sens, opacity: 0.9, duration: 1.0, ease: "power2.inOut", immediateRender: false }, ts);
+              tl.set(bal, { opacity: 0 }, ts + 1.01);
+            }
+            // Gold frame line around the window, drawn on.
+            if (P.cadre !== "plein" && P.cadre !== "haut") {
+              const svg = el("svg", "cadre", cadrage, true);
+              svg.setAttribute("viewBox", "0 0 1080 1920");
+              const m = 18, x0 = F.l - m, y0 = F.t - m, w = F.w + 2 * m, h = F.h + 2 * m;
+              const d = P.cadre === "carre" ? `M${x0} ${y0} H${x0 + w} V${y0 + h} H${x0} Z`
+                : P.cadre === "gradins" ? `M${x0} ${y0 + h} V${y0 + 0.22 * h} H${x0 + 0.12 * w} V${y0 + 0.11 * h} H${x0 + 0.26 * w} V${y0} H${x0 + 0.74 * w} V${y0 + 0.11 * h} H${x0 + 0.88 * w} V${y0 + 0.22 * h} H${x0 + w} V${y0 + h} Z`
+                : `M${x0} ${y0 + h} V${y0 + w / 2} A${w / 2} ${w / 2} 0 0 1 ${x0 + w} ${y0 + w / 2} V${y0 + h} Z`;
+              const p = ligneSVG(svg, d, 2.5, 0.95);
+              const l = p.getTotalLength();
+              p.style.strokeDasharray = l;
+              p.style.strokeDashoffset = dejaLa ? 0 : l;
+              if (!dejaLa) tl.fromTo(p, { strokeDashoffset: l }, { strokeDashoffset: 0, duration: entree ? pre : 1.0, ease: E.glisse, immediateRender: false }, Math.max(0, t0 - pre));
+            }
+          }
+          // Recap: pictures flashing on the beat (P.recap = list of images)
+          if (P.recap) {
+            const F = FORMES.carre;
+            P.recap.forEach((src, k) => {
+              const f = el("div", "fenetre", cadrage);
+              Object.assign(f.style, { left: `${F.l}px`, top: `${F.t}px`, width: `${F.w}px`, height: `${F.h}px` });
+              const im = el("img", "", f);
+              im.src = src;
+              imgs.push(im.decode());
+              gsap.set(im, { width: F.w, height: F.h });
+              im.style.objectFit = "cover";
+              gsap.set(f, { autoAlpha: 0 });
+              const ta = t0 + k * BEAT;
+              tl.fromTo(f, { autoAlpha: 0, scale: 1.12 }, { autoAlpha: 1, scale: 1, duration: 0.22, ease: E.entree, immediateRender: false }, ta);
+              if (k < P.recap.length - 1) tl.set(f, { autoAlpha: 0 }, ta + BEAT);
+            });
+          }
+          // Continuous motion: one linear tween per animated element, from the transition start to the end.
+          const a = Math.max(0, t0 - pre), b = Math.min(D, fin + DA.transition + 0.1);
+          if (b > a) for (const [x, f] of anime) tl.fromTo(x, f(a - t0), Object.assign(f(b - t0), { duration: b - a, ease: "none", immediateRender: a === 0 }), a);
+          return plan;
+        }
+
+        // ---------------------------------------------------------------- headline and counter
+        function titre(P, fin) {
+          const T = P.titre, box = el("div", "titre", titres);
+          box.style.top = `${T.y ?? 300}px`;
+          if (T.kicker) el("div", "kicker", box).textContent = T.kicker;
+          const lignes = T.lignes.map((txt, i) => {
+            const l = el("div", `ligne ${(T.or || [0]).includes(i) ? "or" : "ivoire"}`, box);
+            [...txt].forEach((c) => { const s = el("span", "", l); s.textContent = c === " " ? " " : c; });
+            return l;
+          });
+          // Size: the largest that fits 900 px, capped; a key line under the minimum is an error, not a small title.
+          lignes.forEach((l, i) => {
+            l.style.fontSize = "100px";
+            l.style.display = "inline-block"; // measure the text itself, not the block's width
+            const w = l.getBoundingClientRect().width / 100 - 0.24, cle = (T.or || [0]).includes(i); // minus the side padding
+            l.style.display = "";
+            const max = cle ? (T.taille || DA.titreMax) : Math.min(DA.titreMax, (T.taille || DA.titreMax) * 0.62);
+            const fs = Math.min(max, DA.largeur / w);
+            const min = (cle ? DA.capMin : DA.capSecondaire) / CAP;
+            if (fs < min) throw new Error(`FAILED: headline line "${l.textContent}" would have capitals ${(fs * CAP).toFixed(0)} px tall (< ${cle ? DA.capMin : DA.capSecondaire}): split it`);
+            l.style.fontSize = `${fs.toFixed(1)}px`;
+          });
+          const filet = el("div", "filet", box);
+          const spans = lignes.map((l) => [...l.children]);
+          spans.forEach((sp) => gsap.set(sp, { yPercent: 115, rotation: 6 }));
+          gsap.set(filet, { scaleX: 0 });
+          if (T.kicker) gsap.set(box.firstChild, { autoAlpha: 0, y: 14 });
+          const t = T.t;
+          spans.forEach((sp, i) => tl.fromTo(sp, { yPercent: 115, rotation: 6 }, { yPercent: 0, rotation: 0, duration: 0.42, ease: E.entree, stagger: 0.018, immediateRender: false }, t + i * 0.08));
+          tl.set(box, { autoAlpha: 1 }, t);
+          gsap.set(box, { autoAlpha: 0 });
+          if (T.kicker) tl.fromTo(box.firstChild, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: E.rebond, immediateRender: false }, t - 0.05);
+          tl.fromTo(filet, { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: E.glisse, immediateRender: false }, t + 0.18);
+          // Settles, then a slow drift so it never freezes; leaves fast before the next cut.
+          tl.fromTo(box, { y: 0 }, { y: -18, duration: Math.max(0.3, fin - t), ease: "none", immediateRender: false }, t);
+          const s = Math.max(t + 0.5, fin - DA.transition - 0.18); // gone before the next transition moves
+          spans.forEach((sp) => tl.to(sp, { yPercent: -115, duration: 0.24, ease: E.sortie, stagger: 0.006 }, s));
+          tl.set(box, { autoAlpha: 0 }, Math.min(D, fin + 0.02));
+        }
+        function compteur(P, fin) {
+          const C = P.compteur, box = el("div", "compteur", titres);
+          box.style.top = `${C.y ?? 330}px`;
+          if (C.kicker) el("small", "", box).textContent = C.kicker;
+          const n = el("span", "", box);
+          n.style.display = "block";
+          if (C.legende) el("small", "", box).textContent = C.legende;
+          const fmt = (v) => Math.round(v).toLocaleString("fr-FR").replace(/\s/g, " ");
+          n.textContent = fmt(C.valeur);
+          n.style.display = "inline-block";
+          const taille = Math.min(230, (210 * DA.largeur) / n.offsetWidth);
+          if (taille * CAP < DA.capMin) throw new Error(`FAILED: counter ${C.valeur} would have digits ${(taille * CAP).toFixed(0)} px tall (< ${DA.capMin})`);
+          n.style.fontSize = `${taille.toFixed(1)}px`;
+          n.style.display = "block";
+          const o = { v: 0 };
+          gsap.set(box, { autoAlpha: 0 });
+          n.textContent = fmt(0);
+          tl.set(box, { autoAlpha: 1 }, C.t);
+          tl.fromTo(box, { scale: 0.86 }, { scale: 1, duration: 0.5, ease: E.rebond, immediateRender: false }, C.t);
+          tl.fromTo(o, { v: 0 }, { v: C.valeur, duration: 1.0, ease: "expo.out", immediateRender: false, onUpdate: () => (n.textContent = fmt(o.v)) }, C.t);
+          tl.to(box, { autoAlpha: 0, y: -40, duration: 0.22, ease: E.sortie }, Math.max(C.t + 1.1, fin - DA.transition - 0.18));
+        }
+
+        // ---------------------------------------------------------------- transitions (into a shot, ending at its cut)
+        const voile = $("#voile");
+        // Horizontal blur filters for whip pans (one per moving shot).
+        const defs = el("svg", "", $("#root"), true);
+        defs.setAttribute("width", "0");
+        defs.setAttribute("height", "0");
+        defs.style.position = "absolute";
+        let nFlou = 0;
+        function flouH() {
+          const f = el("filter", "", defs, true);
+          f.id = `flou-h-${nFlou++}`;
+          f.setAttribute("x", "-10%");
+          f.setAttribute("width", "120%");
+          const blur = el("feGaussianBlur", "", f, true);
+          blur.setAttribute("stdDeviation", "0 0");
+          return { id: f.id, blur };
+        }
+        function transition(type, entrant, sortant, t) {
+          const T = DA.transition, a = t - T;
+          // Shots: visibility by sets only (never autoAlpha), shown when their transition starts.
+          const montrer = (at) => tl.set(entrant, { visibility: "visible" }, Math.max(0, at));
+          if (!["eclat", "coupe"].includes(type)) montrer(type === "profondeur" ? a - 0.15 : type === "eventail" ? a - 0.1 : type === "iris" ? a - 0.08 : type === "persienne" ? a - 0.06 : type === "fouet" ? a - 0.08 : a);
+          switch (type) {
+            case "volet-or": {
+              tl.fromTo(entrant, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: T, ease: E.glisse, immediateRender: false }, a);
+              const barre = el("div", "", entrant);
+              Object.assign(barre.style, { position: "absolute", top: 0, bottom: 0, width: "6px", left: 0, background: "var(--or_clair)", boxShadow: "0 0 40px var(--or)" });
+              tl.fromTo(barre, { x: 1080, autoAlpha: 1 }, { x: 0, duration: T, ease: E.glisse, immediateRender: false }, a);
+              tl.to(barre, { autoAlpha: 0, duration: 0.15 }, t);
+              if (sortant) tl.to(sortant, { x: -160, duration: T, ease: E.glisse }, a);
+              break;
+            }
+            case "iris":
+              tl.fromTo(entrant, { clipPath: "circle(0% at 50% 46%)" }, { clipPath: "circle(80% at 50% 46%)", duration: T + 0.08, ease: E.glisse, immediateRender: false }, a - 0.08);
+              if (sortant) tl.to(sortant, { scale: 1.12, duration: T, ease: E.glisse }, a);
+              break;
+            case "eventail":
+              tl.fromTo(entrant, { "--a": "0deg" }, { "--a": "181deg", duration: T + 0.1, ease: E.glisse, immediateRender: false }, a - 0.1);
+              entrant.style.maskImage = entrant.style.webkitMaskImage = "conic-gradient(from -90deg at 50% 88%, #000 var(--a), transparent var(--a))";
+              tl.set(entrant, { maskImage: "none", webkitMaskImage: "none" }, t + 0.01);
+              break;
+            case "persienne":
+              tl.fromTo(entrant, { "--p": "0px" }, { "--p": "97px", duration: T + 0.06, ease: E.glisse, immediateRender: false }, a - 0.06);
+              entrant.style.maskImage = entrant.style.webkitMaskImage = "repeating-linear-gradient(135deg, #000 0px, #000 var(--p), transparent var(--p), transparent 96px)";
+              tl.set(entrant, { maskImage: "none", webkitMaskImage: "none" }, t + 0.01);
+              break;
+            case "fouet": {
+              // Whip pan: both shots travel together, smeared sideways by a blur that follows the speed.
+              const T2 = T + 0.08, a2 = t - T2;
+              tl.fromTo(entrant, { x: 1080 }, { x: 0, duration: T2, ease: "power2.inOut", immediateRender: false }, a2);
+              if (sortant) tl.to(sortant, { x: -1080, duration: T2, ease: "power2.inOut" }, a2);
+              [entrant, sortant].filter(Boolean).forEach((pl) => {
+                // The blur is set from a callback, never at load: a filter present at load keeps
+                // img.decode() from resolving (seen in headless Chrome, 2026-11-09).
+                const f = flouH(), o = { b: 0 };
+                const poser = () => {
+                  f.blur.setAttribute("stdDeviation", `${o.b.toFixed(1)} 0`);
+                  pl.cadrage.style.filter = o.b > 0.3 ? `url(#${f.id})` : "none";
+                };
+                tl.fromTo(o, { b: 0 }, { b: 46, duration: T2 / 2, ease: "power2.in", immediateRender: false, onUpdate: poser }, a2);
+                tl.to(o, { b: 0, duration: T2 / 2, ease: "power2.out", onUpdate: poser }, a2 + T2 / 2);
+              });
+              break;
+            }
+            case "zoom":
+              tl.fromTo(entrant, { scale: 0.62, opacity: 0 }, { scale: 1, opacity: 1, duration: T, ease: E.glisse, immediateRender: false }, a);
+              if (sortant) tl.to(sortant, { scale: 1.7, opacity: 0, duration: T, ease: E.glisse }, a);
+              break;
+            case "profondeur": {
+              // Depth move: the camera flies through three gold arches, the old shot falls behind it.
+              const p = el("div", "profondeur", monde);
+              [0, 1, 2].forEach((k) => {
+                const svg = el("svg", "", p, true);
+                svg.setAttribute("viewBox", "0 0 1080 1920");
+                ligneSVG(svg, "M140 1800 V760 A400 400 0 0 1 940 760 V1800", 7, 0.95);
+                ligneSVG(svg, "M190 1800 V790 A350 350 0 0 1 890 790 V1800", 2.5, 0.7);
+                tl.fromTo(svg, { z: -1800 - k * 700, autoAlpha: 0 }, { z: 1300 - k * 300, autoAlpha: 1, duration: T + 0.55, ease: "power2.in", immediateRender: false }, a - 0.55);
+              });
+              tl.set(p, { visibility: "visible" }, a - 0.55);
+              tl.set(p, { visibility: "hidden" }, t + 0.05);
+              tl.fromTo(entrant, { z: -1600, opacity: 0 }, { z: 0, opacity: 1, duration: T + 0.15, ease: "power3.out", immediateRender: false }, a - 0.15);
+              if (sortant) tl.to(sortant, { z: 900, opacity: 0, duration: T + 0.1, ease: "power3.in" }, a - 0.1);
+              break;
+            }
+            case "eclat":
+              tl.fromTo(voile, { opacity: 0.55 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, t);
+              tl.fromTo(entrant, { scale: 1.08 }, { scale: 1, duration: 0.4, ease: E.entree, immediateRender: false }, t);
+              montrer(t);
+              break;
+            default: // hard cut with a punch
+              montrer(t);
+              tl.fromTo(entrant, { scale: 1.06 }, { scale: 1, duration: 0.35, ease: E.entree, immediateRender: false }, t);
+          }
+          if (sortant) tl.set(sortant, { visibility: "hidden" }, t + 0.02);
+        }
+
+        // ---------------------------------------------------------------- build
+        const P = TL.plans;
+        const plans = P.map((p, i) => construire(p, p.debut, p.fin, i > 0, i === 0 && TL.boucle));
+        gsap.set(plans[0], { visibility: "visible" });
+        P.forEach((p, i) => {
+          if (i > 0) transition(p.transition || "coupe", plans[i], plans[i - 1], p.debut);
+          if (p.titre) titre(p, p.fin);
+          if (p.compteur) compteur(p, p.fin);
+          // Punch-in on the key word: the whole picture leans in, then keeps drifting.
+          if (p.titre && p.punch !== false) tl.fromTo(plans[i].cadrage, { scale: 1 }, { scale: 1 + DA.punch, duration: 0.4, ease: E.entree, immediateRender: false }, p.titre.t + 0.02);
+        });
+        if (TL.boucle) {
+          // Seamless loop: a copy of the first shot enters during the last transition and is, on the
+          // last frame, what the first frame shows.
+          const copie = construire(P[0], D, D, true, false);
+          transition(P[0].transition || "volet-or", copie, plans[plans.length - 1], D);
+        }
+
+        // ---------------------------------------------------------------- captions, word by word
+        const st = $("#st");
+        for (const pg of TL.sous_titres) {
+          const page = el("div", "page", st);
+          const mots = [];
+          pg.lignes.forEach((rang) => {
+            const r = el("span", "rang", page);
+            rang.forEach((m, k) => {
+              const s = el("span", `mot${m.a ? " a" : ""}`, r);
+              s.textContent = m.m;
+              mots.push([s, m.t]);
+              if (k < rang.length - 1) r.appendChild(document.createTextNode(" "));
+            });
+          });
+          tl.set(page, { visibility: "visible" }, Math.max(0, pg.debut));
+          for (const [s, t] of mots) tl.fromTo(s, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.14, ease: E.entree, immediateRender: false }, Math.max(0, t - 0.03));
+          if (pg.fin < D) tl.set(page, { visibility: "hidden" }, pg.fin);
+        }
+
+        // ---------------------------------------------------------------- always moving: grain, logo glint
+        const grain = $("#grain"), proxy = { f: 0 };
+        tl.fromTo(proxy, { f: 0 }, { f: D * FPS, duration: D, ease: "none", immediateRender: true, onUpdate: () => {
+          const k = Math.floor(proxy.f), h = (k * 2654435761) % 4294967296;
+          grain.style.transform = `translate(${(h % 128) - 64}px, ${((h >>> 8) % 128) - 64}px)`;
+        } }, 0);
+        const logo = $("#logo");
+        for (let t = 7; t < D - 2; t += 14) {
+          tl.to(logo, { opacity: 1, scale: 1.08, duration: 0.25, ease: E.rebond }, t);
+          tl.to(logo, { opacity: 0.9, scale: 1, duration: 0.6, ease: "power2.out" }, t + 0.25);
+        }
+
+        await Promise.all(imgs);
+        window.__timelines["theme-video"] = tl;
+      })();
+    </script>
+  </body>
+</html>

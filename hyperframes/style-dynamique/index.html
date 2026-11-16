@@ -1,0 +1,225 @@
+<!doctype html>
+<!-- Style 2, "dynamic": a cut on every beat of the music (whip pans, zoom-throughs, punch-ins),
+     bold words slamming in with real render-time motion blur, dark and gold so it stays elegant.
+     Every word, colour, picture and framing point comes from the job. -->
+<html
+  lang="fr"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"nom","type":"string","label":"Product name","default":"Name"},
+    {"id":"type","type":"string","label":"Product type","default":"Type"},
+    {"id":"t1a","type":"string","label":"Plan 1, line 1","default":"Line"},
+    {"id":"t1b","type":"string","label":"Plan 1, line 2","default":"Line"},
+    {"id":"t2a","type":"string","label":"Plan 2, line 1","default":"Line"},
+    {"id":"t2b","type":"string","label":"Plan 2, line 2","default":"Line"},
+    {"id":"t3a","type":"string","label":"Plan 3, line 1","default":"Line"},
+    {"id":"t3b","type":"string","label":"Plan 3, line 2","default":"Line"},
+    {"id":"o1","type":"string","label":"Plan 1 accent words","default":""},
+    {"id":"o2","type":"string","label":"Plan 2 accent words","default":""},
+    {"id":"o3","type":"string","label":"Plan 3 accent words","default":""},
+    {"id":"g1","type":"string","label":"Guarantee 1","default":"Guarantee"},
+    {"id":"g2","type":"string","label":"Guarantee 2","default":"Guarantee"},
+    {"id":"g3","type":"string","label":"Guarantee 3","default":"Guarantee"},
+    {"id":"adresse","type":"string","label":"Web address","default":"example.com"},
+    {"id":"img1","type":"image","label":"Plan 1 photo","default":"assets/job/img1.jpg"},
+    {"id":"img2","type":"image","label":"Plan 1 close-up","default":"assets/job/img2.jpg"},
+    {"id":"img3","type":"image","label":"Plan 2 photo A","default":"assets/job/img3.jpg"},
+    {"id":"img4","type":"image","label":"Plan 2 photo B","default":"assets/job/img4.jpg"},
+    {"id":"img5","type":"image","label":"Plan 3 photo A","default":"assets/job/img5.jpg"},
+    {"id":"img6","type":"image","label":"Plan 3 photo B","default":"assets/job/img6.jpg"},
+    {"id":"logo","type":"image","label":"Logo (transparent PNG)","default":"assets/job/logo.png"},
+    {"id":"musique","type":"string","label":"Music","default":"assets/job/musique.wav"},
+    {"id":"taille","type":"number","label":"Photo size (square, source px)","default":1254},
+    {"id":"f1x","label":"Point f1x","type":"number","default":50},{"id":"f1y","label":"Point f1y","type":"number","default":50},{"id":"z1x","label":"Point z1x","type":"number","default":50},{"id":"z1y","label":"Point z1y","type":"number","default":50},
+    {"id":"f2x","label":"Point f2x","type":"number","default":50},{"id":"f2y","label":"Point f2y","type":"number","default":50},{"id":"z2x","label":"Point z2x","type":"number","default":50},{"id":"z2y","label":"Point z2y","type":"number","default":50},
+    {"id":"f3x","label":"Point f3x","type":"number","default":50},{"id":"f3y","label":"Point f3y","type":"number","default":50},{"id":"z3x","label":"Point z3x","type":"number","default":50},{"id":"z3y","label":"Point z3y","type":"number","default":50},
+    {"id":"f4x","label":"Point f4x","type":"number","default":50},{"id":"f4y","label":"Point f4y","type":"number","default":50},{"id":"z4x","label":"Point z4x","type":"number","default":50},{"id":"z4y","label":"Point z4y","type":"number","default":50},
+    {"id":"f5x","label":"Point f5x","type":"number","default":50},{"id":"f5y","label":"Point f5y","type":"number","default":50},{"id":"z5x","label":"Point z5x","type":"number","default":50},{"id":"z5y","label":"Point z5y","type":"number","default":50},
+    {"id":"f6x","label":"Point f6x","type":"number","default":50},{"id":"f6y","label":"Point f6y","type":"number","default":50},{"id":"z6x","label":"Point z6x","type":"number","default":50},{"id":"z6y","label":"Point z6y","type":"number","default":50},
+    {"id":"creme","type":"color","label":"Text","default":"#f7f5f0"},
+    {"id":"encre","type":"color","label":"Background","default":"#111111"},
+    {"id":"or","type":"color","label":"Accent","default":"#c0a060"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "MarqueTexte"; src: url("assets/job/texte.ttf"); }
+      @font-face { font-family: "MarqueTexteFort"; src: url("assets/job/texte-fort.ttf"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--encre); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--encre); color: var(--creme); }
+      .couche { position: absolute; inset: 0; }
+      #panneau { position: absolute; left: 0; top: 560px; width: 1080px; height: 1000px; overflow: hidden; }
+      .prise { position: absolute; overflow: hidden; background: var(--encre); }
+      .prise .zoom, .prise .pousse { position: absolute; inset: 0; transform-origin: 50% 50%; }
+      .prise img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+      .ligne { position: absolute; left: 70px; width: max-content; white-space: nowrap; font-family: "MarqueTexteFort"; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; }
+      .ligne .or { color: var(--or); }
+      #flash { position: absolute; inset: 0; background: var(--creme); opacity: 0; mix-blend-mode: soft-light; }
+      #fin { position: absolute; inset: 0; }
+      #logo { position: absolute; left: 440px; top: 290px; width: 200px; height: 140px; background: var(--or); -webkit-mask: var(--logo-url) center / contain no-repeat; }
+      #nom { position: absolute; left: 0; top: 500px; width: 1080px; text-align: center; font: 200px/1 "MarqueTexteFort"; text-transform: uppercase; letter-spacing: 0.02em; }
+      #type { position: absolute; left: 0; top: 735px; width: 1080px; text-align: center; font: 36px "MarqueTexte"; opacity: 0.85; }
+      #barre { position: absolute; left: 470px; top: 815px; width: 140px; height: 6px; background: var(--or); }
+      #garanties { position: absolute; left: 0; top: 870px; width: 1080px; text-align: center; font: 34px/1.9 "MarqueTexteFort"; text-transform: uppercase; letter-spacing: 0.06em; }
+      #adresse { position: absolute; left: 0; top: 1150px; width: 1080px; text-align: center; font: 40px "MarqueTexteFort"; color: var(--or); letter-spacing: 0.02em; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="style-dynamique" data-start="0" data-duration="8" data-fps="30" data-width="1080" data-height="1920"
+      data-motion-blur="on" data-motion-blur-shutter="300">
+      <div id="scene" class="couche clip" data-start="0" data-duration="8" data-track-index="0">
+        <div id="panneau"></div>
+        <div id="textes"></div>
+        <div id="flash"></div>
+      </div>
+      <div id="fin" class="clip" data-start="5.9" data-duration="2.1" data-track-index="1">
+        <div id="logo"></div>
+        <div id="nom"></div>
+        <div id="type"></div>
+        <div id="barre"></div>
+        <div id="garanties"></div>
+        <div id="adresse"></div>
+      </div>
+      <audio id="musique" data-start="0" data-duration="8" data-track-index="2" data-volume="1" data-fade-out="0.8" data-timeline-role="music" data-var-src="musique" src="assets/job/musique.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      (async function () {
+        const V = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+        await Promise.all(["MarqueTexte", "MarqueTexteFort"].map((f) => document.fonts.load(`100px "${f}"`)));
+        const $ = (s) => document.querySelector(s);
+        const T = Number(V.taille) || 1254;
+        const BEAT = 0.5; // 120 BPM; the music's accents fall on 0.5, 1, 2.5, 4.5 and 6 s
+        const PANNEAU = 1000;
+
+        // One shot per beat: [photo slot, framing ("f" whole, "z" detail), scale, frame width, height, way in].
+        // A detail is a smaller frame at one source pixel per screen pixel: a true punch-in, never an upscale.
+        const prises = [
+          [1, "f", 0.88, 1080, 1000, "debut"], [2, "f", 0.9, 1080, 1000, "fouet"], [1, "z", 1, 720, 720, "coupe"], [2, "z", 1, 1080, 640, "fouetH"],
+          [1, "f", 0.86, 1080, 1000, "zoom"], [3, "f", 0.9, 1080, 1000, "fouet"], [4, "f", 0.92, 1080, 1000, "zoom"], [3, "z", 1, 720, 720, "coupe"],
+          [4, "z", 1, 1080, 640, "fouetD"], [5, "f", 0.9, 1080, 1000, "fouet"], [6, "f", 0.92, 1080, 1000, "zoom"], [5, "z", 1, 720, 720, "coupe"],
+        ];
+        const cadrage = (n, mode, s, w, h) => {
+          const fx = Number(V[`${mode}${n}x`]);
+          const fy = Number(V[`${mode}${n}y`]);
+          s = Math.min(Math.max(s, w / T, h / T), 1);
+          const clamp = (v, lim) => Math.min(0, Math.max(lim - T * s, v));
+          return { x: clamp(w / 2 - (fx / 100) * T * s, w), y: clamp(h / 2 - (fy / 100) * T * s, h), scale: s };
+        };
+        const panneau = $("#panneau");
+        const els = prises.map(([n, mode, s, w, h], i) => {
+          const d = document.createElement("div");
+          d.className = "prise";
+          d.style.left = `${(1080 - w) / 2}px`;
+          d.style.width = `${w}px`;
+          d.style.top = `${(PANNEAU - h) / 2}px`;
+          d.style.height = `${h}px`;
+          d.style.zIndex = String(i + 1);
+          // .zoom carries the zoom-through seams, .pousse the shot's own constant move: never two tweens on one property.
+          d.innerHTML = `<div class="zoom"><div class="pousse"><img src="${V[`img${n}`]}" alt="" /></div></div>`;
+          gsap.set(d.querySelector("img"), cadrage(n, mode, s, w, h));
+          panneau.appendChild(d);
+          return d;
+        });
+
+        // Titles: each line as wide as the frame allows, accent words in gold.
+        const plans = [[V.t1a, V.t1b, V.o1], [V.t2a, V.t2b, V.o2], [V.t3a, V.t3b, V.o3]];
+        const cle = (t) => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
+        const lignes = plans.map(([a, b, o], i) => {
+          const accents = new Set(String(o || "").split(/\s+/).map(cle).filter(Boolean));
+          let y = 220;
+          return [a, b].map((t) => {
+            const l = document.createElement("div");
+            l.className = "ligne";
+            l.innerHTML = String(t).split(/(\s+)/).map((m) => (accents.has(cle(m)) ? `<span class="or">${m}</span>` : m)).join("");
+            l.style.fontSize = "100px";
+            $("#textes").appendChild(l);
+            const taille = Math.min(150, (100 * 940) / l.offsetWidth);
+            l.style.fontSize = `${taille.toFixed(1)}px`;
+            l.style.top = `${y}px`;
+            y += taille * 0.98;
+            return l;
+          });
+        });
+        lignes.flat().forEach((l) => gsap.set(l, { opacity: 0 }));
+        $("#nom").textContent = V.nom;
+        $("#type").textContent = V.type;
+        $("#garanties").innerHTML = [V.g1, V.g2, V.g3].map((g) => `<div>${g}</div>`).join("");
+        $("#adresse").textContent = V.adresse;
+        $("#root").style.setProperty("--logo-url", `url("${V.logo}")`);
+
+        const tl = gsap.timeline({ paused: true });
+        // Every shot keeps moving while it is on screen (≤ 1 source px per screen px): a slow push when the
+        // photo has room to grow, otherwise a lateral glide across the spare width of the photo.
+        els.forEach((d, i) => {
+          const img = d.querySelector("img");
+          const s = Number(gsap.getProperty(img, "scale"));
+          const x0 = Number(gsap.getProperty(img, "x"));
+          const w = parseFloat(d.style.width);
+          const debut = Math.max(0, i * BEAT - 0.16);
+          const duree = BEAT + 0.36;
+          const vers = Math.min(1 / s, 1.045);
+          if (vers > 1.015) tl.fromTo(d.querySelector(".pousse"), { scale: 1 }, { scale: vers, duration: duree, ease: "none" }, debut);
+          else {
+            const marge = Math.min(48, T * s - w); // room left of / right of the frame
+            const sens = x0 - marge >= w - T * s ? -1 : 1;
+            tl.fromTo(img, { x: x0 }, { x: x0 + sens * marge, duration: duree, ease: "none" }, debut);
+          }
+          gsap.set(d, { opacity: i ? 0 : 1 });
+        });
+        // The seams, on the beat.
+        prises.forEach(([, , , , , entree], i) => {
+          if (!i) return;
+          const t = i * BEAT;
+          const d = els[i];
+          const avant = els[i - 1];
+          if (entree !== "coupe" && entree !== "zoom") tl.set(d, { opacity: 1 }, t - 0.16);
+          if (entree === "fouet" || entree === "fouetD" || entree === "fouetH") {
+            // Whip: both shots ride one strip, fastest at the cut, so the blur peaks there.
+            const axe = entree === "fouetH" ? "y" : "x";
+            const sens = entree === "fouetD" ? -1 : 1;
+            const L = axe === "x" ? 1080 : PANNEAU;
+            tl.fromTo(d, { [axe]: sens * L }, { [axe]: 0, duration: 0.32, ease: "power3.inOut" }, t - 0.16);
+            tl.fromTo(avant, { [axe]: 0 }, { [axe]: -sens * L, duration: 0.32, ease: "power3.inOut", immediateRender: false }, t - 0.16);
+          } else if (entree === "zoom") {
+            // Zoom through: the outgoing shot rushes forward and fades, the new one lands from slightly larger.
+            tl.fromTo(avant.querySelector(".zoom"), { scale: 1 }, { scale: 1.06, duration: 0.16, ease: "power3.in", immediateRender: false }, t - 0.16);
+            tl.to(avant, { opacity: 0, duration: 0.1, ease: "none" }, t - 0.08);
+            const s = Number(gsap.getProperty(d.querySelector("img"), "scale"));
+            tl.fromTo(d.querySelector(".zoom"), { scale: Math.min(1.08, 1 / s) }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, t);
+            tl.fromTo(d, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, t - 0.06);
+          } else {
+            tl.set(d, { opacity: 1 }, t);
+            tl.set(avant, { opacity: 0 }, t); // a hard cut: a narrower frame shows only dark around it
+          }
+          tl.fromTo("#flash", { opacity: 0.35 }, { opacity: 0, duration: 0.18, ease: "power2.out", immediateRender: false }, t);
+        });
+        // Words: line 1 of plan 1 is on screen at frame 0; each following line slams in on a beat.
+        const arrivees = [[0, 0.5], [2.5, 3.0], [4.5, 5.0]];
+        lignes.forEach(([a, b], i) => {
+          const [ta, tb] = arrivees[i];
+          if (i === 0) tl.set(a, { opacity: 1 }, 0);
+          else tl.fromTo(a, { opacity: 1, x: -1150 }, { opacity: 1, x: 0, duration: 0.34, ease: "power4.out", immediateRender: false }, ta - 0.04);
+          tl.fromTo(b, { opacity: 1, x: 1150 }, { opacity: 1, x: 0, duration: 0.34, ease: "power4.out", immediateRender: false }, tb - 0.04);
+          if (i === 0) tl.set(b, { opacity: 0 }, 0);
+          const sortie = i < 2 ? arrivees[i + 1][0] - 0.2 : 5.8;
+          tl.to([a, b], { y: -420, opacity: 0, duration: 0.2, ease: "power3.in", stagger: 0.03 }, sortie);
+        });
+        // End card: the panel whips up, the name slams, the rest follows on the half-beats.
+        tl.to("#panneau", { y: -1700, duration: 0.36, ease: "power3.in" }, 5.82);
+        tl.fromTo("#logo", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 6.0);
+        tl.fromTo("#nom", { y: 260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.36, ease: "power4.out" }, 6.08);
+        tl.fromTo("#type", { opacity: 0 }, { opacity: 0.85, duration: 0.3 }, 6.3);
+        tl.fromTo("#barre", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, 6.35);
+        tl.fromTo("#garanties > div", { x: -1100 }, { x: 0, duration: 0.34, ease: "power4.out", stagger: 0.09 }, 6.45);
+        tl.fromTo("#adresse", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.34, ease: "power4.out" }, 6.8);
+        window.__timelines["style-dynamique"] = tl;
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,281 @@
+<!doctype html>
+<!-- Style 3, "decor magazine / moodboard": photos as printed cards on paper with tape and soft
+     shadows, handwritten notes whose arrows draw themselves to the material, a measurement drawn
+     on the side view, a fabric swatch, and the end card on a sheet torn in from below.
+     Every word, colour, picture and point comes from the job. -->
+<html
+  lang="fr"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"nom","type":"string","label":"Product name","default":"Name"},
+    {"id":"type","type":"string","label":"Product type","default":"Type"},
+    {"id":"t1a","type":"string","label":"Plan 1, line 1","default":"Line"},
+    {"id":"t1b","type":"string","label":"Plan 1, line 2","default":"Line"},
+    {"id":"t2a","type":"string","label":"Plan 2, line 1","default":"Line"},
+    {"id":"t2b","type":"string","label":"Plan 2, line 2","default":"Line"},
+    {"id":"t3a","type":"string","label":"Plan 3, line 1","default":"Line"},
+    {"id":"t3b","type":"string","label":"Plan 3, line 2","default":"Line"},
+    {"id":"n1","type":"string","label":"Note 1 (points at a1)","default":"Note"},
+    {"id":"n2","type":"string","label":"Note 2 (points at a2)","default":"Note"},
+    {"id":"n3","type":"string","label":"Swatch label","default":"Note"},
+    {"id":"cote","type":"string","label":"Measurement drawn on photo 3","default":"0 cm"},
+    {"id":"g1","type":"string","label":"Guarantee 1","default":"Guarantee"},
+    {"id":"g2","type":"string","label":"Guarantee 2","default":"Guarantee"},
+    {"id":"g3","type":"string","label":"Guarantee 3","default":"Guarantee"},
+    {"id":"adresse","type":"string","label":"Web address","default":"example.com"},
+    {"id":"img1","type":"image","label":"Plan 1 photo (notes)","default":"assets/job/img1.jpg"},
+    {"id":"img2","type":"image","label":"Plan 2 photo","default":"assets/job/img2.jpg"},
+    {"id":"img3","type":"image","label":"Plan 3 photo (side view, measured)","default":"assets/job/img3.jpg"},
+    {"id":"imgm","type":"image","label":"Material close-up (swatch)","default":"assets/job/imgm.jpg"},
+    {"id":"logo","type":"image","label":"Logo (transparent PNG)","default":"assets/job/logo.png"},
+    {"id":"musique","type":"string","label":"Music","default":"assets/job/musique.wav"},
+    {"id":"taille","type":"number","label":"Photo size (square, source px)","default":1254},
+    {"id":"a1x","label":"Point a1x","type":"number","default":50},{"id":"a1y","label":"Point a1y","type":"number","default":50},
+    {"id":"a2x","label":"Point a2x","type":"number","default":50},{"id":"a2y","label":"Point a2y","type":"number","default":50},
+    {"id":"c3x","type":"number","label":"Photo 3 focus x (%)","default":50},{"id":"c3y","label":"Point c3y","type":"number","default":50},
+    {"id":"k1x","type":"number","label":"Measure start x (%)","default":40},{"id":"k2x","type":"number","label":"Measure end x (%)","default":60},
+    {"id":"ky","type":"number","label":"Measure line y (%)","default":50},
+    {"id":"mx","label":"Point mx","type":"number","default":50},{"id":"my","label":"Point my","type":"number","default":50},
+    {"id":"creme","type":"color","label":"Paper","default":"#f7f5f0"},
+    {"id":"encre","type":"color","label":"Ink","default":"#111111"},
+    {"id":"or","type":"color","label":"Tape and rules","default":"#c0a060"},
+    {"id":"brun","type":"color","label":"Handwriting","default":"#6b5530"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/DrawSVGPlugin.min.js"></script>
+    <style>
+      @font-face { font-family: "MarqueTitre"; src: url("assets/job/titre.ttf"); }
+      @font-face { font-family: "MarqueTitreItalique"; src: url("assets/job/titre-italique.ttf"); }
+      @font-face { font-family: "MarqueTexte"; src: url("assets/job/texte.ttf"); }
+      @font-face { font-family: "MarqueNotes"; src: url("assets/job/notes.ttf"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--creme); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--creme); color: var(--encre); }
+      .couche { position: absolute; inset: 0; }
+      .papier { position: absolute; inset: 0; background: var(--creme); }
+      .papier svg { position: absolute; inset: 0; }
+      #kicker { position: absolute; left: 86px; top: 200px; font: 24px "MarqueTexte"; letter-spacing: 0.45em; text-transform: uppercase; color: var(--brun); }
+      #regle { position: absolute; left: 86px; top: 240px; width: 908px; height: 1.5px; background: var(--encre); opacity: 0.6; transform-origin: left; }
+      .titre { position: absolute; left: 86px; top: 262px; }
+      .titre div { width: max-content; white-space: nowrap; line-height: 1.02; font-family: "MarqueTitre"; }
+      .titre div + div { font-family: "MarqueTitreItalique"; }
+      #planche { position: absolute; inset: 0; transform-origin: 50% 55%; }
+      .carte { position: absolute; background: #fffdf8; padding: 20px 20px 92px; box-shadow: 0 22px 44px rgba(60, 40, 20, 0.24), 0 3px 8px rgba(0, 0, 0, 0.12); }
+      .carte .vue { position: relative; overflow: hidden; }
+      .carte img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+      .scotch { position: absolute; width: 170px; height: 48px; background: color-mix(in srgb, var(--or) 38%, #f3ead6); opacity: 0.82;
+        clip-path: polygon(0 8%, 6% 0, 12% 10%, 18% 2%, 82% 0, 88% 9%, 94% 1%, 100% 10%, 100% 92%, 94% 100%, 88% 90%, 82% 99%, 18% 100%, 12% 91%, 6% 100%, 0 90%); }
+      .note { position: absolute; font: 58px/1.02 "MarqueNotes"; color: var(--brun); white-space: nowrap; }
+      svg.traits { position: absolute; inset: 0; overflow: visible; }
+      svg.traits path { fill: none; stroke: var(--brun); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      #pastille { position: absolute; width: 220px; height: 220px; border-radius: 50%; overflow: hidden; box-shadow: 0 14px 30px rgba(60, 40, 20, 0.25), 0 0 0 10px #fffdf8; }
+      #pastille img { position: absolute; left: 0; top: 0; }
+      #feuille { position: absolute; left: -20px; top: 0; width: 1120px; height: 1920px; }
+      #feuille .papier { background: #fffdf8; }
+      #feuille { filter: drop-shadow(0 -14px 26px rgba(60, 40, 20, 0.3)); }
+      #logo { position: absolute; left: 460px; top: 330px; width: 160px; height: 112px; background: var(--encre); -webkit-mask: var(--logo-url) center / contain no-repeat; }
+      #nom { position: absolute; left: 0; top: 480px; width: 1120px; text-align: center; font: 190px/1 "MarqueTitre"; }
+      #type { position: absolute; left: 0; top: 700px; width: 1120px; text-align: center; font: 36px "MarqueTexte"; color: var(--brun); }
+      #liste { position: absolute; left: 300px; top: 820px; font: 34px/2.1 "MarqueTexte"; }
+      #liste div { position: relative; padding-left: 70px; }
+      #liste svg { position: absolute; left: 0; top: 12px; width: 50px; height: 50px; overflow: visible; }
+      #liste path { fill: none; stroke: var(--brun); stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+      #adresse { position: absolute; left: 0; top: 1150px; width: 1120px; text-align: center; font: 58px "MarqueNotes"; color: var(--brun); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="style-magazine" data-start="0" data-duration="8" data-fps="30" data-width="1080" data-height="1920">
+      <div id="scene" class="couche clip" data-start="0" data-duration="8" data-track-index="0">
+        <div class="papier"></div>
+        <div id="planche"></div>
+        <div id="kicker"></div>
+        <div id="regle"></div>
+        <div id="titres"></div>
+        <div id="feuille"><div class="papier"></div><div id="logo"></div><div id="nom"></div><div id="type"></div><div id="liste"></div><div id="adresse"></div></div>
+      </div>
+      <audio id="musique" data-start="0" data-duration="8" data-track-index="1" data-volume="1" data-fade-out="0.8" data-timeline-role="music" data-var-src="musique" src="assets/job/musique.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      (async function () {
+        const V = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+        await Promise.all(["MarqueTitre", "MarqueTitreItalique", "MarqueTexte", "MarqueNotes"].map((f) => document.fonts.load(`100px "${f}"`)));
+        gsap.registerPlugin(DrawSVGPlugin);
+        const $ = (s) => document.querySelector(s);
+        const T = Number(V.taille) || 1254;
+        const NS = "http://www.w3.org/2000/svg";
+        // Seeded randomness (no Math.random): the same video on every render.
+        let graine = 7;
+        const alea = () => ((graine = (graine * 16807) % 2147483647) / 2147483647);
+
+        // Paper: fine fibres and a soft vignette, generated once.
+        document.querySelectorAll(".papier").forEach((p, i) => {
+          p.innerHTML = `<svg width="1120" height="1920"><filter id="fibres${i}"><feTurbulence type="fractalNoise" baseFrequency="0.85 0.6" numOctaves="3" seed="${4 + i}"/>
+            <feColorMatrix values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.18  0 0 0 0.09 0"/></filter>
+            <radialGradient id="vg${i}" cx="50%" cy="48%" r="75%"><stop offset="60%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#3c2814" stop-opacity="0.14"/></radialGradient>
+            <rect width="100%" height="100%" filter="url(#fibres${i})"/><rect width="100%" height="100%" fill="url(#vg${i})"/></svg>`;
+        });
+
+        // A printed card: the photo framed on (fx, fy) at scale s (never past 1 source px per screen px).
+        const carte = (src, w, h, s, fx, fy, x, y, rot) => {
+          s = Math.min(Math.max(s, w / T, h / T), 1);
+          const c = document.createElement("div");
+          c.className = "carte";
+          c.innerHTML = `<div class="vue" style="width:${w}px;height:${h}px"><img src="${src}" alt=""></div>`;
+          const clamp = (v, lim) => Math.min(0, Math.max(lim - T * s, v));
+          const ix = clamp(w / 2 - (fx / 100) * T * s, w);
+          const iy = clamp(h / 2 - (fy / 100) * T * s, h);
+          gsap.set(c.querySelector("img"), { x: ix, y: iy, scale: s });
+          gsap.set(c, { left: x, top: y, rotation: rot, transformOrigin: "50% 50%" });
+          $("#planche").appendChild(c);
+          // Screen position of a photo point, for the arrows (card centre, rotation included).
+          const cw = w + 40, ch = h + 112;
+          c.point = (px, py) => {
+            const lx = 20 + ix + (px / 100) * T * s - cw / 2;
+            const ly = 20 + iy + (py / 100) * T * s - ch / 2;
+            const a = (rot * Math.PI) / 180;
+            return [x + cw / 2 + lx * Math.cos(a) - ly * Math.sin(a), y + ch / 2 + lx * Math.sin(a) + ly * Math.cos(a)];
+          };
+          return c;
+        };
+        const scotch = (parent, x, y, rot) => {
+          const t = document.createElement("div");
+          t.className = "scotch";
+          gsap.set(t, { left: x, top: y, rotation: rot });
+          parent.appendChild(t);
+        };
+        // A hand-drawn arrow: a slightly bent stroke and a two-stroke head, as paths to draw.
+        const fleche = (svg, [x1, y1], [x2, y2], courbe) => {
+          const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy);
+          const [nx, ny] = [-dy / L, dx / L];
+          const b = courbe * L;
+          const c1 = [x1 + dx * 0.3 + nx * b + (alea() - 0.5) * 8, y1 + dy * 0.3 + ny * b + (alea() - 0.5) * 8];
+          const c2 = [x1 + dx * 0.72 + nx * b * 0.7, y1 + dy * 0.72 + ny * b * 0.7];
+          const corps = document.createElementNS(NS, "path");
+          corps.setAttribute("d", `M${x1},${y1} C${c1} ${c2} ${x2},${y2}`);
+          const ang = Math.atan2(y2 - c2[1], x2 - c2[0]);
+          const tete = document.createElementNS(NS, "path");
+          const pt = (da) => [x2 - 30 * Math.cos(ang + da), y2 - 30 * Math.sin(ang + da)];
+          tete.setAttribute("d", `M${pt(0.5)} L${x2},${y2} L${pt(-0.45)}`);
+          svg.append(corps, tete);
+          return [corps, tete];
+        };
+        const note = (texte, x, y, rot) => {
+          const n = document.createElement("div");
+          n.className = "note";
+          n.textContent = texte;
+          gsap.set(n, { left: x, top: y, rotation: rot });
+          $("#planche").appendChild(n);
+          return n;
+        };
+
+        // Header and titles.
+        $("#kicker").textContent = V.nom;
+        const titres = [[V.t1a, V.t1b], [V.t2a, V.t2b], [V.t3a, V.t3b]].map((lignes) => {
+          const t = document.createElement("div");
+          t.className = "titre";
+          t.innerHTML = lignes.map((l) => `<div>${l}</div>`).join("");
+          $("#titres").appendChild(t);
+          [...t.children].forEach((l) => {
+            l.style.fontSize = "100px";
+            l.style.fontSize = `${Math.min(108, (100 * 900) / l.offsetWidth).toFixed(1)}px`;
+          });
+          return t;
+        });
+
+        // The board.
+        const A = carte(V.img1, 600, 600, 600 / T, 50, 50, 96, 560, -2.5);
+        scotch(A, 245, -24, -3);
+        const B = carte(V.img2, 560, 600, 0.6, 50, 45, 400, 640, 3);
+        scotch(B, 215, -26, 4);
+        const C = carte(V.img3, 520, 520, 0.75, V.c3x, V.c3y, 60, 600, -2);
+        scotch(C, 190, -24, -5);
+        const svg = document.createElementNS(NS, "svg");
+        svg.setAttribute("class", "traits");
+        $("#planche").appendChild(svg);
+        // Plan 1: two notes, arrows to the material.
+        const n1 = note(V.n1, 742, 1010, -3);
+        const n2 = note(V.n2, 700, 612, 2);
+        const f1 = fleche(svg, [760, 1000], A.point(V.a1x, V.a1y), 0.22);
+        const f2 = fleche(svg, [736, 690], A.point(V.a2x, V.a2y), -0.18);
+        // Plan 3: the measurement drawn on the side view, and a swatch of the material.
+        const [m1, m2] = [C.point(V.k1x, V.ky), C.point(V.k2x, V.ky)];
+        const mesure = document.createElementNS(NS, "path");
+        const tic = (p) => `M${p[0]},${p[1] - 16} L${p[0]},${p[1] + 16}`;
+        mesure.setAttribute("d", `${tic(m1)} M${m1} L${m2} ${tic(m2)}`);
+        svg.appendChild(mesure);
+        // Written on the card's white margin, under the photo.
+        const nc = note(V.cote, 110, 1176, -2);
+        const pastille = document.createElement("div");
+        pastille.id = "pastille";
+        pastille.innerHTML = `<img src="${V.imgm}" alt="">`;
+        gsap.set(pastille.querySelector("img"), { x: 110 - (V.mx / 100) * T, y: 110 - (V.my / 100) * T });
+        gsap.set(pastille, { left: 724, top: 980 });
+        $("#planche").appendChild(pastille);
+        scotch(pastille, 40, -20, -12);
+        const n3 = note(V.n3, 734, 1218, -4);
+
+        // End card on a torn sheet.
+        $("#nom").textContent = V.nom;
+        $("#type").textContent = V.type;
+        $("#adresse").textContent = V.adresse;
+        $("#liste").innerHTML = [V.g1, V.g2, V.g3].map((g) => `<div><svg><path d="M6,26 C12,32 16,38 20,42 C26,28 36,14 48,4"/></svg>${g}</div>`).join("");
+        $("#root").style.setProperty("--logo-url", `url("${V.logo}")`);
+        const bord = [];
+        for (let x = 0; x <= 100; x += 1.25) bord.push(`${x}% ${(1.2 + Math.sin(x / 7) * 0.9 + alea() * 1.1).toFixed(2)}%`);
+        $("#feuille .papier").style.clipPath = `polygon(${bord.join(",")}, 100% 100%, 0% 100%)`;
+
+        const tl = gsap.timeline({ paused: true });
+        // The board breathes: a slow continuous push, never a stop.
+        tl.fromTo("#planche", { scale: 1, x: 0 }, { scale: 1.035, x: -14, duration: 6.2, ease: "none" }, 0);
+        // Frame 0: card A and the first title are already there; the rule draws on the first beat.
+        gsap.set([B, C, pastille, n1, n2, n3, nc], { opacity: 0 });
+        gsap.set(titres.slice(1), { opacity: 0 });
+        tl.fromTo("#regle", { scaleX: 0.25 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.15);
+        const ecrire = (n, t) =>
+          tl.fromTo(n, { opacity: 1, clipPath: "inset(-20% 100% -20% -5%)" }, { opacity: 1, clipPath: "inset(-20% -5% -20% -5%)", duration: 0.45, ease: "power1.inOut", immediateRender: false }, t);
+        const tracer = (paths, t) => {
+          tl.fromTo(paths[0], { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.42, ease: "power2.inOut" }, t);
+          tl.fromTo(paths[1], { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.14, ease: "power1.out" }, t + 0.4);
+        };
+        ecrire(n1, 0.5); tracer(f1, 0.6);
+        ecrire(n2, 1.0); tracer(f2, 1.1);
+        // Plan 2 (on the 2.5 s accent): card A is pinned aside, card B is laid down on top.
+        const titre = (i, t) => {
+          tl.to(titres[i - 1], { opacity: 0, y: -20, duration: 0.25, ease: "power2.in" }, t - 0.3);
+          tl.fromTo(titres[i], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, t);
+        };
+        titre(1, 2.5);
+        tl.to([n1, n2, ...f1, ...f2], { opacity: 0, duration: 0.25 }, 2.2);
+        tl.to(A, { x: -56, scale: 0.62, rotation: -8, duration: 0.8, ease: "power3.inOut" }, 2.25);
+        tl.fromTo(B, { opacity: 1, y: -1500, rotation: 12 }, { opacity: 1, y: 0, rotation: 3, duration: 0.75, ease: "power3.out", immediateRender: false }, 2.35);
+        tl.fromTo(B, { boxShadow: "0 80px 120px rgba(60,40,20,0.1)" }, { boxShadow: "0 22px 44px rgba(60,40,20,0.24), 0 3px 8px rgba(0,0,0,0.12)", duration: 0.75 }, 2.35);
+        // Plan 3 (on the 4.5 s accent): the side view slides in, the measure is drawn, a swatch is taped on.
+        titre(2, 4.5);
+        tl.to(B, { x: 150, y: -236, scale: 0.55, rotation: 6, duration: 0.7, ease: "power3.inOut" }, 4.25);
+        tl.to(A, { opacity: 0, duration: 0.3 }, 4.3);
+        tl.fromTo(C, { opacity: 1, x: -800, rotation: -12 }, { opacity: 1, x: 0, rotation: -2, duration: 0.65, ease: "power3.out", immediateRender: false }, 4.3);
+        tl.fromTo(mesure, { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.45, ease: "power2.inOut" }, 4.85);
+        ecrire(nc, 5.05);
+        tl.fromTo(pastille, { opacity: 1, scale: 0.4, rotation: -30 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, 4.95);
+        ecrire(n3, 5.25);
+        // End: a sheet is torn in from below and carries the card.
+        tl.fromTo("#feuille", { y: 1950 }, { y: 0, duration: 0.6, ease: "power3.inOut" }, 5.75);
+        tl.fromTo("#logo", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 6.05);
+        tl.fromTo("#nom", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 6.15);
+        tl.fromTo("#type", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 6.35);
+        document.querySelectorAll("#liste div").forEach((d, i) => {
+          tl.fromTo(d, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 6.6 + i * 0.15);
+          tl.fromTo(d.querySelector("path"), { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.3, ease: "power2.out" }, 6.7 + i * 0.15);
+        });
+        ecrire($("#adresse"), 7.15);
+        window.__timelines["style-magazine"] = tl;
+      })();
+    </script>
+  </body>
+</html>

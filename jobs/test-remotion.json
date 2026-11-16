@@ -1,0 +1,29 @@
+{
+  "note": "Proof job: 5 s vertical promo rendered by remotion, product photo from the shop CDN, soft pad from library/.",
+  "engine": "remotion",
+  "composition": "Promo",
+  "output": "test-remotion.mp4",
+  "assets": {
+    "photo.jpg": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/applique-murale-chambre-lin-linoa-1-en-lin-naturel-et-bras-en-bois-clair-allumee_df071303-e2be-4447-8c92-9385f988a471.webp?v=1792892129&width=1254&format=pjpg",
+    "music.m4a": "library/audio/soft-pad.m4a"
+  },
+  "props": {
+    "eyebrow": "Applique murale",
+    "title": "Linoa",
+    "subtitle": "Lin naturel, bras en bois clair",
+    "image": "assets/job/photo.jpg",
+    "music": "assets/job/music.m4a",
+    "background": "#14110e",
+    "ink": "#faf7f1",
+    "accent": "#c9a15a",
+    "seconds": 5
+  },
+  "expect": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "minSeconds": 4.9,
+    "maxSeconds": 5.1,
+    "audio": true
+  }
+}

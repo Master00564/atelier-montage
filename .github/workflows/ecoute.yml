@@ -1,0 +1,205 @@
+name: ecoute
+run-name: "ecoute ${{ inputs.projet }} ${{ inputs.artifact_id }} ${{ inputs.request_id }}"
+
+# Listen to a rendered film with earshot (montage/outils/ecoute.py): what is heard when, sync to the
+# picture, loudness, a critique, an annotated sheet -> artifact ecoute-<projet> (ecoute.json, ecoute.txt,
+# ecoute.png, ecoute-1.png, ecoute-2.png). Two more jobs, alone or with a film:
+#   kit      render the workshop's effects from earshot's bank (montage/son/kit.json) -> out/kit: the takes,
+#            kit.lock.json (onset, peak, end, loudness of each take) and check.txt (the take audit)
+#   classer  the text of a candidats.json from the skill's scripts/cherche_son.py (or a list of them):
+#            earshot ranks the downloaded Openverse candidates (montage/outils/classer.py) -> out/classer
+# montage.yml calls this workflow after every render (its job "ecoute", the render's artifact id). The film
+# comes from a past run's artifact:
+#   artifact_id  an artifact holding the MP4 (rendu-<projet>: its sharing copy, the file that goes out)
+#   projet       without artifact_id, that project's newest rendu-<projet> artifact
+# The project's words and cues are read at the commit the film was rendered from.
+# Trigger from the API:
+#   POST /repos/{owner}/{repo}/actions/workflows/ecoute.yml/dispatches
+#   {"ref":"main","inputs":{"projet":"essai","request_id":"any-label"},"return_run_details":true}
+on:
+  # Called by montage.yml after every render (job "ecoute"), with the render's artifact id.
+  workflow_call:
+    inputs:
+      artifact_id: {type: string, required: false, default: ""}
+      projet: {type: string, required: false, default: ""}
+      kit: {type: boolean, required: false, default: false}
+      classer: {type: string, required: false, default: ""}
+      detail: {type: string, required: false, default: "low"}
+      request_id: {type: string, required: false, default: ""}
+  workflow_dispatch:
+    inputs:
+      artifact_id:
+        description: Id of an artifact holding the MP4 (empty = the project's newest rendu artifact)
+        required: false
+        default: ""
+      projet:
+        description: Folder name under montage/projets/ (read from the artifact's name when empty)
+        required: false
+        default: ""
+      kit:
+        description: Render the workshop's effects kit from earshot's bank (montage/son/kit.json)
+        type: boolean
+        default: false
+      classer:
+        description: The text of a candidats.json (scripts/cherche_son.py), or a JSON list of them, to rank
+        required: false
+        default: ""
+      detail:
+        description: earshot detail; low reported every defect heard in the fifth test at a fifth of the time (2026-11-14)
+        type: choice
+        options: [low, normal, high]
+        default: low
+      request_id:
+        description: Free label added to the run name, to find this run from the API
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  FFMPEG_REPO: FFmpeg-Builds/FFmpeg-Builds
+  FFMPEG_TAG: autobuild-2026-02-28-12-59
+  FFMPEG_FILE: ffmpeg-n8.0.1-66-g27b8d1a017-linux64-gpl-8.0.tar.xz
+  FFMPEG_SHA256: 26d2ecd0cefba99f9d1ea92252a3a4f743a58df4c1c3cf9f8bbaaa40b1fca5b0
+  # earshot's pinned models (earshot/config.py PINS): CLAP laion/larger_clap_general (Apache-2.0), AST (BSD-3).
+  CLAP_REV: 16c8cc3159a3c8a31e8ff5ef1f66b0d9ab3667db
+  AST_REV: f826b80d28226b62986cc218e5cec390b1096902
+  EARSHOT_THREADS: "2"
+  ARTIFACT_ID: ${{ inputs.artifact_id }}
+  NOM_DEMANDE: ${{ inputs.projet }}
+  DETAIL: ${{ inputs.detail }}
+
+jobs:
+  ecoute:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Find the film
+        if: inputs.artifact_id != '' || inputs.projet != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          NOM="$NOM_DEMANDE"
+          [ -z "$NOM" ] || [[ "$NOM" =~ ^[a-z0-9][a-z0-9-]{0,60}$ ]] || { echo "::error::FAILED: project name: lower-case letters, digits and dashes only"; exit 1; }
+          [ -z "$ARTIFACT_ID" ] || [[ "$ARTIFACT_ID" =~ ^[0-9]{1,20}$ ]] || { echo "::error::FAILED: artifact_id: digits only"; exit 1; }
+          if [ -z "$ARTIFACT_ID" ]; then
+            [ -n "$NOM" ] || { echo "::error::FAILED: give artifact_id or projet"; exit 1; }
+            ARTIFACT_ID=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?name=rendu-$NOM&per_page=10" --jq '[.artifacts[] | select(.expired | not)][0].id // empty')
+            [ -n "$ARTIFACT_ID" ] || { echo "::error::FAILED: no unexpired rendu-$NOM artifact"; exit 1; }
+          fi
+          read -r NOM_ART SHA EXPIRE < <(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID" --jq '[.name, .workflow_run.head_sha, .expired] | @tsv')
+          [ "$EXPIRE" = false ] || { echo "::error::FAILED: artifact $ARTIFACT_ID ($NOM_ART) has expired"; exit 1; }
+          [ -n "$NOM" ] || NOM="${NOM_ART#*-}"
+          [[ "$NOM" =~ ^[a-z0-9][a-z0-9-]{0,60}$ ]] || { echo "::error::FAILED: no project name in artifact $NOM_ART"; exit 1; }
+          mkdir -p film out
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID/zip" > "$RUNNER_TEMP/film.zip"
+          unzip -q "$RUNNER_TEMP/film.zip" -d film && rm "$RUNNER_TEMP/film.zip"
+          # The file that goes out: the sharing copy; else the largest MP4 that is not the phone copy.
+          FILM=$(ls film/*-diffusion.mp4 2>/dev/null | head -1 || true)
+          [ -n "$FILM" ] || FILM=$(ls -S film/*.mp4 2>/dev/null | grep -v -- '-telephone\.mp4$' | head -1 || true)
+          [ -n "$FILM" ] || { echo "::error::FAILED: no MP4 in artifact $ARTIFACT_ID ($NOM_ART)"; exit 1; }
+          # The project as it was rendered (words, voice clip): its commit, else nothing (no words, still a listening).
+          if git fetch --quiet --depth 1 origin "$SHA" && git checkout "$SHA" -- "montage/projets/$NOM" 2>/dev/null; then
+            echo "PROJET=montage/projets/$NOM" >> "$GITHUB_ENV"
+          else
+            echo "::warning::project $NOM not found at $SHA: listening without its words"
+          fi
+          { echo "NOM=$NOM"; echo "FILM=$FILM"; } >> "$GITHUB_ENV"
+          echo "artifact $ARTIFACT_ID $NOM_ART, commit $SHA, film $FILM ($(du -h "$FILM" | cut -f1))"
+
+      - name: Restore FFmpeg
+        id: ffmpeg-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/ffmpeg-bin
+          key: ffmpeg-${{ env.FFMPEG_SHA256 }}
+
+      - name: Download FFmpeg
+        if: steps.ffmpeg-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/$FFMPEG_FILE"
+          for attempt in 1 2 3; do
+            id="$(gh api "repos/$FFMPEG_REPO/releases/tags/$FFMPEG_TAG" --jq ".assets[] | select(.name == \"$FFMPEG_FILE\") | .id")" \
+              && gh api -H "Accept: application/octet-stream" "repos/$FFMPEG_REPO/releases/assets/$id" > "$archive" \
+              && sha256sum -c --quiet <<<"$FFMPEG_SHA256  $archive" && break
+            [ "$attempt" = 3 ] && { echo "::error::FAILED: FFmpeg download failed 3 times"; exit 1; }
+            sleep $((attempt * 5))
+          done
+          mkdir -p "$RUNNER_TEMP/ffmpeg-bin"
+          tar -xJf "$archive" -C "$RUNNER_TEMP/ffmpeg-bin" --strip-components=2 --wildcards '*/bin/ffmpeg' '*/bin/ffprobe'
+
+      - name: Put FFmpeg on the PATH
+        run: echo "$RUNNER_TEMP/ffmpeg-bin" >> "$GITHUB_PATH"
+
+      - name: Restore earshot
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/ecoute-venv
+          key: ecoute-venv-${{ runner.os }}-${{ hashFiles('montage/outils/ecoute-requirements.txt') }}
+
+      - name: Restore earshot's models
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/earshot/hf
+          key: earshot-models-${{ env.CLAP_REV }}-${{ env.AST_REV }}
+
+      - name: Install earshot
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          echo "EARSHOT_HOME=$RUNNER_TEMP/earshot" >> "$GITHUB_ENV"
+          v="$RUNNER_TEMP/ecoute-venv"
+          if [ ! -x "$v/bin/earshot" ]; then
+            debut=$(date +%s)
+            python3 -m venv "$v"
+            "$v/bin/pip" install --quiet --disable-pip-version-check -r montage/outils/ecoute-requirements.txt
+            echo "install seconds $(( $(date +%s) - debut ))"
+          fi
+          "$v/bin/pip" freeze --disable-pip-version-check > out/ecoute-paquets.txt
+
+      # One process: the models load once (a CLI call per command would load them every time).
+      - name: Listen
+        if: env.FILM != ''
+        run: |
+          set -euo pipefail
+          debut=$(date +%s)
+          "$RUNNER_TEMP/ecoute-venv/bin/python" montage/outils/ecoute.py "$FILM" out --detail "$DETAIL" --moities ${PROJET:+--projet "$PROJET"}
+          echo "listen seconds $(( $(date +%s) - debut ))"
+
+      # No model: the bank renders by code. The takes are deterministic (same kit, same files).
+      - name: Render the effects kit
+        if: inputs.kit
+        run: |
+          set -euo pipefail
+          debut=$(date +%s)
+          e="$RUNNER_TEMP/ecoute-venv/bin/earshot"
+          "$e" kit render montage/son/kit.json --out out/kit
+          "$e" kit check montage/son/kit.json --out out/kit | tee out/kit/check.txt
+          echo "kit seconds $(( $(date +%s) - debut ))"
+
+      - name: Rank sound candidates
+        if: inputs.classer != ''
+        env:
+          CLASSER: ${{ inputs.classer }}
+        run: |
+          set -euo pipefail
+          debut=$(date +%s)
+          "$RUNNER_TEMP/ecoute-venv/bin/python" montage/outils/classer.py out/classer "$CLASSER"
+          echo "rank seconds $(( $(date +%s) - debut ))"
+
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ecoute-${{ env.NOM || 'sons' }}
+          path: out/
+          retention-days: 3
+          if-no-files-found: warn

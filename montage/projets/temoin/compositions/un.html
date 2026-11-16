@@ -1,0 +1,19 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #faf7f1; }
+    #un-titre { position: absolute; left: 120px; top: 620px; width: 840px; font: 700 150px/1 "Playfair Display", serif; color: #14110e; }
+    #un-trait { position: absolute; left: 120px; top: 980px; width: 840px; height: 10px; background: #c9a15a; transform-origin: left center; }
+  </style>
+  <div id="root" data-composition-id="un" data-width="1080" data-height="1920">
+    <div id="un-titre" class="clip" data-start="0" data-duration="3"><span id="un-mot">Témoin</span></div>
+    <div id="un-trait-clip" class="clip" data-start="0" data-duration="3"><div id="un-trait"></div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // The title is on screen at frame 0: the first frame is the thumbnail on social players.
+    tl.fromTo("#un-mot", { x: -24 }, { x: 0, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#un-trait", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power4.out" }, 0.4);
+    tl.fromTo("#un-trait", { x: 0 }, { x: 60, duration: 1.4, ease: "power2.inOut" }, 1.4);
+    window.__timelines["un"] = tl;
+  </script>
+</template>

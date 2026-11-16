@@ -1,0 +1,67 @@
+name: montage-blocs
+run-name: "montage-blocs ${{ inputs.noms }}"
+
+# Reads the HyperFrames registry at the pinned version: writes the whole catalogue and installs the
+# named blocks and components into a scratch project, so their source can be read and the useful
+# ones copied into the montage skill's library. Nothing is rendered; the repo is not changed.
+#   POST /repos/{owner}/{repo}/actions/workflows/montage-blocs.yml/dispatches
+#   {"ref":"main","inputs":{"noms":"light-sweep-pass focus-rack"},"return_run_details":true}
+on:
+  workflow_dispatch:
+    inputs:
+      noms:
+        description: Registry item names, separated by spaces
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  HYPERFRAMES_NO_TELEMETRY: "1"
+  DO_NOT_TRACK: "1"
+  HYPERFRAMES_NO_UPDATE_CHECK: "1"
+  HYPERFRAMES_SKIP_SKILLS: "1"
+  HYPERFRAMES_NO_AUTO_INSTALL: "1"
+  NOMS: ${{ inputs.noms }}
+
+jobs:
+  blocs:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.1.0
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: montage/package-lock.json
+
+      - name: Install HyperFrames
+        working-directory: montage
+        run: npm ci --no-audit --no-fund
+
+      - name: Catalogue and blocks
+        run: |
+          set +e -uo pipefail
+          HF="$GITHUB_WORKSPACE/montage/node_modules/.bin/hyperframes"
+          mkdir -p out/projet
+          cp -r montage/projets/temoin/. out/projet/
+          cd out/projet
+          "$HF" catalog --json > ../catalogue.json 2> ../catalogue.log
+          echo "catalog exit $?" | tee -a ../ajouts.log
+          for n in $NOMS; do
+            [[ "$n" =~ ^[a-z0-9][a-z0-9-]{0,60}$ ]] || { echo "$n: refused name" | tee -a ../ajouts.log; continue; }
+            "$HF" add "$n" --json > "../add-$n.json" 2>> ../ajouts.log
+            echo "$n exit $?" | tee -a ../ajouts.log
+          done
+          find . -type f -newer ../catalogue.json | sort | head -200
+
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: blocs
+          path: out/
+          retention-days: 3
+          include-hidden-files: true

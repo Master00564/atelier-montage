@@ -1,0 +1,8 @@
+{
+  "name": "atelier-video-montage",
+  "private": true,
+  "description": "HyperFrames CLI pinned for the montage workflow. One project per folder under projets/.",
+  "dependencies": {
+    "hyperframes": "0.9.39"
+  }
+}

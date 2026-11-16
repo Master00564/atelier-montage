@@ -1,0 +1,382 @@
+name: montage
+run-name: "montage ${{ inputs.mode }} ${{ inputs.projet }} ${{ inputs.request_id }}"
+
+# One montage project (montage/projets/<projet>/, a HyperFrames project written for one video) per run.
+#   voix      say the project's text with the manifest's voice, even its pace, time it -> artifact voix-<projet>
+#   cadence   even again the raw take kept in the project (no voice call), time it     -> artifact cadence-<projet>
+#   mots      time every word of the project's voice take against its text  -> artifact mots-<projet>
+#   controle  hyperframes check + review sheets, no render                  -> artifact controle-<projet>
+#   rendu     the same checks, then the MP4, its sound mastered to -14 LUFS, its measures and contact sheets,
+#             and the gates heard in films (portes.json) -> artifact rendu-<projet>, downloadable when this job
+#             ends; then a second job (ecoute.yml) listens to the sharing copy -> artifact ecoute-<projet>
+# Trigger from the API:
+#   POST /repos/{owner}/{repo}/actions/workflows/montage.yml/dispatches
+#   {"ref":"main","inputs":{"projet":"essai","mode":"controle","request_id":"any-label"},"return_run_details":true}
+on:
+  workflow_dispatch:
+    inputs:
+      projet:
+        description: Folder name under montage/projets/
+        required: true
+      mode:
+        description: voix, cadence, mots, controle or rendu
+        type: choice
+        options: [controle, rendu, mots, voix, cadence]
+        default: controle
+      qualite:
+        description: Render quality (draft while iterating, looks, delivery for the final file)
+        type: choice
+        options: [looks, draft, delivery]
+        default: looks
+      request_id:
+        description: Free label added to the run name, to find this run from the API
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  HYPERFRAMES_NO_TELEMETRY: "1"
+  DO_NOT_TRACK: "1"
+  HYPERFRAMES_NO_UPDATE_CHECK: "1"
+  HYPERFRAMES_SKIP_SKILLS: "1"
+  HYPERFRAMES_NO_AUTO_INSTALL: "1"
+  # A private-repo runner has 7.8 GB: under 8 GB HyperFrames falls back to screenshot capture on one
+  # worker ("low-memory profile"), the slow path. Our films fit; keep the fast path.
+  PRODUCER_LOW_MEMORY_MODE: "false"
+  FFMPEG_REPO: FFmpeg-Builds/FFmpeg-Builds
+  FFMPEG_TAG: autobuild-2026-02-28-12-59
+  FFMPEG_FILE: ffmpeg-n8.0.1-66-g27b8d1a017-linux64-gpl-8.0.tar.xz
+  FFMPEG_SHA256: 26d2ecd0cefba99f9d1ea92252a3a4f743a58df4c1c3cf9f8bbaaa40b1fca5b0
+  # Cut-outs: BiRefNet general lite (MIT), ONNX export from rembg (MIT). Same pins as render.yml.
+  CUTOUT_MODEL_URL: https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-general-bb_swin_v1_tiny-epoch_232.onnx
+  CUTOUT_MODEL_SHA256: 5600024376f572a557870a5eb0afb1e5961636bef4e1e22132025467d0f03333
+  NOM: ${{ inputs.projet }}
+  MODE: ${{ inputs.mode }}
+  QUALITE: ${{ inputs.qualite }}
+
+jobs:
+  montage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    outputs:
+      artefact: ${{ steps.envoi.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Find the project
+        run: |
+          set -euo pipefail
+          [[ "$NOM" =~ ^[a-z0-9][a-z0-9-]{0,60}$ ]] || { echo "::error::FAILED: project name: lower-case letters, digits and dashes only"; exit 1; }
+          [ -f "montage/projets/$NOM/montage.json" ] || { echo "::error::FAILED: no montage/projets/$NOM/montage.json"; exit 1; }
+          echo "PROJET=montage/projets/$NOM" >> "$GITHUB_ENV"
+          echo "SORTIE=$GITHUB_WORKSPACE/out" >> "$GITHUB_ENV"
+          echo "HF=$GITHUB_WORKSPACE/montage/node_modules/.bin/hyperframes" >> "$GITHUB_ENV"
+          mkdir -p "$GITHUB_WORKSPACE/out"
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: montage/package-lock.json
+
+      - name: Restore FFmpeg
+        id: ffmpeg-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/ffmpeg-bin
+          key: ffmpeg-${{ env.FFMPEG_SHA256 }}
+
+      - name: Download FFmpeg
+        if: steps.ffmpeg-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/$FFMPEG_FILE"
+          for attempt in 1 2 3; do
+            id="$(gh api "repos/$FFMPEG_REPO/releases/tags/$FFMPEG_TAG" --jq ".assets[] | select(.name == \"$FFMPEG_FILE\") | .id")" \
+              && gh api -H "Accept: application/octet-stream" "repos/$FFMPEG_REPO/releases/assets/$id" > "$archive" \
+              && sha256sum -c --quiet <<<"$FFMPEG_SHA256  $archive" && break
+            [ "$attempt" = 3 ] && { echo "::error::FAILED: FFmpeg download failed 3 times"; exit 1; }
+            sleep $((attempt * 5))
+          done
+          mkdir -p "$RUNNER_TEMP/ffmpeg-bin"
+          tar -xJf "$archive" -C "$RUNNER_TEMP/ffmpeg-bin" --strip-components=2 --wildcards '*/bin/ffmpeg' '*/bin/ffprobe'
+
+      - name: Put FFmpeg on the PATH
+        run: echo "$RUNNER_TEMP/ffmpeg-bin" >> "$GITHUB_PATH"
+
+      - name: Restore the Python tools
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ${{ runner.temp }}/montage-venv
+            ~/.cache/huggingface
+          key: montage-venv-${{ (inputs.mode == 'mots' || inputs.mode == 'voix' || inputs.mode == 'cadence') && 'mots' || 'son' }}-${{ runner.os }}-${{ hashFiles('montage/outils/requirements-*.txt') }}
+
+      # The sound effects are earshot bank takes the project carries in its own assets/ (the skill's
+      # scripts/place_effets.py copies them there): nothing to synthesise here.
+      - name: The project's files
+        id: fichiers
+        run: |
+          set -euo pipefail
+          v="$RUNNER_TEMP/montage-venv"
+          besoin="montage/outils/requirements-son.txt"
+          case "$MODE" in mots|voix|cadence) besoin="montage/outils/requirements-mots.txt" ;; esac
+          if [ ! -x "$v/bin/python" ]; then
+            python3 -m venv "$v"
+            "$v/bin/pip" install --quiet --disable-pip-version-check -r "$besoin"
+          fi
+          node montage/outils/assets.mjs "$PROJET"
+          # What the cut-outs are made from: the request, each source photo, the tool and the model.
+          if [ -f out/cutouts.json ]; then
+            photos=$(python3 -c "import json; print('\n'.join(sorted({p['from'] for p in json.load(open('out/cutouts.json'))})))")
+            empreinte=$( (cat out/cutouts.json scripts/detourer.py; echo "$photos" | xargs cat; echo "$CUTOUT_MODEL_SHA256") | sha256sum | cut -c1-32)
+            echo "empreinte=$empreinte" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Scene lengths, exact length, variety against the last films of the same genre, the effects' peaks
+      # (read in their files) and, for a product film, a text that says no characteristic (the voice mode
+      # stops here, before the voice call). In every mode: the voice run already hands the editor the past
+      # films' signatures, before the storyboard.
+      - name: Shape and variety
+        run: python3 montage/outils/structure.py "$PROJET" "$SORTIE" "$MODE"
+
+      # ---- cut-outs and their plates, only for a project that asks ("detourages", "plaques" in montage.json);
+      #      out/derives/<cut-out>.jpg shows each one over dark and light grounds, with its plate ----
+      - name: Restore the cut-outs already made from the same photos
+        id: detourages
+        if: steps.fichiers.outputs.detourage == 'true' && (inputs.mode == 'controle' || inputs.mode == 'rendu')
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/detourages-faits
+          key: detourages-faits-${{ steps.fichiers.outputs.empreinte }}
+
+      - name: Put those cut-outs back
+        if: steps.detourages.outputs.cache-hit == 'true'
+        run: |
+          set -euo pipefail
+          cp -r "$RUNNER_TEMP/detourages-faits/." .
+          rm -f out/cutouts.json
+          ls out/derives | head -20
+
+      - name: Restore the cut-out model
+        if: steps.fichiers.outputs.detourage == 'true' && steps.detourages.outputs.cache-hit != 'true' && (inputs.mode == 'controle' || inputs.mode == 'rendu')
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/detourage
+          key: detourage-${{ env.CUTOUT_MODEL_SHA256 }}-${{ hashFiles('scripts/detourer-requirements.txt') }}
+
+      - name: Cut out the subjects
+        if: steps.fichiers.outputs.detourage == 'true' && steps.detourages.outputs.cache-hit != 'true' && (inputs.mode == 'controle' || inputs.mode == 'rendu')
+        run: |
+          set -euo pipefail
+          d="$RUNNER_TEMP/detourage"
+          # BiRefNet takes several GB per photo: spare memory, and one process per photo (scripts/detourer.py).
+          sudo fallocate -l 6G /mnt/swap-detourage && sudo chmod 600 /mnt/swap-detourage             && sudo mkswap -q /mnt/swap-detourage && sudo swapon /mnt/swap-detourage || true
+          if [ ! -x "$d/venv/bin/python" ]; then
+            python3 -m venv "$d/venv"
+            "$d/venv/bin/pip" install --quiet --disable-pip-version-check -r scripts/detourer-requirements.txt
+          fi
+          [ -f "$d/model.onnx" ] || curl -fsSL --retry 3 -o "$d/model.onnx" "$CUTOUT_MODEL_URL"
+          sha256sum -c --quiet <<<"$CUTOUT_MODEL_SHA256  $d/model.onnx"
+          "$d/venv/bin/python" scripts/detourer.py "$d/model.onnx"
+          # Keep what was made, at its own path, for the next run on the same photos.
+          faits="$RUNNER_TEMP/detourages-faits"
+          mkdir -p "$faits/out"
+          python3 -c "import json; print('\n'.join(x for p in json.load(open('out/cutouts.json')) for x in (p['to'], p.get('plate')) if x))" \
+            | while read -r chemin; do mkdir -p "$faits/$(dirname "$chemin")"; cp "$chemin" "$faits/$chemin"; done
+          cp -r out/derives "$faits/out/"
+          rm -f out/cutouts.json
+
+      # ---- voix: the text said by the manifest's voice (one call), given one even pace, then timed ----
+      - name: Say the text
+        if: inputs.mode == 'voix'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          set -euo pipefail
+          py="$RUNNER_TEMP/montage-venv/bin/python"
+          "$py" montage/outils/voix.py "$PROJET" "$SORTIE"
+          "$py" montage/outils/mots.py "$PROJET" "$SORTIE/brut" "$SORTIE/voix-brute.wav"
+          "$py" montage/outils/cadence.py "$PROJET" "$SORTIE"
+          "$py" montage/outils/mots.py "$PROJET" "$SORTIE" "$SORTIE/voix.mp3"
+
+      # ---- cadence: a raw take kept in the project (assets/voix-brute.*), evened again without a new voice call ----
+      - name: Even the pace of a kept take
+        if: inputs.mode == 'cadence'
+        run: |
+          set -euo pipefail
+          py="$RUNNER_TEMP/montage-venv/bin/python"
+          brut="$(ls "$PROJET"/assets/voix-brute.* | head -1)"
+          "$py" montage/outils/mots.py "$PROJET" "$SORTIE/brut" "$brut"
+          "$py" montage/outils/cadence.py "$PROJET" "$SORTIE" "$brut"
+          "$py" montage/outils/mots.py "$PROJET" "$SORTIE" "$SORTIE/voix.mp3"
+
+      # ---- mots: a take already in the project, word by word ----
+      - name: Time the words of the voice
+        if: inputs.mode == 'mots'
+        run: |
+          "$RUNNER_TEMP/montage-venv/bin/python" montage/outils/mots.py "$PROJET" "$SORTIE"
+
+      # ---- controle and rendu ----
+      - name: Install HyperFrames
+        if: (inputs.mode == 'controle' || inputs.mode == 'rendu')
+        working-directory: montage
+        run: npm ci --no-audit --no-fund
+
+      - name: Restore HyperFrames' Chrome and fonts
+        if: (inputs.mode == 'controle' || inputs.mode == 'rendu')
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/hyperframes
+          key: montage-hyperframes-${{ runner.os }}-${{ hashFiles('montage/package-lock.json') }}
+
+      - name: Check the film and draw the review sheets
+        if: (inputs.mode == 'controle' || inputs.mode == 'rendu')
+        run: |
+          # No -e (GitHub's default): a check that finds errors exits non-zero, and the sheets must still be drawn.
+          set +e -uo pipefail
+          "$HF" browser ensure > /dev/null
+          cd "$PROJET"
+          if [ "$MODE" = controle ]; then
+            "$HF" check --json --snapshots > "$SORTIE/controle.json" 2> "$SORTIE/controle.log"
+            echo "check exit $?" | tee -a "$SORTIE/controle.log"
+            "$HF" snapshot --review --json > "$SORTIE/planches.json" 2>> "$SORTIE/controle.log"
+            echo "review exit $?" | tee -a "$SORTIE/controle.log"
+            # Every picture the two commands wrote, as JPEG (a PNG sheet weighs 10 times more).
+            mkdir -p "$SORTIE/planches"
+            # check --snapshots: overview frames and one crop per finding. snapshot --review: three sheets
+            # (review-beats, review-seam-NN, review-phone) and the frames they are made of.
+            n=0
+            for dossier in $(ls -dtr .hyperframes/artifacts/snapshots/*/ 2>/dev/null); do
+              n=$((n + 1))
+              for f in "$dossier"*.png "$dossier"*.jpg; do
+                [ -f "$f" ] || continue
+                nom="$(basename "${f%.*}")"
+                case "$f" in
+                  *.jpg) cp "$f" "$SORTIE/planches/$nom.jpg" ;;
+                  *) ffmpeg -nostdin -hide_banner -loglevel error -y -i "$f" -q:v 4 "$SORTIE/planches/$nom.jpg" || true ;;
+                esac
+              done
+            done
+            ls "$SORTIE/planches" | head -80
+            # The hook, before any render (the engine has no range render): every frame of the first 2 s as
+            # stills, and 8 pairs of frames for the film's floor -> accroche.json says pass or fail.
+            a="$RUNNER_TEMP/accroche"
+            py="$RUNNER_TEMP/montage-venv/bin/python"
+            outil="$GITHUB_WORKSPACE/montage/outils/accroche.py"
+            rm -rf "$a" && mkdir -p "$a"
+            debut=$(date +%s)
+            "$HF" snapshot --at "$("$py" "$outil" temps .)" --no-end --output "$a/images" > "$a/images.log" 2>&1
+            echo "hook stills exit $?" | tee -a "$SORTIE/controle.log"
+            tail -3 "$a/images.log" >> "$SORTIE/controle.log"
+            "$py" "$outil" mesure . "$a/images" "$SORTIE"
+            echo "early hook seconds $(( $(date +%s) - debut ))" | tee -a "$SORTIE/controle.log"
+          else
+            # A render: the check alone (its errors stop the run below); the film's own contact sheets come after it.
+            "$HF" check --json > "$SORTIE/controle.json" 2> "$SORTIE/controle.log"
+            echo "check exit $?" | tee -a "$SORTIE/controle.log"
+          fi
+          node "$GITHUB_WORKSPACE/montage/outils/bilan.mjs" "$SORTIE/controle.json"
+
+      - name: Render
+        id: rendu
+        if: inputs.mode == 'rendu'
+        run: |
+          set -euo pipefail
+          cd "$PROJET"
+          debut=$(date +%s)
+          # Each log line starts with the clock ($EPOCHREALTIME, no fork): the capture progress lines
+          # (@hf-progress … "done": frame) then give the render cost of every stretch of the film.
+          "$HF" render --quality "$QUALITE" -o "$SORTIE/$NOM.mp4" 2>&1 \
+            | while IFS= read -r ligne; do printf '%s %s\n' "$EPOCHREALTIME" "$ligne"; done \
+            | tee "$SORTIE/rendu.log" | tail -40
+          echo "render seconds $(( $(date +%s) - debut ))" | tee -a "$SORTIE/rendu.log"
+
+      # One gain to -14 LUFS, true peak -1.5 dBTP or lower (a 4x limiter only where the gain would pass it).
+      - name: Master the sound
+        if: inputs.mode == 'rendu'
+        run: python3 montage/outils/master.py "$SORTIE/$NOM.mp4" | tee "$SORTIE/master.json"
+
+      - name: Measure the video
+        if: inputs.mode == 'rendu'
+        run: '"$RUNNER_TEMP/montage-venv/bin/python" montage/outils/rapport.py "$PROJET" "$SORTIE/$NOM.mp4" "$SORTIE"'
+
+      # The master weighs 10 MB a second with film grain: too heavy to fetch through the proxy (250 MB) and to
+      # post. The sharing copy (same picture size, H.264 at constant quality 18, no bitrate cap) is the file
+      # that goes out. The owner, 2026-11-13: « jamais compressé […] la meilleure qualité possible, toujours »:
+      # a faster, lighter setting tried the same day (veryfast, 20, capped) was taken back for that reason.
+      # The phone copy (about 6 Mbit/s) is the file to watch on a phone or send in a message; it was encoded
+      # on the owner's PC in the fourth test (3 min 38 s), now here, beside the sharing copy.
+      # The defects heard in delivered films that need no model (earshot's take audit of every effect, the
+      # 4-8 kHz share of the film against earshot's references): the venv from the cache, no model loaded.
+      - name: Restore earshot
+        if: inputs.mode == 'rendu'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/ecoute-venv
+          key: ecoute-venv-${{ runner.os }}-${{ hashFiles('montage/outils/ecoute-requirements.txt') }}
+
+      - name: Gates heard in films
+        if: inputs.mode == 'rendu' && !cancelled() && steps.rendu.outcome == 'success'
+        run: |
+          set -euo pipefail
+          v="$RUNNER_TEMP/ecoute-venv"
+          if [ ! -x "$v/bin/earshot" ]; then
+            python3 -m venv "$v"
+            "$v/bin/pip" install --quiet --disable-pip-version-check -r montage/outils/ecoute-requirements.txt
+          fi
+          "$v/bin/python" montage/outils/ecoute.py "$SORTIE/$NOM.mp4" "$SORTIE" --projet "$PROJET" --portes
+
+      # The copies run even when a measure failed: the listening job hears them.
+      - name: Copies for sharing and for a phone
+        if: inputs.mode == 'rendu' && !cancelled() && steps.rendu.outcome == 'success'
+        run: |
+          set -euo pipefail
+          ffmpeg -nostdin -hide_banner -loglevel error -y -i "$SORTIE/$NOM.mp4" -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart "$SORTIE/$NOM-diffusion.mp4" &
+          diffusion=$!
+          ffmpeg -nostdin -hide_banner -loglevel error -y -i "$SORTIE/$NOM.mp4" -c:v libx264 -preset veryfast -b:v 6M -maxrate 6M -bufsize 12M -pix_fmt yuv420p -c:a aac -b:a 160k -movflags +faststart "$SORTIE/$NOM-telephone.mp4" &
+          telephone=$!
+          wait "$diffusion"
+          wait "$telephone"
+          ls -la "$SORTIE"/*.mp4
+
+      - name: Upload
+        id: envoi
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ inputs.mode }}-${{ inputs.projet }}
+          path: |
+            out/
+            !out/${{ inputs.projet }}.mp4
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: warn
+
+      - name: Upload the master
+        if: always() && inputs.mode == 'rendu'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: master-${{ inputs.projet }}
+          path: out/${{ inputs.projet }}.mp4
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: warn
+
+  # Listening (earshot's models: timeline, sheet, critique, descriptions) in its own job, after the render
+  # job: the render's artifact is downloadable as soon as that job ends, and the editor reads its boards
+  # while this one listens; its artifact ecoute-<projet> lands a few minutes later.
+  ecoute:
+    needs: montage
+    if: ${{ !cancelled() && inputs.mode == 'rendu' && needs.montage.outputs.artefact != '' }}
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/ecoute.yml
+    with:
+      artifact_id: ${{ needs.montage.outputs.artefact }}
+      projet: ${{ inputs.projet }}

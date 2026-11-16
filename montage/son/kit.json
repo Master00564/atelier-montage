@@ -1,0 +1,33 @@
+{
+ "kit": 1,
+ "name": "atelier",
+ "sr": 48000,
+ "note": "The workshop's effects, one earshot bank sound per role of the skill's effects map (references/effets.md). Rendered by ecoute.yml (kit: true) with earshot 0.4.1 (MIT): takes + kit.lock.json (onset, peak, end, l50_lufs of every take), copied into the skill (sons/) and from there into each project's assets by scripts/place_effets.py. Chosen 2026-11-14 by earshot's own measures against the 15 code-made sounds they replace (run 43595702914, sons.txt): whoosh, pop, swell and riser win on match and audit, the pops and the impact they replace clicked (edge, comb ring, cut tail). Mix keys from earshot's launch preset (levels over the music bed, placement against the cue).",
+ "roles": {
+  "tap": {"sound": "tap/finger", "takes": 3, "align": "onset", "bed_db": 3.0, "offset_ms": -60, "min_gap_ms": 115, "level_db": -10.0,
+          "note": "a light touch (launch land.light)"},
+  "click": {"sound": "fit/snap/switch_flip", "takes": 3, "align": "onset", "bed_db": 6.5, "offset_ms": -11, "min_gap_ms": 85, "level_db": -4.0,
+            "note": "a switch or a latch: fitted from a CC0 recording of a light switch (Switch Flip #1, IanStarGem, Freesound 278205)"},
+  "pop": {"sound": "fit/pop/mouth_plop", "takes": 4, "align": "onset", "bed_db": 8.5, "offset_ms": 4, "min_gap_ms": 114, "level_db": -8.0,
+          "note": "a word or a mark lands: match z +3.86 for a soft natural pop, audit clean (our pops had 2-3 warnings)"},
+  "knock": {"sound": "knock/wood", "takes": 3, "align": "onset", "bed_db": 8.0, "offset_ms": -40, "min_gap_ms": 100, "level_db": -1.5,
+            "note": "a solid object set down (launch tock)"},
+  "whoosh": {"sound": "whoosh_fast/tight", "takes": 3, "align": "peak", "bed_db": 9.0, "offset_ms": 37, "level_db": -5.5,
+             "note": "a fast move, its apex on the velocity peak: match z +5.03, p_real 0.94 (ours 3.53-4.39, 0.09-0.11)"},
+  "swish": {"sound": "swish/soft", "takes": 3, "align": "peak", "bed_db": 6.0, "offset_ms": 20, "level_db": -8.0,
+            "note": "a soft pass: a light sweep, a line; p_real 0.78"},
+  "riser": {"sound": "riser/dark", "takes": 2, "align": "peak", "bed_db": 8.0, "offset_ms": -23, "level_db": -3.5,
+            "note": "builds to the hit and stops before it; audit clean (ours climbed 10 semitones: a cheap synth whip)"},
+  "hit": {"sound": "pro_impact/short", "takes": 2, "align": "onset", "bed_db": 7.5, "offset_ms": 0, "level_db": -6.0,
+          "note": "the one landing; a short light accent for a product film (crisp preset), single attack"},
+  "sub": {"sound": "cut_hit/sub", "takes": 2, "align": "onset", "bed_db": 6.0, "offset_ms": 0, "level_db": -9.0,
+          "note": "optional low layer under the one reveal, when earshot reads the mix's bottom thin"},
+  "swell": {"sound": "reverse_swell/dark", "takes": 2, "align": "peak", "bed_db": 9.5, "offset_ms": 42, "level_db": -5.5,
+            "note": "rises through a cut and peaks just after it: match z +2.89 (ours 1.47)"},
+  "shutter": {"sound": "shutter/dslr", "takes": 2, "align": "onset", "bed_db": 4.0, "offset_ms": 9, "min_gap_ms": 66, "level_db": -7.0,
+              "note": "a snap zoom or a whip cut"},
+  "mallet": {"sound": "mallet/glock", "pitches": ["C5", "D5", "E5", "G5", "A5"], "takes": 1, "align": "onset", "bed_db": 7.5,
+             "offset_ms": -20, "min_gap_ms": 110, "width": 0.6, "level_db": -8.5,
+             "note": "a tuned tap per list item, rising in pitch"}
+ }
+}

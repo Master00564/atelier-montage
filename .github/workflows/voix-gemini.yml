@@ -1,0 +1,56 @@
+name: voix-gemini
+run-name: "voix-gemini ${{ inputs.request_id }}"
+
+# Reads the test narration (voix/textes.py) with Google's Gemini text-to-speech, free tier of the Gemini API.
+# No model to install: a few seconds per sample, about one minute of runner in all.
+# workflow_dispatch only: it never runs by itself. The key is the repository secret GEMINI_API_KEY.
+on:
+  workflow_dispatch:
+    inputs:
+      voix:
+        description: Voices, separated by spaces (empty = the six of voix/gemini.py)
+        required: false
+        default: ""
+      prises:
+        description: Takes, separated by spaces (chiffres lettres)
+        required: false
+        default: "chiffres lettres"
+      request_id:
+        description: Free label added to the run name, to find this run from the API
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  voix:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VOIX: ${{ inputs.voix }}
+          PRISES: ${{ inputs.prises }}
+          PYTHONIOENCODING: utf-8
+          PIP_DISABLE_PIP_VERSION_CHECK: "1"
+        run: |
+          python -m pip install -q imageio-ffmpeg
+          # shellcheck disable=SC2086
+          python voix/gemini.py sorties/gemini ${VOIX:+--voix $VOIX} --prises $PRISES
+
+      - name: Upload the samples
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: voix-gemini
+          path: sorties/gemini/
+          retention-days: 3
+          if-no-files-found: warn

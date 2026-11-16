@@ -1,0 +1,8 @@
+{
+  "name": "atelier-video-hyperframes",
+  "private": true,
+  "description": "HyperFrames projects rendered by the render workflow. One folder per composition.",
+  "dependencies": {
+    "hyperframes": "0.9.20"
+  }
+}

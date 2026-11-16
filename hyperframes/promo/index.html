@@ -1,0 +1,164 @@
+<!doctype html>
+<!-- Vertical product promo. Every word, colour and media file comes from the job's variables:
+     nothing here belongs to a shop. Same variable names as remotion/src/Promo.tsx. -->
+<html
+  lang="fr"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"eyebrow","type":"string","label":"Eyebrow","description":"Short line above the title, such as the product type.","default":"Eyebrow"},
+    {"id":"title","type":"string","label":"Title","description":"Product or campaign name, the largest text. One line, about 12 characters at most.","default":"Title"},
+    {"id":"subtitle","type":"string","label":"Subtitle","description":"One factual line under the title.","default":"Subtitle"},
+    {"id":"image","type":"image","label":"Product photo","description":"Square photo of at least 1080 px, staged under assets/job/.","default":"assets/job/photo.jpg"},
+    {"id":"music","type":"string","label":"Music","description":"Audio bed staged under assets/job/.","default":"assets/job/music.m4a"},
+    {"id":"background","type":"color","label":"Background","default":"#111111"},
+    {"id":"ink","type":"color","label":"Text colour","default":"#ffffff"},
+    {"id":"accent","type":"color","label":"Accent colour","default":"#d4d4d4"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--background);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--background);
+      }
+      #photo-clip {
+        position: absolute;
+        left: 0;
+        top: 600px;
+        width: 1080px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #photo-frame {
+        position: absolute;
+        inset: 0;
+        clip-path: inset(8% 0%);
+      }
+      #photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      #photo-fade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          var(--background) 0%,
+          transparent 16%,
+          transparent 78%,
+          var(--background) 100%
+        );
+      }
+      #text-clip {
+        position: absolute;
+        left: 84px;
+        right: 84px;
+        top: 236px;
+      }
+      #eyebrow {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 18px;
+      }
+      .mask {
+        overflow: hidden;
+        padding-bottom: 0.12em;
+      }
+      #title {
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        font-size: 128px;
+        line-height: 1.05;
+        color: var(--ink);
+      }
+      #rule {
+        width: 160px;
+        height: 3px;
+        margin: 22px 0 24px;
+        background: var(--accent);
+        transform-origin: left center;
+      }
+      #subtitle {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1.2;
+        color: var(--ink);
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="promo"
+      data-start="0"
+      data-duration="5"
+      data-fps="30"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="photo-clip" class="clip" data-start="0" data-duration="5" data-track-index="0">
+        <div id="photo-frame">
+          <img id="photo" data-var-src="image" src="assets/job/photo.jpg" alt="" />
+        </div>
+        <div id="photo-fade"></div>
+      </div>
+
+      <div id="text-clip" class="clip" data-start="0" data-duration="5" data-track-index="1">
+        <div id="eyebrow" data-var-text="eyebrow">Eyebrow</div>
+        <div class="mask"><div id="title" data-var-text="title">Title</div></div>
+        <div id="rule"></div>
+        <div class="mask"><div id="subtitle" data-var-text="subtitle">Subtitle</div></div>
+      </div>
+
+      <audio
+        id="music"
+        data-start="0"
+        data-duration="5"
+        data-track-index="2"
+        data-volume="0.9"
+        data-fade-in="0.4"
+        data-fade-out="1.2"
+        data-var-src="music"
+        src="assets/job/music.m4a"
+      ></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      // Photo opens from an 8 % inset (never a black first frame) and zooms at constant speed.
+      tl.to("#photo-frame", { clipPath: "inset(0% 0%)", duration: 0.8, ease: "expo.out" }, 0);
+      tl.fromTo("#photo", { scale: 1 }, { scale: 1.08, duration: 5, ease: "none" }, 0);
+      tl.from("#eyebrow", { opacity: 0, y: 30, duration: 0.6, ease: "power3.out" }, 0.13);
+      tl.from("#title", { yPercent: 110, duration: 0.9, ease: "expo.out" }, 0.27);
+      tl.from("#rule", { scaleX: 0, duration: 0.8, ease: "expo.out" }, 0.6);
+      tl.from("#subtitle", { yPercent: 110, duration: 0.9, ease: "expo.out" }, 0.73);
+      window.__timelines["promo"] = tl;
+    </script>
+  </body>
+</html>

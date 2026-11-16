@@ -1,0 +1,69 @@
+name: voix
+run-name: "voix ${{ inputs.groupes }} ${{ inputs.request_id }}"
+
+# TTS lab: reads the test narration of voix/textes.py with free French voices and
+# measures each sample (voix/mesurer.py). One job per engine group, in parallel.
+# workflow_dispatch only: it never runs by itself.
+on:
+  workflow_dispatch:
+    inputs:
+      groupes:
+        description: JSON list of groups (leger, piper-mls, pocket, melo, parler, qwen3-design, qwen3-preset, voxcpm2, kyutai, kyutai-cml, bark) or theme narrations ("theme:jobs/<job>.json")
+        required: true
+        default: '["leger"]'
+      request_id:
+        description: Free label added to the run name, to find this run from the API
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  HF_HUB_DISABLE_TELEMETRY: "1"
+  HF_HUB_DISABLE_PROGRESS_BARS: "1"
+  DO_NOT_TRACK: "1"
+  GRADIO_ANALYTICS_ENABLED: "False"
+  TOKENIZERS_PARALLELISM: "false"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PYTHONUNBUFFERED: "1"
+  PYTHONIOENCODING: utf-8
+
+jobs:
+  voix:
+    strategy:
+      fail-fast: false
+      matrix:
+        groupe: ${{ fromJSON(inputs.groupes) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.groupe == 'melo' && '3.10' || '3.12' }}
+
+      - name: Name the outputs
+        id: nom
+        env:
+          GROUPE: ${{ matrix.groupe }}
+        run: echo "nom=$(printf '%s' "$GROUPE" | tr -c 'A-Za-z0-9._-' '-')" >> "$GITHUB_OUTPUT"
+
+      - name: Generate and measure
+        env:
+          GROUPE: ${{ matrix.groupe }}
+          NOM: ${{ steps.nom.outputs.nom }}
+        run: |
+          set -o pipefail
+          mkdir -p "sorties/$NOM"
+          bash voix/lancer.sh "$GROUPE" 2>&1 | tee "sorties/$NOM/journal.log"
+
+      - name: Upload the samples and measures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: voix-${{ steps.nom.outputs.nom }}
+          path: sorties/${{ steps.nom.outputs.nom }}/
+          retention-days: 3
+          if-no-files-found: warn

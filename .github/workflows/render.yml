@@ -1,0 +1,206 @@
+name: render
+run-name: "render ${{ inputs.job || 'inline job' }} ${{ inputs.request_id }}"
+
+# One video per run. Trigger it from the API (see AGENTS.md):
+#   POST /repos/{owner}/{repo}/actions/workflows/render.yml/dispatches
+#   {"ref":"main","inputs":{"job":"jobs/test-remotion.json","request_id":"any-label"}}
+# The MP4 and its check report come back as an artifact named after the job's output.
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        description: Job file in this repo, e.g. jobs/test-remotion.json (leave empty when job_json is set)
+        required: false
+        default: ""
+      job_json:
+        description: The job itself as JSON, instead of a file
+        required: false
+        default: ""
+      request_id:
+        description: Free label added to the run name, to find this run from the API
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  HYPERFRAMES_NO_TELEMETRY: "1"
+  DO_NOT_TRACK: "1"
+  HYPERFRAMES_NO_UPDATE_CHECK: "1"
+  HYPERFRAMES_SKIP_SKILLS: "1"
+  HYPERFRAMES_NO_AUTO_INSTALL: "1"
+  # Static FFmpeg 8.0.1 from FFmpeg-Builds, the build HyperFrames pins in its own CI.
+  FFMPEG_REPO: FFmpeg-Builds/FFmpeg-Builds
+  FFMPEG_TAG: autobuild-2026-02-28-12-59
+  FFMPEG_FILE: ffmpeg-n8.0.1-66-g27b8d1a017-linux64-gpl-8.0.tar.xz
+  FFMPEG_SHA256: 26d2ecd0cefba99f9d1ea92252a3a4f743a58df4c1c3cf9f8bbaaa40b1fca5b0
+  # Product cut-outs (jobs with "cutouts"): BiRefNet general lite (MIT), ONNX export from rembg (MIT).
+  CUTOUT_MODEL_URL: https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-general-bb_swin_v1_tiny-epoch_232.onnx
+  CUTOUT_MODEL_SHA256: 5600024376f572a557870a5eb0afb1e5961636bef4e1e22132025467d0f03333
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Start the clock
+        run: echo "JOB_STARTED_AT=$(date +%s)" >> "$GITHUB_ENV"
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Test the runner scripts, then read the job and stage its files
+        id: job
+        env:
+          JOB_FILE: ${{ inputs.job }}
+          JOB_JSON: ${{ inputs.job_json }}
+        run: |
+          node --test scripts/*.test.mjs
+          node scripts/render.mjs prepare
+
+      # ---- Cut-outs, only for a job that asks for one ----
+      - name: Restore the cut-out model
+        if: steps.job.outputs.cutout == 'true'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/detourage
+          key: detourage-${{ env.CUTOUT_MODEL_SHA256 }}-${{ hashFiles('scripts/detourer-requirements.txt') }}
+
+      - name: Cut out the product
+        if: steps.job.outputs.cutout == 'true'
+        run: |
+          set -euo pipefail
+          d="$RUNNER_TEMP/detourage"
+          # Spare memory: BiRefNet takes several GB per photo (each photo runs in its own process).
+          sudo fallocate -l 6G /mnt/swap-detourage && sudo chmod 600 /mnt/swap-detourage             && sudo mkswap -q /mnt/swap-detourage && sudo swapon /mnt/swap-detourage || true
+          if [ ! -x "$d/venv/bin/python" ]; then
+            python3 -m venv "$d/venv"
+            "$d/venv/bin/pip" install --quiet --disable-pip-version-check -r scripts/detourer-requirements.txt
+          fi
+          [ -f "$d/model.onnx" ] || curl -fsSL --retry 3 -o "$d/model.onnx" "$CUTOUT_MODEL_URL"
+          sha256sum -c --quiet <<<"$CUTOUT_MODEL_SHA256  $d/model.onnx"
+          "$d/venv/bin/python" scripts/detourer.py "$d/model.onnx"
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ${{ steps.job.outputs.engine }}/package-lock.json
+
+      - name: Restore FFmpeg
+        id: ffmpeg-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/ffmpeg-bin
+          key: ffmpeg-${{ env.FFMPEG_SHA256 }}
+
+      - name: Download FFmpeg
+        if: steps.ffmpeg-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/$FFMPEG_FILE"
+          # The API asset route, not github.com/releases/download (which answers 504 under load).
+          for attempt in 1 2 3; do
+            id="$(gh api "repos/$FFMPEG_REPO/releases/tags/$FFMPEG_TAG" --jq ".assets[] | select(.name == \"$FFMPEG_FILE\") | .id")" \
+              && gh api -H "Accept: application/octet-stream" "repos/$FFMPEG_REPO/releases/assets/$id" > "$archive" \
+              && sha256sum -c --quiet <<<"$FFMPEG_SHA256  $archive" && break
+            [ "$attempt" = 3 ] && { echo "FFmpeg download failed 3 times" >&2; exit 1; }
+            sleep $((attempt * 5))
+          done
+          mkdir -p "$RUNNER_TEMP/ffmpeg-bin"
+          tar -xJf "$archive" -C "$RUNNER_TEMP/ffmpeg-bin" --strip-components=2 --wildcards '*/bin/ffmpeg' '*/bin/ffprobe'
+
+      - name: Put FFmpeg on the PATH
+        run: |
+          echo "$RUNNER_TEMP/ffmpeg-bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/ffmpeg-bin/ffmpeg" -version | head -1
+
+      # ---- Theme video (job with "theme"): voice cut to the loop, music, effects, timeline ----
+      - name: Restore the theme tools (Python packages, Whisper model)
+        if: steps.job.outputs.theme == 'true'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ${{ runner.temp }}/theme-venv
+            ~/.cache/huggingface
+          key: theme-${{ runner.os }}-${{ hashFiles('scripts/theme-requirements.txt') }}
+
+      - name: Build the theme video's soundtrack and timeline
+        if: steps.job.outputs.theme == 'true'
+        run: |
+          set -euo pipefail
+          v="$RUNNER_TEMP/theme-venv"
+          if [ ! -x "$v/bin/python" ]; then
+            python3 -m venv "$v"
+            "$v/bin/pip" install --quiet --disable-pip-version-check -r scripts/theme-requirements.txt
+          fi
+          "$v/bin/python" scripts/theme.py
+
+      # ---- Remotion ----
+      - name: Install Remotion
+        if: steps.job.outputs.engine == 'remotion'
+        working-directory: remotion
+        run: npm ci --no-audit --no-fund
+
+      - name: Restore Remotion's Chrome
+        if: steps.job.outputs.engine == 'remotion'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: remotion/node_modules/.remotion
+          key: remotion-chrome-${{ runner.os }}-${{ hashFiles('remotion/package-lock.json') }}
+
+      - name: Prepare Remotion (Chrome, type check)
+        if: steps.job.outputs.engine == 'remotion'
+        working-directory: remotion
+        run: |
+          npx remotion browser ensure
+          npx tsc --noEmit
+
+      # ---- HyperFrames ----
+      - name: Install HyperFrames
+        if: steps.job.outputs.engine == 'hyperframes'
+        working-directory: hyperframes
+        run: npm ci --no-audit --no-fund
+
+      - name: Restore HyperFrames' Chrome and fonts
+        if: steps.job.outputs.engine == 'hyperframes'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/hyperframes
+          key: hyperframes-cache-${{ runner.os }}-${{ hashFiles('hyperframes/package-lock.json') }}
+
+      - name: Prepare HyperFrames (Chrome)
+        if: steps.job.outputs.engine == 'hyperframes'
+        working-directory: hyperframes
+        run: npx hyperframes browser ensure
+
+      # ---- Both ----
+      - name: Render
+        id: render
+        run: node scripts/render.mjs render
+
+      - name: Check the video
+        run: node scripts/render.mjs check
+
+      - name: Theme video gates (length, smoothness, loop join, loudness, words heard)
+        if: steps.job.outputs.theme == 'true'
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/theme-venv/bin/python" scripts/theme_controle.py
+
+      - name: Upload the video
+        if: always() && steps.render.outcome == 'success'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ steps.job.outputs.name }}
+          path: |
+            out/${{ steps.job.outputs.name }}.mp4
+            out/${{ steps.job.outputs.name }}.json
+            out/${{ steps.job.outputs.name }}-raccord.mp4
+            out/${{ steps.job.outputs.name }}-controle.json
+            out/theme.json
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: error

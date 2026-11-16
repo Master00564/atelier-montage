@@ -1,0 +1,10 @@
+node_modules/
+out/
+remotion/public/assets/job/
+hyperframes/*/assets/job/
+hyperframes/*/renders/
+.hyperframes/
+sorties/
+__pycache__/
+montage/son/sfx/
+montage/projets/*/out/

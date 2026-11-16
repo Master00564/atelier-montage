@@ -1,0 +1,18 @@
+{
+ "note": "Witness project: two tiny scenes, the voice (de-essed like every take, cadence.py) and one sound effect (an earshot bank whoosh in assets/). Proves the workflow (check, review sheets, render, measures) after any change of tool or engine version. Its first scene barely moves on purpose, so the frozen-picture limit is raised to 4 s here.",
+ "format": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30
+ },
+ "attendu": {
+  "secondes": [
+   5.9,
+   6.1
+  ],
+  "gel_max_s": 4,
+  "accroche_images": 0,
+  "blanc_max_s": 5
+ },
+ "_": "tool witness, not a film: two bare scenes and a voice, no music and no hook, so those two gates are set aside here"
+}
