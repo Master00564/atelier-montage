@@ -221,6 +221,19 @@ jobs:
         run: |
           "$RUNNER_TEMP/montage-venv/bin/python" montage/outils/mots.py "$PROJET" "$SORTIE"
 
+      # ---- intonation: after a new or re-timed take, sentence by sentence; it reports, never fails the run ----
+      - name: Measure the intonation
+        if: inputs.mode == 'voix' || inputs.mode == 'cadence' || inputs.mode == 'mots'
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          voix="$SORTIE/voix.mp3"
+          if [ -f "$voix" ]; then
+            "$RUNNER_TEMP/montage-venv/bin/python" montage/outils/intonation.py "$PROJET" "$SORTIE" "$voix"
+          else
+            "$RUNNER_TEMP/montage-venv/bin/python" montage/outils/intonation.py "$PROJET" "$SORTIE"
+          fi
+
       # ---- controle and rendu ----
       - name: Install HyperFrames
         if: (inputs.mode == 'controle' || inputs.mode == 'rendu')

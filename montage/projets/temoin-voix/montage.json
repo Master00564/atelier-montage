@@ -1,0 +1,17 @@
+{
+  "note": "Witness of the voix mode: two sentences, the second with two measures (the kind a generated voice hurries). Proves the chain text -> voice -> even pace at 1.2 -> word times.",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "voix": {
+    "fichier": "assets/voix.mp3",
+    "texte": "texte.txt",
+    "voix": "Algieba",
+    "vitesse": 1.2,
+    "style": "calm, warm French narrator of a short film about interior lighting, natural pace kept steady to the last word, Parisian French accent"
+  },
+  "assets": {},
+  "attendu": {}
+}
