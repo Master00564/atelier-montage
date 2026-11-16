@@ -12,7 +12,8 @@ folded back by 12 semitones before anything is measured.
 Per sentence, in semitones from the take's own median pitch:
   ecart_st   spread of the voiced pitch, 80th minus 20th percentile (how much the line moves)
   fin_st     last quarter of the voiced frames minus the middle half (> 0 = the end rises)
-Verdicts: "plate" (ecart under PLAT), "a_surveiller" (under SURVEILLER), "fin_pas_montante" (a line
+Verdicts: "peu_voisee" (a line of 0.8 s or more, under a quarter voiced: breathed or whispered),
+"plate" (ecart under PLAT), "a_surveiller" (under SURVEILLER), "fin_pas_montante" (a line
 that should end suspended, by its segment's "intonation": "montante" or by ending on « … » or « ? »,
 whose end does not rise by FIN_MONTANTE), "pas_assez_vive" (a segment marked "vive" under VIVE).
 The thresholds were set on five generated takes of 2026-11-13 to 16 (sentence spreads 2.6 to 12.4
@@ -74,10 +75,17 @@ def main():
         seg = index[premier] if premier < len(index) else None
         attendu = (segs[seg].get("intonation") if seg is not None else None) or (
             "montante" if re.search(r"(…|\.\.\.|\?)[»\")]?$", p["texte"]) else None)
+        trames = int(np.sum((t >= p["debut"]) & (t < p["fin"])))
         ligne = {"texte": p["texte"], "debut": p["debut"], "fin": p["fin"], "segment": seg, "attendu": attendu,
-                 "trames_voisees": int(len(s))}
+                 "trames_voisees": int(len(s)), "part_voisee": round(len(s) / trames, 2) if trames else 0.0}
         if len(s) < MIN_VOISE:
-            ligne["verdict"] = "trop_court"
+            # A line of 0.8 s or more with little voiced sound was breathed or whispered: say it, it is a delivery
+            # fault for a narrator (the « suspenseful » style of 2026-11-17 did exactly that on the hand-off line).
+            longue = p["fin"] - p["debut"] >= 0.8
+            ligne["verdict"] = "peu_voisee" if longue and ligne["part_voisee"] < 0.25 else "trop_court"
+            if len(s) >= 8:
+                n = len(s)
+                ligne["fin_st"] = round(float(np.median(s[n // 2:]) - np.median(s[:n // 2])), 1)
         else:
             n = len(s)
             ecart = float(np.percentile(s, 80) - np.percentile(s, 20))
