@@ -1,0 +1,29 @@
+{
+ "note": "Witness of voix.segments: two parts with two styles in one call; the second must end suspended.",
+ "format": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30
+ },
+ "voix": {
+  "fichier": "assets/voix.mp3",
+  "texte": "texte.txt",
+  "voix": "Algieba",
+  "vitesse": 1.2,
+  "style": "warm French narrator, Parisian accent",
+  "segments": [
+   {
+    "texte": "Ton lustre est SÛREMENT trop petit.",
+    "style": "punchy, a little provocative, French narrator",
+    "intonation": "vive"
+   },
+   {
+    "texte": "<short pause> Et c'est pour ça que…",
+    "style": "suspenseful, voice rising, sentence left unfinished",
+    "intonation": "montante"
+   }
+  ]
+ },
+ "assets": {},
+ "attendu": {}
+}
