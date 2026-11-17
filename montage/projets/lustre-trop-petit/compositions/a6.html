@@ -28,7 +28,7 @@
   </style>
   <div id="root" data-composition-id="a6" data-width="1080" data-height="1920">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a6-filtre" x="-10%" y="0" width="120%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur id="a6-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
-    <div id="a6-all" class="all clip" data-start="0" data-duration="1.8000">
+    <div id="a6-all" class="all clip" data-start="0" data-duration="2.3667">
       <div id="a6-cam" class="cam"><div class="papier"></div><div class="points"></div><div class="grain"></div>
         <div class="trait" style="left:0;top:420px;width:1080px;height:10px;background:#14110e"></div>
         <div class="abs" style="left:0;top:330px;width:1080px;height:90px;background:repeating-linear-gradient(45deg,rgba(77,70,61,.35) 0 3px,transparent 3px 16px)"></div>
@@ -44,13 +44,14 @@
       // a real door, folded flat under the ceiling: that is the light's width
       tl.fromTo("#a6-cam", { scale: 1.22 }, { scale: 1, duration: 0.4, ease: "expo.out" }, 0);
       tl.fromTo("#a6-all", { filter: "blur(10px)" }, { filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0);
-      tl.fromTo("#a6-cam", { scale: 1.0 }, { scale: 1.02, duration: 0.7, ease: "none", immediateRender: false }, 0.4);
-      tl.fromTo("#a6-pivot", { scaleY: 1, rotation: 0 }, { keyframes: [{ scaleY: 0.9, duration: 0.12 }, { scaleY: 1.06, duration: 0.12 }, { scaleY: 1, duration: 0.1 }], ease: "power2.out" }, 0.604);
-      tl.to("#a6-pivot", { scaleY: 0.14, duration: 0.45, ease: "power3.inOut" }, 1.054);
-      tl.fromTo("#a6-lum", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 1.454);
-      tl.fromTo("#a6-all", { x: 0 }, { x: -540, duration: 0.26, ease: "power3.in", immediateRender: false }, 0.84);
-      tl.fromTo("#a6-all", { x: -540 }, { x: -1080, duration: 0.6, ease: "expo.out", immediateRender: false }, 1.1);
-      tl.fromTo("#a6-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in", immediateRender: false }, 0.84);
+      tl.fromTo("#a6-cam", { scale: 1.0 }, { scale: 1.02, duration: 1.267, ease: "none", immediateRender: false }, 0.4);
+      tl.fromTo("#a6-pivot", { y: 1500 }, { y: 0, duration: 0.35, ease: "expo.out" }, 0.05);
+      tl.to("#a6-pivot", { keyframes: [{ scaleY: 0.9, duration: 0.1 }, { scaleY: 1.06, duration: 0.1 }, { scaleY: 1, duration: 0.08 }], ease: "power2.out" }, 0.631);
+      tl.to("#a6-pivot", { scaleY: 0.14, duration: 0.3, ease: "power3.inOut" }, 1.17);
+      tl.fromTo("#a6-lum", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.2)" }, 1.43);
+      tl.fromTo("#a6-all", { x: 0 }, { x: -540, duration: 0.26, ease: "power3.in", immediateRender: false }, 1.407);
+      tl.fromTo("#a6-all", { x: -540 }, { x: -1080, duration: 0.6, ease: "expo.out", immediateRender: false }, 1.667);
+      tl.fromTo("#a6-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in", immediateRender: false }, 1.407);
       window.__timelines["a6"] = tl;
     })();
   </script>
