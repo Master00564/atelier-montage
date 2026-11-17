@@ -30,7 +30,7 @@
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a3-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="a3-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
     <div id="a3-all" class="all clip" data-start="0" data-duration="4.4104">
       <div id="a3-cam" class="cam"><img id="a3-img" class="abs" src="assets/gen-petit.png" alt="" style="left:-100px;top:0;width:1280px;height:1920px;">
-        <svg id="a3-bouton" class="abs" style="left:630px;top:165px;width:120px;height:120px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#f1ece2" stroke="#14110e" stroke-width="5"/><circle cx="50" cy="50" r="33" fill="none" stroke="#14110e" stroke-width="2.5" opacity=".5"/><circle cx="39" cy="39" r="6.5" fill="#14110e"/><circle cx="61" cy="39" r="6.5" fill="#14110e"/><circle cx="39" cy="61" r="6.5" fill="#14110e"/><circle cx="61" cy="61" r="6.5" fill="#14110e"/></svg>
+        <svg id="a3-bouton" class="abs" style="left:578px;top:163px;width:84px;height:84px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#f1ece2" stroke="#14110e" stroke-width="5"/><circle cx="50" cy="50" r="33" fill="none" stroke="#14110e" stroke-width="2.5" opacity=".5"/><circle cx="39" cy="39" r="6.5" fill="#14110e"/><circle cx="61" cy="39" r="6.5" fill="#14110e"/><circle cx="39" cy="61" r="6.5" fill="#14110e"/><circle cx="61" cy="61" r="6.5" fill="#14110e"/></svg>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
       const tl = gsap.timeline({ paused: true });
       // a shirt button on a big ceiling, then the whole room
       gsap.set("#a3-cam", { transformOrigin: "540.0px 195.0px" });
-      tl.fromTo("#a3-cam", { scale: 3.0, y: 765 }, { scale: 2.7, y: 765, duration: 2.495, ease: "none" }, 0);
+      tl.fromTo("#a3-cam", { scale: 2.75, y: 312 }, { scale: 2.6, y: 312, duration: 2.495, ease: "none" }, 0);
       tl.fromTo("#a3-bouton", { scale: 0, opacity: 0, rotation: -90 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.2)" }, 1.557);
       tl.to("#a3-cam", { scale: 1, y: 0, duration: 0.9, ease: "power3.inOut" }, 2.495);
       tl.fromTo("#a3-all", { y: 0 }, { y: -960, duration: 0.12, ease: "power3.in", immediateRender: false }, 3.913);

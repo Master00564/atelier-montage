@@ -4,7 +4,7 @@
     @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
     @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
     @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
-    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: transparent; }
     .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
     .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
     .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
@@ -44,7 +44,7 @@
       tl.fromTo("#a2-flou", { attr: { stdDeviation: "45 0" } }, { attr: { stdDeviation: "0 0" }, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
       tl.set("#a2-all", { filter: "none" }, 0.88);
       gsap.set("#a2-cam", { transformOrigin: "187.5px 375.0px" });
-      tl.fromTo("#a2-cam", { scale: 1 }, { scale: 1.07, duration: 4.233, ease: "none", immediateRender: false }, 0.26);
+      tl.fromTo("#a2-cam", { scale: 1 }, { scale: 1.07, duration: 3.933, ease: "none", immediateRender: false }, 0.26);
       tl.fromTo("#a2-st", { scale: 2.2, opacity: 0, rotation: -15 }, { scale: 1, opacity: 1, rotation: -7, duration: 0.22, ease: "power4.out" }, 2.37);
       tl.to("#a2-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 4.213);
       tl.fromTo("#a2-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 4.213);

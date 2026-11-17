@@ -4,7 +4,7 @@
     @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
     @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
     @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
-    #root { position: absolute; inset: 0; overflow: hidden; background: #faf7f1; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: transparent; }
     .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
     .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
     .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
@@ -52,7 +52,7 @@
       tl.fromTo("#a8-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in" }, 0);
       tl.fromTo("#a8-flou", { attr: { stdDeviation: "0 80" } }, { attr: { stdDeviation: "0 0" }, duration: 0.277, ease: "expo.out", immediateRender: false }, 0.12);
       tl.set("#a8-all", { filter: "none" }, 0.417);
-      tl.fromTo("#a8-cam", { scale: 1.0 }, { scale: 1.02, duration: 2.4, ease: "none", immediateRender: false }, 0.12);
+      tl.fromTo("#a8-cam", { scale: 1.0 }, { scale: 1.02, duration: 2.1, ease: "none", immediateRender: false }, 0.12);
       tl.fromTo("#a8-toit", { y: 0 }, { y: -360, duration: 0.6, ease: "power3.inOut" }, 0.637);
       tl.fromTo("#a8-mur1, #a8-mur2", { scaleY: 1 }, { scaleY: 1.468, duration: 0.6, ease: "power3.inOut" }, 0.637);
       tl.fromTo("#a8-fleche", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.737);
