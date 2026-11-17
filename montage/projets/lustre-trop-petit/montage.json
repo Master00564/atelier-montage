@@ -11,7 +11,7 @@
     "voix": "Algieba",
     "vitesse": 1.2,
     "style": "Warm, natural French male narrator, Parisian accent, playful and human, one steady pace.",
-    "pause_max": 0.27,
+    "pause_max": 0.214,
     "segments": [
       {
         "texte": "Ton lustre est sûrement trop petit.",

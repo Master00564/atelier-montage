@@ -1,556 +1,625 @@
 {
  "vitesse": 1.2,
- "debit_habituel": 6.36,
+ "debit_habituel": 6.99,
  "debit_vise_au_plus": 5.5,
- "pause_max": 0.3,
- "duree_prevue_s": 66.406,
- "silence_retire_s": 12.244,
+ "pause_max": 0.27,
+ "duree_prevue_s": 68.107,
+ "silence_retire_s": 17.966,
  "troncons": [
   {
-   "debut": 0.062,
-   "fin": 1.448,
-   "vitesse": 0.681
+   "debut": 0.0,
+   "fin": 0.906,
+   "vitesse": 1.2
   },
   {
-   "debut": 1.87,
-   "fin": 4.96,
-   "vitesse": 0.911
+   "debut": 0.942,
+   "fin": 2.043,
+   "vitesse": 0.73
+  },
+  {
+   "debut": 2.661,
+   "fin": 3.497,
+   "vitesse": 0.73
+  },
+  {
+   "debut": 3.754,
+   "fin": 5.149,
+   "vitesse": 0.947
   },
   {
    "debut": 5.206,
-   "fin": 6.706,
-   "vitesse": 0.775
+   "fin": 6.656,
+   "vitesse": 0.858
   },
   {
-   "debut": 6.866,
-   "fin": 7.537,
-   "vitesse": 1.2
+   "debut": 7.145,
+   "fin": 7.785,
+   "vitesse": 0.82
   },
   {
-   "debut": 7.61,
-   "fin": 8.872,
-   "vitesse": 0.942
+   "debut": 8.015,
+   "fin": 9.301,
+   "vitesse": 0.701
   },
   {
-   "debut": 9.409,
-   "fin": 10.336,
-   "vitesse": 0.799
+   "debut": 9.451,
+   "fin": 10.14,
+   "vitesse": 0.603
   },
   {
-   "debut": 10.655,
-   "fin": 12.381,
-   "vitesse": 0.915
+   "debut": 10.884,
+   "fin": 12.533,
+   "vitesse": 1.136
   },
   {
-   "debut": 12.731,
-   "fin": 13.053,
+   "debut": 12.983,
+   "fin": 14.281,
+   "vitesse": 0.65
+  },
+  {
+   "debut": 14.731,
+   "fin": 16.64,
+   "vitesse": 1.02
+  },
+  {
+   "debut": 16.658,
+   "fin": 17.966,
+   "vitesse": 0.986
+  },
+  {
+   "debut": 18.556,
+   "fin": 18.841,
    "vitesse": 0.75
   },
   {
-   "debut": 13.139,
-   "fin": 13.903,
-   "vitesse": 0.96
+   "debut": 18.949,
+   "fin": 19.627,
+   "vitesse": 0.869
   },
   {
-   "debut": 14.147,
-   "fin": 16.379,
-   "vitesse": 0.854
+   "debut": 19.977,
+   "fin": 21.067,
+   "vitesse": 0.707
   },
   {
-   "debut": 16.454,
-   "fin": 17.05,
-   "vitesse": 1.2
+   "debut": 21.374,
+   "fin": 21.882,
+   "vitesse": 0.651
   },
   {
-   "debut": 17.255,
-   "fin": 18.927,
-   "vitesse": 0.886
-  },
-  {
-   "debut": 19.427,
-   "fin": 20.575,
-   "vitesse": 1.062
-  },
-  {
-   "debut": 20.597,
-   "fin": 21.98,
-   "vitesse": 0.865
-  },
-  {
-   "debut": 22.319,
-   "fin": 23.494,
+   "debut": 21.953,
+   "fin": 22.695,
    "vitesse": 0.771
   },
   {
-   "debut": 23.8,
-   "fin": 24.738,
-   "vitesse": 0.7
+   "debut": 23.489,
+   "fin": 24.481,
+   "vitesse": 0.866
   },
   {
-   "debut": 24.961,
-   "fin": 26.101,
-   "vitesse": 1.028
-  },
-  {
-   "debut": 26.177,
-   "fin": 26.701,
-   "vitesse": 0.658
-  },
-  {
-   "debut": 27.251,
-   "fin": 27.826,
+   "debut": 24.503,
+   "fin": 24.94,
    "vitesse": 1.2
   },
   {
-   "debut": 28.055,
-   "fin": 29.089,
-   "vitesse": 0.606
+   "debut": 24.971,
+   "fin": 25.68,
+   "vitesse": 0.737
   },
   {
-   "debut": 29.172,
-   "fin": 31.189,
-   "vitesse": 0.83
+   "debut": 26.157,
+   "fin": 27.078,
+   "vitesse": 0.694
   },
   {
-   "debut": 31.874,
-   "fin": 33.393,
-   "vitesse": 0.693
+   "debut": 27.463,
+   "fin": 29.593,
+   "vitesse": 1.261
   },
   {
-   "debut": 33.571,
-   "fin": 35.151,
-   "vitesse": 0.805
+   "debut": 30.279,
+   "fin": 31.165,
+   "vitesse": 0.699
   },
   {
-   "debut": 35.221,
-   "fin": 36.588,
+   "debut": 31.805,
+   "fin": 33.47,
+   "vitesse": 0.777
+  },
+  {
+   "debut": 33.544,
+   "fin": 34.548,
+   "vitesse": 0.758
+  },
+  {
+   "debut": 35.149,
+   "fin": 36.12,
+   "vitesse": 0.732
+  },
+  {
+   "debut": 36.515,
+   "fin": 37.773,
+   "vitesse": 0.612
+  },
+  {
+   "debut": 38.816,
+   "fin": 40.497,
+   "vitesse": 0.899
+  },
+  {
+   "debut": 40.61,
+   "fin": 42.289,
+   "vitesse": 1.141
+  },
+  {
+   "debut": 42.656,
+   "fin": 44.322,
+   "vitesse": 0.641
+  },
+  {
+   "debut": 45.381,
+   "fin": 47.153,
+   "vitesse": 1.178
+  },
+  {
+   "debut": 47.165,
+   "fin": 47.963,
+   "vitesse": 1.022
+  },
+  {
+   "debut": 48.598,
+   "fin": 51.748,
+   "vitesse": 0.889
+  },
+  {
+   "debut": 52.198,
+   "fin": 52.501,
+   "vitesse": 0.75
+  },
+  {
+   "debut": 52.768,
+   "fin": 54.145,
+   "vitesse": 0.735
+  },
+  {
+   "debut": 54.797,
+   "fin": 56.12,
+   "vitesse": 0.811
+  },
+  {
+   "debut": 56.438,
+   "fin": 57.552,
+   "vitesse": 0.787
+  },
+  {
+   "debut": 57.665,
+   "fin": 58.583,
+   "vitesse": 0.712
+  },
+  {
+   "debut": 58.805,
+   "fin": 60.447,
+   "vitesse": 1.089
+  },
+  {
+   "debut": 61.055,
+   "fin": 61.983,
+   "vitesse": 1.201
+  },
+  {
+   "debut": 62.016,
+   "fin": 64.338,
+   "vitesse": 0.783
+  },
+  {
+   "debut": 64.692,
+   "fin": 66.487,
+   "vitesse": 0.874
+  },
+  {
+   "debut": 66.81,
+   "fin": 68.556,
+   "vitesse": 1.034
+  },
+  {
+   "debut": 69.35,
+   "fin": 69.905,
+   "vitesse": 0.927
+  },
+  {
+   "debut": 70.644,
+   "fin": 72.309,
+   "vitesse": 0.757
+  },
+  {
+   "debut": 72.602,
+   "fin": 73.718,
+   "vitesse": 1.204
+  },
+  {
+   "debut": 74.154,
+   "fin": 75.935,
    "vitesse": 0.897
-  },
-  {
-   "debut": 36.832,
-   "fin": 37.519,
-   "vitesse": 1.2
-  },
-  {
-   "debut": 37.685,
-   "fin": 38.793,
-   "vitesse": 0.728
-  },
-  {
-   "debut": 39.179,
-   "fin": 39.754,
-   "vitesse": 1.2
-  },
-  {
-   "debut": 39.966,
-   "fin": 40.749,
-   "vitesse": 0.984
-  },
-  {
-   "debut": 41.121,
-   "fin": 44.037,
-   "vitesse": 1.024
-  },
-  {
-   "debut": 44.368,
-   "fin": 46.728,
-   "vitesse": 0.975
-  },
-  {
-   "debut": 46.737,
-   "fin": 48.918,
-   "vitesse": 0.78
-  },
-  {
-   "debut": 49.285,
-   "fin": 51.414,
-   "vitesse": 1.005
-  },
-  {
-   "debut": 51.64,
-   "fin": 52.372,
-   "vitesse": 0.631
-  },
-  {
-   "debut": 52.386,
-   "fin": 54.259,
-   "vitesse": 0.914
-  },
-  {
-   "debut": 54.646,
-   "fin": 56.193,
-   "vitesse": 0.748
-  },
-  {
-   "debut": 56.818,
-   "fin": 57.721,
-   "vitesse": 0.815
-  },
-  {
-   "debut": 58.064,
-   "fin": 58.875,
-   "vitesse": 0.7
-  },
-  {
-   "debut": 59.303,
-   "fin": 61.761,
-   "vitesse": 0.923
-  },
-  {
-   "debut": 62.75,
-   "fin": 63.888,
-   "vitesse": 0.982
-  },
-  {
-   "debut": 63.89,
-   "fin": 65.876,
-   "vitesse": 0.96
-  },
-  {
-   "debut": 66.5,
-   "fin": 67.752,
-   "vitesse": 1.081
-  },
-  {
-   "debut": 68.193,
-   "fin": 69.562,
-   "vitesse": 0.689
   }
  ],
  "groupes": [
   {
-   "texte": "Ton lustre est sûrement trop petit.",
-   "syllabes": 9,
-   "debit": 8.08,
-   "vitesse": 0.681,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "C'est l'une des erreurs les plus fréquentes, selon les pros de l'éclairage.",
-   "syllabes": 17,
-   "debit": 6.04,
-   "vitesse": 0.911,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "Trop petit, il se perd au plafond.",
-   "syllabes": 9,
-   "debit": 7.1,
-   "vitesse": 0.775,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "Trop grand,",
+   "texte": "Ton lustre",
    "syllabes": 2,
-   "debit": 5.39,
+   "debit": 3.89,
    "vitesse": 1.2,
-   "debit_final": 6.47
+   "debit_final": 4.67
   },
   {
-   "texte": "il écrase toute la pièce.",
-   "syllabes": 6,
-   "debit": 5.84,
-   "vitesse": 0.942,
+   "texte": "est sûrement trop petit.",
+   "syllabes": 7,
+   "debit": 7.53,
+   "vitesse": 0.73,
    "debit_final": 5.5
   },
   {
-   "texte": "Prends un mètre ruban:",
+   "texte": "Et t'es pas le seul:",
    "syllabes": 5,
-   "debit": 6.88,
-   "vitesse": 0.799,
+   "debit": 7.53,
+   "vitesse": 0.73,
    "debit_final": 5.5
   },
   {
-   "texte": "trois règles suffisent pour tomber juste.",
-   "syllabes": 9,
-   "debit": 6.01,
-   "vitesse": 0.915,
+   "texte": "c'est l'erreur la plus courante,",
+   "syllabes": 7,
+   "debit": 5.81,
+   "vitesse": 0.947,
    "debit_final": 5.5
   },
   {
-   "texte": "Un,",
-   "syllabes": 1,
-   "debit": 7.46,
-   "vitesse": 0.75,
-   "debit_final": 5.59
+   "texte": "d'après les pros de la lumière.",
+   "syllabes": 8,
+   "debit": 6.41,
+   "vitesse": 0.858,
+   "debit_final": 5.5
   },
   {
-   "texte": "le diamètre.",
+   "texte": "Au plafond,",
    "syllabes": 3,
-   "debit": 5.73,
-   "vitesse": 0.96,
+   "debit": 6.71,
+   "vitesse": 0.82,
    "debit_final": 5.5
   },
   {
-   "texte": "Additionne la longueur et la largeur du salon,",
-   "syllabes": 13,
-   "debit": 6.44,
-   "vitesse": 0.854,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "en mètres,",
-   "syllabes": 2,
-   "debit": 5.62,
-   "vitesse": 1.2,
-   "debit_final": 6.74
-  },
-  {
-   "texte": "puis multiplie par huit virgule trois.",
+   "texte": "il a l'air d'un bouton de chemise,",
    "syllabes": 9,
-   "debit": 6.21,
-   "vitesse": 0.886,
+   "debit": 7.85,
+   "vitesse": 0.701,
    "debit_final": 5.5
   },
   {
-   "texte": "Cinq mètres sur quatre?",
+   "texte": "perdu tout là-haut.",
+   "syllabes": 5,
+   "debit": 9.12,
+   "vitesse": 0.603,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Alors, quelle taille choisir?",
+   "syllabes": 6,
+   "debit": 4.84,
+   "vitesse": 1.136,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Pas besoin de calcul compliqué.",
+   "syllabes": 9,
+   "debit": 8.46,
+   "vitesse": 0.65,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Pour un salon de vingt mètres carrés,",
+   "syllabes": 9,
+   "debit": 5.39,
+   "vitesse": 1.02,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "vise la largeur d'une porte.",
+   "syllabes": 6,
+   "debit": 5.58,
+   "vitesse": 0.986,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Oui,",
+   "syllabes": 1,
+   "debit": 9.17,
+   "vitesse": 0.75,
+   "debit_final": 6.88
+  },
+  {
+   "texte": "une vraie porte.",
+   "syllabes": 3,
+   "debit": 6.33,
+   "vitesse": 0.869,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Ça paraît énorme, je sais.",
+   "syllabes": 7,
+   "debit": 7.78,
+   "vitesse": 0.707,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Et pourtant,",
+   "syllabes": 3,
+   "debit": 8.45,
+   "vitesse": 0.651,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "c'est la bonne taille.",
    "syllabes": 4,
-   "debit": 5.18,
-   "vitesse": 1.062,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "Soixante-quinze centimètres,",
-   "syllabes": 7,
-   "debit": 6.36,
-   "vitesse": 0.865,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "presque la largeur d'une porte.",
-   "syllabes": 7,
    "debit": 7.13,
    "vitesse": 0.771,
    "debit_final": 5.5
   },
   {
-   "texte": "Et c'est un minimum:",
-   "syllabes": 6,
-   "debit": 7.86,
-   "vitesse": 0.7,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "sous un haut plafond,",
+   "texte": "Sous un haut plafond,",
    "syllabes": 5,
-   "debit": 5.35,
-   "vitesse": 1.028,
+   "debit": 6.35,
+   "vitesse": 0.866,
    "debit_final": 5.5
   },
   {
-   "texte": "vois plus grand.",
-   "syllabes": 3,
-   "debit": 8.36,
-   "vitesse": 0.658,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "Deux.",
+   "texte": "vois",
    "syllabes": 1,
-   "debit": 4.65,
+   "debit": 4.5,
    "vitesse": 1.2,
-   "debit_final": 5.58
+   "debit_final": 5.4
   },
   {
-   "texte": "Au-dessus d'une table à manger,",
+   "texte": "encore plus grand.",
+   "syllabes": 4,
+   "debit": 7.46,
+   "vitesse": 0.737,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Mais sans exagérer:",
+   "syllabes": 6,
+   "debit": 7.92,
+   "vitesse": 0.694,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "un lustre géant écrase toute la pièce.",
    "syllabes": 8,
-   "debit": 9.07,
-   "vitesse": 0.606,
+   "debit": 4.36,
+   "vitesse": 1.261,
    "debit_final": 5.5
   },
   {
-   "texte": "il ne dépasse pas les deux tiers de sa largeur.",
-   "syllabes": 12,
-   "debit": 6.63,
-   "vitesse": 0.83,
+   "texte": "Tu hésites encore?",
+   "syllabes": 5,
+   "debit": 7.87,
+   "vitesse": 0.699,
    "debit_final": 5.5
   },
   {
-   "texte": "Une table de quatre-vingt-dix centimètres?",
+   "texte": "Découpe un rond de carton aussi large",
    "syllabes": 10,
-   "debit": 7.94,
-   "vitesse": 0.693,
+   "debit": 7.08,
+   "vitesse": 0.777,
    "debit_final": 5.5
   },
   {
-   "texte": "Soixante centimètres au maximum,",
+   "texte": "et scotche-le au plafond.",
+   "syllabes": 6,
+   "debit": 7.26,
+   "vitesse": 0.758,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Laisse-le un jour ou deux:",
+   "syllabes": 6,
+   "debit": 7.51,
+   "vitesse": 0.732,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "tu sauras tout de suite si ça te plaît.",
+   "syllabes": 10,
+   "debit": 8.98,
+   "vitesse": 0.612,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Au-dessus de la table, c'est l'inverse:",
    "syllabes": 9,
-   "debit": 6.83,
-   "vitesse": 0.805,
+   "debit": 6.12,
+   "vitesse": 0.899,
    "debit_final": 5.5
   },
   {
-   "texte": "soit trente de moins que la table.",
+   "texte": "il doit rester moins large qu'elle,",
    "syllabes": 7,
-   "debit": 6.13,
-   "vitesse": 0.897,
+   "debit": 4.82,
+   "vitesse": 1.141,
    "debit_final": 5.5
   },
   {
-   "texte": "Plus large,",
-   "syllabes": 2,
-   "debit": 5.17,
-   "vitesse": 1.2,
-   "debit_final": 6.2
+   "texte": "sinon tes invités dînent sous un parapluie.",
+   "syllabes": 13,
+   "debit": 8.58,
+   "vitesse": 0.641,
+   "debit_final": 5.5
   },
   {
-   "texte": "il déborde sur les convives.",
+   "texte": "Dernier piège, et pas des moindres:",
    "syllabes": 7,
-   "debit": 7.56,
-   "vitesse": 0.728,
+   "debit": 4.67,
+   "vitesse": 1.178,
    "debit_final": 5.5
-  },
-  {
-   "texte": "Trois,",
-   "syllabes": 1,
-   "debit": 3.64,
-   "vitesse": 1.2,
-   "debit_final": 4.37
   },
   {
    "texte": "la hauteur.",
    "syllabes": 3,
-   "debit": 5.59,
-   "vitesse": 0.984,
+   "debit": 5.38,
+   "vitesse": 1.022,
    "debit_final": 5.5
   },
   {
-   "texte": "Compte un cinquième à un quart de la hauteur sous plafond.",
-   "syllabes": 14,
-   "debit": 5.37,
-   "vitesse": 1.024,
+   "texte": "Un grand gaillard de deux mètres doit passer dessous sans se cogner la tête.",
+   "syllabes": 18,
+   "debit": 6.19,
+   "vitesse": 0.889,
    "debit_final": 5.5
   },
   {
-   "texte": "Sous deux mètres cinquante, la hauteur standard en France,",
-   "syllabes": 12,
-   "debit": 5.64,
-   "vitesse": 0.975,
+   "texte": "Oui,",
+   "syllabes": 1,
+   "debit": 7.87,
+   "vitesse": 0.75,
+   "debit_final": 5.9
+  },
+  {
+   "texte": "même le copain qui joue au basket.",
+   "syllabes": 9,
+   "debit": 7.48,
+   "vitesse": 0.735,
    "debit_final": 5.5
   },
   {
-   "texte": "ça donne cinquante-deux à soixante-deux centimètres.",
-   "syllabes": 14,
-   "debit": 7.05,
-   "vitesse": 0.78,
+   "texte": "Chez toi, le plafond est bas?",
+   "syllabes": 7,
+   "debit": 6.78,
+   "vitesse": 0.811,
    "debit_final": 5.5
   },
   {
-   "texte": "Mais garde deux mètres treize de passage dessous.",
+   "texte": "Oublie la suspension",
+   "syllabes": 6,
+   "debit": 6.99,
+   "vitesse": 0.787,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "et prends un plafonnier:",
+   "syllabes": 6,
+   "debit": 7.73,
+   "vitesse": 0.712,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "ta tête te dira merci.",
+   "syllabes": 7,
+   "debit": 5.05,
+   "vitesse": 1.089,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Sur nos fiches,",
+   "syllabes": 3,
+   "debit": 4.58,
+   "vitesse": 1.201,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "un schéma donne les mesures exactes de chaque luminaire.",
+   "syllabes": 15,
+   "debit": 7.02,
+   "vitesse": 0.783,
+   "debit_final": 5.5
+  },
+  {
+   "texte": "Et tout le reste est dans notre guide gratuit,",
    "syllabes": 10,
-   "debit": 5.47,
-   "vitesse": 1.005,
+   "debit": 6.29,
+   "vitesse": 0.874,
    "debit_final": 5.5
   },
   {
-   "texte": "Il te reste alors",
-   "syllabes": 5,
-   "debit": 8.71,
-   "vitesse": 0.631,
+   "texte": "sur L'Atelier du Lustre point com.",
+   "syllabes": 8,
+   "debit": 5.32,
+   "vitesse": 1.034,
    "debit_final": 5.5
   },
   {
-   "texte": "trente-sept centimètres, platine comprise.",
-   "syllabes": 10,
-   "debit": 6.02,
-   "vitesse": 0.914,
+   "texte": "Alors,",
+   "syllabes": 2,
+   "debit": 5.93,
+   "vitesse": 0.927,
    "debit_final": 5.5
   },
   {
-   "texte": "La plus petite des deux mesures l'emporte:",
-   "syllabes": 10,
-   "debit": 7.35,
-   "vitesse": 0.748,
+   "texte": "si tu as choisi le tien au coup de cœur,",
+   "syllabes": 11,
+   "debit": 7.27,
+   "vitesse": 0.757,
    "debit_final": 5.5
   },
   {
-   "texte": "sous un plafond bas,",
-   "syllabes": 5,
-   "debit": 6.75,
-   "vitesse": 0.815,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "prends un plafonnier.",
-   "syllabes": 5,
-   "debit": 7.86,
-   "vitesse": 0.7,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "Le guide complet est sur L'Atelier du Lustre point com.",
-   "syllabes": 13,
-   "debit": 5.96,
-   "vitesse": 0.923,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "Sans ces trois calculs,",
-   "syllabes": 5,
-   "debit": 5.6,
-   "vitesse": 0.982,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "on choisit trop souvent au coup de cœur.",
-   "syllabes": 10,
-   "debit": 5.73,
-   "vitesse": 0.96,
-   "debit_final": 5.5
-  },
-  {
-   "texte": "Et c'est pour ça que",
-   "syllabes": 5,
-   "debit": 5.09,
-   "vitesse": 1.081,
+   "texte": "je parie que",
+   "syllabes": 4,
+   "debit": 4.57,
+   "vitesse": 1.204,
    "debit_final": 5.5
   },
   {
    "texte": "ton lustre est sûrement trop petit.",
    "syllabes": 9,
-   "debit": 7.98,
-   "vitesse": 0.689,
+   "debit": 6.13,
+   "vitesse": 0.897,
    "debit_final": 5.5
   }
  ],
  "retenus": [
-  "Ton lustre est sûrement trop petit.",
-  "C'est l'une des erreurs les plus fréquentes, selon les pros de l'éclairage.",
-  "Trop petit, il se perd au plafond.",
-  "il écrase toute la pièce.",
-  "Prends un mètre ruban:",
-  "trois règles suffisent pour tomber juste.",
-  "Un,",
-  "le diamètre.",
-  "Additionne la longueur et la largeur du salon,",
-  "puis multiplie par huit virgule trois.",
-  "Cinq mètres sur quatre?",
-  "Soixante-quinze centimètres,",
-  "presque la largeur d'une porte.",
-  "Et c'est un minimum:",
-  "sous un haut plafond,",
-  "vois plus grand.",
-  "Au-dessus d'une table à manger,",
-  "il ne dépasse pas les deux tiers de sa largeur.",
-  "Une table de quatre-vingt-dix centimètres?",
-  "Soixante centimètres au maximum,",
-  "soit trente de moins que la table.",
-  "il déborde sur les convives.",
+  "est sûrement trop petit.",
+  "Et t'es pas le seul:",
+  "c'est l'erreur la plus courante,",
+  "d'après les pros de la lumière.",
+  "Au plafond,",
+  "il a l'air d'un bouton de chemise,",
+  "perdu tout là-haut.",
+  "Alors, quelle taille choisir?",
+  "Pas besoin de calcul compliqué.",
+  "Pour un salon de vingt mètres carrés,",
+  "vise la largeur d'une porte.",
+  "Oui,",
+  "une vraie porte.",
+  "Ça paraît énorme, je sais.",
+  "Et pourtant,",
+  "c'est la bonne taille.",
+  "Sous un haut plafond,",
+  "encore plus grand.",
+  "Mais sans exagérer:",
+  "Tu hésites encore?",
+  "Découpe un rond de carton aussi large",
+  "et scotche-le au plafond.",
+  "Laisse-le un jour ou deux:",
+  "tu sauras tout de suite si ça te plaît.",
+  "Au-dessus de la table, c'est l'inverse:",
+  "il doit rester moins large qu'elle,",
+  "sinon tes invités dînent sous un parapluie.",
+  "Dernier piège, et pas des moindres:",
   "la hauteur.",
-  "Compte un cinquième à un quart de la hauteur sous plafond.",
-  "Sous deux mètres cinquante, la hauteur standard en France,",
-  "ça donne cinquante-deux à soixante-deux centimètres.",
-  "Mais garde deux mètres treize de passage dessous.",
-  "Il te reste alors",
-  "trente-sept centimètres, platine comprise.",
-  "La plus petite des deux mesures l'emporte:",
-  "sous un plafond bas,",
-  "prends un plafonnier.",
-  "Le guide complet est sur L'Atelier du Lustre point com.",
-  "Sans ces trois calculs,",
-  "on choisit trop souvent au coup de cœur.",
-  "Et c'est pour ça que",
+  "Un grand gaillard de deux mètres doit passer dessous sans se cogner la tête.",
+  "Oui,",
+  "même le copain qui joue au basket.",
+  "Chez toi, le plafond est bas?",
+  "Oublie la suspension",
+  "et prends un plafonnier:",
+  "ta tête te dira merci.",
+  "un schéma donne les mesures exactes de chaque luminaire.",
+  "Et tout le reste est dans notre guide gratuit,",
+  "sur L'Atelier du Lustre point com.",
+  "Alors,",
+  "si tu as choisi le tien au coup de cœur,",
   "ton lustre est sûrement trop petit."
  ],
- "pousses": []
+ "pousses": [
+  "un lustre géant écrase toute la pièce.",
+  "Sur nos fiches,",
+  "je parie que"
+ ]
 }
