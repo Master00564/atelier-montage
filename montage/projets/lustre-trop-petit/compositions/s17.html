@@ -20,6 +20,8 @@
     .traitv { position: absolute; width: 6px; border-radius: 3px; }
     .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
       background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
 
     #s17-all {  }
     #s17-promesse { opacity: 0; }
@@ -29,7 +31,7 @@
     
     <div id="s17-all" class="all clip" data-start="0" data-duration="1.667">
       <div id="s17-cam" class="cam"><div id="s17-jbox" class="jbox" style="left:-469.9px;top:-58px;width:2035.1px;height:2035.1px"><img id="s17-plaque" class="full" src="assets/jour-plaque.png" alt=""><img id="s17-lampe" class="full" src="assets/jour-lampe.png" alt="" style="transform-origin:1009.9px 146.1px"></div></div>
-      <div class="voile-bas"></div>
+      <div class="voile-jour"></div>
       <div id="s17-promesse" class="nr it abs" style="left:96px;top:1272px;width:888px;font-size:44px;font-weight:500;color:#faf7f1">Le bon luminaire, du premier coup</div>
     </div>
   </div>
@@ -38,7 +40,7 @@
       const tl = gsap.timeline({ paused: true });
       // the loop: the room of frame 0, the camera reaching scale 1 on the last frame
       tl.fromTo("#s17-cam", { scale: 0.962 }, { scale: 1, duration: 1.667, ease: "none" }, 0);
-      tl.fromTo("#s17-promesse", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0.25);
+      tl.fromTo("#s17-promesse", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0);
       window.__timelines["s17"] = tl;
     })();
   </script>

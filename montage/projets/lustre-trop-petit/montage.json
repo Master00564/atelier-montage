@@ -22,7 +22,8 @@
     "fraunces.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-normal.woff2",
     "fraunces-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-italic.woff2",
     "newsreader.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-normal.woff2",
-    "newsreader-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-italic.woff2"
+    "newsreader-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-italic.woff2",
+    "orive-2.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-6-lumieres-orive-1-vu-de-trois-quarts-six-globes-ambre-clairs-et-fumes-allumes.webp"
   },
   "attendu": {
     "secondes": [

@@ -20,13 +20,15 @@
     .traitv { position: absolute; width: 6px; border-radius: 3px; }
     .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
       background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
 
     #s8-all { filter: url(#s8-filtre); }
     #s8-deux, #s8-table, #s8-23, #s8-larg { opacity: 0; }
   </style>
   <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="s8-filtre" x="-10%" y="0" width="120%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur id="s8-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
-    <div id="s8-all" class="all clip" data-start="0" data-duration="4.067">
+    <div id="s8-all" class="all clip" data-start="0" data-duration="4.327">
       <div id="s8-cam" class="cam" style="transform-origin:540px 640px">
         <img class="abs" src="assets/domia.webp" alt="" style="left:-459.9px;top:-40px;width:1996.7px;height:1996.7px">
         <div id="s8-g1" class="abs" style="left:384px;top:724px;width:6px;height:545px;background:repeating-linear-gradient(180deg,#7d6128 0 16px,transparent 16px 28px);transform-origin:50% 0"></div>
@@ -34,7 +36,7 @@
         <div id="s8-pied" class="trait" style="left:387px;top:1266px;width:306px;background:#7d6128;transform-origin:50% 50%"></div>
       </div>
       <div class="voile-bas" style="top:1000px"></div>
-      <span id="s8-deux" class="fr abs" style="left:600px;top:300px;font-size:200px;color:#7d6128">2</span>
+      <span id="s8-deux" class="fr abs" style="left:600px;top:300px;font-size:200px;color:#14110e">2</span>
       <span id="s8-table" class="fr abs" style="left:730px;top:380px;font-size:100px;font-weight:500;color:#14110e">Table</span>
       <span id="s8-23" class="fr abs" style="left:395px;top:770px;font-size:200px;color:#14110e">2/3</span>
       <span id="s8-larg" class="nr abs" style="left:395px;top:985px;font-size:60px;color:#14110e">de sa largeur</span>
@@ -44,19 +46,21 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       // rule 2: the fixture's footprint over the table, two thirds at most
-      tl.fromTo("#s8-all", { x: 540 }, { x: 0, duration: 0.6, ease: "expo.out" }, 0);
-      tl.fromTo("#s8-flou", { attr: { stdDeviation: "45 0" } }, { attr: { stdDeviation: "0 0" }, duration: 0.6, ease: "expo.out" }, 0);
-      tl.set("#s8-all", { filter: "none" }, 0.62);
-      tl.fromTo("#s8-cam", { scale: 1 }, { scale: 1.05, duration: 3.787, ease: "none", immediateRender: false }, 0);
+      tl.fromTo("#s8-all", { x: 1080 }, { x: 540, duration: 0.26, ease: "power3.in" }, 0);
+      tl.fromTo("#s8-all", { x: 540 }, { x: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
+      tl.fromTo("#s8-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in" }, 0);
+      tl.fromTo("#s8-flou", { attr: { stdDeviation: "45 0" } }, { attr: { stdDeviation: "0 0" }, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
+      tl.set("#s8-all", { filter: "none" }, 0.88);
+      tl.fromTo("#s8-cam", { scale: 1 }, { scale: 1.05, duration: 4.047, ease: "none", immediateRender: false }, 0);
       tl.fromTo("#s8-deux", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.62);
-      tl.fromTo("#s8-table", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 0.927);
-      tl.fromTo("#s8-g1", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.inOut" }, 0.167);
-      tl.fromTo("#s8-g2", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.inOut" }, 0.237);
-      tl.fromTo("#s8-pied", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.617);
-      tl.fromTo("#s8-23", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 2.767);
-      tl.fromTo("#s8-larg", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 3.527);
-      tl.to("#s8-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 3.787);
-      tl.fromTo("#s8-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 3.787);
+      tl.fromTo("#s8-table", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 1.187);
+      tl.fromTo("#s8-g1", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.inOut" }, 0.427);
+      tl.fromTo("#s8-g2", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.inOut" }, 0.497);
+      tl.fromTo("#s8-pied", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.877);
+      tl.fromTo("#s8-23", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 3.027);
+      tl.fromTo("#s8-larg", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 3.147);
+      tl.to("#s8-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 4.047);
+      tl.fromTo("#s8-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 4.047);
       window.__timelines["s8"] = tl;
     })();
   </script>

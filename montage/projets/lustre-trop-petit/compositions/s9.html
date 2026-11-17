@@ -20,6 +20,8 @@
     .traitv { position: absolute; width: 6px; border-radius: 3px; }
     .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
       background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
 
     #s9-all {  }
     #s9-dome { transform: scaleX(0); }
@@ -47,7 +49,7 @@
         <span class="fr abs" style="left:0;top:0;font-size:260px;color:#7d6128">60</span>
         <span class="fr abs" style="left:330px;top:120px;font-size:110px;font-weight:500;color:#14110e">cm</span>
       </div>
-      <span id="s9-max" class="nr abs" style="left:560px;top:430px;font-size:70px;color:#4d463d">max</span>
+      <span id="s9-max" class="nr abs" style="left:575px;top:470px;font-size:70px;color:#4d463d">max</span>
     </div>
   </div>
   <script>
@@ -56,7 +58,7 @@
       // a 90 cm table: 60 cm at most, the two thirds drawn
       tl.fromTo("#s9-cam", { scale: 1 }, { scale: 1.08, duration: 0.5, ease: "expo.out" }, 0);
       tl.fromTo("#s9-all", { filter: "blur(18px)" }, { filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 0);
-      tl.fromTo("#s9-cam", { scale: 1 }, { scale: 1.03, duration: 4.167, ease: "none", immediateRender: false }, 0);
+      tl.fromTo("#s9-cam", { scale: 1.08 }, { scale: 1.112, duration: 3.667, ease: "none", immediateRender: false }, 0.5);
       tl.fromTo("#s9-plateau", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, 0.28);
       tl.fromTo("#s9-p1", { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.inOut" }, 0.48);
       tl.fromTo("#s9-p2", { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.inOut" }, 0.54);

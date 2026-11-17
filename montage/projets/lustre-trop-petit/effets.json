@@ -726,19 +726,5 @@
   "deplace_hors_mot": true,
   "sous_la_voix": false,
   "id": "sfx-mallet-2"
- },
- {
-  "role": "mallet",
-  "repere": 61.8,
-  "sync": 61.78,
-  "prise": "mallet_E5.wav",
-  "debut": 61.78,
-  "duree": 0.4399,
-  "lit_lufs": -28.23,
-  "gain_db": -21.47,
-  "volume": 0.084,
-  "deplace_hors_mot": false,
-  "sous_la_voix": true,
-  "id": "sfx-mallet-3"
  }
 ]

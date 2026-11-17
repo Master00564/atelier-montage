@@ -20,15 +20,18 @@
     .traitv { position: absolute; width: 6px; border-radius: 3px; }
     .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
       background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
 
     #s1-all {  }
-    #s1-contour { opacity: 0; }
+    #s1-contour, #s1-voile-titre { opacity: 0; }
   </style>
   <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
     
     <div id="s1-all" class="all clip" data-start="0" data-duration="4.1">
       <div id="s1-cam" class="cam"><div id="s1-jbox" class="jbox" style="left:-469.9px;top:-58px;width:2035.1px;height:2035.1px"><img id="s1-plaque" class="full" src="assets/jour-plaque.png" alt=""><img id="s1-lampe" class="full" src="assets/jour-lampe.png" alt="" style="transform-origin:1009.9px 146.1px"><svg id="s1-contour" class="full" viewBox="0 0 2035.1 2035.1" style="transform-origin:1009.9px 146.1px"><path id="s1-contour-p" d="M 715.4 232.1 A 294.5 86.8 0 0 1 1304.5 232.1 L 1304.5 462.5 A 294.5 82.8 0 0 1 715.4 462.5 Z" fill="none" stroke="#7d6128" stroke-width="6" stroke-dasharray="20 14" stroke-linecap="round"/></svg></div></div>
-      <div class="voile-bas"></div>
+      <div class="voile-jour"></div>
+      <div id="s1-voile-titre" class="abs" style="left:0;top:780px;width:1080px;height:360px;background:linear-gradient(180deg,rgba(14,11,8,0) 0%,rgba(14,11,8,.5) 40%,rgba(14,11,8,.5) 70%,rgba(14,11,8,0) 100%)"></div>
       <div id="s1-titre" class="abs" style="left:96px;top:880px;width:888px;height:200px">
         <span id="s1-t1" class="fr abs" style="left:0;top:0;font-size:170px;color:#faf7f1">trop</span>
         <span id="s1-t2" class="fr it abs" style="left:420px;top:0;font-size:170px;color:#c9a15a">petit</span>
@@ -43,11 +46,13 @@
       tl.fromTo("#s1-cam", { scale: 1 }, { scale: 1.093, duration: 4.1, ease: "none" }, 0);
       tl.fromTo("#s1-lampe", { scale: 1 }, { scale: 0.38, duration: 0.2, ease: "expo.out" }, 0.35);
       tl.fromTo("#s1-contour", { scale: 0.38, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 2.01);
-      tl.to("#s1-promesse", { opacity: 0, duration: 0.15, ease: "power3.in" }, 1.313);
+      tl.to("#s1-promesse", { opacity: 0, duration: 0.15, ease: "power3.in" }, 2.063);
+      tl.fromTo("#s1-voile-titre", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 1.413);
       tl.fromTo("#s1-t1", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 1.513);
       tl.fromTo("#s1-t2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 1.713);
       tl.fromTo("#s1-cam", { y: 0 }, { y: 120, duration: 0.9, ease: "power2.inOut" }, 3.393);
       tl.to("#s1-titre", { opacity: 0, duration: 0.12, ease: "power3.in" }, 3.9);
+      tl.to("#s1-voile-titre", { opacity: 0, duration: 0.15, ease: "power3.in" }, 3.9);
       window.__timelines["s1"] = tl;
     })();
   </script>
