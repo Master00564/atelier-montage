@@ -11,11 +11,72 @@
     "voix": "Algieba",
     "vitesse": 1.2,
     "style": "Warm, natural French male narrator with a Parisian accent, talking to one friend about their living room, human and expressive, never flat, never robotic. Unhurried: one steady, calm pace from the first word to the last, never speeding up on short phrases or lists of numbers, a clear breath at every full stop. Follow the moment: the opening line punchy and a little teasing, a playful challenge; the three rules clear and explanatory, like showing someone how to use a tape measure; a small spark of surprise on each result (soixante-douze, quatre-vingt-dix, soixante, quarante-cinq, trente-cinq); the last sentence 'Et c'est pour ça que ton lustre est sûrement trop petit' said as one flowing line, rising on 'que' and running straight into 'ton' with no pause.",
-    "pause_max": 0.27
+    "pause_max": 0.27,
+    "segments": [
+      {
+        "texte": "Ton lustre est sûrement trop petit.",
+        "style": "punchy, a little teasing, a playful challenge",
+        "intonation": "vive"
+      },
+      {
+        "texte": "C'est l'une des erreurs les plus fréquentes, selon les pros de l'éclairage. Trop petit, il se perd au plafond. Trop grand, il écrase toute la pièce. Prends un mètre ruban: trois règles suffisent pour tomber juste.",
+        "style": "warm, confident, like a friend who knows lighting",
+        "intonation": "posee"
+      },
+      {
+        "texte": "Un, le diamètre. Additionne la longueur et la largeur du salon, en mètres, puis multiplie par huit virgule trois.",
+        "style": "clear and explanatory, warm, steady pace",
+        "intonation": "posee"
+      },
+      {
+        "texte": "Cinq mètres sur quatre? Soixante-quinze centimètres, presque la largeur d'une porte. Et c'est un minimum: sous un haut plafond, vois plus grand.",
+        "style": "clear, with a small spark of surprise on the result",
+        "intonation": "vive"
+      },
+      {
+        "texte": "Deux. Au-dessus d'une table à manger, il ne dépasse pas les deux tiers de sa largeur.",
+        "style": "clear and explanatory, warm, steady pace",
+        "intonation": "posee"
+      },
+      {
+        "texte": "Une table de quatre-vingt-dix centimètres? Soixante centimètres au maximum, soit trente de moins que la table. Plus large, il déborde sur les convives.",
+        "style": "clear, with a small spark of surprise on the result",
+        "intonation": "vive"
+      },
+      {
+        "texte": "Trois, la hauteur. Compte un cinquième à un quart de la hauteur sous plafond. Sous deux mètres cinquante, la hauteur standard en France, ça donne cinquante-deux à soixante-deux centimètres.",
+        "style": "clear and explanatory, warm, steady pace",
+        "intonation": "posee"
+      },
+      {
+        "texte": "Mais garde deux mètres treize de passage dessous. Il te reste alors trente-sept centimètres, platine comprise. La plus petite des deux mesures l'emporte:",
+        "style": "clear, with a small spark of surprise on the result",
+        "intonation": "vive"
+      },
+      {
+        "texte": "sous un plafond bas, prends un plafonnier. Le guide complet est sur L'Atelier du Lustre point com.",
+        "style": "warm, friendly invitation, smiling",
+        "intonation": "posee"
+      },
+      {
+        "texte": "Sans ces trois calculs, on choisit trop souvent au coup de cœur.",
+        "style": "warm, confident, like a friend who knows lighting",
+        "intonation": "posee"
+      },
+      {
+        "texte": "Et c'est pour ça que",
+        "style": "rising questioning tone, clear full voice",
+        "intonation": "montante"
+      },
+      {
+        "texte": "ton lustre est sûrement trop petit.",
+        "style": "punchy, a little teasing, a playful challenge",
+        "intonation": "vive"
+      }
+    ]
   },
   "assets": {
     "domia.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-dome-domia-5-blanc-suspendu-au-dessus-d-une-table-de-salle-a-manger-en-bois.webp",
-    "soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-tissu-metal-noir-perfore-salon-soir.webp",
     "orive.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-6-lumieres-orive-1-vu-de-trois-quarts-six-globes-ambre-clairs-et-fumes-allumes.webp",
     "musique.mp3": "library/audio/entrain-happy-guitar.mp3",
     "grain.png": "library/images/grain.png",
@@ -23,7 +84,9 @@
     "fraunces-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-italic.woff2",
     "newsreader.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-normal.woff2",
     "newsreader-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-italic.woff2",
-    "orive-2.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-6-lumieres-orive-1-vu-de-trois-quarts-six-globes-ambre-clairs-et-fumes-allumes.webp"
+    "orive-2.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-6-lumieres-orive-1-vu-de-trois-quarts-six-globes-ambre-clairs-et-fumes-allumes.webp",
+    "orvane-soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-rond-orvane-3-allume-le-soir-lumiere-douce-sur-le-sejour.webp",
+    "tressa-soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-raphia-tressa-3-en-raphia-tresse-allume-le-soir-dans-un-salon-chaleureux-au-dessus-d-une-table-basse.webp"
   },
   "attendu": {
     "secondes": [
