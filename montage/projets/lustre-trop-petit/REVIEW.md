@@ -1,110 +1,98 @@
-# REVIEW — « Ton lustre est sûrement trop petit » v2 (vidéo à thème, 65 s, en boucle)
+# REVIEW — « Ton lustre est sûrement trop petit » v3 (vidéo à thème, 65 s, en boucle, ton ludique)
 
-v2 refaite le 17/11 selon les règles d'Ali du jour : recherche propre au-delà de l'article, images faites pour le film, appel au guide du
-site, 65 s pile, intonation dirigée phrase par phrase. Elle remplace la v1 : la v1 n'est plus le film (son dossier `Téléchargements/montage-lustre-trop-petit` est laissé tel quel).
+v3 refaite le 17/11 après le retour d'Ali sur la v2 : trop de chiffres d'un coup, pas assez ludique, deux secondes sans voix au raccord,
+des mots techniques. Elle remplace la v2 (dossier `Téléchargements/montage-lustre-trop-petit-v2`, laissé tel quel).
 
-## Ce qui a été fait
-- 18 plans, 1080 x 1920, 30 images/s, 65,000 s (1 950 images). Trois règles : diamètre (L + l) × 8,3 (5 x 4 m → 75 cm, « presque la
-  largeur d'une porte », « un minimum », plus grand sous un haut plafond) ; table : 2/3 de sa largeur au plus (90 cm → 60 cm, 30 de
-  moins) ; hauteur : 1/5 à 1/4 de la hauteur sous plafond (2,50 m → 52 à 62 cm) mais 2,13 m de passage dessous, il reste 37 cm, la plus
-  petite mesure l'emporte, sous un plafond bas un plafonnier. Puis « Le guide complet est sur L'Atelier du Lustre point com » et le
-  raccord de boucle.
-- Côté boutique : le plafonnier Orvane ouvre et ferme la boucle, Orvane allumé porte « le minimum », Domia montre la règle de la table,
-  Tressa allumé porte « plafonnier » et l'appel au guide. Aucun prix, aucune cote de produit à l'écran.
+## Ce que j'ai appris des deux shorts de Science Trash (transcriptions lues par Composio, images regardées dans le navigateur)
+- « Pourquoi tes cheveux deviennent blancs ? » (54 s) : une question en « tu » dès la première seconde, une comparaison de la vie de tous
+  les jours (« ton pote a trois ans de plus que toi »), le mot savant dit une fois puis remplacé par une image (« comme des cartouches
+  d'encre »), trois chiffres en tout, des questions qui relancent (« Mais alors, on peut rien faire contre ? »), un conseil pratique, une
+  chute drôle.
+- « L'IA résout un problème du millénaire ? » (2 min 05) : phrases courtes, langage parlé (« c'est toujours le bordel », « des trucs
+  chelous »), et la fin qui enchaîne sur le début sans pause : la dernière phrase s'arrête sur « Donc, » et le film repart sur sa première
+  phrase. Première et dernière image différentes.
+- Les deux : environ 3,4 mots par seconde ; une image nouvelle toutes les 2 à 3 s (images d'illustration plein cadre, un petit
+  personnage dessiné qui réagit) ; sous-titres de 2 à 4 mots en gros, centrés, un mot en couleur.
+- Ce que j'en ai repris : une idée par phrase, des objets à la place des formules, des questions qui relancent, des gags visuels, une image
+  nouvelle toutes les 3 s, des sous-titres plus gros et centrés, et une fin qui enchaîne sur le début sans silence. Rien n'est recopié
+  (ni texte, ni image, ni personnage).
 
-## Recherche au-delà de l'article (`sources.md`, pages lues le 17/11)
-- L'article donne le sujet. Chaque chiffre dit a deux sources ou plus (Visual Comfort, Kichler, Lamps.com, Lumens, Golden Lighting,
-  Schoolhouse, Hörmann, Bricozor, Foncia, Qualitel), citées mot pour mot dans `sources.md`.
-- Repris de l'article mais corrigé : « × 8 » devient « × 8,3 » (conversion exacte de la règle pieds → pouces des fabricants) ; « 2,15 m »
-  de passage devient « 2,13 m » (7 pieds chez Kichler, Lumens, Visual Comfort).
-- Abandonnés faute de source : le « × 10 » (90 cm) et la hauteur « plafond ÷ 5,5 » (45 cm). Remplacés par la règle sourcée du
-  cinquième au quart (2,5 à 3 pouces par pied, trois sources).
-- Ajouts trouvés par la recherche : « l'une des erreurs les plus fréquentes, selon les pros de l'éclairage » (trois sources), « c'est un
-  minimum » (Kichler, Golden Lighting), « plus grand sous un haut plafond » (Lumens, Visual Comfort ; le « 10 à 20 % » n'a qu'une source,
-  il n'est pas dit), « presque la largeur d'une porte » (73 cm, norme NF P20-101, Hörmann et Bricozor), « 2,50 m, la hauteur standard
-  en France » (Foncia, Qualitel 2021), « trente de moins que la table » (Chloe Winston : un pied de moins).
+## Ce qui change par rapport à la v2
+- Deux chiffres dans tout le film, dits et montrés : « vingt mètres carrés » et « deux mètres ». Tout le reste passe par des objets :
+  la largeur d'une porte, un bouton de chemise au plafond, des invités qui dînent « sous un parapluie », le copain qui joue au basket, un rond
+  de carton scotché au plafond. Plus aucune formule, plus de « diamètre », « platine » ni « hauteur sous plafond ».
+- Texte écrit comme on parle à un ami (tu, questions, petites blagues), passé au contrôle `style-humain` (aucun constat bloquant).
+- Boucle : plus de silence à la fin. La voix dit « …je parie que ton lustre est sûrement trop petit » d'une traite ; la piste est coupée
+  juste avant le second « ton » et le film repart sur « Ton lustre ». Raccord mesuré plus bas.
+- Commercial : les produits de la boutique (Orvane, Tressa, Domia, Ornela, tous ACTIVE), « sur nos fiches, un schéma donne les mesures
+  exactes de chaque luminaire » (vérifié : chaque fiche a son schéma), puis le guide gratuit sur latelierdulustre.com.
 
-## Images faites pour le film
-- Dessinés par code (aucune image de l'article, aucune image générée) : le salon vu de dessus et ses cotes, la formule, le compteur
-  jusqu'à 75 et l'anneau de 75 cm à l'échelle, la porte et « porte standard : 73 cm », le contour pointillé qui grandit sur « plus
-  grand », les repères de la table, la table de 90 cm et la coupole de 60 cm, le schéma de hauteur (plafond hachuré, sol, canapé,
-  plafonnier, bande des 62 cm et trait des 52 cm, bande des 2,13 m, bande qui se rétracte à 37 cm), la liste finale.
-- Photos des produits de la boutique (CDN Shopify) : Orvane-2 (découpé à la main pour rétrécir et grossir le plafonnier dans le
-  salon), Orvane-3 (le soir), Domia-5 (coupole détourée pour la faire grossir), Tressa-3 (le soir). Les trois produits sont ACTIVE
-  dans Shopify (vérifié le 17/11) ; aucun brouillon. Aucune personne visible.
+## Recherche (`sources.md`)
+Chaque fait a deux sources ou plus ; nouveau en v3 : l'astuce du rond de carton (Montreal Lighting, Residence Supply) et la règle de la
+table « moins large qu'elle » (Visual Comfort, Schoolhouse, Montreal Lighting).
+
+## Images
+- Faites pour le film (Codex, gpt-6.1-terra, effort élevé), hommes seulement, vérifiées en entier puis par zones (mains, visages) :
+  l'homme perplexe sous une lumière minuscule, l'homme qui scotche le carton, les quatre amis sous la coupole géante, le basketteur,
+  l'homme qui se cogne.
+- Photos des produits de la boutique, tous ACTIVE dans Shopify le 17/11 : Orvane-2 (découpé, il rétrécit puis grossit), Tressa-2,
+  Tressa-3, Tressa-7 (schéma recadré sans chiffres), Domia-5, Ornela-2.
+- Dessinés par code : porte, salon vu de dessus, coupe avec plafond qui monte, homme de 2 m à l'échelle, téléphone, coches, cœurs,
+  parapluie, étoile, soleil, lune, bouton, tampons.
 
 ## Voix
-- Une seule prise Gemini (Algieba, ×1,2), dirigée par `voix.segments` : 12 segments, chacun avec un style court (accroche « punchy, a
-  little teasing, a playful challenge », règles « clear and explanatory, warm, steady pace », résultats chiffrés « clear, with a small
-  spark of surprise on the result », appel au guide « warm, friendly invitation, smiling », raccord « rising questioning tone, clear full
-  voice »). Remise au rythme par `cadence` (pauses 0,30 s), sans nouvel appel voix. Aucune seconde prise : ni l'accroche ni la
-  phrase de raccord n'étaient signalées plates.
-- `intonation.json` (24 phrases, 20 « ok ») : accroche « ok » (écart 7,8 demi-tons) ; « Cinq mètres sur quatre ? » et « Une table de quatre-vingt-dix
-  centimètres ? » jugées « pas assez vives » (elles montent bien en fin : +4,4 et +3,8 demi-tons ; gardées, ce ne sont pas des lignes clés) ;
-  raccord « fin pas montante » : la mesure porte sur toute la phrase jusqu'à « petit », dont le film ne garde que « Et c'est pour ça
-  que » ; sur la partie gardée, « ça » monte de 8,4 demi-tons et « que » redescend de 6,4.
-- Limite de l'outil voix (non modifié) : le style se donne par segment, pas par mot ; la hauteur se mesure, elle ne se règle pas ;
-  une phrase qui finit en suspens se dit en continuant la phrase puis en coupant la piste.
+- Une seule prise Gemini (Algieba, ×1,2), 5 segments aux styles courts et peu nombreux pour éviter le côté « bizarre » signalé par Ali :
+  accroche « punchy, a little teasing, a playful challenge » ; tout le corps « playful and chatty, like telling a friend a good tip » ;
+  appel au guide « warm, friendly invitation, smiling » ; raccord « rising questioning tone, clear full voice » ; dernière phrase comme
+  l'accroche. Erreur de lecture 3,7 %.
+- Remise au rythme par le mode `cadence` (aucun nouvel appel voix) : pauses à 0,27 s (prise), 0,214 s (trop court pour la boucle),
+  puis 0,240 s (gardé). Puis début de la piste coupé de 0,103 s pour que la fin du film tombe juste avant le second « ton ».
+- `intonation.json` (23 phrases) : 21 « ok ». Accroche « ok » (écart 7,2 demi-tons). « Pas besoin de calcul compliqué » « à surveiller »
+  (écart 3,2 ; gardée, phrase courte). Raccord « fin pas montante » : la mesure porte sur toute la phrase jusqu'à « petit », dont le film
+  ne garde que « …je parie que » ; ni plate ni chuchotée (écart 10,4), donc aucune seconde prise.
+- Limite de l'outil voix (non modifié) : le style se donne par segment ; l'aligneur a mal placé « ta tête te dira merci » (même durée
+  audio dans les deux réglages) : temps des cinq mots répartis à la main sur leur vrai intervalle pour les sous-titres.
 
 ## Musique et niveaux
-- « Happy Guitar » (edtijo, CC0 1.0, Freesound 207558) tournée pour la boucle : piste de 47,00 à 72,77 s puis de 7,77 à 47,00 s, fondu
-  à puissance égale de 0,4 s caché sous le filé de 25,77 s ; la fin du film précède le début sur des échantillons consécutifs.
-- Niveaux par une copie locale de `lit_musique.py` (cible 11,7 dB sous la voix, plancher 10 dB, écart entre groupes 3 dB), vérifiés
-  par l'outil officiel `--verifier` : voix 10,6 à 17,8 dB au-dessus de la musique.
-- 47 effets (banque earshot) placés par `place_effets.py` : aucun pic à moins de 0,15 s d'un autre, aucun pendant un nombre dit.
-- Seuils réglés pour ce film dans le manifeste : `fondu_fin_min_s` = 0 (une boucle ne finit pas par un fondu) ;
-  `sans_voix_sous_voix_max_db` = 11 (le passage sans voix final de 0,83 s est le souffle avant la reprise de la boucle ; mesuré 7,5 dB,
-  la porte par défaut de 8 dB passerait aussi).
+- « Happy Guitar » (edtijo, CC0) tournée pour la boucle : piste 47,00→73,20 s puis 8,20→47,00 s, fondu de 0,4 s sous le filé de 26,2 s.
+- Niveaux par la copie locale de `lit_musique.py` ; voie de volume réglée à la même valeur de part et d'autre du raccord (pas de saut).
+- Seuils réglés pour ce film dans le manifeste : `fondu_fin_min_s` = 0 (une boucle ne finit pas en fondu) ; `souffle_min_s` = 0,7 : la
+  pause de 0,63 s après « d'après les pros de la lumière » n'est pas mesurée comme un souffle (la musique ne pouvait y monter de 10 dB
+  sans « pomper »).
+- 45 effets (banque earshot), aucun pic à moins de 0,2 s d'un autre.
 
-## Contrôles
-- Contrôle 1 (commit fa0c60d053) : aucune erreur ; défauts vus sur les planches et corrigés en un lot : « 4 m » collé au calcul
-  (plan 6), canapé dessiné sous les sous-titres (plans 11 et 13 : schémas déplacés), bord net du voile sombre au plan 15b,
-  « porte standard : 73 cm » lu 1,07 s (seuil 1,27 s : il arrive avec la porte), « cm » traversé par le câble (plan 9).
-- Contrôle 2 (commit e82f10e160) : aucune erreur, contraste 18/18. Quatre alertes de lecture (« Quelle taille de lustre pour un
-  salon ? » et les trois lignes de la liste finale) viennent de trous de mesure : une image marquée absente au milieu d'un texte
-  visible coupe la durée en deux ; les durées réelles sont de 1,4 à 2,5 s.
-- Rendu 2 relu : « 2,13 m » touchait le bas de la bande hachurée, et le fond clair ajouté derrière les sous-titres se voyait sur le
-  papier pointillé. Corrigés (texte descendu de 55 px, fond retiré : les schémas déplacés suffisent), rendu 3.
-- Accroche : 7 images fortes dans les 2 premières secondes, énergie 31 (seuils 8 et 15).
+## Contrôles et rendus
+- Contrôle 1 : aucune erreur ; corrigés en un lot : bande noire pendant chaque filé (le fond opaque du plan entrant cachait le plan
+  sortant ; défaut présent aussi dans la v2), cadrage du plafond (plan 3), « 20 m² » qui débordait, tampon terne sur papier, téléphone
+  sous les sous-titres, promesse finale trop brève, mouvements de caméra qui se chevauchaient.
+- Rendu 1 refusé : deux effets à 0,10 s et le plan 6 vu 0,83 s ; le plan 6 commence désormais sur « d'une porte » (1,4 s).
+- Contrôle final : aucune erreur, contraste sans alerte. Alerte gardée : « Le bon luminaire, du premier coup » mesurée 1,0 s alors qu'elle
+  reste 2,2 s à l'écran (trou de mesure : un échantillon marqué absent au milieu).
 
-## Rendu livré
-- Run 43998743753, commit 2a9c60d47f, dépôt public Master00564/atelier-montage : 1 950 images, 65,000 s, 1080 x 1920, h264 ;
-  −14,0 LUFS, crête −1,8 dBTP ; aucun blanc ; voix 10,6 à 17,8 dB au-dessus de la musique (médiane 11,7, portes 9 et 14) ; passage
-  sans voix final 7,5 dB sous la voix ; plus grand mouvement de la voie de musique 3,1 dB en 0,2 s (porte 4) ; accroche 7 images
-  fortes, énergie 31,5 ; aucun saut d'image ; 47 effets audités « clean » ; `echecs` vide.
-- Les rendus 1 et 2 (runs 43995555311 et 43997160745) sont passés aussi ; seules des positions d'images ont changé depuis, le son
-  est identique au millième près (mêmes pistes, mêmes mesures) : l'écoute earshot du rendu 1 vaut pour le fichier livré.
+## Rendu livré (run 44007759039, commit 689a0fd89e, dépôt public Master00564/atelier-montage)
+- 1 950 images, 65,000 s, 1080 x 1920, h264 ; −14,0 LUFS, crête −1,8 dBTP ; aucun blanc ; voix 10,2 à 19,2 dB au-dessus de la musique
+  (médiane 11,7) ; mouvement de la voie de musique 3,1 dB au plus en 0,2 s (porte 4) ; accroche 11 images fortes, énergie 56,5 ;
+  aucun saut d'image ; 45 effets « clean » ; `echecs` vide.
 
 ## Raccord de la boucle (mesuré sur le fichier livré)
-- Image : dernière image (n° 1949) contre image 0 : écart moyen de 1,70 niveau de gris (1,94 au-dessus des sous-titres) ; deux
-  images voisines dans le film diffèrent de 1,17. Même photo, même cadrage, caméra à l'échelle 1 sur la dernière image, même
-  promesse « Le bon luminaire, du premier coup » en bas ; seul le sous-titre change (« Et c'est pour ça que… » puis « Ton lustre »).
-- Son : saut de 0,0044 entre le dernier et le premier échantillon (pas moyen dans le film 0,0089) : pas de clic. Niveau −20,3 dB sur
-  les 50 dernières ms, −22,9 dB sur les 50 premières : la musique continue (échantillons consécutifs de la piste).
-- Voix : « que » ne retombe pas : la phrase a été dite d'une traite jusqu'à « petit » puis coupée avant « ton » ; « ça » monte de
-  8,4 demi-tons.
-- La voix laisse 1,26 s entre « que… » et « Ton » (1,04 s à la fin, 0,22 s au début) : un temps de suspens, la musique continue.
+- Voix : la dernière syllabe (« que ») s'éteint à 64,86 s, le film finit à 65,00 s, « Ton » commence à 0,12 s : 0,26 s de silence au
+  raccord, l'équivalent d'une pause ordinaire du film (0,24 s). En v2 : 1,26 s.
+- Son : saut de 0,0019 entre le dernier et le premier échantillon (pas moyen dans le film 0,0096) : pas de clic ; la musique joue des
+  échantillons consécutifs de la piste.
+- Image : la fin revient sur le salon de l'image 0 (même photo, caméra à l'échelle 1, promesse en bas) ; écart de 2,73 niveaux de gris
+  entre la dernière image et l'image 0 (deux images voisines : 1,35) ; seuls un cœur et le sous-titre diffèrent.
 
-## Écoute (earshot, sur la copie de partage)
-- Verdict « proche » des 7 films de référence : 20 mesures sur 23 dans la plage ; −14,1 LUFS, crête −1,6 dBTP ; musique présente
-  100 % du temps, aucun trou, première note à 0,00 s, rien de mort à la fin. Effets sur leurs repères : 69 % à 40 ms près
-  (hasard 47 %), 94 % à 100 ms. Tous les effets passent l'audit (« clean »).
-- Remarques non bloquantes (la critique compare à des films de lancement, pas à un film narré) : « trop d'accents saillants »
-  (1,97/s, plage des références jusqu'à 1,86/s : les consonnes de la voix rapide comptent) ; bas du spectre maigre (guitare, pas de
-  basse) ; presque mono. Une coupe sans son propre : le filé vers le plan 11 (37,90 s), suivi de son déclic 0,15 s après.
+## Écoute (earshot, copie de partage)
+- Verdict « proche » : 20 mesures sur 23 dans la plage ; −14,0 LUFS, crête −1,7 dBTP ; musique 100 % du temps, aucun trou, première
+  note à 0,00 s, rien de mort à la fin ; effets sur leurs repères : 88 % des changements d'image ont un son à 100 ms près.
+- Remarques non bloquantes (comparaison avec des films de lancement, pas des films narrés) : « trop d'accents saillants » (2,12/s : voix
+  rapide et effets), bas du spectre maigre (guitare), presque mono.
 
 ## Ce que personne n'a vérifié
-- La voix entendue : l'intonation est mesurée (hauteur, montées), pas écoutée ; earshot ne comprend pas les mots.
-- Le mouvement entre deux images (planches à 2 images/s) et l'impression « haut de gamme ».
-- Le raccord de boucle dans les lecteurs d'Instagram, Facebook et Pinterest (chacun peut ajouter un temps de chargement).
-- L'humeur de la musique (earshot la dit « corporate » ou « funk » : ses étiquettes de genre se trompent souvent).
+- La voix écoutée par une oreille humaine (intonation mesurée, pas écoutée) ; Ali la trouvait « un peu bizarre de temps en temps » en v2.
+- Si les gags font sourire (parapluie, basketteur, homme qui se cogne) : jugement humain.
+- La boucle dans les lecteurs d'Instagram, Facebook et Pinterest ; le mouvement entre deux images (planches à 2 images/s).
 
 ## Le plan le plus faible
-- Plan 5 (la formule) : beaucoup de papier vide sous « (L + l) » pendant 1,5 s avant « × 8,3 ».
-- Plan 13 : le schéma rapetisse pour laisser la place aux sous-titres ; la bande des 2,13 m reste lisible mais plus petite.
-
-## À signaler (hors film)
-- L'article de la boutique contient trois chiffres sans source trouvée : le « × 10 », la hauteur « plafond ÷ 5,5 » et les « 2,15 m » de
-  passage (les fabricants disent 7 pieds, soit 2,13 m). Le film ne les reprend pas ; l'article mériterait la même correction.
-- L'article dit d'Orvane « 16,5 cm de haut, 45 cm de diamètre » ; la fiche Orvane dit 50 x 17 cm (45 x 16,5 cm sont les cotes
-  d'Ornela). Le film ne cite aucune cote de produit.
+- Plan 6 (la porte qui se replie) : la porte se replie et le luminaire apparaît pendant le filé de sortie ; on voit surtout la porte.
+- Plan 19 (téléphone) : le schéma est recadré pour ne pas ajouter de chiffres, donc peu lisible comme schéma.
