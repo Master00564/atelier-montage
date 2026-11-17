@@ -1,7 +1,7 @@
 # REVIEW — « Ton lustre est sûrement trop petit » v2 (vidéo à thème, 65 s, en boucle)
 
 v2 refaite le 17/11 selon les règles d'Ali du jour : recherche propre au-delà de l'article, images faites pour le film, appel au guide du
-site, 65 s pile, intonation dirigée phrase par phrase. La v1 livrée plus tôt reste dans `v1/` du même dossier.
+site, 65 s pile, intonation dirigée phrase par phrase. Elle remplace la v1 : la v1 n'est plus le film (son dossier `Téléchargements/montage-lustre-trop-petit` est laissé tel quel).
 
 ## Ce qui a été fait
 - 18 plans, 1080 x 1920, 30 images/s, 65,000 s (1 950 images). Trois règles : diamètre (L + l) × 8,3 (5 x 4 m → 75 cm, « presque la
@@ -30,7 +30,8 @@ site, 65 s pile, intonation dirigée phrase par phrase. La v1 livrée plus tôt 
   grand », les repères de la table, la table de 90 cm et la coupole de 60 cm, le schéma de hauteur (plafond hachuré, sol, canapé,
   plafonnier, bande des 62 cm et trait des 52 cm, bande des 2,13 m, bande qui se rétracte à 37 cm), la liste finale.
 - Photos des produits de la boutique (CDN Shopify) : Orvane-2 (découpé à la main pour rétrécir et grossir le plafonnier dans le
-  salon), Orvane-3 (le soir), Domia-5 (coupole détourée pour la faire grossir), Tressa-3 (le soir). Aucune personne visible.
+  salon), Orvane-3 (le soir), Domia-5 (coupole détourée pour la faire grossir), Tressa-3 (le soir). Les trois produits sont ACTIVE
+  dans Shopify (vérifié le 17/11) ; aucun brouillon. Aucune personne visible.
 
 ## Voix
 - Une seule prise Gemini (Algieba, ×1,2), dirigée par `voix.segments` : 12 segments, chacun avec un style court (accroche « punchy, a
