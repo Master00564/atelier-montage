@@ -11,7 +11,7 @@
     "voix": "Algieba",
     "vitesse": 1.2,
     "style": "Warm, natural French male narrator with a Parisian accent, talking to one friend about their living room, human and expressive, never flat, never robotic. Unhurried: one steady, calm pace from the first word to the last, never speeding up on short phrases or lists of numbers, a clear breath at every full stop. Follow the moment: the opening line punchy and a little teasing, a playful challenge; the three rules clear and explanatory, like showing someone how to use a tape measure; a small spark of surprise on each result (soixante-douze, quatre-vingt-dix, soixante, quarante-cinq, trente-cinq); the last sentence 'Et c'est pour ça que ton lustre est sûrement trop petit' said as one flowing line, rising on 'que' and running straight into 'ton' with no pause.",
-    "pause_max": 0.27,
+    "pause_max": 0.3,
     "segments": [
       {
         "texte": "Ton lustre est sûrement trop petit.",

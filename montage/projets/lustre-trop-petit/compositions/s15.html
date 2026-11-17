@@ -23,25 +23,42 @@
     .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
       background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
 
-    #s15-all {  }
+    #s15-all { filter: url(#s15-filtre); }
     #s15-nuit { opacity: 0; }
     #s15-r45 { opacity: 0; }
     #s15-barre { transform: scaleX(0); }
     #s15-cam { transform: scale(1.1016); }
   </style>
   <div id="root" data-composition-id="s15" data-width="1080" data-height="1920">
-    
-    <div id="s15-all" class="all clip" data-start="0" data-duration="2.6500">
-      <div id="s15-cam" class="cam"><div class="papier"></div><div class="points"></div><div class="grain"></div><img id="s15-schema" class="abs" src="assets/schema.png" alt="" style="left:-300px;top:340px;width:1760.0px;height:1800.0px;mix-blend-mode:multiply;">
-        <div class="abs" style="left:0;top:520px;width:1080px;height:190px;background:repeating-linear-gradient(45deg,rgba(125,97,40,.55) 0 4px,transparent 4px 18px),rgba(125,97,40,.16);border-bottom:6px solid #7d6128"></div>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="s15-filtre" x="-10%" y="0" width="120%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur id="s15-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="s15-all" class="all clip" data-start="0" data-duration="2.7333">
+      <div id="s15-cam" class="cam"><div class="papier"></div><div class="points"></div><div class="grain"></div><svg id="s15-schema" class="abs" viewBox="0 0 880 900" style="left:-300px;top:340px;width:1760.0px;height:1800.0px;">
+      <defs><pattern id="s15-hach" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="14" stroke="#4d463d" stroke-width="0.96" opacity=".45"/></pattern></defs>
+      <rect x="-40" y="40" width="960" height="50" fill="url(#s15-hach)"/>
+      <line x1="-40" y1="90" x2="920" y2="90" stroke="#14110e" stroke-width="2.1"/>
+      <rect x="-40" y="795" width="960" height="40" fill="url(#s15-hach)"/>
+      <line x1="-40" y1="795" x2="920" y2="795" stroke="#14110e" stroke-width="2.1"/>
+      <line x1="-40" y1="194" x2="920" y2="194" stroke="#4d463d" stroke-width="1.47" stroke-dasharray="12 9"/>
+      <rect x="213" y="90" width="132" height="22" rx="2" fill="#d9c6a2" stroke="#14110e" stroke-width="1.26"/>
+      <rect x="213" y="112" width="132" height="23" rx="2" fill="#1e1b18"/><circle cx="219" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="219" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="219" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="226" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="226" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="226" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="233" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="233" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="233" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="240" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="240" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="240" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="247" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="247" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="247" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="254" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="254" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="254" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="261" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="261" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="261" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="268" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="268" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="268" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="275" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="275" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="275" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="282" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="282" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="282" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="289" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="289" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="289" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="296" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="296" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="296" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="303" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="303" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="303" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="310" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="310" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="310" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="317" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="317" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="317" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="324" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="324" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="324" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="331" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="331" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="331" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="338" cy="118" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="338" cy="124" r="1.6" fill="#c9a15a" opacity=".55"/><circle cx="338" cy="130" r="1.6" fill="#c9a15a" opacity=".55"/>
+      <rect x="219" y="133" width="120" height="4" rx="2" fill="#f6e7c4"/>
+      <g fill="none" stroke="#14110e" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="98" y="574" width="272" height="96" rx="16"/><rect x="376" y="574" width="270" height="96" rx="16"/>
+        <rect x="74" y="668" width="296" height="36" rx="12"/><rect x="376" y="668" width="300" height="36" rx="12"/>
+        <rect x="28" y="606" width="70" height="166" rx="14"/><rect x="650" y="606" width="70" height="166" rx="14"/>
+        <rect x="74" y="704" width="602" height="66" rx="6"/>
+        <line x1="62" y1="772" x2="58" y2="795"/><line x1="686" y1="772" x2="690" y2="795"/></g>
+      <g stroke="#7d6128" stroke-width="3.0" stroke-linecap="round"><line x1="590" y1="92" x2="590" y2="192"/><line x1="578" y1="92" x2="602" y2="92"/><line x1="578" y1="192" x2="602" y2="192"/></g></svg>
+        <div class="abs" style="left:0;top:520px;width:1080px;height:208px;background:repeating-linear-gradient(45deg,rgba(125,97,40,.55) 0 4px,transparent 4px 18px),rgba(125,97,40,.16);border-bottom:6px solid #7d6128"></div>
       </div>
       <div id="s15-nuit" class="full" style="background:#14110e"></div>
       <div id="s15-r45" class="abs" style="left:96px;top:470px;width:600px;height:170px">
-        <span class="fr abs" style="left:0;top:0;font-size:150px;font-weight:500;color:#faf7f1">45 cm</span>
+        <span class="fr abs" style="left:0;top:0;font-size:150px;font-weight:500;color:#faf7f1">62 cm</span>
         <div id="s15-barre" class="trait" style="left:-10px;top:78px;width:470px;height:10px;background:#c9a15a;transform-origin:0 50%"></div>
       </div>
       <div id="s15-r35" class="abs" style="left:96px;top:830px;width:888px;height:300px;transform-origin:0 50%">
-        <span class="fr abs" style="left:0;top:0;font-size:300px;color:#c9a15a">35</span>
+        <span class="fr abs" style="left:0;top:0;font-size:300px;color:#c9a15a">37</span>
         <span class="fr abs" style="left:380px;top:140px;font-size:120px;font-weight:500;color:#faf7f1">cm</span>
       </div>
     </div>
@@ -50,12 +67,12 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       // the smaller of the two wins: 35 cm
-      tl.fromTo("#s15-cam", { scale: 1.102 }, { scale: 1.124, duration: 2.55, ease: "none" }, 0);
+      tl.fromTo("#s15-cam", { scale: 1.102 }, { scale: 1.124, duration: 2.483, ease: "none" }, 0);
       tl.fromTo("#s15-nuit", { opacity: 0 }, { opacity: 0.84, duration: 0.35, ease: "power2.inOut" }, 0);
       tl.fromTo("#s15-r45", { opacity: 0, x: -30 }, { opacity: 0.6, x: 0, duration: 0.3, ease: "expo.out" }, 0.25);
-      tl.fromTo("#s15-r35", { scale: 1 }, { scale: 1.14, duration: 0.25, ease: "power4.out" }, 0.513);
-      tl.fromTo("#s15-barre", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 1.453);
-      tl.to("#s15-r45", { opacity: 0.25, duration: 0.3, ease: "power2.out" }, 1.773);
+      tl.fromTo("#s15-r35", { scale: 1 }, { scale: 1.14, duration: 0.25, ease: "power4.out" }, 0.567);
+      tl.fromTo("#s15-barre", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 1.427);
+      tl.to("#s15-r45", { opacity: 0.25, duration: 0.3, ease: "power2.out" }, 1.747);
       window.__timelines["s15"] = tl;
     })();
   </script>

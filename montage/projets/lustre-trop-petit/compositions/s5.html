@@ -28,13 +28,13 @@
   </style>
   <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="s5-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="s5-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
-    <div id="s5-all" class="all clip" data-start="0" data-duration="5.0770">
+    <div id="s5-all" class="all clip" data-start="0" data-duration="2.8103">
       <div id="s5-cam" class="cam"><div class="papier"></div><div class="points"></div><div class="grain"></div>
         <div class="abs" style="left:-190px;top:180px;width:1460px;height:1168px;border:14px solid #14110e;opacity:.045"></div>
       </div>
       <span id="s5-ll" class="fr abs" style="left:96px;top:380px;font-size:170px;font-weight:500;color:#14110e">(L + l)</span>
       <span id="s5-m" class="nr abs" style="left:104px;top:572px;font-size:60px;color:#4d463d">en mètres</span>
-      <span id="s5-x8" class="fr abs" style="left:96px;top:660px;font-size:320px;color:#7d6128">× 8</span>
+      <span id="s5-x8" class="fr abs" style="left:96px;top:660px;font-size:300px;color:#7d6128">× 8,3</span>
       <div id="s5-res" class="abs" style="left:96px;top:1000px;height:120px;width:888px">
         <span class="fr abs" style="left:0;top:0;font-size:110px;font-weight:500;color:#14110e">=</span>
         <div class="trait" style="left:110px;top:92px;width:300px;background:#7d6128"></div>
@@ -48,14 +48,14 @@
       // the formula builds on the words
       tl.fromTo("#s5-cam", { scale: 1 }, { scale: 1.08, duration: 0.5, ease: "expo.out" }, 0);
       tl.fromTo("#s5-all", { filter: "blur(18px)" }, { filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 0);
-      tl.fromTo("#s5-cam", { x: -20 }, { x: 20, duration: 4.7, ease: "none", immediateRender: false }, 0);
+      tl.fromTo("#s5-cam", { x: -20 }, { x: 20, duration: 2.433, ease: "none", immediateRender: false }, 0);
       tl.fromTo("#s5-ll", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.12);
-      tl.fromTo("#s5-m", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.253);
-      tl.fromTo("#s5-x8", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 1.373);
-      tl.fromTo("#s5-res", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 2.253);
-      tl.fromTo("#s5-all", { y: 0 }, { y: -960, duration: 0.12, ease: "power3.in", immediateRender: false }, 4.58);
-      tl.fromTo("#s5-all", { y: -960 }, { y: -1920, duration: 0.277, ease: "expo.out", immediateRender: false }, 4.7);
-      tl.fromTo("#s5-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in", immediateRender: false }, 4.58);
+      tl.fromTo("#s5-m", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.233);
+      tl.fromTo("#s5-x8", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 1.533);
+      tl.fromTo("#s5-res", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 1.833);
+      tl.fromTo("#s5-all", { y: 0 }, { y: -960, duration: 0.12, ease: "power3.in", immediateRender: false }, 2.313);
+      tl.fromTo("#s5-all", { y: -960 }, { y: -1920, duration: 0.277, ease: "expo.out", immediateRender: false }, 2.433);
+      tl.fromTo("#s5-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in", immediateRender: false }, 2.313);
       window.__timelines["s5"] = tl;
     })();
   </script>

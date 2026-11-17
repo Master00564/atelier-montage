@@ -27,11 +27,10 @@
     #s10-noir { opacity: 0; }
     #s10-a1, #s10-a2 { transform: scale(0); }
     #s10-g1, #s10-g2 { transform: scaleY(0); }
-    #s10-suis, #s10-table { opacity: 0; }
   </style>
   <div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="s10-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="s10-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
-    <div id="s10-all" class="all clip" data-start="0" data-duration="5.1437">
+    <div id="s10-all" class="all clip" data-start="0" data-duration="2.4437">
       <div id="s10-cam" class="cam" style="transform-origin:540px 700px">
         <div class="jbox" style="left:-514.3px;top:-84.8px;width:2111.9px;height:2111.9px;transform:scaleX(-1)">
           <img class="full" src="assets/domia.webp" alt="">
@@ -44,8 +43,7 @@
       <div class="voile-bas"></div>
       <div id="s10-a1" class="abs" style="left:150px;top:1290px;width:84px;height:84px;border-radius:42px;border:6px solid #c9a15a"></div>
       <div id="s10-a2" class="abs" style="left:840px;top:1250px;width:84px;height:84px;border-radius:42px;border:6px solid #c9a15a"></div>
-      <span id="s10-suis" class="nr abs" style="left:96px;top:640px;font-size:80px;color:#faf7f1">suis toujours la</span>
-      <span id="s10-table" class="fr it abs" style="left:96px;top:730px;font-size:230px;color:#c9a15a">table</span>
+
     </div>
   </div>
   <script>
@@ -54,19 +52,15 @@
       // wider than two thirds: it spills over the guests; then the table wins
       tl.fromTo("#s10-cam", { scale: 1.22 }, { scale: 1, duration: 0.4, ease: "expo.out" }, 0);
       tl.fromTo("#s10-all", { filter: "blur(10px)" }, { filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0);
-      tl.fromTo("#s10-cam", { scale: 1 }, { scale: 1.05, duration: 4.247, ease: "none", immediateRender: false }, 0.4);
-      tl.fromTo("#s10-dome", { scale: 1 }, { scale: 2.6, duration: 0.3, ease: "power4.out" }, 0.213);
-      tl.fromTo("#s10-g1", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.inOut" }, 0.893);
-      tl.fromTo("#s10-g2", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.inOut" }, 0.953);
-      tl.fromTo("#s10-a1", { scale: 0 }, { scale: 1, duration: 0.25, ease: "expo.out" }, 1.553);
-      tl.fromTo("#s10-a2", { scale: 0 }, { scale: 1, duration: 0.25, ease: "expo.out" }, 1.633);
-      tl.fromTo("#s10-noir", { opacity: 0 }, { opacity: 0.74, duration: 0.4, ease: "power2.inOut" }, 2.188);
-      tl.to(["#s10-a1", "#s10-a2", "#s10-g1", "#s10-g2"], { opacity: 0, duration: 0.15, ease: "power3.in" }, 2.188);
-      tl.fromTo("#s10-suis", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 3.641);
-      tl.fromTo("#s10-table", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 4.393);
-      tl.fromTo("#s10-all", { y: 0 }, { y: -960, duration: 0.12, ease: "power3.in", immediateRender: false }, 4.647);
-      tl.fromTo("#s10-all", { y: -960 }, { y: -1920, duration: 0.277, ease: "expo.out", immediateRender: false }, 4.767);
-      tl.fromTo("#s10-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in", immediateRender: false }, 4.647);
+      tl.fromTo("#s10-cam", { scale: 1 }, { scale: 1.05, duration: 1.547, ease: "none", immediateRender: false }, 0.4);
+      tl.fromTo("#s10-dome", { scale: 1 }, { scale: 2.6, duration: 0.3, ease: "power4.out" }, 0.22);
+      tl.fromTo("#s10-g1", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.inOut" }, 0.86);
+      tl.fromTo("#s10-g2", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.inOut" }, 0.92);
+      tl.fromTo("#s10-a1", { scale: 0 }, { scale: 1, duration: 0.25, ease: "expo.out" }, 1.54);
+      tl.fromTo("#s10-a2", { scale: 0 }, { scale: 1, duration: 0.25, ease: "expo.out" }, 1.62);
+      tl.fromTo("#s10-all", { y: 0 }, { y: -960, duration: 0.12, ease: "power3.in", immediateRender: false }, 1.947);
+      tl.fromTo("#s10-all", { y: -960 }, { y: -1920, duration: 0.277, ease: "expo.out", immediateRender: false }, 2.067);
+      tl.fromTo("#s10-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in", immediateRender: false }, 1.947);
       window.__timelines["s10"] = tl;
     })();
   </script>

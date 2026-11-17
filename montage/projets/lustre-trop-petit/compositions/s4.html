@@ -28,7 +28,7 @@
   </style>
   <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
     
-    <div id="s4-all" class="all clip" data-start="0" data-duration="4.2333">
+    <div id="s4-all" class="all clip" data-start="0" data-duration="3.8000">
       <div id="s4-cam" class="cam"><div class="papier"></div><div class="points"></div><div class="grain"></div>
         <div id="s4-r1" class="trait" style="left:260px;top:640px;width:600px;background:#14110e;transform-origin:0 50%"></div>
         <div id="s4-r2" class="traitv" style="left:854px;top:640px;height:480px;background:#14110e;transform-origin:50% 0"></div>
@@ -48,19 +48,19 @@
       const tl = gsap.timeline({ paused: true });
       // rule 1: the room drawn from above, its two sides measured
       tl.fromTo("#s4-all", { clipPath: "inset(846px 0px 1068px 0px)" }, { clipPath: "inset(0px 0px 0px 0px)", duration: 0.42, ease: "power2.out" }, 0);
-      tl.fromTo("#s4-cam", { scale: 1 }, { scale: 1.04, duration: 3.853, ease: "none", immediateRender: false }, 0);
-      tl.fromTo("#s4-un", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.076);
-      tl.fromTo("#s4-diam", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 0.727);
+      tl.fromTo("#s4-cam", { scale: 1 }, { scale: 1.04, duration: 3.42, ease: "none", immediateRender: false }, 0);
+      tl.fromTo("#s4-un", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.07);
+      tl.fromTo("#s4-diam", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 0.673);
       tl.fromTo("#s4-r1", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.in" }, 0.14);
       tl.fromTo("#s4-r2", { scaleY: 0 }, { scaleY: 1, duration: 0.2, ease: "none" }, 0.34);
       tl.fromTo("#s4-r3", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "none" }, 0.52);
       tl.fromTo("#s4-r4", { scaleY: 0 }, { scaleY: 1, duration: 0.22, ease: "power2.out" }, 0.72);
-      tl.fromTo("#s4-dl", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "expo.out" }, 2.507);
-      tl.fromTo("#s4-ll", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 2.507);
-      tl.fromTo("#s4-dw", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "expo.out" }, 3.467);
-      tl.fromTo("#s4-lw", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 3.467);
-      tl.to("#s4-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 3.853);
-      tl.fromTo("#s4-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 3.853);
+      tl.fromTo("#s4-dl", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "expo.out" }, 2.133);
+      tl.fromTo("#s4-ll", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 2.133);
+      tl.fromTo("#s4-dw", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "expo.out" }, 2.933);
+      tl.fromTo("#s4-lw", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 2.933);
+      tl.to("#s4-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 3.42);
+      tl.fromTo("#s4-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 3.42);
       window.__timelines["s4"] = tl;
     })();
   </script>

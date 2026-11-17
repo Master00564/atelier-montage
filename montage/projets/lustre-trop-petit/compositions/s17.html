@@ -25,11 +25,11 @@
 
     #s17-all {  }
     #s17-promesse { opacity: 0; }
-    #s17-cam { transform: scale(0.9622); }
+    #s17-cam { transform: scale(0.9357); }
   </style>
   <div id="root" data-composition-id="s17" data-width="1080" data-height="1920">
     
-    <div id="s17-all" class="all clip" data-start="0" data-duration="1.7667">
+    <div id="s17-all" class="all clip" data-start="0" data-duration="2.9333">
       <div id="s17-cam" class="cam"><div id="s17-jbox" class="jbox" style="left:-469.9px;top:-58px;width:2035.1px;height:2035.1px"><img id="s17-plaque" class="full" src="assets/jour-plaque.png" alt=""><img id="s17-lampe" class="full" src="assets/jour-lampe.png" alt="" style="transform-origin:1009.9px 146.1px"></div></div>
       <div class="voile-jour"></div>
       <div id="s17-promesse" class="nr it abs" style="left:96px;top:1272px;width:888px;font-size:44px;font-weight:500;color:#faf7f1">Le bon luminaire, du premier coup</div>
@@ -39,7 +39,7 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       // the loop: the room of frame 0, the camera reaching scale 1 on the last frame
-      tl.fromTo("#s17-cam", { scale: 0.962 }, { scale: 1, duration: 1.667, ease: "none" }, 0);
+      tl.fromTo("#s17-cam", { scale: 0.936 }, { scale: 1, duration: 2.833, ease: "none" }, 0);
       tl.fromTo("#s17-promesse", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0);
       window.__timelines["s17"] = tl;
     })();

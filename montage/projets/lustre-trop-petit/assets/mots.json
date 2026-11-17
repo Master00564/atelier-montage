@@ -1,0 +1,1932 @@
+{
+ "fichier": "voix.mp3",
+ "duree_s": 65.257,
+ "wer": 0.0478,
+ "fautes": [
+  "virgule trois cinq metres -> trois metres et demi",
+  "de -> deux",
+  "metres -> m",
+  "metres -> m",
+  "atelier -> atelierdulustre",
+  "du lustre point -> -"
+ ],
+ "entendu": "Ton lustre est sûrement trop petit. C 'est l 'une des erreurs les plus fréquentes selon les pros de l 'éclairage. Trop petit, il se perd au plafond. Trop grand, il écrase toute la pièce. Prends un mètre ruban. Trois règles suffisent pour tomber juste. Un, le diamètre. Additionne la longueur et la largeur du salon en mètres. Puis multiplie par 8 ,3. 5 mètres sur 4. 75 cm. Presque la largeur d 'une porte. Et c 'est un minimum. Sous un haut plafond, vois plus grand. Deux. Au -dessus d 'une table à manger, il ne dépasse pas les deux tiers de sa largeur. Une table de 90 cm ? 60 cm au maximum, soit 32 moins que la table. Plus large, il déborde sur les convives. 3. La hauteur. Compte un cinquième à un quart de la hauteur sous plafond. Sous 2m50, la hauteur standard en France, ça donne 52 à 62 cm, mais garde 2m13 de passage dessous. Il te reste alors 37 cm platine comprise. La plus petite des deux mesures l 'emporte. Sous un plafond bas, prends un plafonnier. Le guide complet est sur l 'atelierdulustre .com. Sans ces trois calculs, on choisit trop souvent au coup de cœur. Et c 'est pour ça que ton lustre est sûrement trop petit.",
+ "seuil_silence_db": -28.0,
+ "mots": [
+  {
+   "mot": "Ton",
+   "debut": 0.223,
+   "fin": 0.46
+  },
+  {
+   "mot": "lustre",
+   "debut": 0.46,
+   "fin": 0.84
+  },
+  {
+   "mot": "est",
+   "debut": 0.84,
+   "fin": 1.06
+  },
+  {
+   "mot": "sûrement",
+   "debut": 1.06,
+   "fin": 1.42
+  },
+  {
+   "mot": "trop",
+   "debut": 1.42,
+   "fin": 1.68
+  },
+  {
+   "mot": "petit.",
+   "debut": 1.68,
+   "fin": 1.92
+  },
+  {
+   "mot": "C'est",
+   "debut": 2.4,
+   "fin": 2.6
+  },
+  {
+   "mot": "l'une",
+   "debut": 2.6,
+   "fin": 2.74
+  },
+  {
+   "mot": "des",
+   "debut": 2.74,
+   "fin": 2.92
+  },
+  {
+   "mot": "erreurs",
+   "debut": 2.92,
+   "fin": 3.2
+  },
+  {
+   "mot": "les",
+   "debut": 3.2,
+   "fin": 3.36
+  },
+  {
+   "mot": "plus",
+   "debut": 3.36,
+   "fin": 3.54
+  },
+  {
+   "mot": "fréquentes,",
+   "debut": 3.54,
+   "fin": 4.06
+  },
+  {
+   "mot": "selon",
+   "debut": 4.06,
+   "fin": 4.34
+  },
+  {
+   "mot": "les",
+   "debut": 4.34,
+   "fin": 4.58
+  },
+  {
+   "mot": "pros",
+   "debut": 4.58,
+   "fin": 4.66
+  },
+  {
+   "mot": "de",
+   "debut": 4.66,
+   "fin": 4.8
+  },
+  {
+   "mot": "l'éclairage.",
+   "debut": 4.8,
+   "fin": 5.3
+  },
+  {
+   "mot": "Trop",
+   "debut": 5.456,
+   "fin": 5.7
+  },
+  {
+   "mot": "petit,",
+   "debut": 5.7,
+   "fin": 6.12
+  },
+  {
+   "mot": "il",
+   "debut": 6.14,
+   "fin": 6.48
+  },
+  {
+   "mot": "se",
+   "debut": 6.48,
+   "fin": 6.56
+  },
+  {
+   "mot": "perd",
+   "debut": 6.56,
+   "fin": 6.62
+  },
+  {
+   "mot": "au",
+   "debut": 6.62,
+   "fin": 6.82
+  },
+  {
+   "mot": "plafond.",
+   "debut": 6.82,
+   "fin": 7.18
+  },
+  {
+   "mot": "Trop",
+   "debut": 7.372,
+   "fin": 7.56
+  },
+  {
+   "mot": "grand,",
+   "debut": 7.56,
+   "fin": 7.72
+  },
+  {
+   "mot": "il",
+   "debut": 7.92,
+   "fin": 8.1
+  },
+  {
+   "mot": "écrase",
+   "debut": 8.1,
+   "fin": 8.32
+  },
+  {
+   "mot": "toute",
+   "debut": 8.32,
+   "fin": 8.54
+  },
+  {
+   "mot": "la",
+   "debut": 8.54,
+   "fin": 8.72
+  },
+  {
+   "mot": "pièce.",
+   "debut": 8.72,
+   "fin": 9.06
+  },
+  {
+   "mot": "Prends",
+   "debut": 9.234,
+   "fin": 9.5
+  },
+  {
+   "mot": "un",
+   "debut": 9.5,
+   "fin": 9.56
+  },
+  {
+   "mot": "mètre",
+   "debut": 9.56,
+   "fin": 9.86
+  },
+  {
+   "mot": "ruban:",
+   "debut": 9.86,
+   "fin": 10.22
+  },
+  {
+   "mot": "trois",
+   "debut": 10.321,
+   "fin": 10.64
+  },
+  {
+   "mot": "règles",
+   "debut": 10.64,
+   "fin": 10.96
+  },
+  {
+   "mot": "suffisent",
+   "debut": 10.96,
+   "fin": 11.32
+  },
+  {
+   "mot": "pour",
+   "debut": 11.32,
+   "fin": 11.5
+  },
+  {
+   "mot": "tomber",
+   "debut": 11.5,
+   "fin": 11.74
+  },
+  {
+   "mot": "juste.",
+   "debut": 11.74,
+   "fin": 12.0
+  },
+  {
+   "mot": "Un,",
+   "debut": 12.218,
+   "fin": 12.42
+  },
+  {
+   "mot": "le",
+   "debut": 12.572,
+   "fin": 12.84
+  },
+  {
+   "mot": "diamètre.",
+   "debut": 12.84,
+   "fin": 13.26
+  },
+  {
+   "mot": "Additionne",
+   "debut": 13.62,
+   "fin": 14.06
+  },
+  {
+   "mot": "la",
+   "debut": 14.06,
+   "fin": 14.3
+  },
+  {
+   "mot": "longueur",
+   "debut": 14.3,
+   "fin": 14.74
+  },
+  {
+   "mot": "et",
+   "debut": 14.74,
+   "fin": 14.88
+  },
+  {
+   "mot": "la",
+   "debut": 14.88,
+   "fin": 15.1
+  },
+  {
+   "mot": "largeur",
+   "debut": 15.1,
+   "fin": 15.28
+  },
+  {
+   "mot": "du",
+   "debut": 15.28,
+   "fin": 15.5
+  },
+  {
+   "mot": "salon,",
+   "debut": 15.5,
+   "fin": 15.76
+  },
+  {
+   "mot": "en",
+   "debut": 15.937,
+   "fin": 16.1
+  },
+  {
+   "mot": "mètres,",
+   "debut": 16.1,
+   "fin": 16.36
+  },
+  {
+   "mot": "puis",
+   "debut": 16.428,
+   "fin": 16.66
+  },
+  {
+   "mot": "multiplie",
+   "debut": 16.66,
+   "fin": 17.14
+  },
+  {
+   "mot": "par",
+   "debut": 17.14,
+   "fin": 17.4
+  },
+  {
+   "mot": "huit",
+   "debut": 17.4,
+   "fin": 17.64
+  },
+  {
+   "mot": "virgule",
+   "debut": 17.64,
+   "fin": 17.7
+  },
+  {
+   "mot": "trois.",
+   "debut": 17.7,
+   "fin": 18.2
+  },
+  {
+   "mot": "Cinq",
+   "debut": 18.358,
+   "fin": 18.6
+  },
+  {
+   "mot": "mètres",
+   "debut": 18.6,
+   "fin": 18.74
+  },
+  {
+   "mot": "sur",
+   "debut": 18.74,
+   "fin": 18.88
+  },
+  {
+   "mot": "quatre?",
+   "debut": 18.88,
+   "fin": 19.14
+  },
+  {
+   "mot": "Soixante-quinze",
+   "debut": 19.9,
+   "fin": 20.34
+  },
+  {
+   "mot": "centimètres,",
+   "debut": 20.34,
+   "fin": 20.78
+  },
+  {
+   "mot": "presque",
+   "debut": 20.958,
+   "fin": 21.36
+  },
+  {
+   "mot": "la",
+   "debut": 21.36,
+   "fin": 21.58
+  },
+  {
+   "mot": "largeur",
+   "debut": 21.58,
+   "fin": 21.84
+  },
+  {
+   "mot": "d'une",
+   "debut": 21.84,
+   "fin": 22.04
+  },
+  {
+   "mot": "porte.",
+   "debut": 22.04,
+   "fin": 22.26
+  },
+  {
+   "mot": "Et",
+   "debut": 22.484,
+   "fin": 22.72
+  },
+  {
+   "mot": "c'est",
+   "debut": 22.72,
+   "fin": 23.0
+  },
+  {
+   "mot": "un",
+   "debut": 23.0,
+   "fin": 23.18
+  },
+  {
+   "mot": "minimum:",
+   "debut": 23.18,
+   "fin": 23.56
+  },
+  {
+   "mot": "sous",
+   "debut": 23.772,
+   "fin": 24.04
+  },
+  {
+   "mot": "un",
+   "debut": 24.04,
+   "fin": 24.26
+  },
+  {
+   "mot": "haut",
+   "debut": 24.26,
+   "fin": 24.4
+  },
+  {
+   "mot": "plafond,",
+   "debut": 24.4,
+   "fin": 24.76
+  },
+  {
+   "mot": "vois",
+   "debut": 24.848,
+   "fin": 25.02
+  },
+  {
+   "mot": "plus",
+   "debut": 25.02,
+   "fin": 25.26
+  },
+  {
+   "mot": "grand.",
+   "debut": 25.26,
+   "fin": 25.44
+  },
+  {
+   "mot": "Deux.",
+   "debut": 25.678,
+   "fin": 26.02
+  },
+  {
+   "mot": "Au-dessus",
+   "debut": 26.097,
+   "fin": 26.54
+  },
+  {
+   "mot": "d'une",
+   "debut": 26.54,
+   "fin": 26.82
+  },
+  {
+   "mot": "table",
+   "debut": 26.82,
+   "fin": 27.08
+  },
+  {
+   "mot": "à",
+   "debut": 27.08,
+   "fin": 27.26
+  },
+  {
+   "mot": "manger,",
+   "debut": 27.26,
+   "fin": 27.54
+  },
+  {
+   "mot": "il",
+   "debut": 27.738,
+   "fin": 27.96
+  },
+  {
+   "mot": "ne",
+   "debut": 27.96,
+   "fin": 28.12
+  },
+  {
+   "mot": "dépasse",
+   "debut": 28.12,
+   "fin": 28.46
+  },
+  {
+   "mot": "pas",
+   "debut": 28.46,
+   "fin": 28.68
+  },
+  {
+   "mot": "les",
+   "debut": 28.68,
+   "fin": 28.92
+  },
+  {
+   "mot": "deux",
+   "debut": 28.92,
+   "fin": 29.06
+  },
+  {
+   "mot": "tiers",
+   "debut": 29.06,
+   "fin": 29.24
+  },
+  {
+   "mot": "de",
+   "debut": 29.24,
+   "fin": 29.44
+  },
+  {
+   "mot": "sa",
+   "debut": 29.44,
+   "fin": 29.58
+  },
+  {
+   "mot": "largeur.",
+   "debut": 29.58,
+   "fin": 29.98
+  },
+  {
+   "mot": "Une",
+   "debut": 30.169,
+   "fin": 30.4
+  },
+  {
+   "mot": "table",
+   "debut": 30.4,
+   "fin": 30.66
+  },
+  {
+   "mot": "de",
+   "debut": 30.66,
+   "fin": 30.94
+  },
+  {
+   "mot": "quatre-vingt-dix",
+   "debut": 30.94,
+   "fin": 31.4
+  },
+  {
+   "mot": "centimètres?",
+   "debut": 31.4,
+   "fin": 31.96
+  },
+  {
+   "mot": "Soixante",
+   "debut": 32.409,
+   "fin": 32.98
+  },
+  {
+   "mot": "centimètres",
+   "debut": 32.98,
+   "fin": 33.48
+  },
+  {
+   "mot": "au",
+   "debut": 33.48,
+   "fin": 33.7
+  },
+  {
+   "mot": "maximum,",
+   "debut": 33.7,
+   "fin": 34.1
+  },
+  {
+   "mot": "soit",
+   "debut": 34.234,
+   "fin": 34.58
+  },
+  {
+   "mot": "trente",
+   "debut": 34.58,
+   "fin": 34.75
+  },
+  {
+   "mot": "de",
+   "debut": 34.75,
+   "fin": 34.92
+  },
+  {
+   "mot": "moins",
+   "debut": 34.92,
+   "fin": 35.1
+  },
+  {
+   "mot": "que",
+   "debut": 35.1,
+   "fin": 35.24
+  },
+  {
+   "mot": "la",
+   "debut": 35.24,
+   "fin": 35.34
+  },
+  {
+   "mot": "table.",
+   "debut": 35.34,
+   "fin": 35.58
+  },
+  {
+   "mot": "Plus",
+   "debut": 35.768,
+   "fin": 35.92
+  },
+  {
+   "mot": "large,",
+   "debut": 35.92,
+   "fin": 36.12
+  },
+  {
+   "mot": "il",
+   "debut": 36.289,
+   "fin": 36.56
+  },
+  {
+   "mot": "déborde",
+   "debut": 36.56,
+   "fin": 36.9
+  },
+  {
+   "mot": "sur",
+   "debut": 36.9,
+   "fin": 37.1
+  },
+  {
+   "mot": "les",
+   "debut": 37.1,
+   "fin": 37.24
+  },
+  {
+   "mot": "convives.",
+   "debut": 37.24,
+   "fin": 37.74
+  },
+  {
+   "mot": "Trois,",
+   "debut": 37.845,
+   "fin": 38.06
+  },
+  {
+   "mot": "la",
+   "debut": 38.246,
+   "fin": 38.46
+  },
+  {
+   "mot": "hauteur.",
+   "debut": 38.46,
+   "fin": 38.92
+  },
+  {
+   "mot": "Compte",
+   "debut": 39.055,
+   "fin": 39.4
+  },
+  {
+   "mot": "un",
+   "debut": 39.4,
+   "fin": 39.6
+  },
+  {
+   "mot": "cinquième",
+   "debut": 39.6,
+   "fin": 40.08
+  },
+  {
+   "mot": "à",
+   "debut": 40.08,
+   "fin": 40.4
+  },
+  {
+   "mot": "un",
+   "debut": 40.4,
+   "fin": 40.62
+  },
+  {
+   "mot": "quart",
+   "debut": 40.62,
+   "fin": 40.76
+  },
+  {
+   "mot": "de",
+   "debut": 40.76,
+   "fin": 40.92
+  },
+  {
+   "mot": "la",
+   "debut": 40.92,
+   "fin": 41.02
+  },
+  {
+   "mot": "hauteur",
+   "debut": 41.02,
+   "fin": 41.22
+  },
+  {
+   "mot": "sous",
+   "debut": 41.22,
+   "fin": 41.42
+  },
+  {
+   "mot": "plafond.",
+   "debut": 41.42,
+   "fin": 41.78
+  },
+  {
+   "mot": "Sous",
+   "debut": 41.879,
+   "fin": 42.12
+  },
+  {
+   "mot": "deux",
+   "debut": 42.12,
+   "fin": 42.327
+  },
+  {
+   "mot": "mètres",
+   "debut": 42.327,
+   "fin": 42.533
+  },
+  {
+   "mot": "cinquante,",
+   "debut": 42.533,
+   "fin": 42.74
+  },
+  {
+   "mot": "la",
+   "debut": 42.96,
+   "fin": 43.1
+  },
+  {
+   "mot": "hauteur",
+   "debut": 43.1,
+   "fin": 43.3
+  },
+  {
+   "mot": "standard",
+   "debut": 43.3,
+   "fin": 43.56
+  },
+  {
+   "mot": "en",
+   "debut": 43.56,
+   "fin": 43.82
+  },
+  {
+   "mot": "France,",
+   "debut": 43.82,
+   "fin": 44.04
+  },
+  {
+   "mot": "ça",
+   "debut": 44.219,
+   "fin": 44.44
+  },
+  {
+   "mot": "donne",
+   "debut": 44.44,
+   "fin": 44.62
+  },
+  {
+   "mot": "cinquante-deux",
+   "debut": 44.62,
+   "fin": 45.3
+  },
+  {
+   "mot": "à",
+   "debut": 45.3,
+   "fin": 45.62
+  },
+  {
+   "mot": "soixante-deux",
+   "debut": 45.62,
+   "fin": 46.2
+  },
+  {
+   "mot": "centimètres.",
+   "debut": 46.2,
+   "fin": 46.78
+  },
+  {
+   "mot": "Mais",
+   "debut": 47.022,
+   "fin": 47.22
+  },
+  {
+   "mot": "garde",
+   "debut": 47.22,
+   "fin": 47.48
+  },
+  {
+   "mot": "deux",
+   "debut": 47.48,
+   "fin": 47.7
+  },
+  {
+   "mot": "mètres",
+   "debut": 47.7,
+   "fin": 47.92
+  },
+  {
+   "mot": "treize",
+   "debut": 47.92,
+   "fin": 48.14
+  },
+  {
+   "mot": "de",
+   "debut": 48.14,
+   "fin": 48.36
+  },
+  {
+   "mot": "passage",
+   "debut": 48.36,
+   "fin": 48.6
+  },
+  {
+   "mot": "dessous.",
+   "debut": 48.6,
+   "fin": 49.0
+  },
+  {
+   "mot": "Il",
+   "debut": 49.094,
+   "fin": 49.3
+  },
+  {
+   "mot": "te",
+   "debut": 49.3,
+   "fin": 49.48
+  },
+  {
+   "mot": "reste",
+   "debut": 49.48,
+   "fin": 49.72
+  },
+  {
+   "mot": "alors",
+   "debut": 49.72,
+   "fin": 50.18
+  },
+  {
+   "mot": "trente-sept",
+   "debut": 50.191,
+   "fin": 50.62
+  },
+  {
+   "mot": "centimètres,",
+   "debut": 50.62,
+   "fin": 51.2
+  },
+  {
+   "mot": "platine",
+   "debut": 51.2,
+   "fin": 51.64
+  },
+  {
+   "mot": "comprise.",
+   "debut": 51.64,
+   "fin": 52.08
+  },
+  {
+   "mot": "La",
+   "debut": 52.195,
+   "fin": 52.54
+  },
+  {
+   "mot": "plus",
+   "debut": 52.54,
+   "fin": 52.7
+  },
+  {
+   "mot": "petite",
+   "debut": 52.7,
+   "fin": 52.96
+  },
+  {
+   "mot": "des",
+   "debut": 52.96,
+   "fin": 53.12
+  },
+  {
+   "mot": "deux",
+   "debut": 53.12,
+   "fin": 53.34
+  },
+  {
+   "mot": "mesures",
+   "debut": 53.34,
+   "fin": 53.56
+  },
+  {
+   "mot": "l'emporte:",
+   "debut": 53.56,
+   "fin": 54.1
+  },
+  {
+   "mot": "sous",
+   "debut": 54.243,
+   "fin": 54.54
+  },
+  {
+   "mot": "un",
+   "debut": 54.54,
+   "fin": 54.72
+  },
+  {
+   "mot": "plafond",
+   "debut": 54.72,
+   "fin": 54.98
+  },
+  {
+   "mot": "bas,",
+   "debut": 54.98,
+   "fin": 55.18
+  },
+  {
+   "mot": "prends",
+   "debut": 55.339,
+   "fin": 55.56
+  },
+  {
+   "mot": "un",
+   "debut": 55.56,
+   "fin": 55.78
+  },
+  {
+   "mot": "plafonnier.",
+   "debut": 55.78,
+   "fin": 56.28
+  },
+  {
+   "mot": "Le",
+   "debut": 56.497,
+   "fin": 56.66
+  },
+  {
+   "mot": "guide",
+   "debut": 56.66,
+   "fin": 56.82
+  },
+  {
+   "mot": "complet",
+   "debut": 56.82,
+   "fin": 57.14
+  },
+  {
+   "mot": "est",
+   "debut": 57.14,
+   "fin": 57.36
+  },
+  {
+   "mot": "sur",
+   "debut": 57.36,
+   "fin": 57.6
+  },
+  {
+   "mot": "L'Atelier",
+   "debut": 57.6,
+   "fin": 57.952
+  },
+  {
+   "mot": "du",
+   "debut": 57.952,
+   "fin": 58.024
+  },
+  {
+   "mot": "Lustre",
+   "debut": 58.024,
+   "fin": 58.24
+  },
+  {
+   "mot": "point",
+   "debut": 58.24,
+   "fin": 58.42
+  },
+  {
+   "mot": "com.",
+   "debut": 58.42,
+   "fin": 59.02
+  },
+  {
+   "mot": "Sans",
+   "debut": 59.124,
+   "fin": 59.3
+  },
+  {
+   "mot": "ces",
+   "debut": 59.3,
+   "fin": 59.5
+  },
+  {
+   "mot": "trois",
+   "debut": 59.5,
+   "fin": 59.62
+  },
+  {
+   "mot": "calculs,",
+   "debut": 59.62,
+   "fin": 60.217
+  },
+  {
+   "mot": "on",
+   "debut": 60.217,
+   "fin": 60.44
+  },
+  {
+   "mot": "choisit",
+   "debut": 60.44,
+   "fin": 60.86
+  },
+  {
+   "mot": "trop",
+   "debut": 60.86,
+   "fin": 61.14
+  },
+  {
+   "mot": "souvent",
+   "debut": 61.14,
+   "fin": 61.42
+  },
+  {
+   "mot": "au",
+   "debut": 61.42,
+   "fin": 61.58
+  },
+  {
+   "mot": "coup",
+   "debut": 61.58,
+   "fin": 61.64
+  },
+  {
+   "mot": "de",
+   "debut": 61.64,
+   "fin": 61.78
+  },
+  {
+   "mot": "cœur.",
+   "debut": 61.78,
+   "fin": 62.02
+  },
+  {
+   "mot": "Et",
+   "debut": 62.31,
+   "fin": 62.52
+  },
+  {
+   "mot": "c'est",
+   "debut": 62.52,
+   "fin": 62.66
+  },
+  {
+   "mot": "pour",
+   "debut": 62.66,
+   "fin": 62.78
+  },
+  {
+   "mot": "ça",
+   "debut": 62.78,
+   "fin": 62.96
+  },
+  {
+   "mot": "que",
+   "debut": 62.96,
+   "fin": 63.34
+  },
+  {
+   "mot": "ton",
+   "debut": 63.38,
+   "fin": 63.66
+  },
+  {
+   "mot": "lustre",
+   "debut": 63.66,
+   "fin": 64.08
+  },
+  {
+   "mot": "est",
+   "debut": 64.08,
+   "fin": 64.22
+  },
+  {
+   "mot": "sûrement",
+   "debut": 64.22,
+   "fin": 64.56
+  },
+  {
+   "mot": "trop",
+   "debut": 64.56,
+   "fin": 64.86
+  },
+  {
+   "mot": "petit.",
+   "debut": 64.86,
+   "fin": 65.0
+  }
+ ],
+ "pauses": [
+  {
+   "debut": 0.0,
+   "fin": 0.223
+  },
+  {
+   "debut": 1.872,
+   "fin": 2.123
+  },
+  {
+   "debut": 5.22,
+   "fin": 5.456
+  },
+  {
+   "debut": 7.116,
+   "fin": 7.372
+  },
+  {
+   "debut": 8.988,
+   "fin": 9.234
+  },
+  {
+   "debut": 10.142,
+   "fin": 10.321
+  },
+  {
+   "debut": 11.963,
+   "fin": 12.218
+  },
+  {
+   "debut": 12.398,
+   "fin": 12.572
+  },
+  {
+   "debut": 13.13,
+   "fin": 13.366
+  },
+  {
+   "debut": 15.739,
+   "fin": 15.937
+  },
+  {
+   "debut": 16.241,
+   "fin": 16.428
+  },
+  {
+   "debut": 18.074,
+   "fin": 18.358
+  },
+  {
+   "debut": 19.082,
+   "fin": 19.511
+  },
+  {
+   "debut": 20.792,
+   "fin": 20.958
+  },
+  {
+   "debut": 22.25,
+   "fin": 22.484
+  },
+  {
+   "debut": 23.587,
+   "fin": 23.772
+  },
+  {
+   "debut": 24.679,
+   "fin": 24.848
+  },
+  {
+   "debut": 25.414,
+   "fin": 25.678
+  },
+  {
+   "debut": 25.846,
+   "fin": 26.097
+  },
+  {
+   "debut": 27.574,
+   "fin": 27.738
+  },
+  {
+   "debut": 29.944,
+   "fin": 30.169
+  },
+  {
+   "debut": 31.987,
+   "fin": 32.409
+  },
+  {
+   "debut": 34.06,
+   "fin": 34.234
+  },
+  {
+   "debut": 35.512,
+   "fin": 35.768
+  },
+  {
+   "debut": 36.11,
+   "fin": 36.289
+  },
+  {
+   "debut": 37.598,
+   "fin": 37.845
+  },
+  {
+   "debut": 38.068,
+   "fin": 38.246
+  },
+  {
+   "debut": 38.801,
+   "fin": 39.055
+  },
+  {
+   "debut": 41.621,
+   "fin": 41.879
+  },
+  {
+   "debut": 44.052,
+   "fin": 44.219
+  },
+  {
+   "debut": 46.773,
+   "fin": 47.022
+  },
+  {
+   "debut": 48.85,
+   "fin": 49.094
+  },
+  {
+   "debut": 50.023,
+   "fin": 50.191
+  },
+  {
+   "debut": 52.004,
+   "fin": 52.195
+  },
+  {
+   "debut": 54.076,
+   "fin": 54.243
+  },
+  {
+   "debut": 55.157,
+   "fin": 55.339
+  },
+  {
+   "debut": 56.249,
+   "fin": 56.497
+  },
+  {
+   "debut": 58.869,
+   "fin": 59.124
+  },
+  {
+   "debut": 60.031,
+   "fin": 60.217
+  },
+  {
+   "debut": 62.033,
+   "fin": 62.31
+  },
+  {
+   "debut": 63.22,
+   "fin": 63.38
+  },
+  {
+   "debut": 65.029,
+   "fin": 65.257
+  }
+ ],
+ "phrases": [
+  {
+   "texte": "Ton lustre est sûrement trop petit.",
+   "debut": 0.223,
+   "fin": 1.92,
+   "mots": [
+    0,
+    5
+   ]
+  },
+  {
+   "texte": "C'est l'une des erreurs les plus fréquentes, selon les pros de l'éclairage.",
+   "debut": 2.4,
+   "fin": 5.3,
+   "mots": [
+    6,
+    17
+   ]
+  },
+  {
+   "texte": "Trop petit, il se perd au plafond.",
+   "debut": 5.456,
+   "fin": 7.18,
+   "mots": [
+    18,
+    24
+   ]
+  },
+  {
+   "texte": "Trop grand, il écrase toute la pièce.",
+   "debut": 7.372,
+   "fin": 9.06,
+   "mots": [
+    25,
+    31
+   ]
+  },
+  {
+   "texte": "Prends un mètre ruban: trois règles suffisent pour tomber juste.",
+   "debut": 9.234,
+   "fin": 12.0,
+   "mots": [
+    32,
+    41
+   ]
+  },
+  {
+   "texte": "Un, le diamètre.",
+   "debut": 12.218,
+   "fin": 13.26,
+   "mots": [
+    42,
+    44
+   ]
+  },
+  {
+   "texte": "Additionne la longueur et la largeur du salon, en mètres, puis multiplie par huit virgule trois.",
+   "debut": 13.62,
+   "fin": 18.2,
+   "mots": [
+    45,
+    60
+   ]
+  },
+  {
+   "texte": "Cinq mètres sur quatre?",
+   "debut": 18.358,
+   "fin": 19.14,
+   "mots": [
+    61,
+    64
+   ]
+  },
+  {
+   "texte": "Soixante-quinze centimètres, presque la largeur d'une porte.",
+   "debut": 19.9,
+   "fin": 22.26,
+   "mots": [
+    65,
+    71
+   ]
+  },
+  {
+   "texte": "Et c'est un minimum: sous un haut plafond, vois plus grand.",
+   "debut": 22.484,
+   "fin": 25.44,
+   "mots": [
+    72,
+    82
+   ]
+  },
+  {
+   "texte": "Deux.",
+   "debut": 25.678,
+   "fin": 26.02,
+   "mots": [
+    83,
+    83
+   ]
+  },
+  {
+   "texte": "Au-dessus d'une table à manger, il ne dépasse pas les deux tiers de sa largeur.",
+   "debut": 26.097,
+   "fin": 29.98,
+   "mots": [
+    84,
+    98
+   ]
+  },
+  {
+   "texte": "Une table de quatre-vingt-dix centimètres?",
+   "debut": 30.169,
+   "fin": 31.96,
+   "mots": [
+    99,
+    103
+   ]
+  },
+  {
+   "texte": "Soixante centimètres au maximum, soit trente de moins que la table.",
+   "debut": 32.409,
+   "fin": 35.58,
+   "mots": [
+    104,
+    114
+   ]
+  },
+  {
+   "texte": "Plus large, il déborde sur les convives.",
+   "debut": 35.768,
+   "fin": 37.74,
+   "mots": [
+    115,
+    121
+   ]
+  },
+  {
+   "texte": "Trois, la hauteur.",
+   "debut": 37.845,
+   "fin": 38.92,
+   "mots": [
+    122,
+    124
+   ]
+  },
+  {
+   "texte": "Compte un cinquième à un quart de la hauteur sous plafond.",
+   "debut": 39.055,
+   "fin": 41.78,
+   "mots": [
+    125,
+    135
+   ]
+  },
+  {
+   "texte": "Sous deux mètres cinquante, la hauteur standard en France, ça donne cinquante-deux à soixante-deux centimètres.",
+   "debut": 41.879,
+   "fin": 46.78,
+   "mots": [
+    136,
+    150
+   ]
+  },
+  {
+   "texte": "Mais garde deux mètres treize de passage dessous.",
+   "debut": 47.022,
+   "fin": 49.0,
+   "mots": [
+    151,
+    158
+   ]
+  },
+  {
+   "texte": "Il te reste alors trente-sept centimètres, platine comprise.",
+   "debut": 49.094,
+   "fin": 52.08,
+   "mots": [
+    159,
+    166
+   ]
+  },
+  {
+   "texte": "La plus petite des deux mesures l'emporte: sous un plafond bas, prends un plafonnier.",
+   "debut": 52.195,
+   "fin": 56.28,
+   "mots": [
+    167,
+    180
+   ]
+  },
+  {
+   "texte": "Le guide complet est sur L'Atelier du Lustre point com.",
+   "debut": 56.497,
+   "fin": 59.02,
+   "mots": [
+    181,
+    190
+   ]
+  },
+  {
+   "texte": "Sans ces trois calculs, on choisit trop souvent au coup de cœur.",
+   "debut": 59.124,
+   "fin": 62.02,
+   "mots": [
+    191,
+    202
+   ]
+  },
+  {
+   "texte": "Et c'est pour ça que ton lustre est sûrement trop petit.",
+   "debut": 62.31,
+   "fin": 65.0,
+   "mots": [
+    203,
+    213
+   ]
+  }
+ ],
+ "cadence": {
+  "debit_habituel": 5.47,
+  "presses": [],
+  "groupes": [
+   {
+    "texte": "Ton lustre est sûrement trop petit.",
+    "mots": [
+     0,
+     5
+    ],
+    "debut": 0.223,
+    "fin": 1.872,
+    "syllabes": 9,
+    "debit": 5.46
+   },
+   {
+    "texte": "C'est l'une des erreurs les plus fréquentes, selon les pros de l'éclairage.",
+    "mots": [
+     6,
+     17
+    ],
+    "debut": 2.123,
+    "fin": 5.22,
+    "syllabes": 17,
+    "debit": 5.49
+   },
+   {
+    "texte": "Trop petit, il se perd au plafond.",
+    "mots": [
+     18,
+     24
+    ],
+    "debut": 5.456,
+    "fin": 7.116,
+    "syllabes": 9,
+    "debit": 5.42
+   },
+   {
+    "texte": "Trop grand, il écrase toute la pièce.",
+    "mots": [
+     25,
+     31
+    ],
+    "debut": 7.372,
+    "fin": 8.988,
+    "syllabes": 8,
+    "debit": 4.95
+   },
+   {
+    "texte": "Prends un mètre ruban:",
+    "mots": [
+     32,
+     35
+    ],
+    "debut": 9.234,
+    "fin": 10.142,
+    "syllabes": 5,
+    "debit": 5.51
+   },
+   {
+    "texte": "trois règles suffisent pour tomber juste.",
+    "mots": [
+     36,
+     41
+    ],
+    "debut": 10.321,
+    "fin": 11.963,
+    "syllabes": 9,
+    "debit": 5.48
+   },
+   {
+    "texte": "Un,",
+    "mots": [
+     42,
+     42
+    ],
+    "debut": 12.218,
+    "fin": 12.398,
+    "syllabes": 1,
+    "debit": 5.56
+   },
+   {
+    "texte": "le diamètre.",
+    "mots": [
+     43,
+     44
+    ],
+    "debut": 12.572,
+    "fin": 13.13,
+    "syllabes": 3,
+    "debit": 5.38
+   },
+   {
+    "texte": "Additionne la longueur et la largeur du salon,",
+    "mots": [
+     45,
+     52
+    ],
+    "debut": 13.366,
+    "fin": 15.739,
+    "syllabes": 13,
+    "debit": 5.48
+   },
+   {
+    "texte": "en mètres,",
+    "mots": [
+     53,
+     54
+    ],
+    "debut": 15.937,
+    "fin": 16.241,
+    "syllabes": 2,
+    "debit": 6.58
+   },
+   {
+    "texte": "puis multiplie par huit virgule trois.",
+    "mots": [
+     55,
+     60
+    ],
+    "debut": 16.428,
+    "fin": 18.074,
+    "syllabes": 9,
+    "debit": 5.47
+   },
+   {
+    "texte": "Cinq mètres sur quatre?",
+    "mots": [
+     61,
+     64
+    ],
+    "debut": 18.358,
+    "fin": 19.082,
+    "syllabes": 4,
+    "debit": 5.52
+   },
+   {
+    "texte": "Soixante-quinze centimètres,",
+    "mots": [
+     65,
+     66
+    ],
+    "debut": 19.511,
+    "fin": 20.792,
+    "syllabes": 7,
+    "debit": 5.46
+   },
+   {
+    "texte": "presque la largeur d'une porte.",
+    "mots": [
+     67,
+     71
+    ],
+    "debut": 20.958,
+    "fin": 22.25,
+    "syllabes": 7,
+    "debit": 5.42
+   },
+   {
+    "texte": "Et c'est un minimum:",
+    "mots": [
+     72,
+     75
+    ],
+    "debut": 22.484,
+    "fin": 23.587,
+    "syllabes": 6,
+    "debit": 5.44
+   },
+   {
+    "texte": "sous un haut plafond,",
+    "mots": [
+     76,
+     79
+    ],
+    "debut": 23.772,
+    "fin": 24.679,
+    "syllabes": 5,
+    "debit": 5.51
+   },
+   {
+    "texte": "vois plus grand.",
+    "mots": [
+     80,
+     82
+    ],
+    "debut": 24.848,
+    "fin": 25.414,
+    "syllabes": 3,
+    "debit": 5.3
+   },
+   {
+    "texte": "Deux.",
+    "mots": [
+     83,
+     83
+    ],
+    "debut": 25.678,
+    "fin": 25.846,
+    "syllabes": 1,
+    "debit": 5.95
+   },
+   {
+    "texte": "Au-dessus d'une table à manger,",
+    "mots": [
+     84,
+     88
+    ],
+    "debut": 26.097,
+    "fin": 27.574,
+    "syllabes": 8,
+    "debit": 5.42
+   },
+   {
+    "texte": "il ne dépasse pas les deux tiers de sa largeur.",
+    "mots": [
+     89,
+     98
+    ],
+    "debut": 27.738,
+    "fin": 29.944,
+    "syllabes": 12,
+    "debit": 5.44
+   },
+   {
+    "texte": "Une table de quatre-vingt-dix centimètres?",
+    "mots": [
+     99,
+     103
+    ],
+    "debut": 30.169,
+    "fin": 31.987,
+    "syllabes": 10,
+    "debit": 5.5
+   },
+   {
+    "texte": "Soixante centimètres au maximum,",
+    "mots": [
+     104,
+     107
+    ],
+    "debut": 32.409,
+    "fin": 34.06,
+    "syllabes": 9,
+    "debit": 5.45
+   },
+   {
+    "texte": "soit trente de moins que la table.",
+    "mots": [
+     108,
+     114
+    ],
+    "debut": 34.234,
+    "fin": 35.512,
+    "syllabes": 7,
+    "debit": 5.48
+   },
+   {
+    "texte": "Plus large,",
+    "mots": [
+     115,
+     116
+    ],
+    "debut": 35.768,
+    "fin": 36.11,
+    "syllabes": 2,
+    "debit": 5.85
+   },
+   {
+    "texte": "il déborde sur les convives.",
+    "mots": [
+     117,
+     121
+    ],
+    "debut": 36.289,
+    "fin": 37.598,
+    "syllabes": 7,
+    "debit": 5.35
+   },
+   {
+    "texte": "Trois,",
+    "mots": [
+     122,
+     122
+    ],
+    "debut": 37.845,
+    "fin": 38.068,
+    "syllabes": 1,
+    "debit": 4.48
+   },
+   {
+    "texte": "la hauteur.",
+    "mots": [
+     123,
+     124
+    ],
+    "debut": 38.246,
+    "fin": 38.801,
+    "syllabes": 3,
+    "debit": 5.41
+   },
+   {
+    "texte": "Compte un cinquième à un quart de la hauteur sous plafond.",
+    "mots": [
+     125,
+     135
+    ],
+    "debut": 39.055,
+    "fin": 41.621,
+    "syllabes": 14,
+    "debit": 5.46
+   },
+   {
+    "texte": "Sous deux mètres cinquante, la hauteur standard en France,",
+    "mots": [
+     136,
+     144
+    ],
+    "debut": 41.879,
+    "fin": 44.052,
+    "syllabes": 12,
+    "debit": 5.52
+   },
+   {
+    "texte": "ça donne cinquante-deux à soixante-deux centimètres.",
+    "mots": [
+     145,
+     150
+    ],
+    "debut": 44.219,
+    "fin": 46.773,
+    "syllabes": 14,
+    "debit": 5.48
+   },
+   {
+    "texte": "Mais garde deux mètres treize de passage dessous.",
+    "mots": [
+     151,
+     158
+    ],
+    "debut": 47.022,
+    "fin": 48.85,
+    "syllabes": 10,
+    "debit": 5.47
+   },
+   {
+    "texte": "Il te reste alors",
+    "mots": [
+     159,
+     162
+    ],
+    "debut": 49.094,
+    "fin": 50.023,
+    "syllabes": 5,
+    "debit": 5.38
+   },
+   {
+    "texte": "trente-sept centimètres, platine comprise.",
+    "mots": [
+     163,
+     166
+    ],
+    "debut": 50.191,
+    "fin": 52.004,
+    "syllabes": 10,
+    "debit": 5.52
+   },
+   {
+    "texte": "La plus petite des deux mesures l'emporte:",
+    "mots": [
+     167,
+     173
+    ],
+    "debut": 52.195,
+    "fin": 54.076,
+    "syllabes": 10,
+    "debit": 5.32
+   },
+   {
+    "texte": "sous un plafond bas,",
+    "mots": [
+     174,
+     177
+    ],
+    "debut": 54.243,
+    "fin": 55.157,
+    "syllabes": 5,
+    "debit": 5.47
+   },
+   {
+    "texte": "prends un plafonnier.",
+    "mots": [
+     178,
+     180
+    ],
+    "debut": 55.339,
+    "fin": 56.249,
+    "syllabes": 5,
+    "debit": 5.49
+   },
+   {
+    "texte": "Le guide complet est sur L'Atelier du Lustre point com.",
+    "mots": [
+     181,
+     190
+    ],
+    "debut": 56.497,
+    "fin": 58.869,
+    "syllabes": 13,
+    "debit": 5.48
+   },
+   {
+    "texte": "Sans ces trois calculs,",
+    "mots": [
+     191,
+     194
+    ],
+    "debut": 59.124,
+    "fin": 60.031,
+    "syllabes": 5,
+    "debit": 5.51
+   },
+   {
+    "texte": "on choisit trop souvent au coup de cœur.",
+    "mots": [
+     195,
+     202
+    ],
+    "debut": 60.217,
+    "fin": 62.033,
+    "syllabes": 10,
+    "debit": 5.51
+   },
+   {
+    "texte": "Et c'est pour ça que",
+    "mots": [
+     203,
+     207
+    ],
+    "debut": 62.31,
+    "fin": 63.22,
+    "syllabes": 5,
+    "debit": 5.49
+   },
+   {
+    "texte": "ton lustre est sûrement trop petit.",
+    "mots": [
+     208,
+     213
+    ],
+    "debut": 63.38,
+    "fin": 65.029,
+    "syllabes": 9,
+    "debit": 5.46
+   }
+  ]
+ }
+}
