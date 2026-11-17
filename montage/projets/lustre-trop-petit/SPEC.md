@@ -30,4 +30,9 @@ la table, la hauteur sous plafond. Il se dessine (`strokeDashoffset`, 0,5 à 0,9
 
 ## Boucle
 - Images 0 et 1949 : même photo (salon de jour, plafonnier Orvane à sa vraie taille), même cadrage, même caméra (échelle 1,000 atteinte à 65,0 s en poussée linéaire de 0,0227/s, poursuivie de 1,000 à 1,05 de 0 à 2,2 s), même promesse en bas.
-- Son : la musique (Happy Guitar, 126 BPM mesurés) est tournée : la piste est jouée de 45 à 78 s puis de 13 à 45 s (fondu enchaîné de 0,4 s au milieu, sous un mouvement), si bien que la fin (45 s de piste) se raccorde à son propre début ; ni fondu d'entrée ni fondu de sortie (seuil `fondu_fin_min_s` mis à 0 dans le manifeste, raison : boucle). La voix finit sur « que… » et reprend sur « Ton lustre ».
+- Son : la musique (Happy Guitar, 126 BPM mesurés) est tournée : la piste est jouée de 47,00 à 72,77 s puis de 7,77 à 47,00 s (fondu à puissance égale de 0,4 s à 25,77 s du film, caché sous un filé), si bien que la fin du film (47,00 s de piste) précède sans couture l'échantillon du début ; ni fondu d'entrée ni fondu de sortie (seuil `fondu_fin_min_s` mis à 0 dans le manifeste, raison : boucle). La voix dit « Et c'est pour ça que ton lustre… » d'une traite ; la piste est coupée juste avant « ton » (63,993 s, fondu de 30 ms) et le film repart sur « Ton lustre est sûrement trop petit ».
+
+## v2 (17/11) : ce qui change
+- Schéma de hauteur dessiné par code (SVG) : plafond hachuré, sol, ligne des 2,13 m de passage (y 194 du schéma), canapé, plafonnier ; plus aucune image de l'article.
+- Appel au guide (s15b) : photo de Tressa allumé, « Quelle taille de lustre pour un salon ? » Newsreader italique 54 px papier, « Le guide complet sur » 64 px, « latelierdulustre.com » Fraunces 92 px accent vif ; dans le cadre sûr, sur voile sombre.
+- Porte dessinée (s7) : 150 x 300 px, trait vif 6 px, « porte standard : 73 cm » 60 px.
