@@ -75,25 +75,24 @@
       }
     ]
   },
-  "assets": {
-    "domia.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-dome-domia-5-blanc-suspendu-au-dessus-d-une-table-de-salle-a-manger-en-bois.webp",
-    "orive.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-6-lumieres-orive-1-vu-de-trois-quarts-six-globes-ambre-clairs-et-fumes-allumes.webp",
-    "musique.mp3": "library/audio/entrain-happy-guitar.mp3",
-    "grain.png": "library/images/grain.png",
-    "fraunces.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-normal.woff2",
-    "fraunces-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-italic.woff2",
-    "newsreader.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-normal.woff2",
-    "newsreader-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-italic.woff2",
-    "orive-2.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/lustre-industriel-6-lumieres-orive-1-vu-de-trois-quarts-six-globes-ambre-clairs-et-fumes-allumes.webp",
-    "orvane-soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-rond-orvane-3-allume-le-soir-lumiere-douce-sur-le-sejour.webp",
-    "tressa-soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-raphia-tressa-3-en-raphia-tresse-allume-le-soir-dans-un-salon-chaleureux-au-dessus-d-une-table-basse.webp"
-  },
+  "assets": [
+    "domia.webp",
+    "musique.mp3",
+    "grain.png",
+    "fraunces.woff2",
+    "fraunces-italique.woff2",
+    "newsreader.woff2",
+    "newsreader-italique.woff2",
+    "orvane-soir.webp",
+    "tressa-soir.webp"
+  ],
   "attendu": {
     "secondes": [
       65,
       65
     ],
-    "fondu_fin_min_s": 0
+    "fondu_fin_min_s": 0,
+    "sans_voix_sous_voix_max_db": 11
   },
   "signature": {
     "date": "2026-11-17",
@@ -105,8 +104,7 @@
       "B",
       "E",
       "C",
-      "D",
-      "C",
+      "G",
       "E",
       "C",
       "G",
@@ -114,6 +112,7 @@
       "G",
       "E",
       "B",
+      "K",
       "H",
       "A"
     ],

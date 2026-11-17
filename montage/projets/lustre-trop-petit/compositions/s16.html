@@ -25,13 +25,13 @@
 
     #s16-all {  }
     #s16-i0, #s16-i1, #s16-i2 { opacity: 0; }
-    #s16-cam { transform: scale(0.9357); }
+    #s16-cam { transform: scale(0.9501); }
   </style>
   <div id="root" data-composition-id="s16" data-width="1080" data-height="1920">
     
-    <div id="s16-all" class="all clip" data-start="0" data-duration="3.2667">
+    <div id="s16-all" class="all clip" data-start="0" data-duration="3.3333">
       <div id="s16-cam" class="cam">
-        <div id="s16-net" class="full"><div id="s16-jbox" class="jbox" style="left:-469.9px;top:-58px;width:2035.1px;height:2035.1px"><img id="s16-plaque" class="full" src="assets/jour-plaque.png" alt=""><img id="s16-lampe" class="full" src="assets/jour-lampe.png" alt="" style="transform-origin:1009.9px 146.1px"></div></div>
+        <div id="s16-net" class="full"><div id="s16-jbox" class="jbox" style="left:-508.0px;top:-96px;width:2111.9px;height:2111.9px"><img id="s16-plaque" class="full" src="assets/jour-plaque.png" alt=""><img id="s16-lampe" class="full" src="assets/jour-lampe.png" alt="" style="transform-origin:1048.0px 151.6px"></div></div>
       </div>
       <div id="s16-sombre" class="abs" style="left:-60px;top:-60px;width:1200px;height:2040px;background:#14110e"></div>
       <div class="voile-jour"></div>
@@ -42,15 +42,15 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       // the three calculations, then the focus comes back on the room of frame 0
-      tl.fromTo("#s16-cam", { scale: 0.936, x: -22 }, { scale: 0.936, x: 0, duration: 3.167, ease: "none" }, 0);
-      tl.fromTo("#s16-net", { filter: "blur(26px)" }, { filter: "blur(0px)", duration: 0.613, ease: "power2.inOut" }, 2.513);
-      tl.fromTo("#s16-sombre", { opacity: 0.72 }, { opacity: 0, duration: 0.613, ease: "power2.inOut" }, 2.513);
+      tl.fromTo("#s16-cam", { scale: 0.95, x: -22 }, { scale: 0.95, x: 0, duration: 3.233, ease: "none" }, 0);
+      tl.fromTo("#s16-net", { filter: "blur(26px)" }, { filter: "blur(0px)", duration: 0.667, ease: "power2.inOut" }, 2.527);
+      tl.fromTo("#s16-sombre", { opacity: 0.72 }, { opacity: 0, duration: 0.667, ease: "power2.inOut" }, 2.527);
       tl.fromTo("#s16-i0", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.06);
       tl.fromTo("#s16-i1", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.51);
-      tl.fromTo("#s16-i2", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 1.257);
-      tl.to("#s16-i0", { opacity: 0, x: -60, duration: 0.2, ease: "power3.in" }, 2.513);
-      tl.to("#s16-i1", { opacity: 0, x: -60, duration: 0.2, ease: "power3.in" }, 2.583);
-      tl.to("#s16-i2", { opacity: 0, x: -60, duration: 0.2, ease: "power3.in" }, 2.673);
+      tl.fromTo("#s16-i2", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 1.269);
+      tl.to("#s16-i0", { opacity: 0, x: -60, duration: 0.2, ease: "power3.in" }, 2.527);
+      tl.to("#s16-i1", { opacity: 0, x: -60, duration: 0.2, ease: "power3.in" }, 2.597);
+      tl.to("#s16-i2", { opacity: 0, x: -60, duration: 0.2, ease: "power3.in" }, 2.687);
       window.__timelines["s16"] = tl;
     })();
   </script>

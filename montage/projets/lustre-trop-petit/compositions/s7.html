@@ -29,7 +29,7 @@
   </style>
   <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="s7-filtre" x="-10%" y="0" width="120%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur id="s7-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
-    <div id="s7-all" class="all clip" data-start="0" data-duration="5.4000">
+    <div id="s7-all" class="all clip" data-start="0" data-duration="5.4667">
       <div id="s7-cam" class="cam" style="transform-origin:541px 306px">
         <img class="abs" src="assets/orvane-soir.webp" alt="" style="left:-458px;top:-40px;width:1997px;height:1997px">
         <div id="s7-ombre" class="abs" style="left:-200px;top:-200px;width:1480px;height:2300px;background:rgba(14,11,8,.55);
@@ -57,19 +57,19 @@
       const fr = { v: -240 };
       tl.fromTo(fr, { v: -240 }, { v: 2300, duration: 0.42, ease: "power2.out", onUpdate: () => { const m = `radial-gradient(circle at 276px 474px, #000 ${fr.v}px, transparent ${fr.v + 240}px)`; gsap.set("#s7-all", { maskImage: m, WebkitMaskImage: m }); } }, 0);
       tl.set("#s7-all", { maskImage: "none", WebkitMaskImage: "none" }, 0.44);
-      tl.fromTo("#s7-cam", { scale: 1 }, { scale: 1.04, duration: 4.31, ease: "none", immediateRender: false }, 0);
-      tl.fromTo("#s7-porte", { scaleY: 0, opacity: 1 }, { scaleY: 1, opacity: 1, duration: 0.35, ease: "expo.out", transformOrigin: "50% 100%" }, 0.84);
-      tl.fromTo("#s7-n75", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.99);
-      tl.fromTo("#s7-n73", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 1.14);
-      tl.to("#s7-comp", { opacity: 0, duration: 0.15, ease: "power3.in" }, 2.08);
-      tl.fromTo("#s7-ombre", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 2.18);
-      tl.fromTo("#s7-min", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 2.28);
-      tl.fromTo("#s7-plus", { opacity: 0, scale: 1 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power2.out" }, 3.76);
-      tl.to("#s7-plus", { scale: 1.28, duration: 0.4, ease: "expo.out" }, 4.36);
-      tl.fromTo("#s7-cam", { scale: 1.04 }, { scale: 1.12, duration: 0.4, ease: "expo.out", immediateRender: false }, 4.36);
-      tl.fromTo("#s7-all", { x: 0 }, { x: -540, duration: 0.26, ease: "power3.in", immediateRender: false }, 4.44);
-      tl.fromTo("#s7-all", { x: -540 }, { x: -1080, duration: 0.6, ease: "expo.out", immediateRender: false }, 4.7);
-      tl.fromTo("#s7-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in", immediateRender: false }, 4.44);
+      tl.fromTo("#s7-cam", { scale: 1 }, { scale: 1.04, duration: 4.343, ease: "none", immediateRender: false }, 0);
+      tl.fromTo("#s7-porte", { scaleY: 0, opacity: 1 }, { scaleY: 1, opacity: 1, duration: 0.35, ease: "expo.out", transformOrigin: "50% 100%" }, 0.853);
+      tl.fromTo("#s7-n75", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 1.003);
+      tl.fromTo("#s7-n73", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 1.153);
+      tl.to("#s7-comp", { opacity: 0, duration: 0.15, ease: "power3.in" }, 2.133);
+      tl.fromTo("#s7-ombre", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 2.233);
+      tl.fromTo("#s7-min", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 2.333);
+      tl.fromTo("#s7-plus", { opacity: 0, scale: 1 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power2.out" }, 3.793);
+      tl.to("#s7-plus", { scale: 1.28, duration: 0.4, ease: "expo.out" }, 4.393);
+      tl.fromTo("#s7-cam", { scale: 1.04 }, { scale: 1.12, duration: 0.4, ease: "expo.out", immediateRender: false }, 4.393);
+      tl.fromTo("#s7-all", { x: 0 }, { x: -540, duration: 0.26, ease: "power3.in", immediateRender: false }, 4.507);
+      tl.fromTo("#s7-all", { x: -540 }, { x: -1080, duration: 0.6, ease: "expo.out", immediateRender: false }, 4.767);
+      tl.fromTo("#s7-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in", immediateRender: false }, 4.507);
       window.__timelines["s7"] = tl;
     })();
   </script>

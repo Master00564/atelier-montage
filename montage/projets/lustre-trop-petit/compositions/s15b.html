@@ -28,7 +28,7 @@
   </style>
   <div id="root" data-composition-id="s15b" data-width="1080" data-height="1920">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="s15b-filtre" x="-10%" y="0" width="120%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur id="s15b-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
-    <div id="s15b-all" class="all clip" data-start="0" data-duration="5.7100">
+    <div id="s15b-all" class="all clip" data-start="0" data-duration="5.7434">
       <div id="s15b-cam" class="cam" style="transform-origin:540px 278px">
         <img class="abs" src="assets/tressa-soir.webp" alt="" style="left:-448.8px;top:-40px;width:1996.7px;height:1996.7px">
         <div id="s15b-lueur" class="abs" style="left:20px;top:-142px;width:1040px;height:840px;border-radius:50%;mix-blend-mode:screen;
@@ -50,13 +50,13 @@
       tl.fromTo("#s15b-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in" }, 0);
       tl.fromTo("#s15b-flou", { attr: { stdDeviation: "45 0" } }, { attr: { stdDeviation: "0 0" }, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
       tl.set("#s15b-all", { filter: "none" }, 0.88);
-      tl.fromTo("#s15b-cam", { scale: 1.0 }, { scale: 1.05, duration: 4.9, ease: "none", immediateRender: false }, 0.26);
+      tl.fromTo("#s15b-cam", { scale: 1.0 }, { scale: 1.05, duration: 4.933, ease: "none", immediateRender: false }, 0.26);
       tl.fromTo("#s15b-lueur", { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 0.31);
-      tl.fromTo("#s15b-plaf", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.873);
-      tl.to("#s15b-plaf", { opacity: 0, duration: 0.12, ease: "power3.in" }, 2.34);
-      tl.fromTo("#s15b-sujet", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.54);
-      tl.fromTo("#s15b-guide", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 2.59);
-      tl.fromTo("#s15b-site", { opacity: 0, y: 24, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "expo.out" }, 3.693);
+      tl.fromTo("#s15b-plaf", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.86);
+      tl.to("#s15b-plaf", { opacity: 0, duration: 0.12, ease: "power3.in" }, 2.348);
+      tl.fromTo("#s15b-sujet", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.548);
+      tl.fromTo("#s15b-guide", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 2.598);
+      tl.fromTo("#s15b-site", { opacity: 0, y: 24, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "expo.out" }, 3.68);
       window.__timelines["s15b"] = tl;
     })();
   </script>

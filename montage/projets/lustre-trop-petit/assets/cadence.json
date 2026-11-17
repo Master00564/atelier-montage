@@ -2,57 +2,57 @@
  "vitesse": 1.2,
  "debit_habituel": 6.36,
  "debit_vise_au_plus": 5.5,
- "pause_max": 0.27,
- "duree_prevue_s": 65.776,
- "silence_retire_s": 12.81,
+ "pause_max": 0.3,
+ "duree_prevue_s": 66.406,
+ "silence_retire_s": 12.244,
  "troncons": [
   {
    "debut": 0.062,
-   "fin": 1.438,
+   "fin": 1.448,
    "vitesse": 0.681
   },
   {
-   "debut": 1.884,
-   "fin": 4.946,
+   "debut": 1.87,
+   "fin": 4.96,
    "vitesse": 0.911
   },
   {
-   "debut": 5.217,
-   "fin": 6.695,
+   "debut": 5.206,
+   "fin": 6.706,
    "vitesse": 0.775
   },
   {
-   "debut": 6.884,
+   "debut": 6.866,
    "fin": 7.537,
    "vitesse": 1.2
   },
   {
    "debut": 7.61,
-   "fin": 8.858,
+   "fin": 8.872,
    "vitesse": 0.942
   },
   {
-   "debut": 9.421,
+   "debut": 9.409,
    "fin": 10.336,
    "vitesse": 0.799
   },
   {
    "debut": 10.655,
-   "fin": 12.368,
+   "fin": 12.381,
    "vitesse": 0.915
   },
   {
-   "debut": 12.743,
+   "debut": 12.731,
    "fin": 13.053,
    "vitesse": 0.75
   },
   {
    "debut": 13.139,
-   "fin": 13.889,
+   "fin": 13.903,
    "vitesse": 0.96
   },
   {
-   "debut": 14.16,
+   "debut": 14.147,
    "fin": 16.379,
    "vitesse": 0.854
   },
@@ -63,11 +63,11 @@
   },
   {
    "debut": 17.255,
-   "fin": 18.914,
+   "fin": 18.927,
    "vitesse": 0.886
   },
   {
-   "debut": 19.443,
+   "debut": 19.427,
    "fin": 20.575,
    "vitesse": 1.062
   },
@@ -78,11 +78,11 @@
   },
   {
    "debut": 22.319,
-   "fin": 23.482,
+   "fin": 23.494,
    "vitesse": 0.771
   },
   {
-   "debut": 23.811,
+   "debut": 23.8,
    "fin": 24.738,
    "vitesse": 0.7
   },
@@ -93,26 +93,26 @@
   },
   {
    "debut": 26.177,
-   "fin": 26.691,
+   "fin": 26.701,
    "vitesse": 0.658
   },
   {
-   "debut": 27.269,
-   "fin": 27.808,
+   "debut": 27.251,
+   "fin": 27.826,
    "vitesse": 1.2
   },
   {
-   "debut": 28.064,
+   "debut": 28.055,
    "fin": 29.089,
    "vitesse": 0.606
   },
   {
    "debut": 29.172,
-   "fin": 31.176,
+   "fin": 31.189,
    "vitesse": 0.83
   },
   {
-   "debut": 31.884,
+   "debut": 31.874,
    "fin": 33.393,
    "vitesse": 0.693
   },
@@ -123,61 +123,61 @@
   },
   {
    "debut": 35.221,
-   "fin": 36.574,
+   "fin": 36.588,
    "vitesse": 0.897
   },
   {
-   "debut": 36.85,
+   "debut": 36.832,
    "fin": 37.519,
    "vitesse": 1.2
   },
   {
    "debut": 37.685,
-   "fin": 38.782,
+   "fin": 38.793,
    "vitesse": 0.728
   },
   {
-   "debut": 39.197,
+   "debut": 39.179,
    "fin": 39.754,
    "vitesse": 1.2
   },
   {
    "debut": 39.966,
-   "fin": 40.734,
+   "fin": 40.749,
    "vitesse": 0.984
   },
   {
-   "debut": 41.137,
-   "fin": 44.021,
+   "debut": 41.121,
+   "fin": 44.037,
    "vitesse": 1.024
   },
   {
-   "debut": 44.382,
+   "debut": 44.368,
    "fin": 46.728,
    "vitesse": 0.975
   },
   {
    "debut": 46.737,
-   "fin": 48.906,
+   "fin": 48.918,
    "vitesse": 0.78
   },
   {
-   "debut": 49.3,
-   "fin": 51.399,
+   "debut": 49.285,
+   "fin": 51.414,
    "vitesse": 1.005
   },
   {
-   "debut": 51.65,
+   "debut": 51.64,
    "fin": 52.372,
    "vitesse": 0.631
   },
   {
    "debut": 52.386,
-   "fin": 54.245,
+   "fin": 54.259,
    "vitesse": 0.914
   },
   {
-   "debut": 54.657,
+   "debut": 54.646,
    "fin": 56.193,
    "vitesse": 0.748
   },
@@ -188,26 +188,26 @@
   },
   {
    "debut": 58.064,
-   "fin": 58.864,
+   "fin": 58.875,
    "vitesse": 0.7
   },
   {
-   "debut": 59.316,
-   "fin": 61.748,
+   "debut": 59.303,
+   "fin": 61.761,
    "vitesse": 0.923
   },
   {
-   "debut": 62.764,
+   "debut": 62.75,
    "fin": 63.888,
    "vitesse": 0.982
   },
   {
    "debut": 63.89,
-   "fin": 65.862,
+   "fin": 65.876,
    "vitesse": 0.96
   },
   {
-   "debut": 66.516,
+   "debut": 66.5,
    "fin": 67.752,
    "vitesse": 1.081
   },

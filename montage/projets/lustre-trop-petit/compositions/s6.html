@@ -55,11 +55,11 @@
       tl.fromTo("#s6-cam", { scale: 1 }, { scale: 1.04, duration: 2.72, ease: "none", immediateRender: false }, 0);
       tl.fromTo("#s6-plan", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0.05);
       tl.fromTo("#s6-c5", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.3);
-      tl.fromTo("#s6-c4", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.7);
-      tl.fromTo("#s6-calc", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.95);
-      tl.fromTo("#s6-res", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.95);
-      const c_s6_n75 = { v: 0 }; tl.fromTo(c_s6_n75, { v: 0 }, { v: 75, duration: 0.72, ease: "power2.out", onUpdate: () => { document.querySelector("#s6-n75").textContent = String(Math.round(c_s6_n75.v)); } }, 1);
-      tl.fromTo("#s6-anneau", { scale: 0 }, { scale: 1, duration: 0.3, ease: "expo.out" }, 1.72);
+      tl.fromTo("#s6-c4", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.713);
+      tl.fromTo("#s6-calc", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.963);
+      tl.fromTo("#s6-res", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.963);
+      const c_s6_n75 = { v: 0 }; tl.fromTo(c_s6_n75, { v: 0 }, { v: 75, duration: 0.76, ease: "power2.out", onUpdate: () => { document.querySelector("#s6-n75").textContent = String(Math.round(c_s6_n75.v)); } }, 1.013);
+      tl.fromTo("#s6-anneau", { scale: 0 }, { scale: 1, duration: 0.3, ease: "expo.out" }, 1.773);
       window.__timelines["s6"] = tl;
     })();
   </script>
