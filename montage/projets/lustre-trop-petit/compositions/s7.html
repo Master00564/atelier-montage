@@ -1,0 +1,61 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+
+    #s7-all {  }
+    #s7-ombre { opacity: 0; }
+    #s7-x10, #s7-n90 { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    
+    <div id="s7-all" class="all clip" data-start="0" data-duration="4.1">
+      <div id="s7-cam" class="cam" style="transform-origin:540px 520px">
+        <img class="abs" src="assets/soir.webp" alt="" style="left:-656px;top:0;width:2400px;height:1600px">
+        <div class="abs" style="left:-200px;top:1380px;width:1480px;height:760px;background:linear-gradient(180deg,rgba(20,17,14,0) 0%,#14110e 30%)"></div>
+        <div id="s7-ombre" class="abs" style="left:-200px;top:-200px;width:1480px;height:2300px;background:rgba(14,11,8,.55);
+          -webkit-mask-image:radial-gradient(circle at 740px 475px, transparent 250px, #000 640px);mask-image:radial-gradient(circle at 740px 475px, transparent 250px, #000 640px)"></div>
+      </div>
+      <div class="voile-bas"></div>
+      <span id="s7-x10" class="fr abs" style="left:96px;top:640px;font-size:210px;color:#c9a15a">× 10</span>
+      <div id="s7-n90" class="abs" style="left:96px;top:850px;width:888px;height:300px">
+        <span class="fr abs" style="left:0;top:0;font-size:300px;color:#c9a15a">90</span>
+        <span class="fr abs" style="left:380px;top:150px;font-size:130px;font-weight:500;color:#faf7f1">cm</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // x 10: the fixture becomes the room's strong point (the room dims around it)
+      const fr = { v: -240 };
+      tl.fromTo(fr, { v: -240 }, { v: 2300, duration: 0.42, ease: "power2.out", onUpdate: () => { const m = `radial-gradient(circle at 276px 474px, #000 ${fr.v}px, transparent ${fr.v + 240}px)`; gsap.set("#s7-all", { maskImage: m, WebkitMaskImage: m }); } }, 0);
+      tl.set("#s7-all", { maskImage: "none", WebkitMaskImage: "none" }, 0.44);
+      tl.fromTo("#s7-cam", { scale: 1 }, { scale: 1.06, duration: 3.82, ease: "none", immediateRender: false }, 0);
+      tl.fromTo("#s7-ombre", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0.9);
+      tl.fromTo("#s7-x10", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 2.7);
+      tl.fromTo("#s7-n90", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 3.177);
+      tl.to("#s7-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 3.82);
+      tl.fromTo("#s7-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 3.82);
+      window.__timelines["s7"] = tl;
+    })();
+  </script>
+</template>

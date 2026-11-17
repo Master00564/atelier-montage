@@ -1,0 +1,54 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+
+    #s1-all {  }
+    #s1-contour { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    
+    <div id="s1-all" class="all clip" data-start="0" data-duration="4.1">
+      <div id="s1-cam" class="cam"><div id="s1-jbox" class="jbox" style="left:-469.9px;top:-58px;width:2035.1px;height:2035.1px"><img id="s1-plaque" class="full" src="assets/jour-plaque.png" alt=""><img id="s1-lampe" class="full" src="assets/jour-lampe.png" alt="" style="transform-origin:1009.9px 146.1px"><svg id="s1-contour" class="full" viewBox="0 0 2035.1 2035.1" style="transform-origin:1009.9px 146.1px"><path id="s1-contour-p" d="M 715.4 232.1 A 294.5 86.8 0 0 1 1304.5 232.1 L 1304.5 462.5 A 294.5 82.8 0 0 1 715.4 462.5 Z" fill="none" stroke="#7d6128" stroke-width="6" stroke-dasharray="20 14" stroke-linecap="round"/></svg></div></div>
+      <div class="voile-bas"></div>
+      <div id="s1-titre" class="abs" style="left:96px;top:880px;width:888px;height:200px">
+        <span id="s1-t1" class="fr abs" style="left:0;top:0;font-size:170px;color:#faf7f1">trop</span>
+        <span id="s1-t2" class="fr it abs" style="left:420px;top:0;font-size:170px;color:#c9a15a">petit</span>
+      </div>
+      <div id="s1-promesse" class="nr it abs" style="left:96px;top:1272px;width:888px;font-size:44px;font-weight:500;color:#faf7f1">Le bon luminaire, du premier coup</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // hook: the fixture shrinks in 6 frames, its real outline stays dashed; the loop's frame 0
+      tl.fromTo("#s1-cam", { scale: 1 }, { scale: 1.093, duration: 4.1, ease: "none" }, 0);
+      tl.fromTo("#s1-lampe", { scale: 1 }, { scale: 0.38, duration: 0.2, ease: "expo.out" }, 0.35);
+      tl.fromTo("#s1-contour", { scale: 0.38, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 2.01);
+      tl.to("#s1-promesse", { opacity: 0, duration: 0.15, ease: "power3.in" }, 1.313);
+      tl.fromTo("#s1-t1", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 1.513);
+      tl.fromTo("#s1-t2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 1.713);
+      tl.fromTo("#s1-cam", { y: 0 }, { y: 120, duration: 0.9, ease: "power2.inOut" }, 3.393);
+      tl.to("#s1-titre", { opacity: 0, duration: 0.12, ease: "power3.in" }, 3.9);
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>
