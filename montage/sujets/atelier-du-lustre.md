@@ -11,7 +11,7 @@ Statuts : `proposé` (idée donnée, pas faite) · `livré` (MP4 remis) · `publ
 
 | Date | Sujet | Angle / ce que dit la vidéo | Durée | Statut | Dossier ou job |
 |---|---|---|---|---|---|
-| 17/11/2026 | Taille du lustre de salon : « Ton lustre est sûrement trop petit » | Les 3 règles de l'article taille-lustre-salon : (L + l) × 8 (× 10 en plus affirmé), 2/3 de la largeur de la table, plafond ÷ 5,5 et 2,15 m de passage (35 cm sous 2,50 m) ; trait coté doré, en boucle | 65 s | livré | montage/projets/lustre-trop-petit (atelier-montage), Téléchargements/montage-lustre-trop-petit |
+| 17/11/2026 | Taille du lustre de salon : « Ton lustre est sûrement trop petit » | v2 (remplace la v1 du même jour) : 3 règles vérifiées hors article, 2 sources ou plus chacune : (L + l) × 8,3 (5 x 4 m → 75 cm, presque une porte, un minimum, plus grand sous un haut plafond), 2/3 de la largeur de la table (90 → 60 cm), 1/5 à 1/4 de la hauteur sous plafond (52 à 62 cm sous 2,50 m) mais 2,13 m de passage, donc 37 cm, sinon un plafonnier ; schéma dessiné, appel au guide du site, en boucle | 65 s | livré | montage/projets/lustre-trop-petit (atelier-montage), Téléchargements/montage-lustre-trop-petit (v1 dans v1/) |
 
 ## Vidéos produit
 
