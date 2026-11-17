@@ -1,1166 +1,1166 @@
 {
  "fichier": "voix.mp3",
- "duree_s": 67.576,
- "wer": 0.0325,
+ "duree_s": 66.888,
+ "wer": 0.0366,
  "fautes": [
+  "calcul complique -> calculs compliques",
   "scotche -> scotch",
-  "dinent -> dignent",
   "dira merci -> dit remerci",
   "atelier -> atelierdulustre",
   "du lustre point -> -"
  ],
- "entendu": "Ton lustre est sûrement trop petit, et t 'es pas le seul. C 'est l 'erreur la plus courante d 'après les pros de la lumière. Au plafond, il a l 'air d 'un bouton de chemise perdu tout là -haut. Alors quelle taille choisir ? Pas besoin de calcul compliqué. Pour un salon de 20 mètres carrés, vise la largeur d 'une porte. Oui, une vraie porte. Ça paraît énorme, je sais. Et pourtant, c 'est la bonne taille. Sous un haut plafond, vois encore plus grand. Mais sans exagérer, un lustre géant écrase toute la pièce. Tu hésites encore ? Découpe un rond de carton aussi large et scotch -le au plafond. Laisse -le un jour ou deux. Tu sauras tout de suite si ça te plaît. Au -dessus de la table, c 'est l 'inverse. Il doit rester moins large qu 'elle. Sinon, tes invités dignent sous un parapluie. Dernier piège, et pas des moindres, la hauteur. Un grand gaillard de deux mètres doit passer dessous sans se cogner la tête. Oui, même le copain qui joue au basket. Chez toi, le plafond est bas. Oublie la suspension et prends un plafonnier. Ta tête te dit remerci. Sur nos fiches, un schéma donne les mesures exactes de chaque luminaire. Et tout le reste est dans notre guide gratuit sur l 'atelierdulustre .com Alors, si tu as choisi le tien au coup de cœur, je parie que ton lustre est sûrement trop petit.",
+ "entendu": "Ton lustre est sûrement trop petit, et t 'es pas le seul. C 'est l 'erreur la plus courante d 'après les pros de la lumière. Au plafond, il a l 'air d 'un bouton de chemise perdu tout là -haut. Alors, quelle taille choisir ? Pas besoin de calculs compliqués. Pour un salon de 20 mètres carrés, vise la largeur d 'une porte. Oui, une vraie porte. Ça paraît énorme, je sais. Et pourtant, c 'est la bonne taille. Sous un haut plafond, vois encore plus grand. Mais sans exagérer, un lustre géant écrase toute la pièce. Tu hésites encore ? Découpe un rond de carton aussi large et scotch -le au plafond. Laisse -le un jour ou deux. Tu sauras tout de suite si ça te plaît. Au dessus de la table, c 'est l 'inverse. Il doit rester moins large qu 'elle. Sinon, tes invités dînent sous un parapluie. Dernier piège, et pas des moindres, la hauteur. Un grand gaillard de deux mètres doit passer dessous sans se cogner la tête. Oui, même le copain qui joue au basket. Chez toi, le plafond est bas ? Oublie la suspension et prends un plafonnier. Ta tête te dit remerci. Sur nos fiches, un schéma donne les mesures exactes de chaque luminaire. Et tout le reste est dans notre guide gratuit sur l 'atelierdulustre .com Alors, si tu as choisi le tien au coup de coeur, je parie que ton lustre est sûrement trop petit.",
  "seuil_silence_db": -28.0,
  "mots": [
   {
    "mot": "Ton",
-   "debut": 0.23,
-   "fin": 0.38
+   "debut": 0.127,
+   "fin": 0.277
   },
   {
    "mot": "lustre",
-   "debut": 0.38,
-   "fin": 0.8
+   "debut": 0.277,
+   "fin": 0.697
   },
   {
    "mot": "est",
-   "debut": 0.847,
-   "fin": 1.16
+   "debut": 0.744,
+   "fin": 1.057
   },
   {
    "mot": "sûrement",
-   "debut": 1.16,
-   "fin": 1.68
+   "debut": 1.057,
+   "fin": 1.577
   },
   {
    "mot": "trop",
-   "debut": 1.68,
-   "fin": 1.92
+   "debut": 1.577,
+   "fin": 1.817
   },
   {
    "mot": "petit.",
-   "debut": 1.92,
-   "fin": 2.2
+   "debut": 1.817,
+   "fin": 2.097
   },
   {
    "mot": "Et",
-   "debut": 2.364,
-   "fin": 2.62
+   "debut": 2.238,
+   "fin": 2.497
   },
   {
    "mot": "t'es",
-   "debut": 2.62,
-   "fin": 2.78
+   "debut": 2.497,
+   "fin": 2.637
   },
   {
    "mot": "pas",
-   "debut": 2.78,
-   "fin": 2.92
+   "debut": 2.637,
+   "fin": 2.777
   },
   {
    "mot": "le",
-   "debut": 2.92,
-   "fin": 3.08
+   "debut": 2.777,
+   "fin": 2.937
   },
   {
    "mot": "seul:",
-   "debut": 3.08,
-   "fin": 3.32
+   "debut": 2.937,
+   "fin": 3.177
   },
   {
    "mot": "c'est",
-   "debut": 3.471,
-   "fin": 3.74
+   "debut": 3.338,
+   "fin": 3.597
   },
   {
    "mot": "l'erreur",
-   "debut": 3.74,
-   "fin": 4.06
+   "debut": 3.597,
+   "fin": 3.917
   },
   {
    "mot": "la",
-   "debut": 4.06,
-   "fin": 4.24
+   "debut": 3.917,
+   "fin": 4.097
   },
   {
    "mot": "plus",
-   "debut": 4.24,
-   "fin": 4.42
+   "debut": 4.097,
+   "fin": 4.277
   },
   {
    "mot": "courante,",
-   "debut": 4.42,
-   "fin": 4.86
+   "debut": 4.277,
+   "fin": 4.717
   },
   {
    "mot": "d'après",
-   "debut": 4.918,
-   "fin": 5.22
+   "debut": 4.785,
+   "fin": 5.097
   },
   {
    "mot": "les",
-   "debut": 5.22,
-   "fin": 5.42
+   "debut": 5.097,
+   "fin": 5.277
   },
   {
    "mot": "pros",
-   "debut": 5.42,
-   "fin": 5.48
+   "debut": 5.277,
+   "fin": 5.357
   },
   {
    "mot": "de",
-   "debut": 5.48,
-   "fin": 5.62
+   "debut": 5.357,
+   "fin": 5.497
   },
   {
    "mot": "la",
-   "debut": 5.62,
-   "fin": 5.76
+   "debut": 5.497,
+   "fin": 5.637
   },
   {
    "mot": "lumière.",
-   "debut": 5.76,
-   "fin": 6.04
+   "debut": 5.637,
+   "fin": 5.897
   },
   {
    "mot": "Au",
-   "debut": 6.621,
-   "fin": 6.82
+   "debut": 6.462,
+   "fin": 6.657
   },
   {
    "mot": "plafond,",
-   "debut": 6.82,
-   "fin": 7.24
+   "debut": 6.657,
+   "fin": 7.117
   },
   {
    "mot": "il",
-   "debut": 7.354,
-   "fin": 7.6
+   "debut": 7.189,
+   "fin": 7.437
   },
   {
    "mot": "a",
-   "debut": 7.6,
-   "fin": 7.76
+   "debut": 7.437,
+   "fin": 7.597
   },
   {
    "mot": "l'air",
-   "debut": 7.76,
-   "fin": 7.86
+   "debut": 7.597,
+   "fin": 7.697
   },
   {
    "mot": "d'un",
-   "debut": 7.86,
-   "fin": 8.12
+   "debut": 7.697,
+   "fin": 7.957
   },
   {
    "mot": "bouton",
-   "debut": 8.12,
-   "fin": 8.44
+   "debut": 7.957,
+   "fin": 8.277
   },
   {
    "mot": "de",
-   "debut": 8.44,
-   "fin": 8.62
+   "debut": 8.277,
+   "fin": 8.457
   },
   {
    "mot": "chemise,",
-   "debut": 8.62,
-   "fin": 9.12
+   "debut": 8.457,
+   "fin": 8.957
   },
   {
    "mot": "perdu",
-   "debut": 9.159,
-   "fin": 9.62
+   "debut": 8.995,
+   "fin": 9.457
   },
   {
    "mot": "tout",
-   "debut": 9.62,
-   "fin": 9.96
+   "debut": 9.457,
+   "fin": 9.777
   },
   {
    "mot": "là-haut.",
-   "debut": 9.96,
-   "fin": 10.52
+   "debut": 9.777,
+   "fin": 10.317
   },
   {
    "mot": "Alors,",
-   "debut": 10.66,
-   "fin": 10.84
+   "debut": 10.497,
+   "fin": 10.657
   },
   {
    "mot": "quelle",
-   "debut": 10.84,
-   "fin": 10.94
+   "debut": 10.717,
+   "fin": 10.777
   },
   {
    "mot": "taille",
-   "debut": 10.94,
-   "fin": 11.08
+   "debut": 10.777,
+   "fin": 10.877
   },
   {
    "mot": "choisir?",
-   "debut": 11.08,
-   "fin": 11.52
+   "debut": 10.877,
+   "fin": 11.277
   },
   {
    "mot": "Pas",
-   "debut": 11.859,
-   "fin": 12.12
+   "debut": 11.664,
+   "fin": 11.877
   },
   {
    "mot": "besoin",
-   "debut": 12.12,
-   "fin": 12.34
+   "debut": 11.877,
+   "fin": 12.177
   },
   {
    "mot": "de",
-   "debut": 12.34,
-   "fin": 12.58
+   "debut": 12.177,
+   "fin": 12.457
   },
   {
    "mot": "calcul",
-   "debut": 12.58,
-   "fin": 12.86
+   "debut": 12.457,
+   "fin": 12.881
   },
   {
    "mot": "compliqué.",
-   "debut": 12.86,
-   "fin": 13.5
+   "debut": 12.881,
+   "fin": 13.517
   },
   {
    "mot": "Pour",
-   "debut": 14.08,
-   "fin": 14.22
+   "debut": 13.897,
+   "fin": 13.997
   },
   {
    "mot": "un",
-   "debut": 14.22,
-   "fin": 14.36
+   "debut": 13.997,
+   "fin": 14.157
   },
   {
    "mot": "salon",
-   "debut": 14.36,
-   "fin": 14.56
+   "debut": 14.157,
+   "fin": 14.357
   },
   {
    "mot": "de",
-   "debut": 14.56,
-   "fin": 14.88
+   "debut": 14.357,
+   "fin": 14.677
   },
   {
    "mot": "vingt",
-   "debut": 14.88,
-   "fin": 15.02
+   "debut": 14.677,
+   "fin": 14.817
   },
   {
    "mot": "mètres",
-   "debut": 15.02,
-   "fin": 15.26
+   "debut": 14.817,
+   "fin": 15.057
   },
   {
    "mot": "carrés,",
-   "debut": 15.26,
-   "fin": 15.585
+   "debut": 15.057,
+   "fin": 15.392
   },
   {
    "mot": "vise",
-   "debut": 15.585,
-   "fin": 15.86
+   "debut": 15.392,
+   "fin": 15.677
   },
   {
    "mot": "la",
-   "debut": 15.86,
-   "fin": 16.08
+   "debut": 15.677,
+   "fin": 15.877
   },
   {
    "mot": "largeur",
-   "debut": 16.08,
-   "fin": 16.32
+   "debut": 15.877,
+   "fin": 16.117
   },
   {
    "mot": "d'une",
-   "debut": 16.32,
-   "fin": 16.5
+   "debut": 16.117,
+   "fin": 16.297
   },
   {
    "mot": "porte.",
-   "debut": 16.5,
-   "fin": 16.72
+   "debut": 16.297,
+   "fin": 16.537
   },
   {
    "mot": "Oui,",
-   "debut": 16.932,
-   "fin": 17.14
+   "debut": 16.698,
+   "fin": 16.917
   },
   {
    "mot": "une",
-   "debut": 17.261,
-   "fin": 17.44
+   "debut": 17.036,
+   "fin": 17.237
   },
   {
    "mot": "vraie",
-   "debut": 17.44,
-   "fin": 17.66
+   "debut": 17.237,
+   "fin": 17.437
   },
   {
    "mot": "porte.",
-   "debut": 17.66,
-   "fin": 17.86
+   "debut": 17.437,
+   "fin": 17.617
   },
   {
    "mot": "Ça",
-   "debut": 18.042,
-   "fin": 18.28
+   "debut": 17.795,
+   "fin": 18.037
   },
   {
    "mot": "paraît",
-   "debut": 18.28,
-   "fin": 18.62
+   "debut": 18.037,
+   "fin": 18.377
   },
   {
    "mot": "énorme,",
-   "debut": 18.62,
-   "fin": 19.0
+   "debut": 18.377,
+   "fin": 18.757
   },
   {
    "mot": "je",
-   "debut": 19.0,
-   "fin": 19.24
+   "debut": 18.757,
+   "fin": 18.977
   },
   {
    "mot": "sais.",
-   "debut": 19.24,
-   "fin": 19.38
+   "debut": 18.977,
+   "fin": 19.137
   },
   {
    "mot": "Et",
-   "debut": 19.563,
-   "fin": 19.78
+   "debut": 19.271,
+   "fin": 19.497
   },
   {
    "mot": "pourtant,",
-   "debut": 19.78,
-   "fin": 20.14
+   "debut": 19.497,
+   "fin": 19.837
   },
   {
    "mot": "c'est",
-   "debut": 20.298,
-   "fin": 20.56
+   "debut": 19.997,
+   "fin": 20.257
   },
   {
    "mot": "la",
-   "debut": 20.56,
-   "fin": 20.7
+   "debut": 20.257,
+   "fin": 20.397
   },
   {
    "mot": "bonne",
-   "debut": 20.7,
-   "fin": 20.86
+   "debut": 20.397,
+   "fin": 20.557
   },
   {
    "mot": "taille.",
-   "debut": 20.86,
-   "fin": 21.16
+   "debut": 20.557,
+   "fin": 20.857
   },
   {
    "mot": "Sous",
-   "debut": 21.292,
-   "fin": 21.64
+   "debut": 20.951,
+   "fin": 21.297
   },
   {
    "mot": "un",
-   "debut": 21.64,
-   "fin": 21.76
+   "debut": 21.297,
+   "fin": 21.417
   },
   {
    "mot": "haut",
-   "debut": 21.76,
-   "fin": 21.88
+   "debut": 21.417,
+   "fin": 21.537
   },
   {
    "mot": "plafond,",
-   "debut": 21.88,
-   "fin": 22.36
+   "debut": 21.537,
+   "fin": 22.017
   },
   {
    "mot": "vois",
-   "debut": 22.66,
-   "fin": 22.72
+   "debut": 22.07,
+   "fin": 22.277
   },
   {
    "mot": "encore",
-   "debut": 22.72,
-   "fin": 23.2
+   "debut": 22.421,
+   "fin": 22.877
   },
   {
    "mot": "plus",
-   "debut": 23.2,
-   "fin": 23.42
+   "debut": 22.877,
+   "fin": 23.097
   },
   {
    "mot": "grand.",
-   "debut": 23.42,
-   "fin": 23.54
+   "debut": 23.097,
+   "fin": 23.217
   },
   {
    "mot": "Mais",
-   "debut": 23.729,
-   "fin": 24.0
+   "debut": 23.37,
+   "fin": 23.617
   },
   {
    "mot": "sans",
-   "debut": 24.0,
-   "fin": 24.36
+   "debut": 23.617,
+   "fin": 23.997
   },
   {
    "mot": "exagérer:",
-   "debut": 24.36,
-   "fin": 24.88
+   "debut": 23.997,
+   "fin": 24.537
   },
   {
    "mot": "un",
-   "debut": 25.022,
-   "fin": 25.12
+   "debut": 24.666,
+   "fin": 24.777
   },
   {
    "mot": "lustre",
-   "debut": 25.12,
-   "fin": 25.42
+   "debut": 24.777,
+   "fin": 25.077
   },
   {
    "mot": "géant",
-   "debut": 25.42,
-   "fin": 25.68
+   "debut": 25.077,
+   "fin": 25.317
   },
   {
    "mot": "écrase",
-   "debut": 25.68,
-   "fin": 26.02
+   "debut": 25.317,
+   "fin": 25.657
   },
   {
    "mot": "toute",
-   "debut": 26.02,
-   "fin": 26.16
+   "debut": 25.657,
+   "fin": 25.797
   },
   {
    "mot": "la",
-   "debut": 26.16,
-   "fin": 26.32
+   "debut": 25.797,
+   "fin": 25.957
   },
   {
    "mot": "pièce.",
-   "debut": 26.32,
-   "fin": 26.54
+   "debut": 25.957,
+   "fin": 26.177
   },
   {
    "mot": "Tu",
-   "debut": 26.715,
-   "fin": 26.96
+   "debut": 26.319,
+   "fin": 26.577
   },
   {
    "mot": "hésites",
-   "debut": 26.96,
-   "fin": 27.28
+   "debut": 26.577,
+   "fin": 26.877
   },
   {
    "mot": "encore?",
-   "debut": 27.28,
-   "fin": 27.68
+   "debut": 26.877,
+   "fin": 27.237
   },
   {
    "mot": "Découpe",
-   "debut": 27.886,
-   "fin": 28.38
+   "debut": 27.487,
+   "fin": 27.977
   },
   {
    "mot": "un",
-   "debut": 28.38,
-   "fin": 28.6
+   "debut": 27.977,
+   "fin": 28.197
   },
   {
    "mot": "rond",
-   "debut": 28.6,
-   "fin": 28.74
+   "debut": 28.197,
+   "fin": 28.337
   },
   {
    "mot": "de",
-   "debut": 28.74,
-   "fin": 28.9
+   "debut": 28.337,
+   "fin": 28.517
   },
   {
    "mot": "carton",
-   "debut": 28.9,
-   "fin": 29.26
+   "debut": 28.517,
+   "fin": 28.857
   },
   {
    "mot": "aussi",
-   "debut": 29.26,
-   "fin": 29.6
+   "debut": 28.857,
+   "fin": 29.157
   },
   {
    "mot": "large",
-   "debut": 29.6,
-   "fin": 29.88
+   "debut": 29.157,
+   "fin": 29.497
   },
   {
    "mot": "et",
-   "debut": 30.05,
-   "fin": 30.3
+   "debut": 29.65,
+   "fin": 29.877
   },
   {
    "mot": "scotche-le",
-   "debut": 30.3,
-   "fin": 30.76
+   "debut": 29.877,
+   "fin": 30.377
   },
   {
    "mot": "au",
-   "debut": 30.76,
-   "fin": 30.94
+   "debut": 30.377,
+   "fin": 30.517
   },
   {
    "mot": "plafond.",
-   "debut": 30.94,
-   "fin": 31.32
+   "debut": 30.517,
+   "fin": 30.897
   },
   {
    "mot": "Laisse-le",
-   "debut": 31.389,
-   "fin": 31.94
+   "debut": 30.965,
+   "fin": 31.517
   },
   {
    "mot": "un",
-   "debut": 31.94,
-   "fin": 32.12
+   "debut": 31.517,
+   "fin": 31.697
   },
   {
    "mot": "jour",
-   "debut": 32.12,
-   "fin": 32.3
+   "debut": 31.697,
+   "fin": 31.877
   },
   {
    "mot": "ou",
-   "debut": 32.3,
-   "fin": 32.44
+   "debut": 31.877,
+   "fin": 32.017
   },
   {
    "mot": "deux:",
-   "debut": 32.44,
-   "fin": 32.58
+   "debut": 32.017,
+   "fin": 32.157
   },
   {
    "mot": "tu",
-   "debut": 32.662,
-   "fin": 32.92
+   "debut": 32.277,
+   "fin": 32.497
   },
   {
    "mot": "sauras",
-   "debut": 32.92,
-   "fin": 33.3
+   "debut": 32.497,
+   "fin": 32.877
   },
   {
    "mot": "tout",
-   "debut": 33.3,
-   "fin": 33.62
+   "debut": 32.877,
+   "fin": 33.197
   },
   {
    "mot": "de",
-   "debut": 33.62,
-   "fin": 33.72
+   "debut": 33.197,
+   "fin": 33.297
   },
   {
    "mot": "suite",
-   "debut": 33.72,
-   "fin": 33.84
+   "debut": 33.297,
+   "fin": 33.397
   },
   {
    "mot": "si",
-   "debut": 33.84,
-   "fin": 34.02
+   "debut": 33.397,
+   "fin": 33.597
   },
   {
    "mot": "ça",
-   "debut": 34.02,
-   "fin": 34.22
+   "debut": 33.597,
+   "fin": 33.777
   },
   {
    "mot": "te",
-   "debut": 34.22,
-   "fin": 34.44
+   "debut": 33.777,
+   "fin": 34.017
   },
   {
    "mot": "plaît.",
-   "debut": 34.44,
-   "fin": 34.68
+   "debut": 34.017,
+   "fin": 34.237
   },
   {
    "mot": "Au-dessus",
-   "debut": 34.756,
-   "fin": 35.16
+   "debut": 34.29,
+   "fin": 34.697
   },
   {
    "mot": "de",
-   "debut": 35.16,
-   "fin": 35.28
+   "debut": 34.697,
+   "fin": 34.817
   },
   {
    "mot": "la",
-   "debut": 35.28,
-   "fin": 35.42
+   "debut": 34.817,
+   "fin": 34.957
   },
   {
    "mot": "table,",
-   "debut": 35.42,
-   "fin": 35.66
+   "debut": 34.957,
+   "fin": 35.197
   },
   {
    "mot": "c'est",
-   "debut": 35.84,
-   "fin": 36.02
+   "debut": 35.357,
+   "fin": 35.557
   },
   {
    "mot": "l'inverse:",
-   "debut": 36.02,
-   "fin": 36.42
+   "debut": 35.557,
+   "fin": 35.957
   },
   {
    "mot": "il",
-   "debut": 36.84,
-   "fin": 36.96
+   "debut": 36.117,
+   "fin": 36.517
   },
   {
    "mot": "doit",
-   "debut": 36.96,
-   "fin": 37.1
+   "debut": 36.517,
+   "fin": 36.617
   },
   {
    "mot": "rester",
-   "debut": 37.1,
-   "fin": 37.34
+   "debut": 36.617,
+   "fin": 36.857
   },
   {
    "mot": "moins",
-   "debut": 37.34,
-   "fin": 37.5
+   "debut": 36.857,
+   "fin": 37.037
   },
   {
    "mot": "large",
-   "debut": 37.5,
-   "fin": 37.7
+   "debut": 37.037,
+   "fin": 37.217
   },
   {
    "mot": "qu'elle,",
-   "debut": 37.7,
-   "fin": 37.98
+   "debut": 37.217,
+   "fin": 37.497
   },
   {
    "mot": "sinon",
-   "debut": 38.054,
-   "fin": 38.48
+   "debut": 37.583,
+   "fin": 38.017
   },
   {
    "mot": "tes",
-   "debut": 38.52,
-   "fin": 38.78
+   "debut": 38.057,
+   "fin": 38.297
   },
   {
    "mot": "invités",
-   "debut": 38.78,
-   "fin": 39.18
+   "debut": 38.297,
+   "fin": 38.737
   },
   {
    "mot": "dînent",
-   "debut": 39.18,
-   "fin": 39.58
+   "debut": 38.737,
+   "fin": 39.097
   },
   {
    "mot": "sous",
-   "debut": 39.58,
-   "fin": 39.82
+   "debut": 39.097,
+   "fin": 39.337
   },
   {
    "mot": "un",
-   "debut": 39.82,
-   "fin": 40.08
+   "debut": 39.337,
+   "fin": 39.577
   },
   {
    "mot": "parapluie.",
-   "debut": 40.08,
-   "fin": 40.52
+   "debut": 39.577,
+   "fin": 40.017
   },
   {
    "mot": "Dernier",
-   "debut": 40.68,
-   "fin": 40.96
+   "debut": 40.197,
+   "fin": 40.477
   },
   {
    "mot": "piège,",
-   "debut": 40.96,
-   "fin": 41.18
+   "debut": 40.477,
+   "fin": 40.677
   },
   {
    "mot": "et",
-   "debut": 41.44,
-   "fin": 41.5
+   "debut": 40.957,
+   "fin": 41.017
   },
   {
    "mot": "pas",
-   "debut": 41.5,
-   "fin": 41.6
+   "debut": 41.017,
+   "fin": 41.117
   },
   {
    "mot": "des",
-   "debut": 41.6,
-   "fin": 41.76
+   "debut": 41.117,
+   "fin": 41.237
   },
   {
    "mot": "moindres:",
-   "debut": 41.76,
-   "fin": 42.0
+   "debut": 41.237,
+   "fin": 41.557
   },
   {
    "mot": "la",
-   "debut": 42.15,
-   "fin": 42.38
+   "debut": 41.652,
+   "fin": 41.897
   },
   {
    "mot": "hauteur.",
-   "debut": 42.38,
-   "fin": 42.72
+   "debut": 41.897,
+   "fin": 42.237
   },
   {
    "mot": "Un",
-   "debut": 43.24,
-   "fin": 43.46
+   "debut": 42.737,
+   "fin": 42.937
   },
   {
    "mot": "grand",
-   "debut": 43.46,
-   "fin": 43.62
+   "debut": 42.937,
+   "fin": 43.097
   },
   {
    "mot": "gaillard",
-   "debut": 43.62,
-   "fin": 43.94
+   "debut": 43.097,
+   "fin": 43.417
   },
   {
    "mot": "de",
-   "debut": 43.94,
-   "fin": 44.12
+   "debut": 43.417,
+   "fin": 43.597
   },
   {
    "mot": "deux",
-   "debut": 44.12,
-   "fin": 44.22
+   "debut": 43.597,
+   "fin": 43.677
   },
   {
    "mot": "mètres",
-   "debut": 44.22,
-   "fin": 44.5
+   "debut": 43.677,
+   "fin": 43.977
   },
   {
    "mot": "doit",
-   "debut": 44.5,
-   "fin": 44.66
+   "debut": 43.977,
+   "fin": 44.137
   },
   {
    "mot": "passer",
-   "debut": 44.66,
-   "fin": 44.98
+   "debut": 44.137,
+   "fin": 44.457
   },
   {
    "mot": "dessous",
-   "debut": 44.98,
-   "fin": 45.38
+   "debut": 44.457,
+   "fin": 44.857
   },
   {
    "mot": "sans",
-   "debut": 45.38,
-   "fin": 45.62
+   "debut": 44.857,
+   "fin": 45.077
   },
   {
    "mot": "se",
-   "debut": 45.62,
-   "fin": 45.8
+   "debut": 45.077,
+   "fin": 45.277
   },
   {
    "mot": "cogner",
-   "debut": 45.8,
-   "fin": 45.94
+   "debut": 45.277,
+   "fin": 45.417
   },
   {
    "mot": "la",
-   "debut": 45.94,
-   "fin": 46.12
+   "debut": 45.417,
+   "fin": 45.597
   },
   {
    "mot": "tête.",
-   "debut": 46.12,
-   "fin": 46.36
+   "debut": 45.597,
+   "fin": 45.797
   },
   {
    "mot": "Oui,",
-   "debut": 46.491,
-   "fin": 46.76
+   "debut": 45.934,
+   "fin": 46.177
   },
   {
    "mot": "même",
-   "debut": 46.851,
-   "fin": 47.14
+   "debut": 46.275,
+   "fin": 46.577
   },
   {
    "mot": "le",
-   "debut": 47.14,
-   "fin": 47.4
+   "debut": 46.577,
+   "fin": 46.837
   },
   {
    "mot": "copain",
-   "debut": 47.4,
-   "fin": 47.62
+   "debut": 46.837,
+   "fin": 47.057
   },
   {
    "mot": "qui",
-   "debut": 47.62,
-   "fin": 47.84
+   "debut": 47.057,
+   "fin": 47.277
   },
   {
    "mot": "joue",
-   "debut": 47.84,
-   "fin": 47.96
+   "debut": 47.277,
+   "fin": 47.377
   },
   {
    "mot": "au",
-   "debut": 47.96,
-   "fin": 48.14
+   "debut": 47.377,
+   "fin": 47.557
   },
   {
    "mot": "basket.",
-   "debut": 48.14,
-   "fin": 48.46
+   "debut": 47.557,
+   "fin": 47.897
   },
   {
    "mot": "Chez",
-   "debut": 49.06,
-   "fin": 49.3
+   "debut": 48.477,
+   "fin": 48.717
   },
   {
    "mot": "toi,",
-   "debut": 49.3,
-   "fin": 49.4
+   "debut": 48.717,
+   "fin": 48.797
   },
   {
    "mot": "le",
-   "debut": 49.42,
-   "fin": 49.56
+   "debut": 48.817,
+   "fin": 48.957
   },
   {
    "mot": "plafond",
-   "debut": 49.56,
-   "fin": 49.84
+   "debut": 48.957,
+   "fin": 49.237
   },
   {
    "mot": "est",
-   "debut": 49.84,
-   "fin": 49.98
+   "debut": 49.237,
+   "fin": 49.397
   },
   {
    "mot": "bas?",
-   "debut": 49.98,
-   "fin": 50.14
+   "debut": 49.397,
+   "fin": 49.537
   },
   {
    "mot": "Oublie",
-   "debut": 50.441,
-   "fin": 50.78
+   "debut": 49.877,
+   "fin": 50.177
   },
   {
    "mot": "la",
-   "debut": 50.78,
-   "fin": 51.04
+   "debut": 50.177,
+   "fin": 50.457
   },
   {
    "mot": "suspension",
-   "debut": 51.04,
-   "fin": 51.52
+   "debut": 50.457,
+   "fin": 50.937
   },
   {
    "mot": "et",
-   "debut": 51.708,
-   "fin": 51.92
+   "debut": 51.108,
+   "fin": 51.317
   },
   {
    "mot": "prends",
-   "debut": 51.92,
-   "fin": 52.1
+   "debut": 51.317,
+   "fin": 51.497
   },
   {
    "mot": "un",
-   "debut": 52.1,
-   "fin": 52.34
+   "debut": 51.497,
+   "fin": 51.737
   },
   {
    "mot": "plafonnier:",
-   "debut": 52.34,
-   "fin": 52.84
+   "debut": 51.737,
+   "fin": 52.237
   },
   {
    "mot": "ta",
-   "debut": 53.006,
-   "fin": 53.14
+   "debut": 52.405,
+   "fin": 52.597
   },
   {
    "mot": "tête",
-   "debut": 53.14,
-   "fin": 53.3
+   "debut": 52.597,
+   "fin": 52.789
   },
   {
    "mot": "te",
-   "debut": 53.3,
-   "fin": 53.42
+   "debut": 52.789,
+   "fin": 52.981
   },
   {
    "mot": "dira",
-   "debut": 53.42,
-   "fin": 53.856
+   "debut": 52.981,
+   "fin": 53.366
   },
   {
    "mot": "merci.",
-   "debut": 53.856,
-   "fin": 54.4
+   "debut": 53.366,
+   "fin": 53.75
   },
   {
    "mot": "Sur",
-   "debut": 54.4,
-   "fin": 54.74
+   "debut": 53.94,
+   "fin": 54.117
   },
   {
    "mot": "nos",
-   "debut": 54.74,
-   "fin": 54.88
+   "debut": 54.117,
+   "fin": 54.277
   },
   {
    "mot": "fiches,",
-   "debut": 54.88,
-   "fin": 55.26
+   "debut": 54.277,
+   "fin": 54.597
   },
   {
    "mot": "un",
-   "debut": 55.289,
-   "fin": 55.52
+   "debut": 54.671,
+   "fin": 54.917
   },
   {
    "mot": "schéma",
-   "debut": 55.52,
-   "fin": 55.8
+   "debut": 54.917,
+   "fin": 55.177
   },
   {
    "mot": "donne",
-   "debut": 55.8,
-   "fin": 56.04
+   "debut": 55.177,
+   "fin": 55.417
   },
   {
    "mot": "les",
-   "debut": 56.04,
-   "fin": 56.24
+   "debut": 55.417,
+   "fin": 55.657
   },
   {
    "mot": "mesures",
-   "debut": 56.24,
-   "fin": 56.54
+   "debut": 55.657,
+   "fin": 55.917
   },
   {
    "mot": "exactes",
-   "debut": 56.54,
-   "fin": 57.06
+   "debut": 55.917,
+   "fin": 56.417
   },
   {
    "mot": "de",
-   "debut": 57.06,
-   "fin": 57.34
+   "debut": 56.417,
+   "fin": 56.717
   },
   {
    "mot": "chaque",
-   "debut": 57.34,
-   "fin": 57.52
+   "debut": 56.717,
+   "fin": 56.917
   },
   {
    "mot": "luminaire.",
-   "debut": 57.52,
-   "fin": 58.08
+   "debut": 56.917,
+   "fin": 57.417
   },
   {
    "mot": "Et",
-   "debut": 58.291,
-   "fin": 58.62
+   "debut": 57.638,
+   "fin": 57.937
   },
   {
    "mot": "tout",
-   "debut": 58.62,
-   "fin": 58.68
+   "debut": 57.937,
+   "fin": 58.037
   },
   {
    "mot": "le",
-   "debut": 58.68,
-   "fin": 58.82
+   "debut": 58.037,
+   "fin": 58.157
   },
   {
    "mot": "reste",
-   "debut": 58.82,
-   "fin": 58.96
+   "debut": 58.157,
+   "fin": 58.297
   },
   {
    "mot": "est",
-   "debut": 58.96,
-   "fin": 59.1
+   "debut": 58.297,
+   "fin": 58.437
   },
   {
    "mot": "dans",
-   "debut": 59.1,
-   "fin": 59.2
+   "debut": 58.437,
+   "fin": 58.557
   },
   {
    "mot": "notre",
-   "debut": 59.2,
-   "fin": 59.46
+   "debut": 58.557,
+   "fin": 58.817
   },
   {
    "mot": "guide",
-   "debut": 59.46,
-   "fin": 59.7
+   "debut": 58.817,
+   "fin": 59.057
   },
   {
    "mot": "gratuit,",
-   "debut": 59.7,
-   "fin": 60.12
+   "debut": 59.057,
+   "fin": 59.497
   },
   {
    "mot": "sur",
-   "debut": 60.31,
-   "fin": 60.54
+   "debut": 59.653,
+   "fin": 59.877
   },
   {
    "mot": "L'Atelier",
-   "debut": 60.54,
-   "fin": 60.892
+   "debut": 59.877,
+   "fin": 60.236
   },
   {
    "mot": "du",
-   "debut": 60.892,
-   "fin": 60.964
+   "debut": 60.236,
+   "fin": 60.31
   },
   {
    "mot": "Lustre",
-   "debut": 60.964,
-   "fin": 61.18
+   "debut": 60.31,
+   "fin": 60.532
   },
   {
    "mot": "point",
-   "debut": 61.18,
-   "fin": 61.36
+   "debut": 60.532,
+   "fin": 60.717
   },
   {
    "mot": "com.",
-   "debut": 61.36,
-   "fin": 61.98
+   "debut": 60.717,
+   "fin": 61.317
   },
   {
    "mot": "Alors,",
-   "debut": 62.034,
-   "fin": 62.44
+   "debut": 61.343,
+   "fin": 61.737
   },
   {
    "mot": "si",
-   "debut": 62.64,
-   "fin": 62.7
+   "debut": 61.957,
+   "fin": 62.017
   },
   {
    "mot": "tu",
-   "debut": 62.7,
-   "fin": 62.84
+   "debut": 62.017,
+   "fin": 62.177
   },
   {
    "mot": "as",
-   "debut": 62.84,
-   "fin": 63.04
+   "debut": 62.177,
+   "fin": 62.357
   },
   {
    "mot": "choisi",
-   "debut": 63.04,
-   "fin": 63.38
+   "debut": 62.357,
+   "fin": 62.697
   },
   {
    "mot": "le",
-   "debut": 63.38,
-   "fin": 63.6
+   "debut": 62.697,
+   "fin": 62.917
   },
   {
    "mot": "tien",
-   "debut": 63.6,
-   "fin": 63.72
+   "debut": 62.917,
+   "fin": 63.017
   },
   {
    "mot": "au",
-   "debut": 63.72,
-   "fin": 63.96
+   "debut": 63.017,
+   "fin": 63.277
   },
   {
    "mot": "coup",
-   "debut": 63.96,
-   "fin": 64.02
+   "debut": 63.277,
+   "fin": 63.337
   },
   {
    "mot": "de",
-   "debut": 64.02,
-   "fin": 64.22
+   "debut": 63.337,
+   "fin": 63.537
   },
   {
    "mot": "cœur,",
-   "debut": 64.22,
-   "fin": 64.56
+   "debut": 63.537,
+   "fin": 63.897
   },
   {
    "mot": "je",
-   "debut": 64.775,
-   "fin": 64.96
+   "debut": 64.087,
+   "fin": 64.277
   },
   {
    "mot": "parie",
-   "debut": 64.96,
-   "fin": 65.22
+   "debut": 64.277,
+   "fin": 64.537
   },
   {
    "mot": "que",
-   "debut": 65.22,
-   "fin": 65.66
+   "debut": 64.537,
+   "fin": 64.957
   },
   {
    "mot": "ton",
-   "debut": 65.693,
-   "fin": 66.02
+   "debut": 65.005,
+   "fin": 65.337
   },
   {
    "mot": "lustre",
-   "debut": 66.02,
-   "fin": 66.38
+   "debut": 65.337,
+   "fin": 65.697
   },
   {
    "mot": "est",
-   "debut": 66.38,
-   "fin": 66.6
+   "debut": 65.697,
+   "fin": 65.937
   },
   {
    "mot": "sûrement",
-   "debut": 66.6,
-   "fin": 66.96
+   "debut": 65.937,
+   "fin": 66.257
   },
   {
    "mot": "trop",
-   "debut": 66.96,
-   "fin": 67.18
+   "debut": 66.257,
+   "fin": 66.517
   },
   {
    "mot": "petit.",
-   "debut": 67.18,
-   "fin": 67.34
+   "debut": 66.517,
+   "fin": 66.657
   }
  ],
  "pauses": [
@@ -1174,179 +1174,179 @@
   },
   {
    "debut": 2.136,
-   "fin": 2.364
+   "fin": 2.341
   },
   {
-   "debut": 3.291,
-   "fin": 3.471
+   "debut": 3.256,
+   "fin": 3.441
   },
   {
-   "debut": 4.74,
-   "fin": 4.918
+   "debut": 4.711,
+   "fin": 4.888
   },
   {
-   "debut": 5.968,
-   "fin": 6.621
+   "debut": 5.939,
+   "fin": 6.565
   },
   {
-   "debut": 7.183,
-   "fin": 7.354
+   "debut": 7.126,
+   "fin": 7.292
   },
   {
-   "debut": 8.991,
-   "fin": 9.159
+   "debut": 8.93,
+   "fin": 9.098
   },
   {
-   "debut": 10.072,
-   "fin": 10.331
+   "debut": 10.011,
+   "fin": 10.258
   },
   {
-   "debut": 11.432,
-   "fin": 11.859
+   "debut": 11.339,
+   "fin": 11.767
   },
   {
-   "debut": 13.507,
-   "fin": 13.772
+   "debut": 13.416,
+   "fin": 13.671
   },
   {
-   "debut": 15.405,
-   "fin": 15.585
+   "debut": 15.309,
+   "fin": 15.495
   },
   {
-   "debut": 16.679,
-   "fin": 16.932
+   "debut": 16.589,
+   "fin": 16.801
   },
   {
-   "debut": 17.082,
-   "fin": 17.261
+   "debut": 16.965,
+   "fin": 17.139
   },
   {
-   "debut": 17.811,
-   "fin": 18.042
+   "debut": 17.69,
+   "fin": 17.898
   },
   {
-   "debut": 19.326,
-   "fin": 19.563
+   "debut": 19.177,
+   "fin": 19.374
   },
   {
-   "debut": 20.128,
-   "fin": 20.298
+   "debut": 19.941,
+   "fin": 20.1
   },
   {
-   "debut": 21.04,
-   "fin": 21.292
+   "debut": 20.841,
+   "fin": 21.054
   },
   {
-   "debut": 22.214,
-   "fin": 22.409
+   "debut": 21.977,
+   "fin": 22.173
   },
   {
-   "debut": 22.588,
-   "fin": 22.76
+   "debut": 22.352,
+   "fin": 22.524
   },
   {
-   "debut": 23.507,
-   "fin": 23.729
+   "debut": 23.271,
+   "fin": 23.473
   },
   {
-   "debut": 24.837,
-   "fin": 25.022
+   "debut": 24.58,
+   "fin": 24.769
   },
   {
-   "debut": 26.487,
-   "fin": 26.715
+   "debut": 26.234,
+   "fin": 26.422
   },
   {
-   "debut": 27.637,
-   "fin": 27.886
+   "debut": 27.336,
+   "fin": 27.59
   },
   {
-   "debut": 29.88,
-   "fin": 30.05
+   "debut": 29.584,
+   "fin": 29.753
   },
   {
-   "debut": 31.152,
-   "fin": 31.389
+   "debut": 30.856,
+   "fin": 31.068
   },
   {
-   "debut": 32.494,
-   "fin": 32.662
+   "debut": 32.166,
+   "fin": 32.333
   },
   {
-   "debut": 34.5,
-   "fin": 34.756
+   "debut": 34.171,
+   "fin": 34.393
   },
   {
-   "debut": 36.381,
-   "fin": 36.589
+   "debut": 36.028,
+   "fin": 36.22
   },
   {
-   "debut": 37.876,
-   "fin": 38.054
+   "debut": 37.506,
+   "fin": 37.686
   },
   {
-   "debut": 41.946,
-   "fin": 42.15
+   "debut": 41.545,
+   "fin": 41.755
   },
   {
-   "debut": 42.709,
-   "fin": 42.946
+   "debut": 42.314,
+   "fin": 42.542
   },
   {
-   "debut": 46.245,
-   "fin": 46.491
+   "debut": 45.811,
+   "fin": 46.037
   },
   {
-   "debut": 46.673,
-   "fin": 46.851
+   "debut": 46.212,
+   "fin": 46.378
   },
   {
-   "debut": 48.492,
-   "fin": 48.751
+   "debut": 48.018,
+   "fin": 48.245
   },
   {
-   "debut": 50.03,
-   "fin": 50.441
+   "debut": 49.53,
+   "fin": 49.944
   },
   {
-   "debut": 51.55,
-   "fin": 51.708
+   "debut": 51.052,
+   "fin": 51.211
   },
   {
-   "debut": 52.81,
-   "fin": 53.006
+   "debut": 52.313,
+   "fin": 52.508
   },
   {
-   "debut": 53.766,
-   "fin": 54.577
+   "debut": 53.269,
+   "fin": 54.043
   },
   {
-   "debut": 55.12,
-   "fin": 55.289
+   "debut": 54.598,
+   "fin": 54.774
   },
   {
-   "debut": 58.026,
-   "fin": 58.291
+   "debut": 57.511,
+   "fin": 57.741
   },
   {
-   "debut": 60.12,
-   "fin": 60.31
+   "debut": 59.569,
+   "fin": 59.756
   },
   {
-   "debut": 61.769,
-   "fin": 62.034
+   "debut": 61.218,
+   "fin": 61.446
   },
   {
-   "debut": 64.584,
-   "fin": 64.775
+   "debut": 63.999,
+   "fin": 64.19
   },
   {
-   "debut": 65.508,
-   "fin": 65.693
+   "debut": 64.922,
+   "fin": 65.108
   },
   {
-   "debut": 67.338,
-   "fin": 67.576
+   "debut": 66.753,
+   "fin": 66.991
   }
  ],
  "phrases": [
@@ -1361,8 +1361,8 @@
   },
   {
    "texte": "Et t'es pas le seul: c'est l'erreur la plus courante, d'après les pros de la lumière.",
-   "debut": 2.364,
-   "fin": 6.04,
+   "debut": 2.341,
+   "fin": 6.0,
    "mots": [
     6,
     21
@@ -1370,8 +1370,8 @@
   },
   {
    "texte": "Au plafond, il a l'air d'un bouton de chemise, perdu tout là-haut.",
-   "debut": 6.621,
-   "fin": 10.52,
+   "debut": 6.565,
+   "fin": 10.42,
    "mots": [
     22,
     33
@@ -1379,8 +1379,8 @@
   },
   {
    "texte": "Alors, quelle taille choisir?",
-   "debut": 10.66,
-   "fin": 11.52,
+   "debut": 10.6,
+   "fin": 11.38,
    "mots": [
     34,
     37
@@ -1388,8 +1388,8 @@
   },
   {
    "texte": "Pas besoin de calcul compliqué.",
-   "debut": 11.859,
-   "fin": 13.5,
+   "debut": 11.767,
+   "fin": 13.62,
    "mots": [
     38,
     42
@@ -1397,8 +1397,8 @@
   },
   {
    "texte": "Pour un salon de vingt mètres carrés, vise la largeur d'une porte.",
-   "debut": 14.08,
-   "fin": 16.72,
+   "debut": 14.0,
+   "fin": 16.64,
    "mots": [
     43,
     54
@@ -1406,8 +1406,8 @@
   },
   {
    "texte": "Oui, une vraie porte.",
-   "debut": 16.932,
-   "fin": 17.86,
+   "debut": 16.801,
+   "fin": 17.72,
    "mots": [
     55,
     58
@@ -1415,8 +1415,8 @@
   },
   {
    "texte": "Ça paraît énorme, je sais.",
-   "debut": 18.042,
-   "fin": 19.38,
+   "debut": 17.898,
+   "fin": 19.24,
    "mots": [
     59,
     63
@@ -1424,8 +1424,8 @@
   },
   {
    "texte": "Et pourtant, c'est la bonne taille.",
-   "debut": 19.563,
-   "fin": 21.16,
+   "debut": 19.374,
+   "fin": 20.96,
    "mots": [
     64,
     69
@@ -1433,8 +1433,8 @@
   },
   {
    "texte": "Sous un haut plafond, vois encore plus grand.",
-   "debut": 21.292,
-   "fin": 23.54,
+   "debut": 21.054,
+   "fin": 23.32,
    "mots": [
     70,
     77
@@ -1442,8 +1442,8 @@
   },
   {
    "texte": "Mais sans exagérer: un lustre géant écrase toute la pièce.",
-   "debut": 23.729,
-   "fin": 26.54,
+   "debut": 23.473,
+   "fin": 26.28,
    "mots": [
     78,
     87
@@ -1451,8 +1451,8 @@
   },
   {
    "texte": "Tu hésites encore?",
-   "debut": 26.715,
-   "fin": 27.68,
+   "debut": 26.422,
+   "fin": 27.34,
    "mots": [
     88,
     90
@@ -1460,8 +1460,8 @@
   },
   {
    "texte": "Découpe un rond de carton aussi large et scotche-le au plafond.",
-   "debut": 27.886,
-   "fin": 31.32,
+   "debut": 27.59,
+   "fin": 31.0,
    "mots": [
     91,
     101
@@ -1469,8 +1469,8 @@
   },
   {
    "texte": "Laisse-le un jour ou deux: tu sauras tout de suite si ça te plaît.",
-   "debut": 31.389,
-   "fin": 34.68,
+   "debut": 31.068,
+   "fin": 34.34,
    "mots": [
     102,
     115
@@ -1478,8 +1478,8 @@
   },
   {
    "texte": "Au-dessus de la table, c'est l'inverse: il doit rester moins large qu'elle, sinon tes invités dînent sous un parapluie.",
-   "debut": 34.756,
-   "fin": 40.52,
+   "debut": 34.393,
+   "fin": 40.12,
    "mots": [
     116,
     134
@@ -1487,8 +1487,8 @@
   },
   {
    "texte": "Dernier piège, et pas des moindres: la hauteur.",
-   "debut": 40.68,
-   "fin": 42.72,
+   "debut": 40.3,
+   "fin": 42.34,
    "mots": [
     135,
     142
@@ -1496,8 +1496,8 @@
   },
   {
    "texte": "Un grand gaillard de deux mètres doit passer dessous sans se cogner la tête.",
-   "debut": 43.24,
-   "fin": 46.36,
+   "debut": 42.84,
+   "fin": 45.9,
    "mots": [
     143,
     156
@@ -1505,8 +1505,8 @@
   },
   {
    "texte": "Oui, même le copain qui joue au basket.",
-   "debut": 46.491,
-   "fin": 48.46,
+   "debut": 46.037,
+   "fin": 48.0,
    "mots": [
     157,
     164
@@ -1514,8 +1514,8 @@
   },
   {
    "texte": "Chez toi, le plafond est bas?",
-   "debut": 49.06,
-   "fin": 50.14,
+   "debut": 48.58,
+   "fin": 49.64,
    "mots": [
     165,
     170
@@ -1523,8 +1523,8 @@
   },
   {
    "texte": "Oublie la suspension et prends un plafonnier: ta tête te dira merci.",
-   "debut": 50.441,
-   "fin": 54.4,
+   "debut": 49.98,
+   "fin": 53.26,
    "mots": [
     171,
     182
@@ -1532,8 +1532,8 @@
   },
   {
    "texte": "Sur nos fiches, un schéma donne les mesures exactes de chaque luminaire.",
-   "debut": 54.4,
-   "fin": 58.08,
+   "debut": 54.043,
+   "fin": 57.52,
    "mots": [
     183,
     194
@@ -1541,8 +1541,8 @@
   },
   {
    "texte": "Et tout le reste est dans notre guide gratuit, sur L'Atelier du Lustre point com.",
-   "debut": 58.291,
-   "fin": 61.98,
+   "debut": 57.741,
+   "fin": 61.42,
    "mots": [
     195,
     209
@@ -1550,8 +1550,8 @@
   },
   {
    "texte": "Alors, si tu as choisi le tien au coup de cœur, je parie que ton lustre est sûrement trop petit.",
-   "debut": 62.034,
-   "fin": 67.34,
+   "debut": 61.446,
+   "fin": 66.76,
    "mots": [
     210,
     229
@@ -1559,9 +1559,10 @@
   }
  ],
  "cadence": {
-  "debit_habituel": 5.45,
+  "debit_habituel": 5.46,
   "presses": [
-   "d'après les pros de la lumière."
+   "d'après les pros de la lumière.",
+   "ta tête te dira merci."
   ],
   "groupes": [
    {
@@ -1570,8 +1571,8 @@
      0,
      1
     ],
-    "debut": 0.23,
-    "fin": 0.677,
+    "debut": 0.127,
+    "fin": 0.574,
     "syllabes": 2,
     "debit": 4.47
    },
@@ -1581,8 +1582,8 @@
      2,
      5
     ],
-    "debut": 0.847,
-    "fin": 2.136,
+    "debut": 0.744,
+    "fin": 2.033,
     "syllabes": 7,
     "debit": 5.43
    },
@@ -1592,10 +1593,10 @@
      6,
      10
     ],
-    "debut": 2.364,
-    "fin": 3.291,
+    "debut": 2.238,
+    "fin": 3.153,
     "syllabes": 5,
-    "debit": 5.39
+    "debit": 5.46
    },
    {
     "texte": "c'est l'erreur la plus courante,",
@@ -1603,10 +1604,10 @@
      11,
      15
     ],
-    "debut": 3.471,
-    "fin": 4.74,
+    "debut": 3.338,
+    "fin": 4.608,
     "syllabes": 7,
-    "debit": 5.52
+    "debit": 5.51
    },
    {
     "texte": "d'après les pros de la lumière.",
@@ -1614,10 +1615,10 @@
      16,
      21
     ],
-    "debut": 4.918,
-    "fin": 5.968,
+    "debut": 4.785,
+    "fin": 5.836,
     "syllabes": 8,
-    "debit": 7.62
+    "debit": 7.61
    },
    {
     "texte": "Au plafond,",
@@ -1625,10 +1626,10 @@
      22,
      23
     ],
-    "debut": 6.621,
-    "fin": 7.183,
+    "debut": 6.462,
+    "fin": 7.023,
     "syllabes": 3,
-    "debit": 5.34
+    "debit": 5.35
    },
    {
     "texte": "il a l'air d'un bouton de chemise,",
@@ -1636,10 +1637,10 @@
      24,
      30
     ],
-    "debut": 7.354,
-    "fin": 8.991,
+    "debut": 7.189,
+    "fin": 8.827,
     "syllabes": 9,
-    "debit": 5.5
+    "debit": 5.49
    },
    {
     "texte": "perdu tout là-haut.",
@@ -1647,8 +1648,8 @@
      31,
      33
     ],
-    "debut": 9.159,
-    "fin": 10.072,
+    "debut": 8.995,
+    "fin": 9.908,
     "syllabes": 5,
     "debit": 5.48
    },
@@ -1658,10 +1659,10 @@
      34,
      37
     ],
-    "debut": 10.331,
-    "fin": 11.432,
+    "debut": 10.155,
+    "fin": 11.236,
     "syllabes": 6,
-    "debit": 5.45
+    "debit": 5.55
    },
    {
     "texte": "Pas besoin de calcul compliqué.",
@@ -1669,8 +1670,8 @@
      38,
      42
     ],
-    "debut": 11.859,
-    "fin": 13.507,
+    "debut": 11.664,
+    "fin": 13.313,
     "syllabes": 9,
     "debit": 5.46
    },
@@ -1680,10 +1681,10 @@
      43,
      49
     ],
-    "debut": 13.772,
-    "fin": 15.405,
+    "debut": 13.568,
+    "fin": 15.206,
     "syllabes": 9,
-    "debit": 5.51
+    "debit": 5.49
    },
    {
     "texte": "vise la largeur d'une porte.",
@@ -1691,8 +1692,8 @@
      50,
      54
     ],
-    "debut": 15.585,
-    "fin": 16.679,
+    "debut": 15.392,
+    "fin": 16.486,
     "syllabes": 6,
     "debit": 5.48
    },
@@ -1702,10 +1703,10 @@
      55,
      55
     ],
-    "debut": 16.932,
-    "fin": 17.082,
+    "debut": 16.698,
+    "fin": 16.862,
     "syllabes": 1,
-    "debit": 6.67
+    "debit": 6.1
    },
    {
     "texte": "une vraie porte.",
@@ -1713,10 +1714,10 @@
      56,
      58
     ],
-    "debut": 17.261,
-    "fin": 17.811,
+    "debut": 17.036,
+    "fin": 17.587,
     "syllabes": 3,
-    "debit": 5.45
+    "debit": 5.44
    },
    {
     "texte": "Ça paraît énorme, je sais.",
@@ -1724,10 +1725,10 @@
      59,
      63
     ],
-    "debut": 18.042,
-    "fin": 19.326,
+    "debut": 17.795,
+    "fin": 19.074,
     "syllabes": 7,
-    "debit": 5.45
+    "debit": 5.47
    },
    {
     "texte": "Et pourtant,",
@@ -1735,10 +1736,10 @@
      64,
      65
     ],
-    "debut": 19.563,
-    "fin": 20.128,
+    "debut": 19.271,
+    "fin": 19.838,
     "syllabes": 3,
-    "debit": 5.31
+    "debit": 5.29
    },
    {
     "texte": "c'est la bonne taille.",
@@ -1746,10 +1747,10 @@
      66,
      69
     ],
-    "debut": 20.298,
-    "fin": 21.04,
+    "debut": 19.997,
+    "fin": 20.738,
     "syllabes": 4,
-    "debit": 5.39
+    "debit": 5.4
    },
    {
     "texte": "Sous un haut plafond,",
@@ -1757,8 +1758,8 @@
      70,
      73
     ],
-    "debut": 21.292,
-    "fin": 22.214,
+    "debut": 20.951,
+    "fin": 21.874,
     "syllabes": 5,
     "debit": 5.42
    },
@@ -1768,10 +1769,10 @@
      74,
      74
     ],
-    "debut": 22.76,
-    "fin": 22.72,
+    "debut": 22.07,
+    "fin": 22.249,
     "syllabes": 1,
-    "debit": 10.0
+    "debit": 5.59
    },
    {
     "texte": "encore plus grand.",
@@ -1779,8 +1780,8 @@
      75,
      77
     ],
-    "debut": 22.76,
-    "fin": 23.507,
+    "debut": 22.421,
+    "fin": 23.168,
     "syllabes": 4,
     "debit": 5.35
    },
@@ -1790,8 +1791,8 @@
      78,
      80
     ],
-    "debut": 23.729,
-    "fin": 24.837,
+    "debut": 23.37,
+    "fin": 24.477,
     "syllabes": 6,
     "debit": 5.42
    },
@@ -1801,8 +1802,8 @@
      81,
      87
     ],
-    "debut": 25.022,
-    "fin": 26.487,
+    "debut": 24.666,
+    "fin": 26.131,
     "syllabes": 8,
     "debit": 5.46
    },
@@ -1812,10 +1813,10 @@
      88,
      90
     ],
-    "debut": 26.715,
-    "fin": 27.637,
+    "debut": 26.319,
+    "fin": 27.233,
     "syllabes": 5,
-    "debit": 5.42
+    "debit": 5.47
    },
    {
     "texte": "Découpe un rond de carton aussi large",
@@ -1823,8 +1824,8 @@
      91,
      97
     ],
-    "debut": 27.886,
-    "fin": 29.88,
+    "debut": 27.487,
+    "fin": 29.481,
     "syllabes": 10,
     "debit": 5.02
    },
@@ -1834,8 +1835,8 @@
      98,
      101
     ],
-    "debut": 30.05,
-    "fin": 31.152,
+    "debut": 29.65,
+    "fin": 30.753,
     "syllabes": 6,
     "debit": 5.44
    },
@@ -1845,10 +1846,10 @@
      102,
      106
     ],
-    "debut": 31.389,
-    "fin": 32.494,
+    "debut": 30.965,
+    "fin": 32.063,
     "syllabes": 6,
-    "debit": 5.43
+    "debit": 5.46
    },
    {
     "texte": "tu sauras tout de suite si ça te plaît.",
@@ -1856,8 +1857,8 @@
      107,
      115
     ],
-    "debut": 32.662,
-    "fin": 34.5,
+    "debut": 32.23,
+    "fin": 34.068,
     "syllabes": 10,
     "debit": 5.44
    },
@@ -1867,10 +1868,10 @@
      116,
      121
     ],
-    "debut": 34.756,
-    "fin": 36.381,
+    "debut": 34.29,
+    "fin": 35.925,
     "syllabes": 9,
-    "debit": 5.54
+    "debit": 5.5
    },
    {
     "texte": "il doit rester moins large qu'elle,",
@@ -1878,8 +1879,8 @@
      122,
      127
     ],
-    "debut": 36.589,
-    "fin": 37.876,
+    "debut": 36.117,
+    "fin": 37.403,
     "syllabes": 7,
     "debit": 5.44
    },
@@ -1889,10 +1890,10 @@
      128,
      140
     ],
-    "debut": 38.054,
-    "fin": 41.946,
+    "debut": 37.583,
+    "fin": 41.442,
     "syllabes": 20,
-    "debit": 5.14
+    "debit": 5.18
    },
    {
     "texte": "la hauteur.",
@@ -1900,8 +1901,8 @@
      141,
      142
     ],
-    "debut": 42.15,
-    "fin": 42.709,
+    "debut": 41.652,
+    "fin": 42.211,
     "syllabes": 3,
     "debit": 5.37
    },
@@ -1911,10 +1912,10 @@
      143,
      156
     ],
-    "debut": 42.946,
-    "fin": 46.245,
+    "debut": 42.439,
+    "fin": 45.708,
     "syllabes": 18,
-    "debit": 5.46
+    "debit": 5.51
    },
    {
     "texte": "Oui,",
@@ -1922,10 +1923,10 @@
      157,
      157
     ],
-    "debut": 46.491,
-    "fin": 46.673,
+    "debut": 45.934,
+    "fin": 46.109,
     "syllabes": 1,
-    "debit": 5.49
+    "debit": 5.71
    },
    {
     "texte": "même le copain qui joue au basket.",
@@ -1933,10 +1934,10 @@
      158,
      164
     ],
-    "debut": 46.851,
-    "fin": 48.492,
+    "debut": 46.275,
+    "fin": 47.915,
     "syllabes": 9,
-    "debit": 5.48
+    "debit": 5.49
    },
    {
     "texte": "Chez toi, le plafond est bas?",
@@ -1944,10 +1945,10 @@
      165,
      170
     ],
-    "debut": 48.751,
-    "fin": 50.03,
+    "debut": 48.142,
+    "fin": 49.427,
     "syllabes": 7,
-    "debit": 5.47
+    "debit": 5.45
    },
    {
     "texte": "Oublie la suspension",
@@ -1955,10 +1956,10 @@
      171,
      173
     ],
-    "debut": 50.441,
-    "fin": 51.55,
+    "debut": 49.841,
+    "fin": 50.949,
     "syllabes": 6,
-    "debit": 5.41
+    "debit": 5.42
    },
    {
     "texte": "et prends un plafonnier:",
@@ -1966,32 +1967,32 @@
      174,
      177
     ],
-    "debut": 51.708,
-    "fin": 52.81,
+    "debut": 51.108,
+    "fin": 52.21,
     "syllabes": 6,
     "debit": 5.44
    },
    {
-    "texte": "ta tête te dira merci. Sur",
+    "texte": "ta tête te dira merci.",
     "mots": [
      178,
-     183
+     182
     ],
-    "debut": 53.006,
-    "fin": 54.74,
-    "syllabes": 8,
-    "debit": 4.61
+    "debut": 52.405,
+    "fin": 53.166,
+    "syllabes": 7,
+    "debit": 9.2
    },
    {
-    "texte": "nos fiches,",
+    "texte": "Sur nos fiches,",
     "mots": [
-     184,
+     183,
      185
     ],
-    "debut": 54.577,
-    "fin": 55.12,
-    "syllabes": 2,
-    "debit": 3.68
+    "debut": 53.94,
+    "fin": 54.495,
+    "syllabes": 3,
+    "debit": 5.41
    },
    {
     "texte": "un schéma donne les mesures exactes de chaque luminaire.",
@@ -1999,8 +2000,8 @@
      186,
      194
     ],
-    "debut": 55.289,
-    "fin": 58.026,
+    "debut": 54.671,
+    "fin": 57.408,
     "syllabes": 15,
     "debit": 5.48
    },
@@ -2010,8 +2011,8 @@
      195,
      203
     ],
-    "debut": 58.291,
-    "fin": 60.12,
+    "debut": 57.638,
+    "fin": 59.466,
     "syllabes": 10,
     "debit": 5.47
    },
@@ -2021,10 +2022,10 @@
      204,
      209
     ],
-    "debut": 60.31,
-    "fin": 61.769,
+    "debut": 59.653,
+    "fin": 61.115,
     "syllabes": 8,
-    "debit": 5.48
+    "debit": 5.47
    },
    {
     "texte": "Alors, si tu as choisi le tien au coup de cœur,",
@@ -2032,10 +2033,10 @@
      210,
      220
     ],
-    "debut": 62.034,
-    "fin": 64.584,
+    "debut": 61.343,
+    "fin": 63.896,
     "syllabes": 13,
-    "debit": 5.1
+    "debit": 5.09
    },
    {
     "texte": "je parie que",
@@ -2043,8 +2044,8 @@
      221,
      223
     ],
-    "debut": 64.775,
-    "fin": 65.508,
+    "debut": 64.087,
+    "fin": 64.819,
     "syllabes": 4,
     "debit": 5.46
    },
@@ -2054,11 +2055,12 @@
      224,
      229
     ],
-    "debut": 65.693,
-    "fin": 67.338,
+    "debut": 65.005,
+    "fin": 66.65,
     "syllabes": 9,
     "debit": 5.47
    }
   ]
- }
+ },
+ "decoupe_debut_s": 0.103
 }

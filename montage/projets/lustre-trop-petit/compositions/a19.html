@@ -1,0 +1,63 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #faf7f1; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
+
+    #a19-all { filter: url(#a19-filtre); }
+
+  </style>
+  <div id="root" data-composition-id="a19" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a19-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="a19-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="a19-all" class="all clip" data-start="0" data-duration="3.9200">
+      <div id="a19-cam" class="cam"><div class="papier"></div><div class="points"></div><div class="grain"></div>
+        <div id="a19-tel" class="abs" style="left:250px;top:250px;width:580px;height:1040px;border-radius:70px;background:#14110e;box-shadow:0 30px 80px rgba(20,17,14,.35)">
+          <div class="abs" style="left:26px;top:30px;width:528px;height:980px;border-radius:48px;overflow:hidden;background:#fbfaf6">
+            <div class="abs" style="left:28px;top:70px;width:300px;height:14px;border-radius:7px;background:#ddd6c8"></div>
+            <div class="abs" style="left:28px;top:100px;width:200px;height:14px;border-radius:7px;background:#e8e2d6"></div>
+            <div id="a19-schema" class="abs" style="left:0;top:170px;width:528px;height:420px;overflow:hidden">
+              <img src="assets/tressa-schema.webp" alt="" style="position:absolute;left:-20px;top:-60px;width:588px;height:588px"></div>
+            <div class="abs" style="left:28px;top:640px;width:472px;height:70px;border-radius:35px;background:#c9a15a"></div>
+            <div class="abs" style="left:28px;top:750px;width:400px;height:14px;border-radius:7px;background:#e8e2d6"></div>
+            <div class="abs" style="left:28px;top:780px;width:430px;height:14px;border-radius:7px;background:#e8e2d6"></div>
+          </div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // our product pages: the diagram
+      tl.fromTo("#a19-all", { y: 1920 }, { y: 960, duration: 0.12, ease: "power3.in" }, 0);
+      tl.fromTo("#a19-all", { y: 960 }, { y: 0, duration: 0.277, ease: "expo.out", immediateRender: false }, 0.12);
+      tl.fromTo("#a19-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in" }, 0);
+      tl.fromTo("#a19-flou", { attr: { stdDeviation: "0 80" } }, { attr: { stdDeviation: "0 0" }, duration: 0.277, ease: "expo.out", immediateRender: false }, 0.12);
+      tl.set("#a19-all", { filter: "none" }, 0.417);
+      tl.fromTo("#a19-cam", { scale: 1.0 }, { scale: 1.04, duration: 3.7, ease: "none", immediateRender: false }, 0.12);
+      tl.fromTo("#a19-tel", { y: 900 }, { y: 0, duration: 0.5, ease: "expo.out" }, 0.05);
+      tl.fromTo("#a19-schema", { scale: 1 }, { scale: 1.18, duration: 0.6, ease: "power2.inOut", transformOrigin: "50% 40%" }, 1.17);
+      tl.to("#a19-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 3.54);
+      tl.fromTo("#a19-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 3.54);
+      window.__timelines["a19"] = tl;
+    })();
+  </script>
+</template>

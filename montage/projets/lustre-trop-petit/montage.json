@@ -48,8 +48,10 @@
     "fraunces-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-italic.woff2",
     "newsreader.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-normal.woff2",
     "newsreader-italique.woff2": "https://cdn.jsdelivr.net/fontsource/fonts/newsreader:vf@latest/latin-wght-italic.woff2",
-    "orvane-soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-rond-orvane-3-allume-le-soir-lumiere-douce-sur-le-sejour.webp",
-    "tressa-soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-raphia-tressa-3-en-raphia-tresse-allume-le-soir-dans-un-salon-chaleureux-au-dessus-d-une-table-basse.webp"
+    "tressa-soir.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-raphia-tressa-3-en-raphia-tresse-allume-le-soir-dans-un-salon-chaleureux-au-dessus-d-une-table-basse.webp",
+    "tressa-jour.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-raphia-tressa-2-en-raphia-allume-au-plafond-d-un-salon-lumineux-au-dessus-d-un-canape-d-angle.webp?width=1254",
+    "ornela-jour.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-tissu-noir-et-dore-ornela-2-fixe-au-plafond-d-un-salon-lumineux-au-dessus-du-canape.webp?width=1254",
+    "tressa-schema.webp": "https://cdn.shopify.com/s/files/1/0907/8095/9054/files/plafonnier-salon-raphia-tressa-7-schema-technique-60-cm-plafonnier-en-raphia-diametre-60-cm-et-hauteur-17-cm.webp?width=1254"
   },
   "attendu": {
     "secondes": [
@@ -57,32 +59,35 @@
       65
     ],
     "fondu_fin_min_s": 0,
-    "sans_voix_sous_voix_max_db": 11
+    "souffle_min_s": 0.7
   },
   "signature": {
     "date": "2026-11-17",
     "familles": [
       "A",
-      "F",
-      "B",
-      "G",
+      "C",
+      "D",
       "B",
       "E",
+      "G",
       "C",
       "G",
-      "E",
+      "C",
+      "D",
       "C",
       "G",
-      "E",
-      "G",
-      "E",
+      "C",
       "B",
+      "G",
+      "C",
+      "D",
+      "C",
+      "D",
       "K",
-      "H",
       "A"
     ],
     "accroche": "changement",
-    "angle": "dimension"
+    "angle": "objets du quotidien"
   },
   "musique": {
     "titre": "Happy Guitar",

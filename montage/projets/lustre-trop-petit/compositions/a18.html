@@ -1,0 +1,54 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
+
+    #a18-all { filter: url(#a18-filtre); }
+    #a18-ok, #a18-coeur { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="a18" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a18-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="a18-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="a18-all" class="all clip" data-start="0" data-duration="3.2103">
+      <div id="a18-cam" class="cam"><img id="a18-img" class="abs" src="assets/ornela-jour.webp" alt="" style="left:-418.4px;top:0px;width:1919.9px;height:1919.9px"></div>
+      <div class="voile-bas" style="top:900px;height:1020px"></div>
+      <svg id="a18-ok" class="abs" style="left:720px;top:251px;width:160px;height:160px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#c9a15a"/><path d="M28 52 L44 67 L73 36" fill="none" stroke="#14110e" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg id="a18-coeur" class="abs" style="left:735.0px;top:675.0px;width:170px;height:170px" viewBox="0 0 100 100"><path d="M50 86 C20 64 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 64 50 86 Z" fill="#c9a15a" stroke="#14110e" stroke-width="4"/></svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // a ceiling light, flat on the ceiling
+      tl.fromTo("#a18-cam", { scale: 1 }, { scale: 1.08, duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo("#a18-all", { filter: "blur(18px)" }, { filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 0);
+      gsap.set("#a18-cam", { transformOrigin: "540px 291px" });
+      tl.fromTo("#a18-cam", { scale: 1.08 }, { scale: 1.145, duration: 2.333, ease: "none", immediateRender: false }, 0.5);
+      tl.fromTo("#a18-ok", { scale: 0, opacity: 0, rotation: -60 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.2)" }, 0.704);
+      tl.fromTo("#a18-coeur", { scale: 0, opacity: 0, rotation: 20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.32, ease: "back.out(2.2)" }, 2.333);
+      tl.fromTo("#a18-all", { y: 0 }, { y: -960, duration: 0.12, ease: "power3.in", immediateRender: false }, 2.713);
+      tl.fromTo("#a18-all", { y: -960 }, { y: -1920, duration: 0.277, ease: "expo.out", immediateRender: false }, 2.833);
+      tl.fromTo("#a18-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in", immediateRender: false }, 2.713);
+      window.__timelines["a18"] = tl;
+    })();
+  </script>
+</template>

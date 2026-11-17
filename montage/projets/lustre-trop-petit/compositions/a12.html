@@ -1,0 +1,60 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
+
+    #a12-all { filter: url(#a12-filtre); }
+    #a12-g1, #a12-g2 { transform: scaleY(0); }
+    #a12-ok { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="a12" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a12-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="a12-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="a12-all" class="all clip" data-start="0" data-duration="3.4866">
+      <div id="a12-cam" class="cam" style="transform-origin:540px 700px">
+        <img class="abs" src="assets/domia.webp" alt="" style="left:-459.9px;top:-40px;width:1996.7px;height:1996.7px">
+        <div id="a12-g1" class="abs" style="left:384px;top:724px;width:6px;height:545px;background:repeating-linear-gradient(180deg,#c9a15a 0 16px,transparent 16px 28px);transform-origin:50% 0"></div>
+        <div id="a12-g2" class="abs" style="left:690px;top:724px;width:6px;height:545px;background:repeating-linear-gradient(180deg,#c9a15a 0 16px,transparent 16px 28px);transform-origin:50% 0"></div>
+      </div>
+      <div class="voile-bas" style="top:900px;height:1020px"></div>
+      <svg id="a12-ok" class="abs" style="left:460px;top:960px;width:160px;height:160px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#c9a15a"/><path d="M28 52 L44 67 L73 36" fill="none" stroke="#14110e" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // narrower than the table
+      tl.fromTo("#a12-all", { y: 1920 }, { y: 960, duration: 0.12, ease: "power3.in" }, 0);
+      tl.fromTo("#a12-all", { y: 960 }, { y: 0, duration: 0.277, ease: "expo.out", immediateRender: false }, 0.12);
+      tl.fromTo("#a12-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in" }, 0);
+      tl.fromTo("#a12-flou", { attr: { stdDeviation: "0 80" } }, { attr: { stdDeviation: "0 0" }, duration: 0.277, ease: "expo.out", immediateRender: false }, 0.12);
+      tl.set("#a12-all", { filter: "none" }, 0.417);
+      tl.fromTo("#a12-cam", { scale: 1.0 }, { scale: 1.05, duration: 3.267, ease: "none", immediateRender: false }, 0.12);
+      tl.fromTo("#a12-g1", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.inOut" }, 2.644);
+      tl.fromTo("#a12-g2", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.inOut" }, 2.724);
+      tl.fromTo("#a12-ok", { scale: 0, opacity: 0, rotation: -60 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.2)" }, 3.294);
+      tl.to("#a12-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 3.107);
+      tl.fromTo("#a12-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 3.107);
+      window.__timelines["a12"] = tl;
+    })();
+  </script>
+</template>

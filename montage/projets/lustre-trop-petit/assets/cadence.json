@@ -2,9 +2,9 @@
  "vitesse": 1.2,
  "debit_habituel": 6.99,
  "debit_vise_au_plus": 5.5,
- "pause_max": 0.27,
- "duree_prevue_s": 68.107,
- "silence_retire_s": 17.966,
+ "pause_max": 0.24,
+ "duree_prevue_s": 67.536,
+ "silence_retire_s": 18.425,
  "troncons": [
   {
    "debut": 0.0,
@@ -13,11 +13,11 @@
   },
   {
    "debut": 0.942,
-   "fin": 2.043,
+   "fin": 2.032,
    "vitesse": 0.73
   },
   {
-   "debut": 2.661,
+   "debut": 2.672,
    "fin": 3.497,
    "vitesse": 0.73
   },
@@ -28,11 +28,11 @@
   },
   {
    "debut": 5.206,
-   "fin": 6.656,
+   "fin": 6.643,
    "vitesse": 0.858
   },
   {
-   "debut": 7.145,
+   "debut": 7.158,
    "fin": 7.785,
    "vitesse": 0.82
   },
@@ -43,56 +43,56 @@
   },
   {
    "debut": 9.451,
-   "fin": 10.14,
+   "fin": 10.131,
    "vitesse": 0.603
   },
   {
-   "debut": 10.884,
+   "debut": 10.901,
    "fin": 12.533,
    "vitesse": 1.136
   },
   {
    "debut": 12.983,
-   "fin": 14.281,
+   "fin": 14.271,
    "vitesse": 0.65
   },
   {
-   "debut": 14.731,
+   "debut": 14.747,
    "fin": 16.64,
    "vitesse": 1.02
   },
   {
    "debut": 16.658,
-   "fin": 17.966,
+   "fin": 17.951,
    "vitesse": 0.986
   },
   {
-   "debut": 18.556,
+   "debut": 18.567,
    "fin": 18.841,
    "vitesse": 0.75
   },
   {
    "debut": 18.949,
-   "fin": 19.627,
+   "fin": 19.614,
    "vitesse": 0.869
   },
   {
-   "debut": 19.977,
-   "fin": 21.067,
+   "debut": 19.987,
+   "fin": 21.057,
    "vitesse": 0.707
   },
   {
-   "debut": 21.374,
+   "debut": 21.384,
    "fin": 21.882,
    "vitesse": 0.651
   },
   {
    "debut": 21.953,
-   "fin": 22.695,
+   "fin": 22.684,
    "vitesse": 0.771
   },
   {
-   "debut": 23.489,
+   "debut": 23.502,
    "fin": 24.481,
    "vitesse": 0.866
   },
@@ -103,21 +103,21 @@
   },
   {
    "debut": 24.971,
-   "fin": 25.68,
+   "fin": 25.669,
    "vitesse": 0.737
   },
   {
-   "debut": 26.157,
+   "debut": 26.168,
    "fin": 27.078,
    "vitesse": 0.694
   },
   {
    "debut": 27.463,
-   "fin": 29.593,
+   "fin": 29.574,
    "vitesse": 1.261
   },
   {
-   "debut": 30.279,
+   "debut": 30.289,
    "fin": 31.165,
    "vitesse": 0.699
   },
@@ -128,21 +128,21 @@
   },
   {
    "debut": 33.544,
-   "fin": 34.548,
+   "fin": 34.537,
    "vitesse": 0.758
   },
   {
-   "debut": 35.149,
+   "debut": 35.16,
    "fin": 36.12,
    "vitesse": 0.732
   },
   {
    "debut": 36.515,
-   "fin": 37.773,
+   "fin": 37.763,
    "vitesse": 0.612
   },
   {
-   "debut": 38.816,
+   "debut": 38.829,
    "fin": 40.497,
    "vitesse": 0.899
   },
@@ -153,36 +153,36 @@
   },
   {
    "debut": 42.656,
-   "fin": 44.322,
+   "fin": 44.312,
    "vitesse": 0.641
   },
   {
-   "debut": 45.381,
+   "debut": 45.377,
    "fin": 47.153,
-   "vitesse": 1.178
+   "vitesse": 1.193
   },
   {
    "debut": 47.165,
-   "fin": 47.963,
+   "fin": 47.948,
    "vitesse": 1.022
   },
   {
-   "debut": 48.598,
-   "fin": 51.748,
+   "debut": 48.611,
+   "fin": 51.735,
    "vitesse": 0.889
   },
   {
-   "debut": 52.198,
+   "debut": 52.209,
    "fin": 52.501,
    "vitesse": 0.75
   },
   {
    "debut": 52.768,
-   "fin": 54.145,
+   "fin": 54.134,
    "vitesse": 0.735
   },
   {
-   "debut": 54.797,
+   "debut": 54.809,
    "fin": 56.12,
    "vitesse": 0.811
   },
@@ -198,31 +198,31 @@
   },
   {
    "debut": 58.805,
-   "fin": 60.447,
+   "fin": 60.431,
    "vitesse": 1.089
   },
   {
-   "debut": 61.055,
+   "debut": 61.073,
    "fin": 61.983,
    "vitesse": 1.201
   },
   {
    "debut": 62.016,
-   "fin": 64.338,
+   "fin": 64.326,
    "vitesse": 0.783
   },
   {
-   "debut": 64.692,
+   "debut": 64.705,
    "fin": 66.487,
    "vitesse": 0.874
   },
   {
    "debut": 66.81,
-   "fin": 68.556,
+   "fin": 68.54,
    "vitesse": 1.034
   },
   {
-   "debut": 69.35,
+   "debut": 69.364,
    "fin": 69.905,
    "vitesse": 0.927
   },
@@ -456,8 +456,8 @@
   {
    "texte": "Dernier piège, et pas des moindres:",
    "syllabes": 7,
-   "debit": 4.67,
-   "vitesse": 1.178,
+   "debit": 4.61,
+   "vitesse": 1.193,
    "debit_final": 5.5
   },
   {

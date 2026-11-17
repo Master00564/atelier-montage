@@ -1,0 +1,65 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #faf7f1; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
+
+    #a8-all { filter: url(#a8-filtre); }
+    #a8-fleche { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="a8" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a8-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="a8-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="a8-all" class="all clip" data-start="0" data-duration="2.6200">
+      <div id="a8-cam" class="cam"><div class="papier"></div><div class="points"></div><div class="grain"></div>
+        <div class="abs" style="left:110px;top:1460px;width:860px;height:10px;background:#14110e;border-radius:5px"></div>
+        <div id="a8-mur1" class="abs" style="left:110px;top:700px;width:10px;height:770px;background:#14110e;transform-origin:50% 100%"></div>
+        <div id="a8-mur2" class="abs" style="left:960px;top:700px;width:10px;height:770px;background:#14110e;transform-origin:50% 100%"></div>
+        <div id="a8-toit" class="abs" style="left:110px;top:700px;width:860px;height:150px">
+          <div class="abs" style="left:0;top:0;width:860px;height:10px;background:#14110e"></div>
+          <div class="abs" style="left:428px;top:10px;width:4px;height:60px;background:#14110e"></div>
+          <div id="a8-lum" class="abs" style="left:330px;top:70px;width:200px;height:80px;border-radius:100px 100px 10px 10px;background:#c9a15a;border:6px solid #14110e;transform-origin:50% 0"></div>
+        </div>
+      </div>
+      <div id="a8-fleche" class="abs" style="left:900px;top:330px;width:80px;height:330px">
+        <svg width="80" height="330" viewBox="0 0 80 330"><path d="M40 320 L40 20 M14 48 L40 18 L66 48" fill="none" stroke="#7d6128" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // a high ceiling: the light grows with it
+      tl.fromTo("#a8-all", { y: 1920 }, { y: 960, duration: 0.12, ease: "power3.in" }, 0);
+      tl.fromTo("#a8-all", { y: 960 }, { y: 0, duration: 0.277, ease: "expo.out", immediateRender: false }, 0.12);
+      tl.fromTo("#a8-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in" }, 0);
+      tl.fromTo("#a8-flou", { attr: { stdDeviation: "0 80" } }, { attr: { stdDeviation: "0 0" }, duration: 0.277, ease: "expo.out", immediateRender: false }, 0.12);
+      tl.set("#a8-all", { filter: "none" }, 0.417);
+      tl.fromTo("#a8-cam", { scale: 1.0 }, { scale: 1.02, duration: 2.4, ease: "none", immediateRender: false }, 0.12);
+      tl.fromTo("#a8-toit", { y: 0 }, { y: -360, duration: 0.6, ease: "power3.inOut" }, 0.637);
+      tl.fromTo("#a8-mur1, #a8-mur2", { scaleY: 1 }, { scaleY: 1.468, duration: 0.6, ease: "power3.inOut" }, 0.637);
+      tl.fromTo("#a8-fleche", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.737);
+      tl.fromTo("#a8-lum", { scale: 1 }, { scale: 1.6, duration: 0.35, ease: "back.out(2)" }, 2.317);
+      tl.to("#a8-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 2.24);
+      tl.fromTo("#a8-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 2.24);
+      window.__timelines["a8"] = tl;
+    })();
+  </script>
+</template>

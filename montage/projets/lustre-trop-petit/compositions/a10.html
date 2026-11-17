@@ -1,0 +1,56 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
+
+    #a10-all { filter: url(#a10-filtre); }
+    #a10-trace { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="a10" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a10-filtre" x="-10%" y="0" width="120%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur id="a10-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="a10-all" class="all clip" data-start="0" data-duration="4.9933">
+      <div id="a10-cam" class="cam"><img id="a10-img" class="abs" src="assets/gen-carton.png" alt="" style="left:-100px;top:0;width:1280px;height:1920px;">
+        <svg class="abs" style="left:160.0px;top:-25.0px;width:760px;height:300px" viewBox="0 0 760 300">
+          <ellipse id="a10-trace" cx="380" cy="150" rx="350" ry="125" fill="none" stroke="#c9a15a" stroke-width="10" stroke-dasharray="26 18" stroke-linecap="round"/></svg>
+      </div>
+      <div class="voile-bas" style="top:900px;height:1020px"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // the cardboard test
+      tl.fromTo("#a10-all", { x: 1080 }, { x: 540, duration: 0.26, ease: "power3.in" }, 0);
+      tl.fromTo("#a10-all", { x: 540 }, { x: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
+      tl.fromTo("#a10-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in" }, 0);
+      tl.fromTo("#a10-flou", { attr: { stdDeviation: "45 0" } }, { attr: { stdDeviation: "0 0" }, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
+      tl.set("#a10-all", { filter: "none" }, 0.88);
+      gsap.set("#a10-cam", { transformOrigin: "540.0px 525.0px" });
+      tl.fromTo("#a10-cam", { scale: 1 }, { scale: 1.08, duration: 4.633, ease: "none", immediateRender: false }, 0.26);
+      tl.fromTo("#a10-trace", { opacity: 0, scale: 0.85, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 2.19);
+      tl.to("#a10-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 4.613);
+      tl.fromTo("#a10-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 4.613);
+      window.__timelines["a10"] = tl;
+    })();
+  </script>
+</template>

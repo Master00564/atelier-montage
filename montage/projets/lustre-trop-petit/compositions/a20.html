@@ -1,0 +1,56 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
+
+    #a20-all {  }
+    #a20-guide, #a20-site { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="a20" data-width="1080" data-height="1920">
+    
+    <div id="a20-all" class="all clip" data-start="0" data-duration="3.8000">
+      <div id="a20-cam" class="cam" style="transform-origin:540px 278px">
+        <img class="abs" src="assets/tressa-soir.webp" alt="" style="left:-448.8px;top:-40px;width:1996.7px;height:1996.7px">
+        <div id="a20-lueur" class="abs" style="left:20px;top:-142px;width:1040px;height:840px;border-radius:50%;mix-blend-mode:screen;
+          background:radial-gradient(ellipse at center,rgba(255,214,150,.42) 0%,rgba(255,168,88,.16) 34%,rgba(255,140,60,0) 62%)"></div>
+      </div>
+      <div class="voile-bas" style="top:520px;height:1400px"></div>
+      <div id="a20-guide" class="nr abs" style="left:96px;top:720px;width:888px;font-size:66px;color:#faf7f1">Le guide complet, gratuit</div>
+      <div id="a20-site" class="fr abs" style="left:96px;top:810px;width:900px;font-size:96px;color:#c9a15a">latelierdulustre.com</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // the guide on the site
+      tl.fromTo("#a20-cam", { scale: 1 }, { scale: 1.08, duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo("#a20-all", { filter: "blur(18px)" }, { filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 0);
+      tl.fromTo("#a20-cam", { scale: 1.08 }, { scale: 1.134, duration: 3.2, ease: "none", immediateRender: false }, 0.5);
+      tl.fromTo("#a20-lueur", { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 0.55);
+      tl.fromTo("#a20-guide", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 0.99);
+      tl.fromTo("#a20-site", { opacity: 0, y: 24, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "expo.out" }, 2.31);
+      tl.to("#a20-cam", { scale: "*=0.86", duration: 0.2, ease: "power3.in" }, 3.5);
+      window.__timelines["a20"] = tl;
+    })();
+  </script>
+</template>

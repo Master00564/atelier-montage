@@ -1,0 +1,54 @@
+<template>
+  <style>
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces.woff2"); font-weight: 100 900; font-style: normal; }
+    @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .jbox { position: absolute; }
+    .abs { position: absolute; }
+    .fr { font-family: "Fraunces"; font-weight: 600; line-height: 1; white-space: nowrap; }
+    .nr { font-family: "Newsreader"; font-weight: 600; line-height: 1.1; white-space: nowrap; }
+    .it { font-style: italic; font-weight: 500; }
+    .papier { position: absolute; inset: 0; background: #faf7f1; }
+    .grain { position: absolute; inset: 0; background: url(assets/grain.png); background-size: 512px 512px; opacity: .06; mix-blend-mode: multiply; }
+    .points { position: absolute; inset: -80px; background-image: radial-gradient(circle, rgba(77,70,61,.22) 2.2px, transparent 2.6px); background-size: 40px 40px; }
+    .trait { position: absolute; height: 6px; border-radius: 3px; }
+    .traitv { position: absolute; width: 6px; border-radius: 3px; }
+    .voile-bas { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.55) 22.6%, rgba(14,11,8,.68) 100%); }
+    .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
+      background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
+
+    #a2-all { filter: url(#a2-filtre); }
+    #a2-st { opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="a2" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a2-filtre" x="-10%" y="0" width="120%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur id="a2-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="a2-all" class="all clip" data-start="0" data-duration="4.5933">
+      <div id="a2-cam" class="cam"><img id="a2-img" class="abs" src="assets/gen-petit.png" alt="" style="left:-100px;top:0;width:1280px;height:1920px;"></div>
+      <div class="voile-bas" style="top:900px;height:1020px"></div>
+      <div id="a2-st" class="fr abs" style="left:150px;top:560px;font-size:120px;color:#c9a15a;border:8px solid #c9a15a;border-radius:18px;padding:10px 28px 18px;transform:rotate(-7deg);text-align:center;background:rgba(20,17,14,.35)">Erreur n°1</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // the most common mistake, said by the pros: a man puzzled under a tiny light
+      tl.fromTo("#a2-all", { x: 1080 }, { x: 540, duration: 0.26, ease: "power3.in" }, 0);
+      tl.fromTo("#a2-all", { x: 540 }, { x: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
+      tl.fromTo("#a2-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "45 0" }, duration: 0.26, ease: "power3.in" }, 0);
+      tl.fromTo("#a2-flou", { attr: { stdDeviation: "45 0" } }, { attr: { stdDeviation: "0 0" }, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.26);
+      tl.set("#a2-all", { filter: "none" }, 0.88);
+      gsap.set("#a2-cam", { transformOrigin: "187.5px 375.0px" });
+      tl.fromTo("#a2-cam", { scale: 1 }, { scale: 1.07, duration: 4.233, ease: "none", immediateRender: false }, 0.26);
+      tl.fromTo("#a2-st", { scale: 2.2, opacity: 0, rotation: -15 }, { scale: 1, opacity: 1, rotation: -7, duration: 0.22, ease: "power4.out" }, 2.37);
+      tl.to("#a2-cam", { scale: "*=1.2", duration: 0.28, ease: "power3.in" }, 4.213);
+      tl.fromTo("#a2-all", { filter: "blur(0px)" }, { filter: "blur(18px)", duration: 0.28, ease: "power3.in", immediateRender: false }, 4.213);
+      window.__timelines["a2"] = tl;
+    })();
+  </script>
+</template>

@@ -4,7 +4,7 @@
     @font-face { font-family: "Fraunces"; src: url("assets/fraunces-italique.woff2"); font-weight: 100 900; font-style: italic; }
     @font-face { font-family: "Newsreader"; src: url("assets/newsreader.woff2"); font-weight: 200 800; font-style: normal; }
     @font-face { font-family: "Newsreader"; src: url("assets/newsreader-italique.woff2"); font-weight: 200 800; font-style: italic; }
-    #root { position: absolute; inset: 0; overflow: hidden; background: #14110e; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #faf7f1; }
     .all { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
     .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
     .full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
@@ -23,25 +23,29 @@
     .voile-jour { position: absolute; left: 0; top: 700px; width: 1080px; height: 1220px;
       background: linear-gradient(180deg, rgba(14,11,8,0) 0%, rgba(14,11,8,.62) 32%, rgba(14,11,8,.72) 100%); }
 
-    #s17-all {  }
-    #s17-promesse { opacity: 0; }
-    #s17-cam { transform: scale(0.9501); }
+    #a3-all { filter: url(#a3-filtre); }
+    #a3-bouton { opacity: 0; }
   </style>
-  <div id="root" data-composition-id="s17" data-width="1080" data-height="1920">
-    
-    <div id="s17-all" class="all clip" data-start="0" data-duration="2.3000">
-      <div id="s17-cam" class="cam"><div id="s17-jbox" class="jbox" style="left:-508.0px;top:-96px;width:2111.9px;height:2111.9px"><img id="s17-plaque" class="full" src="assets/jour-plaque.png" alt=""><img id="s17-lampe" class="full" src="assets/jour-lampe.png" alt="" style="transform-origin:1048.0px 151.6px"></div></div>
-      <div class="voile-jour"></div>
-      <div id="s17-promesse" class="nr it abs" style="left:96px;top:1272px;width:888px;font-size:44px;font-weight:500;color:#faf7f1">Le bon luminaire, du premier coup</div>
+  <div id="root" data-composition-id="a3" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="a3-filtre" x="0" y="-10%" width="100%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur id="a3-flou" in="SourceGraphic" stdDeviation="0 0"/></filter></svg>
+    <div id="a3-all" class="all clip" data-start="0" data-duration="4.4104">
+      <div id="a3-cam" class="cam"><img id="a3-img" class="abs" src="assets/gen-petit.png" alt="" style="left:-100px;top:0;width:1280px;height:1920px;">
+        <svg id="a3-bouton" class="abs" style="left:630px;top:165px;width:120px;height:120px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#f1ece2" stroke="#14110e" stroke-width="5"/><circle cx="50" cy="50" r="33" fill="none" stroke="#14110e" stroke-width="2.5" opacity=".5"/><circle cx="39" cy="39" r="6.5" fill="#14110e"/><circle cx="61" cy="39" r="6.5" fill="#14110e"/><circle cx="39" cy="61" r="6.5" fill="#14110e"/><circle cx="61" cy="61" r="6.5" fill="#14110e"/></svg>
+      </div>
     </div>
   </div>
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
-      // the loop: the room of frame 0, the camera reaching scale 1 on the last frame
-      tl.fromTo("#s17-cam", { scale: 0.95 }, { scale: 1, duration: 2.2, ease: "none" }, 0);
-      tl.fromTo("#s17-promesse", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0);
-      window.__timelines["s17"] = tl;
+      // a shirt button on a big ceiling, then the whole room
+      gsap.set("#a3-cam", { transformOrigin: "540.0px 195.0px" });
+      tl.fromTo("#a3-cam", { scale: 3.0, y: 765 }, { scale: 2.7, y: 765, duration: 2.495, ease: "none" }, 0);
+      tl.fromTo("#a3-bouton", { scale: 0, opacity: 0, rotation: -90 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.2)" }, 1.557);
+      tl.to("#a3-cam", { scale: 1, y: 0, duration: 0.9, ease: "power3.inOut" }, 2.495);
+      tl.fromTo("#a3-all", { y: 0 }, { y: -960, duration: 0.12, ease: "power3.in", immediateRender: false }, 3.913);
+      tl.fromTo("#a3-all", { y: -960 }, { y: -1920, duration: 0.277, ease: "expo.out", immediateRender: false }, 4.033);
+      tl.fromTo("#a3-flou", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 80" }, duration: 0.12, ease: "power3.in", immediateRender: false }, 3.913);
+      window.__timelines["a3"] = tl;
     })();
   </script>
 </template>
