@@ -1,0 +1,88 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #15181C; }
+    /* the photo is 1536 x 1024; cover 1920 x 1080 = scale 1.25, so the photo box is 1920 x 1280, top -100 */
+    #s1-rig, #s1-shake { position: absolute; inset: 0; }
+    .s1-box { position: absolute; left: 0; top: -100px; width: 1920px; height: 1280px; }
+    .s1-box img { width: 1920px; height: 1280px; display: block; }
+    /* windscreen glass: photo x 875-1380, y 282-470, times 1.25 */
+    .s1-pare { clip-path: polygon(1094px 352px, 1725px 352px, 1725px 588px, 1094px 588px); transform-origin: 1475px 570px; }
+    /* the mirror stays where it is, over the moving street */
+    #s1-retro { clip-path: polygon(1266px 395px, 1460px 395px, 1460px 462px, 1266px 462px); }
+    /* side window: photo (0,0) (330,0) (410,150) (418,690) (0,700), times 1.25 */
+    .s1-cote { clip-path: polygon(0px 0px, 412px 0px, 512px 188px, 522px 862px, 0px 875px); transform-origin: 300px 500px; }
+    /* tree shadows passing over the cabin: one 1920 px tile drawn twice, moved by one tile over the loop */
+    #s1-ombres { position: absolute; left: 0; top: -100px; width: 3840px; height: 1280px; mix-blend-mode: multiply; opacity: 0.42; }
+    #s1-soleil { position: absolute; left: 0; top: -100px; width: 3840px; height: 1280px; mix-blend-mode: screen; opacity: 0.22; }
+    #s1-voile { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 70% at 60% 45%, rgba(10,12,14,0) 55%, rgba(10,12,14,.45) 100%); }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
+    <div id="s1-scene" class="clip" data-start="0" data-duration="8">
+      <div id="s1-rig"><div id="s1-shake">
+        <div class="s1-box"><img src="assets/photo.jpg" alt=""></div>
+        <div id="s1-coteA" class="s1-box s1-cote"><img src="assets/photo.jpg" alt=""></div>
+        <div id="s1-coteB" class="s1-box s1-cote"><img src="assets/photo.jpg" alt=""></div>
+        <div id="s1-pareA" class="s1-box s1-pare"><img src="assets/photo.jpg" alt=""></div>
+        <div id="s1-pareB" class="s1-box s1-pare"><img src="assets/photo.jpg" alt=""></div>
+        <div id="s1-retro" class="s1-box"><img src="assets/photo.jpg" alt=""></div>
+        <svg id="s1-ombres" viewBox="0 0 3840 1280" preserveAspectRatio="none" aria-hidden="true">
+          <defs><filter id="s1-flou" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="38"/></filter></defs>
+          <g filter="url(#s1-flou)" fill="#1d2a1a">
+            <g id="s1-tuile">
+              <path d="M60 -80 L320 -80 L180 1360 L-120 1360 Z"/>
+              <path d="M520 -80 L620 -80 L560 1360 L420 1360 Z"/>
+              <path d="M760 -80 L1080 -80 L900 1360 L560 1360 Z"/>
+              <path d="M1240 -80 L1330 -80 L1290 1360 L1150 1360 Z"/>
+              <path d="M1480 -80 L1780 -80 L1640 1360 L1330 1360 Z"/>
+              <ellipse cx="400" cy="300" rx="160" ry="90"/><ellipse cx="1180" cy="760" rx="210" ry="120"/><ellipse cx="1760" cy="420" rx="140" ry="80"/>
+            </g>
+            <use href="#s1-tuile" x="1920"/>
+          </g>
+        </svg>
+        <svg id="s1-soleil" viewBox="0 0 3840 1280" preserveAspectRatio="none" aria-hidden="true">
+          <defs><filter id="s1-flou2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="46"/></filter></defs>
+          <g filter="url(#s1-flou2)" fill="#ffd9a0">
+            <g id="s1-tuile2">
+              <path d="M360 -80 L470 -80 L380 1360 L240 1360 Z"/>
+              <path d="M1120 -80 L1230 -80 L1110 1360 L980 1360 Z"/>
+              <path d="M1820 -80 L1900 -80 L1840 1360 L1730 1360 Z"/>
+            </g>
+            <use href="#s1-tuile2" x="1920"/>
+          </g>
+        </svg>
+      </div></div>
+      <div id="s1-voile"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const T = 8, P = 4, F = 0.45;   // loop, flow period, crossfade
+      // Two copies take turns so the movement never resets in view. A: moves over [0, P], hidden from P to T - F, back in at its start state.
+      // B: in at its start state over [P - F, P], moves over [P, T], out over [T - F, T]. State at T = state at 0: the loop has no seam.
+      const relais = (a, b, depart, arrivee) => {
+        tl.fromTo(a, depart, { ...arrivee, duration: P, ease: "none" }, 0);
+        tl.fromTo(a, { opacity: 1 }, { opacity: 0, duration: F, ease: "none" }, P - F);
+        tl.set(a, depart, P);
+        tl.fromTo(a, { opacity: 0 }, { opacity: 1, duration: F, ease: "none", immediateRender: false }, T - F);
+        tl.fromTo(b, { ...depart, opacity: 0 }, { opacity: 1, duration: F, ease: "none" }, P - F);
+        tl.fromTo(b, depart, { ...arrivee, duration: P, ease: "none", immediateRender: false }, P);
+        tl.fromTo(b, { opacity: 1 }, { opacity: 0, duration: F, ease: "none", immediateRender: false }, T - F);
+      };
+      // the street flows toward the car through the windscreen
+      relais("#s1-pareA", "#s1-pareB", { scale: 1 }, { scale: 1.1 });
+      // the side window slides toward the back of the car
+      relais("#s1-coteA", "#s1-coteB", { x: 0 }, { x: -70 });
+      // tree shadows and sun patches cross the cabin, one tile per loop: frame 0 = frame 240
+      tl.fromTo("#s1-ombres", { x: 0 }, { x: -1920, duration: T, ease: "none" }, 0);
+      tl.fromTo("#s1-soleil", { x: -300 }, { x: -2220, duration: T, ease: "none" }, 0);
+      // the road under the wheels: a small vibration, every frequency a whole number of cycles in 8 s
+      const w = (t, parts) => parts.reduce((s, [a, k, ph]) => s + a * Math.sin(2 * Math.PI * (k / T) * t + ph), 0);
+      const X = [[1.6, 7, 0.4], [0.8, 19, 1.9]], Y = [[2.2, 9, 2.2], [1.0, 23, 0.3]], R = [[0.06, 5, 1.3]];
+      const horloge = { t: 0 };
+      tl.fromTo(horloge, { t: 0 }, { t: T, duration: T, ease: "none",
+        onUpdate: () => gsap.set("#s1-shake", { x: w(horloge.t, X), y: w(horloge.t, Y), rotation: w(horloge.t, R), scale: 1.012 }) }, 0);
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>

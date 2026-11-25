@@ -1,0 +1,34 @@
+{
+ "format": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30
+ },
+ "assets": {
+  "musique.mp3": "library/audio/soir-piano-remix.mp3"
+ },
+ "attendu": {
+  "secondes": [
+   8,
+   8
+  ],
+  "gel_max_s": 8,
+  "fin_calme_s": 8,
+  "coupes_min_s": 0.1,
+  "mouvement_fort_max": 1,
+  "scene_min_s": 1,
+  "avant_fin_min_s": 0,
+  "accroche_s": 2,
+  "accroche_images": 0,
+  "accroche_energie": 0,
+  "blanc_max_s": 99,
+  "voix_sur_musique_db": 0,
+  "lit_sous_voix_max_db": 99,
+  "souffle_sous_voix_max_db": 99,
+  "sans_voix_sous_voix_max_db": 99,
+  "pompe_max_db": 99,
+  "fondu_fin_min_s": 0,
+  "effets_ecart_s": 0,
+  "sauts_voulus": []
+ }
+}

@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #131110; }
+    /* the photo is 1536 x 1024; cover 1920 x 1080 = scale 1.25: the photo box is 1920 x 1280, top -100 */
+    #s1-rig, #s1-shake { position: absolute; inset: 0; }
+    .s1-box { position: absolute; left: 0; top: -100px; width: 1920px; height: 1280px; }
+    .s1-box img { width: 1920px; height: 1280px; display: block; }
+    /* the barber cut out over the photo with him removed: he works, the client and the room stay still */
+    #s1-barbier { transform-origin: 1560px 700px; }
+    /* tungsten glow on the two bulbs: photo (775,135) and (672,255), times 1.25, minus 100 */
+    .s1-lueur { position: absolute; border-radius: 50%; mix-blend-mode: screen; pointer-events: none;
+      background: radial-gradient(circle, rgba(255,214,150,.85) 0%, rgba(255,170,90,.32) 30%, rgba(255,150,70,0) 62%); }
+    #s1-lueur1 { left: 729px; top: 29px; width: 480px; height: 480px; }
+    #s1-lueur2 { left: 650px; top: 179px; width: 380px; height: 380px; }
+    /* light cone under the bulbs, where the dust shows */
+    #s1-cone { position: absolute; inset: 0; mix-blend-mode: screen; pointer-events: none;
+      background: radial-gradient(ellipse 22% 48% at 49% 46%, rgba(255,205,140,.16) 0%, rgba(255,205,140,0) 70%); }
+    .s1-poussiere { position: absolute; left: 0; top: 0; border-radius: 50%; background: #ffe2b0; mix-blend-mode: screen; filter: blur(1px); }
+    .s1-cheveu { position: absolute; left: 0; top: 0; width: 3px; height: 7px; border-radius: 2px; background: #1a1411; }
+    /* glint along the clipper's blade: photo (1003,448)-(1062,486), times 1.25 */
+    #s1-reflet-zone { position: absolute; left: 1240px; top: 448px; width: 110px; height: 70px; overflow: hidden; mix-blend-mode: screen; border-radius: 12px; }
+    #s1-reflet { position: absolute; left: 0; top: 0; width: 60px; height: 70px;
+      background: linear-gradient(100deg, rgba(255,240,215,0) 0%, rgba(255,246,230,.85) 50%, rgba(255,240,215,0) 100%); }
+    #s1-voile { position: absolute; inset: 0; background: radial-gradient(ellipse 85% 75% at 62% 45%, rgba(8,6,4,0) 55%, rgba(8,6,4,.5) 100%); }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
+    <div id="s1-scene" class="clip" data-start="0" data-duration="8">
+      <div id="s1-rig"><div id="s1-shake">
+        <div class="s1-box"><img src="assets/fond.jpg" alt=""></div>
+        <div id="s1-barbier" class="s1-box"><img src="assets/barbier.png" alt=""></div>
+        <div id="s1-cone"></div>
+        <div id="s1-lueur1" class="s1-lueur"></div>
+        <div id="s1-lueur2" class="s1-lueur"></div>
+        <div id="s1-poussieres"><i id="s1-p0" class="s1-poussiere" style="width:3px;height:3px;opacity:0.5"></i><i id="s1-p1" class="s1-poussiere" style="width:4px;height:4px;opacity:0.35"></i><i id="s1-p2" class="s1-poussiere" style="width:2px;height:2px;opacity:0.6"></i><i id="s1-p3" class="s1-poussiere" style="width:5px;height:5px;opacity:0.25"></i><i id="s1-p4" class="s1-poussiere" style="width:3px;height:3px;opacity:0.45"></i><i id="s1-p5" class="s1-poussiere" style="width:2px;height:2px;opacity:0.55"></i><i id="s1-p6" class="s1-poussiere" style="width:3px;height:3px;opacity:0.4"></i><i id="s1-p7" class="s1-poussiere" style="width:4px;height:4px;opacity:0.3"></i><i id="s1-p8" class="s1-poussiere" style="width:2px;height:2px;opacity:0.5"></i><i id="s1-p9" class="s1-poussiere" style="width:3px;height:3px;opacity:0.35"></i><i id="s1-p10" class="s1-poussiere" style="width:2px;height:2px;opacity:0.45"></i><i id="s1-p11" class="s1-poussiere" style="width:3px;height:3px;opacity:0.4"></i><i id="s1-p12" class="s1-poussiere" style="width:2px;height:2px;opacity:0.5"></i><i id="s1-p13" class="s1-poussiere" style="width:5px;height:5px;opacity:0.2"></i><i id="s1-p14" class="s1-poussiere" style="width:3px;height:3px;opacity:0.45"></i><i id="s1-p15" class="s1-poussiere" style="width:2px;height:2px;opacity:0.35"></i><i id="s1-p16" class="s1-poussiere" style="width:4px;height:4px;opacity:0.3"></i><i id="s1-p17" class="s1-poussiere" style="width:2px;height:2px;opacity:0.55"></i></div>
+        <div id="s1-cheveux"><i id="s1-c0" class="s1-cheveu"></i><i id="s1-c1" class="s1-cheveu"></i><i id="s1-c2" class="s1-cheveu"></i><i id="s1-c3" class="s1-cheveu"></i><i id="s1-c4" class="s1-cheveu"></i><i id="s1-c5" class="s1-cheveu"></i><i id="s1-c6" class="s1-cheveu"></i><i id="s1-c7" class="s1-cheveu"></i></div>
+        <div id="s1-reflet-zone"><div id="s1-reflet"></div></div>
+      </div></div>
+      <div id="s1-voile"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const T = 8, TAU = 2 * Math.PI;
+      // fixed tables (no chance): dust in the light cone, hair falling from the clipper (the elements are written in the markup above)
+      const P = [[880,310,3,.5,1,2,.4,1.1],[930,420,4,.35,2,1,1.7,.3],[1010,260,2,.6,1,3,2.9,.8],[1060,380,5,.25,3,2,.2,2.4],[960,520,3,.45,2,3,1.2,.6],
+                 [840,460,2,.55,1,1,2.1,1.9],[1110,300,3,.4,2,1,.9,2.8],[990,640,4,.3,1,2,2.6,.1],[900,200,2,.5,3,1,.5,1.4],[1150,500,3,.35,1,3,1.8,2.2],
+                 [1040,180,2,.45,2,2,2.3,.7],[870,590,3,.4,3,2,.1,1.6],[1200,410,2,.5,1,1,1.4,2.9],[950,350,5,.2,2,3,2.8,.4],[1080,560,3,.45,1,2,.7,1.2],
+                 [820,330,2,.35,2,1,1.1,2.6],[1130,230,4,.3,3,3,2.4,1.8],[1000,470,2,.55,1,1,.3,.9]];
+      const C = [[0,.0],[1,.27],[2,.55],[3,.81],[4,.13],[5,.42],[6,.69],[7,.95]];
+      const horloge = { t: 0 };
+      const tour = () => {
+        const t = horloge.t;
+        // the barber works: the clipper climbs the nape, every move a whole number of cycles in 8 s
+        gsap.set("#s1-barbier", { y: 5 * Math.sin(TAU * 6 / T * t), x: 1.6 * Math.sin(TAU * 3 / T * t + 1.1), rotation: 0.35 * Math.sin(TAU * 6 / T * t + 0.6) });
+        // the bulbs breathe a little, never flicker
+        gsap.set("#s1-lueur1", { opacity: 0.78 + 0.1 * Math.sin(TAU * 2 / T * t) + 0.04 * Math.sin(TAU * 11 / T * t) });
+        gsap.set("#s1-lueur2", { opacity: 0.66 + 0.1 * Math.sin(TAU * 2 / T * t + 1.4) + 0.04 * Math.sin(TAU * 13 / T * t + .5) });
+        // dust drifts slowly in the cone
+        P.forEach((p, i) => gsap.set("#s1-p" + i, { x: p[0] + 34 * Math.sin(TAU * p[4] / T * t + p[6]), y: p[1] - 28 * Math.sin(TAU * p[5] / T * t + p[7]) }));
+        // hair falls from the clipper onto the cape, one strand at a time
+        C.forEach((c) => { const k = ((t / 2) + c[1]) % 1;  // a 2 s fall, phase per strand
+          gsap.set("#s1-c" + c[0], { x: 1268 + 18 * Math.sin(c[0] * 1.7) - 10 * k + 5 * Math.sin(k * 9), y: 492 + 190 * k * k, rotation: 40 + 260 * k + c[0] * 23,
+            opacity: k < 0.08 ? k / 0.08 : (k > 0.85 ? (1 - k) / 0.15 : 1) }); });
+        // the blade catches the light twice per loop
+        const g = (t % 4) / 4; gsap.set("#s1-reflet", { x: -80 + 260 * Math.min(1, Math.max(0, (g - 0.35) / 0.3)) });
+        // a hand-held camera, barely
+        gsap.set("#s1-shake", { x: 2.2 * Math.sin(TAU * 1 / T * t + .4) + .8 * Math.sin(TAU * 5 / T * t), y: 1.8 * Math.sin(TAU * 1 / T * t + 2.1) + .6 * Math.sin(TAU * 7 / T * t), scale: 1.012 });
+      };
+      tl.fromTo(horloge, { t: 0 }, { t: T, duration: T, ease: "none", onUpdate: tour }, 0);
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>
