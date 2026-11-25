@@ -10,7 +10,7 @@
     /* the mirror stays where it is, over the moving street */
     #s1-retro { clip-path: polygon(1266px 395px, 1460px 395px, 1460px 462px, 1266px 462px); }
     /* side window: photo (0,0) (330,0) (410,150) (418,690) (0,700), times 1.25 */
-    .s1-cote { clip-path: polygon(0px 0px, 412px 0px, 512px 188px, 522px 862px, 0px 875px); transform-origin: 300px 500px; }
+    .s1-cote { clip-path: polygon(0px 0px, 375px 0px, 465px 188px, 475px 850px, 0px 862px); transform-origin: 300px 500px; }
     /* tree shadows passing over the cabin: one 1920 px tile drawn twice, moved by one tile over the loop */
     #s1-ombres { position: absolute; left: 0; top: -100px; width: 3840px; height: 1280px; mix-blend-mode: multiply; opacity: 0.42; }
     #s1-soleil { position: absolute; left: 0; top: -100px; width: 3840px; height: 1280px; mix-blend-mode: screen; opacity: 0.22; }
@@ -72,7 +72,7 @@
       // the street flows toward the car through the windscreen
       relais("#s1-pareA", "#s1-pareB", { scale: 1 }, { scale: 1.1 });
       // the side window slides toward the back of the car
-      relais("#s1-coteA", "#s1-coteB", { x: 0 }, { x: -70 });
+      relais("#s1-coteA", "#s1-coteB", { x: 0 }, { x: -40 });
       // tree shadows and sun patches cross the cabin, one tile per loop: frame 0 = frame 240
       tl.fromTo("#s1-ombres", { x: 0 }, { x: -1920, duration: T, ease: "none" }, 0);
       tl.fromTo("#s1-soleil", { x: -300 }, { x: -2220, duration: T, ease: "none" }, 0);

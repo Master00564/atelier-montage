@@ -6,7 +6,8 @@
     .s1-box { position: absolute; left: 0; top: -100px; width: 1920px; height: 1280px; }
     .s1-box img { width: 1920px; height: 1280px; display: block; }
     /* the barber cut out over the photo with him removed: he works, the client and the room stay still */
-    #s1-barbier { transform-origin: 1560px 700px; }
+    /* the cut-out also holds a slice of the client at the zone's left edge: masked out, so only the barber moves; he pivots on his hand (photo 1032,472), which stays on the nape */
+    #s1-barbier { transform-origin: 1290px 590px; -webkit-mask-image: linear-gradient(90deg, transparent 1335px, #000 1375px); mask-image: linear-gradient(90deg, transparent 1335px, #000 1375px); }
     /* tungsten glow on the two bulbs: photo (775,135) and (672,255), times 1.25, minus 100 */
     .s1-lueur { position: absolute; border-radius: 50%; mix-blend-mode: screen; pointer-events: none;
       background: radial-gradient(circle, rgba(255,214,150,.85) 0%, rgba(255,170,90,.32) 30%, rgba(255,150,70,0) 62%); }
@@ -26,7 +27,7 @@
   <div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
     <div id="s1-scene" class="clip" data-start="0" data-duration="8">
       <div id="s1-rig"><div id="s1-shake">
-        <div class="s1-box"><img src="assets/fond.jpg" alt=""></div>
+        <div class="s1-box"><img src="assets/photo.jpg" alt=""></div>
         <div id="s1-barbier" class="s1-box"><img src="assets/barbier.png" alt=""></div>
         <div id="s1-cone"></div>
         <div id="s1-lueur1" class="s1-lueur"></div>
@@ -52,7 +53,7 @@
       const tour = () => {
         const t = horloge.t;
         // the barber works: the clipper climbs the nape, every move a whole number of cycles in 8 s
-        gsap.set("#s1-barbier", { y: 5 * Math.sin(TAU * 6 / T * t), x: 1.6 * Math.sin(TAU * 3 / T * t + 1.1), rotation: 0.35 * Math.sin(TAU * 6 / T * t + 0.6) });
+        gsap.set("#s1-barbier", { y: 1.2 * Math.sin(TAU * 6 / T * t), rotation: 0.45 * Math.sin(TAU * 3 / T * t + 0.6) + 0.12 * Math.sin(TAU * 6 / T * t) });
         // the bulbs breathe a little, never flicker
         gsap.set("#s1-lueur1", { opacity: 0.78 + 0.1 * Math.sin(TAU * 2 / T * t) + 0.04 * Math.sin(TAU * 11 / T * t) });
         gsap.set("#s1-lueur2", { opacity: 0.66 + 0.1 * Math.sin(TAU * 2 / T * t + 1.4) + 0.04 * Math.sin(TAU * 13 / T * t + .5) });
