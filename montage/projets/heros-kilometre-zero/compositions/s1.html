@@ -6,11 +6,15 @@
     .s1-box { position: absolute; left: 0; top: -100px; width: 1920px; height: 1280px; }
     .s1-box img { width: 1920px; height: 1280px; display: block; }
     /* windscreen glass: photo x 875-1380, y 282-470, times 1.25 */
-    .s1-pare { clip-path: polygon(1094px 352px, 1725px 352px, 1725px 588px, 1094px 588px); transform-origin: 1475px 570px; }
+    /* the cut stays still, only the picture inside it moves: a moving cut drags the frame into the glass */
+    .s1-pare { clip-path: polygon(1094px 352px, 1725px 352px, 1725px 588px, 1094px 588px); }
+    .s1-pare img { transform-origin: 1475px 570px; }
     /* the mirror stays where it is, over the moving street */
     #s1-retro { clip-path: polygon(1266px 395px, 1460px 395px, 1460px 462px, 1266px 462px); }
-    /* side window: photo (0,0) (330,0) (410,150) (418,690) (0,700), times 1.25 */
-    .s1-cote { clip-path: polygon(0px 0px, 375px 0px, 465px 188px, 475px 850px, 0px 862px); transform-origin: 300px 500px; }
+    /* side window glass, measured on the rendered frame (box y = frame y + 100), about 12 px inside the rubber */
+    .s1-cote { clip-path: polygon(0px 0px, 260px 0px, 320px 100px, 470px 195px, 495px 250px, 455px 400px, 418px 500px, 385px 600px, 368px 700px, 360px 780px, 0px 855px); }
+    /* the street slides toward the back of the car; its leading edge fades into the still photo */
+    .s1-cote img { -webkit-mask-image: linear-gradient(90deg, transparent 0px, #000 70px); mask-image: linear-gradient(90deg, transparent 0px, #000 70px); }
     /* tree shadows passing over the cabin: one 1920 px tile drawn twice, moved by one tile over the loop */
     #s1-ombres { position: absolute; left: 0; top: -100px; width: 3840px; height: 1280px; mix-blend-mode: multiply; opacity: 0.42; }
     #s1-soleil { position: absolute; left: 0; top: -100px; width: 3840px; height: 1280px; mix-blend-mode: screen; opacity: 0.22; }
@@ -70,9 +74,9 @@
         tl.fromTo(b, { opacity: 1 }, { opacity: 0, duration: F, ease: "none", immediateRender: false }, T - F);
       };
       // the street flows toward the car through the windscreen
-      relais("#s1-pareA", "#s1-pareB", { scale: 1 }, { scale: 1.1 });
+      relais("#s1-pareA img", "#s1-pareB img", { scale: 1 }, { scale: 1.1 });
       // the side window slides toward the back of the car
-      relais("#s1-coteA", "#s1-coteB", { x: 0 }, { x: -40 });
+      relais("#s1-coteA img", "#s1-coteB img", { x: 45 }, { x: 0 });
       // tree shadows and sun patches cross the cabin, one tile per loop: frame 0 = frame 240
       tl.fromTo("#s1-ombres", { x: 0 }, { x: -1920, duration: T, ease: "none" }, 0);
       tl.fromTo("#s1-soleil", { x: -300 }, { x: -2220, duration: T, ease: "none" }, 0);
